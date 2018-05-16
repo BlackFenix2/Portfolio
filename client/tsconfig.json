@@ -12,6 +12,8 @@
     // targets node
     "moduleResolution": "node",
 
+    "allowSyntheticDefaultImports": true,
+
     // ALIAS  src path
     "baseUrl": "./src/",
     "paths": {
