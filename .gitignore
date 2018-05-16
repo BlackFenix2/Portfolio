@@ -1,0 +1,13 @@
+client/node_modules
+client/dist
+client/yarn-error.log
+clint/coverage
+
+server/bin
+server/obj
+server/.vs
+server/Properties
+server/database.db
+
+
+yarn-error.log
