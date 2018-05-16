@@ -1,6 +1,6 @@
-# Profile
+# Portfilio
 
- [![Build Status](https://travis-ci.org/BlackFenix2/Profile.svg?branch=master)](https://travis-ci.org/BlackFenix2/Profile)
+[![Build Status](https://travis-ci.org/BlackFenix2/Portfolio.svg?branch=master)](https://travis-ci.org/BlackFenix2/Portfolio)
 
 This is a simple proof of concept for Full-stack React with Asp.Net core(WIP)
 
