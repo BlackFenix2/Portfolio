@@ -12,6 +12,8 @@
     // targets node
     "moduleResolution": "node",
 
+    //force case-sensitive imports to avoid compile-time errors
+    "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
 
     // ALIAS  src path
