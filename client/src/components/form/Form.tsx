@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { Form, reduxForm } from 'redux-form';
 
-import { FormContext, FormProps } from './formContext';
+import { FormContext, FormProps } from './FormContext';
 
 const formConfig = {
   enableReinitialize: true
 };
 
-const FormContainer: React.SFC<FormProps> = () => {
-  const { handleSubmit, children, reset, pristine, submitting } = this.props;
+const FormContainer: React.SFC<FormProps> = props => {
+  const { handleSubmit, children, reset, pristine, submitting } = props;
   return (
     <FormContext.Provider value={{ pristine, submitting }}>
       <Form onSubmit={handleSubmit} onReset={reset}>

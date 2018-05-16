@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormContext } from './formContext';
+import { FormContext } from './FormContext';
 
 interface IProps {
   name?: string;

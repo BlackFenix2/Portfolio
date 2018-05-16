@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormContext } from './formContext';
+import { FormContext } from './FormContext';
 
 interface IProps {
   name?: string;
@@ -7,14 +7,9 @@ interface IProps {
 }
 
 class ResetButton extends React.Component<IProps> {
-  // public static contextTypes = {
-  //   pristine: () => null,
-  //   submitting: () => null
-  // };
   public state;
   public render() {
     const { name, children, className } = this.props;
-    // const { pristine, submitting } = this.context;
     return (
       <FormContext.Consumer>
         {(context: any) => (
