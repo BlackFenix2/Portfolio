@@ -6,7 +6,7 @@ const Icons = () => (
   <div className="w3-bar">
     <a
       title="GitHub"
-      href="https://github.com/BlackFenix2/Profile"
+      href="https://github.com/BlackFenix2/Portfolio"
       target="_blank"
       rel="noopener noreferrer"
       className="w3-bar-item w3-hover-none w3-hover-text-black"
