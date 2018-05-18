@@ -1,6 +1,6 @@
 import { faSync } from '@fortawesome/fontawesome-free-solid';
 import Icon from '@fortawesome/react-fontawesome';
-import * as React from 'react';
+import React from 'react';
 
 const Loading = () => (
   <div className="w3-center w3-padding w3-panel">

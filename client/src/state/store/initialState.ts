@@ -16,7 +16,7 @@ const initialState = {
   }
 };
 
-const routes = [
+const routes: Routes = [
   {
     url: '/Shows',
     name: 'Shows',

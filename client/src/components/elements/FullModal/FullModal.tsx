@@ -1,11 +1,11 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import React from 'react';
 
 interface Props {
   visible: boolean;
 }
 
-class Modal extends React.Component<Props> {
+class FullModal extends React.Component<Props> {
   public state;
   public render() {
     if (!this.props.visible) {
@@ -16,11 +16,12 @@ class Modal extends React.Component<Props> {
       'w3-modal': true
     });
     return (
-      <div className={modalClasses}>
+      <div className={modalClasses} style={{ padding: '0' }}>
         <div
           className="w3-modal-content w3-card w3-animate-top"
           style={{
-            maxWidth: '35%'
+            height: '100%',
+            width: '100%'
           }}
         >
           {this.props.children}
@@ -30,4 +31,4 @@ class Modal extends React.Component<Props> {
   }
 }
 
-export default Modal;
+export default FullModal;

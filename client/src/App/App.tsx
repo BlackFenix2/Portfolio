@@ -2,7 +2,6 @@ import { createBrowserHistory } from 'history';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-
 import configureStore from '../state/store/configureStore';
 import Body from './Body';
 import Footer from './Footer';

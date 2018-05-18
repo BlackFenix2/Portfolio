@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Modal from '../../components/elements/Modal';
+import Modal from 'src/components/elements/Modal';
 
 const ModalContent = props => (
   <Modal visible={props.visible}>

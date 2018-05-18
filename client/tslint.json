@@ -8,7 +8,7 @@
   ],
   "rules": {
     // enabled, template string is cleaner than concat strings
-    // pul request for fixer:  https://github.com/palantir/tslint/pull/3663
+    // pull request for fixer:  https://github.com/palantir/tslint/pull/3663
     "prefer-template": true,
 
     //disabled, some object keys require specific order for API FETCH

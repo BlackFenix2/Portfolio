@@ -5,9 +5,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import Loading from '../components/shared/Loading';
 import NotFound from '../components/shared/NotFound';
 
-// temp Juryrig for .json
-// tslint:disable-next-line:no-var-requires
-const data = require('../Pages/Shows/data.json');
+import data from 'src/Pages/Shows/data.json';
 
 const config = {
   ErrorComponent: ({ error }) => (
