@@ -30,6 +30,10 @@ const routes: Routes = [
       {
         url: '/TestLoading',
         name: 'Test Loading'
+      },
+      {
+        url: '/Styled',
+        name: 'Styled'
       }
     ]
   },
