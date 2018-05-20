@@ -34,6 +34,10 @@ const routes: Routes = [
       {
         url: '/Styled',
         name: 'Styled'
+      },
+      {
+        url: '/Components',
+        name: 'Component Test'
       }
     ]
   },

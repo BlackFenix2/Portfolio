@@ -23,5 +23,9 @@
     "paths": {
       "src/*": ["*"]
     }
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "useCache": true,
+    "silent": true
   }
 }

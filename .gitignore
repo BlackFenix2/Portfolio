@@ -1,7 +1,8 @@
 client/node_modules
 client/dist
 client/yarn-error.log
-clint/coverage
+client/coverage
+client/.awcache
 
 server/bin
 server/obj

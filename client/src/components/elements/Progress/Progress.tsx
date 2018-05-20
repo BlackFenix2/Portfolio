@@ -1,8 +1,19 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
 interface IProps {
   percent: number;
 }
+
+const ProgressContainer = styled.div`
+  border: solid 1px grey;
+`;
+
+const ProgressItem = styled.div`
+  width: ${(props: any) => props.barWidth};
+  height: 28px;
+  background-color: ${(props: any) => props.color};
+`;
 class ProgressBar extends React.Component<IProps> {
   public getColor = () => {
     if (this.props.percent >= 100) {
@@ -11,21 +22,18 @@ class ProgressBar extends React.Component<IProps> {
     return this.props.percent > 50 ? 'lightgreen' : 'red';
   };
   public getProgress = () =>
-    this.props.percent > 100 ? 100 : this.props.percent;
+    this.props.percent > 100 ? '100%' : `${this.props.percent}%`;
 
   public render() {
-    const Style = {
-      width: `${this.getProgress()}%`,
-      height: 28,
-      backgroundColor: this.getColor()
+    const styles = {
+      barWidth: this.getProgress(),
+      color: this.getColor()
     };
-    const outerStyle = {
-      border: 'solid 1px grey'
-    };
+
     return (
-      <div style={outerStyle}>
-        <div style={Style} />
-      </div>
+      <ProgressContainer>
+        <ProgressItem {...styles} />
+      </ProgressContainer>
     );
   }
 }

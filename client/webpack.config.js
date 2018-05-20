@@ -5,21 +5,22 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
 const outputPath = path.resolve('dist');
 const serverPath = path.resolve('server');
 
 const Icon = path.resolve('./src/img/loading.png');
 
-module.exports = () => {
+module.exports = (env, argv) => {
+  //get mode argument, will be 'development' or 'production'
+  const devMode = argv.mode !== 'production';
   // common config for client and server
   const config = {
     output: {
       publicPath: '/'
     },
     resolve: {
-      //namespace src to avoid ../../
+      // namespace src to avoid ../../
       // enabled untill webpack 4 support for Awesome-typescript-loader
       alias: {
         src: path.resolve(__dirname, 'src')
@@ -28,15 +29,17 @@ module.exports = () => {
       extensions: ['.ts', '.tsx', 'json', '.js', '.jsx', '.css']
     },
 
+    // override default sourmap from dev flag
+    // devtool: devMode ? 'source-map' : 'none',
+
     plugins: [
-      // copy tsconfig alias paths to Webpack
-      // disabled untill webpack 4 support for Awesome-typescript-loader
-      // new TsConfigPathsPlugin()
+      // Cache compiled code to increase buildtime
+      // new HardSourceWebpackPlugin(),
     ]
   };
 
   const clientConfig = {
-    // find starting js file
+    // find starting ts file
     entry: {
       bundle: ['./src/index.tsx']
     },
@@ -57,8 +60,7 @@ module.exports = () => {
     output: {
       path: path.resolve(__dirname, outputPath),
       // needed for common chunks
-      filename: 'static/js/[name].js',
-      chunkFilename: 'static/js/[name].chunk.js'
+      filename: 'static/js/[name].js'
     },
 
     module: {
@@ -76,9 +78,11 @@ module.exports = () => {
             // default css loader
             {
               test: /\.css$/,
-              use: [MiniCssExtractPlugin.loader, 'css-loader']
+              use: [
+                devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                'css-loader'
+              ]
             },
-
             // fallback loader if other loaders excluded
             // URL loader falls back to file-loader
             {
@@ -100,7 +104,7 @@ module.exports = () => {
       // load css into separate .css file
       new MiniCssExtractPlugin({
         filename: 'static/css/[name].css',
-        chunkFilename: 'static/css/[id].chunk.css'
+        chunkFilename: 'static/css/[id].css'
       }),
 
       // HTML generation, put before other manifest plugins
@@ -129,72 +133,9 @@ module.exports = () => {
       })
     ]
   };
-  const serverConfig = {
-    // node specific settings for server
-    target: 'node',
-
-    // find starting js file
-    entry: {
-      server: './src/server.jsx'
-    },
-
-    // bundled code output
-    output: {
-      path: path.resolve(__dirname, serverPath),
-
-      filename: '[name].js',
-      // needed for server prerendering
-      libraryTarget: 'commonjs2'
-    },
-
-    module: {
-      rules: [
-        // Check JS and JSX files before building
-        {
-          enforce: 'pre',
-          test: /\.jsx?$/,
-          loader: 'eslint-loader',
-          exclude: /node_modules/
-        },
-        {
-          // check each loader for matching files
-          oneOf: [
-            // default loader for js and jsx with inline babel config
-            {
-              test: /\.jsx?$/,
-              loader: 'babel-loader',
-              exclude: /node_modules/,
-              // use internal babel options for SSR
-              options: {
-                presets: ['env', 'react', 'flow'],
-                plugins: [
-                  'babel-plugin-transform-runtime',
-                  'babel-plugin-dynamic-import-node',
-                  'babel-plugin-transform-object-rest-spread',
-                  'babel-plugin-transform-class-properties'
-                ],
-                // Don't read from .babelrc
-                babelrc: false
-              }
-            },
-            {
-              loader: 'url-loader',
-
-              exclude: [/\.(js|jsx|mjs|css)$/, /\.html$/, /\.json$/],
-              options: {
-                name: '[name].[ext]'
-              }
-            }
-          ]
-        }
-      ]
-    }
-  };
 
   // apply common config and development or production to client and server.
   const clientBundleConfig = merge(clientConfig, config);
-
-  const serverBundleConfig = merge(serverConfig, config);
 
   // return [clientBundleConfig, serverBundleConfig];
 

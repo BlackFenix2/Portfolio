@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Form, reduxForm } from 'redux-form';
 
-import { FormContext, FormProps } from './FormContext';
+import { FormContext, FormProps } from './formContext';
 
 const formConfig = {
   enableReinitialize: true

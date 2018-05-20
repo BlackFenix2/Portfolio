@@ -11,7 +11,7 @@ class FlexTest extends React.Component {
     progressTest: 0,
     apiResult: ''
   };
-  public componentWillMount() {
+  public componentDidMount() {
     this.test();
   }
 
