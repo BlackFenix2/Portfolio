@@ -78,10 +78,7 @@ module.exports = (env, argv) => {
             // default css loader
             {
               test: /\.css$/,
-              use: [
-                devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-                'css-loader'
-              ]
+              use: [MiniCssExtractPlugin.loader, 'css-loader']
             },
             // fallback loader if other loaders excluded
             // URL loader falls back to file-loader

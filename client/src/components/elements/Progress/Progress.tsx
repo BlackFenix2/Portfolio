@@ -13,6 +13,7 @@ const ProgressItem = styled.div`
   width: ${(props: any) => props.barWidth};
   height: 28px;
   background-color: ${(props: any) => props.color};
+  transition: 0.5s;
 `;
 class ProgressBar extends React.Component<IProps> {
   public getColor = () => {

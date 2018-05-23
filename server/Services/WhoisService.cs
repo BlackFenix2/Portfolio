@@ -90,19 +90,7 @@ namespace server.Services
 
         private string Cleanse(string domain)
         {
-            if (!domain.Contains(".")) throw new Exception("Missing period (.) in domain name");
-            domain = domain.Replace(" ", String.Empty)
-                .Replace("https://", String.Empty)
-                .Replace("http://", String.Empty)
-                .Replace(@"/", String.Empty)
-                .Replace("www.", String.Empty)
-                .Trim().ToLower();
-
-            var validChars = "abcdefghijklmnopqrstuvwxyz1234567890-.".ToCharArray();
-            foreach (var c in domain)
-            {
-                if (!validChars.Contains(c)) throw new Exception("Invalid domain name! Only letters, numbers, periods and hyphen characters are allowed");
-            }
+            
             return domain;
         }
     }
