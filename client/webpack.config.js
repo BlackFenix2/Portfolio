@@ -6,7 +6,7 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
-const outputPath = path.resolve('dist');
+const outputPath = path.resolve('build');
 const serverPath = path.resolve('server');
 
 const Icon = path.resolve('./src/img/loading.png');

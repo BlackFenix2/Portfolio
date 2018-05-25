@@ -3,14 +3,14 @@ const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 8080;
-const directory = path.resolve(__dirname, '..', 'dist');
+const directory = path.resolve(__dirname, '..', 'build');
 
 // serve static assets normally
 app.use(express.static(directory));
 
 // handle react-router routes in URL
 app.get('/*', (request, response) => {
-  response.sendFile(path.resolve(__dirname, '..', 'dist', 'index.html'));
+  response.sendFile(path.resolve(directory, 'index.html'));
 });
 
 console.log(directory);

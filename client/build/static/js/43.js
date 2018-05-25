@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[43],{176:function(e,a,t){"use strict";t.r(a);var n=t(1);a.default=(e=>n.createElement("ul",{className:"w3-ul"},e.items.map((e,a)=>n.createElement("li",{key:a},e))))}}]);

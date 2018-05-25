@@ -24,6 +24,8 @@
       "src/*": ["*"]
     }
   },
+
+  // Typescript Loader options
   "awesomeTypescriptLoaderOptions": {
     "useCache": true,
     "silent": true
