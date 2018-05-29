@@ -1,5 +1,5 @@
 client/node_modules
-client/dist
+client/build
 client/yarn-error.log
 client/coverage
 client/.awcache

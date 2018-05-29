@@ -166,9 +166,28 @@
   dependencies:
     csstype "^2.2.0"
 
+"@types/tapable@*":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.2.tgz#e13182e1b69871a422d7863e11a4a6f5b814a4bd"
+
+"@types/uglify-js@*":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@types/uglify-js/-/uglify-js-3.0.2.tgz#f30c75458d18e8ee885c792c04adcb78a13bc286"
+  dependencies:
+    source-map "^0.6.1"
+
 "@types/webpack-env@^1.13.6":
   version "1.13.6"
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.6.tgz#128d1685a7c34d31ed17010fc87d6a12c1de6976"
+
+"@types/webpack@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.4.0.tgz#c0551b772be241d786c0548812dd75a932f8efb4"
+  dependencies:
+    "@types/node" "*"
+    "@types/tapable" "*"
+    "@types/uglify-js" "*"
+    source-map "^0.6.0"
 
 "@webassemblyjs/ast@1.4.3":
   version "1.4.3"
@@ -8315,7 +8334,7 @@ strip-indent@^1.0.1:
   dependencies:
     get-stdin "^4.0.1"
 
-strip-json-comments@~2.0.1:
+strip-json-comments@^2.0.1, strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
@@ -8632,6 +8651,15 @@ ts-node@^6.0.5:
     mkdirp "^0.5.1"
     source-map-support "^0.5.3"
     yn "^2.0.0"
+
+tsconfig-paths@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.3.2.tgz#bb48b845e221a44387be0f9968ee6c37c2a37c4d"
+  dependencies:
+    deepmerge "^2.0.1"
+    minimist "^1.2.0"
+    strip-bom "^3.0.0"
+    strip-json-comments "^2.0.1"
 
 tslib@1.9.0, tslib@^1.0.0, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1:
   version "1.9.0"

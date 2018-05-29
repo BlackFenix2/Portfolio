@@ -2,10 +2,11 @@
   "compilerOptions": {
     // compile JSX syntax to JS
     "jsx": "react",
+
     //tsconfig rule since tslint doesnt handle unused
     "noUnusedLocals": true,
 
-    // use latest ES version
+    // use latest ES version including proposed features
     "module": "esnext",
     "target": "esnext",
 
@@ -16,6 +17,7 @@
     "forceConsistentCasingInFileNames": true,
 
     //allows default import of modules without default, shorthand for import * as item from 'module'
+
     "allowSyntheticDefaultImports": true,
 
     // ALIAS  src path
