@@ -17,7 +17,6 @@
     "forceConsistentCasingInFileNames": true,
 
     //allows default import of modules without default, shorthand for import * as item from 'module'
-
     "allowSyntheticDefaultImports": true,
 
     // ALIAS  src path

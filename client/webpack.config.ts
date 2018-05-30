@@ -10,11 +10,8 @@ const outputPath = path.resolve('build');
 
 const Icon = path.resolve('./src/img/loading.png');
 
-export default function() {
+export default function(env, args) {
   // common config for client and server
-
-  // tslint:disable-next-line:no-console
-  console.log('type test');
   const config = {
     output: {
       publicPath: '/'
