@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[49],{191:function(e,r,l){"use strict";l.r(r);var n=l(1);r.default=(e=>n.createElement("ul",{className:"w3-ul"},n.createElement("li",null,"Loading: ",String(e.loading)),n.createElement("li",null,"Error: ",String(e.error)),n.createElement("li",null,"Error Message: ",String(e.errorMessage))))}}]);

@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[19,50],{204:function(e,n,t){"use strict";t.r(n);var r=t(1);n.default=class extends r.Component{render(){return r.createElement("div",null,r.createElement("p",null,"Charts"))}}},96:function(e,n,t){"use strict";t.r(n);var r=t(204);t.d(n,"default",function(){return r.default})}}]);

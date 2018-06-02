@@ -8,7 +8,7 @@
     "build:dev": "yarn build && node server/index.js",
     "test": "yarn jest",
     "lint": "yarn tslint src/**/*.ts{,x}",
-    "build": "rimraf build && webpack --mode production --progress",
+    "build": "rimraf build/* && webpack --mode production --progress",
     "analyze": "source-map-explorer dist/static/js/bundle.js",
     "update": "yarn upgrade-interactive --latest"
   },

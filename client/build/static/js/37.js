@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[37],{184:function(e,a,d){"use strict";d.r(a);var i=d(1);a.default=(e=>i.createElement("div",{id:"game"},i.createElement("div",{role:"presentation",id:"board",onClick:e.clicked,onKeyUp:e.clicked},e.gameBoard.map((e,a)=>i.createElement("div",{key:a,"data-square":a},e)))))}}]);
