@@ -1,6 +1,7 @@
 # Portfilio
 
 [![Build Status](https://travis-ci.org/BlackFenix2/Portfolio.svg?branch=master)](https://travis-ci.org/BlackFenix2/Portfolio)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 This is a simple proof of concept for Full-stack React with Asp.Net core(WIP)
 

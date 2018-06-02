@@ -14,7 +14,7 @@
     //disabled, some object keys require specific order for API FETCH
     "object-literal-sort-keys": false,
 
-    //disabled, need lambas to pass values in event handlers
+    //disabled, need lambas to pass values in event handlers, will enable to refactor code
     "jsx-no-lambda": false,
 
     //disabled, modules like redux-saga requires submodules for functionality.
