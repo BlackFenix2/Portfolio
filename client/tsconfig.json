@@ -28,7 +28,7 @@
 
   // Typescript Loader options
   "awesomeTypescriptLoaderOptions": {
-    "useCache": true,
+    // "useCache": true,
     "silent": true
   }
 }

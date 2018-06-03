@@ -6,6 +6,11 @@
     "tslint-config-airbnb",
     "tslint-config-prettier"
   ],
+
+  "linterOptions": {
+    // exclude node modules
+    "exclude": ["node_modules"]
+  },
   "rules": {
     // enabled, template string is cleaner than concat strings
     // pull request for fixer:  https://github.com/palantir/tslint/pull/3663
