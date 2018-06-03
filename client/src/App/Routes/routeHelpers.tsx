@@ -4,8 +4,8 @@ import Loading from 'src/components/shared/Loading';
 import NotFound from 'src/components/shared/NotFound';
 
 const config = {
-  ErrorComponent: ({ error }) => (
-    <NotFound code={error.code} message={error.message} />
+  ErrorComponent: props => (
+    <NotFound code={props.error.code} message={props.error.message} />
   ),
   LoadingComponent: () => <Loading />
 };

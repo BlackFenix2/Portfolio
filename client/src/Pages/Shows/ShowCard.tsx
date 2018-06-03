@@ -1,4 +1,5 @@
-import Button from 'material-ui/Button';
+import { Button } from '@material-ui/core';
+import { Add, Remove } from '@material-ui/icons';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Rating from 'src/components/shared/Rating';
@@ -61,12 +62,12 @@ class ShowCard extends React.PureComponent<IShow> {
             <h4>{this.props.year}</h4>
             <p className="w3-small">{this.props.description}</p>
             <div className="w3-center">
-              <Button mini variant="fab" onClick={this.decreaseRating}>
-                -
+              <Button variant="fab" onClick={this.decreaseRating}>
+                <Remove />
               </Button>
               <Rating starCount={this.state.rating} />
-              <Button mini variant="fab" onClick={this.increaseRating}>
-                +
+              <Button variant="fab" onClick={this.increaseRating}>
+                <Add />
               </Button>
             </div>
           </div>

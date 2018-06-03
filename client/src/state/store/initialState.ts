@@ -1,4 +1,4 @@
-const initialState = {
+const initialState: any = {
   graphArea: {
     height: 100,
     width: 100
