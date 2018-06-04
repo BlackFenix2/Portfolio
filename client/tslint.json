@@ -9,7 +9,7 @@
 
   "linterOptions": {
     // exclude node modules
-    "exclude": ["node_modules"]
+    "exclude": ["./node_modules"]
   },
   "rules": {
     // enabled, template string is cleaner than concat strings

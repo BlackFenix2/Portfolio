@@ -60,4 +60,7 @@ const mapStateToProps = ({ graphArea }) => ({ graph: graphArea });
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(actionCreators, dispatch)
 });
-export default connect(mapStateToProps, mapDispatchToProps)(Graph);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Graph);

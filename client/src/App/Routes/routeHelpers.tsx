@@ -1,5 +1,5 @@
 import loadableComponents from 'loadable-components';
-import React from 'react';
+import * as React from 'react';
 import Loading from 'src/components/shared/Loading';
 import NotFound from 'src/components/shared/NotFound';
 

@@ -1,10 +1,13 @@
+import history from 'connect-history-api-fallback';
 import HtmlWebPackPlugin from 'html-webpack-plugin';
+import convert from 'koa-connect';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
+import webpackServeWaitpage from 'webpack-serve-waitpage';
 
 const outputPath = path.resolve('build');
 
@@ -12,7 +15,12 @@ const Icon = path.resolve('./src/img/loading.png');
 
 export default function(env, args) {
   // common config for client and server
-  const config = {
+  const envMode = process.env.WEBPACK_SERVE ? 'development' : 'production';
+  const config: webpack.Configuration = {
+    // set mode to development when called by webpack-serve
+
+    mode: envMode,
+
     output: {
       publicPath: '/'
     },
@@ -26,13 +34,7 @@ export default function(env, args) {
       extensions: ['.ts', '.tsx', 'json', '.js', '.jsx', '.css']
     },
 
-    // override default sourmap from dev flag
-    // devtool: devMode ? 'source-map' : 'none',
-
-    plugins: [
-      // Cache compiled code to increase buildtime
-      // new HardSourceWebpackPlugin(),
-    ]
+    plugins: []
   };
 
   const clientConfig = {
@@ -41,23 +43,35 @@ export default function(env, args) {
       bundle: ['./src/index.tsx']
     },
 
-    // dev server options
-    devServer: {
+    // use source map in development
+    devtool: envMode.includes('development') ? 'source-map' : false,
+
+    // webpack-serve dev options
+    serve: {
       // open default browser on load
       open: true,
-      // display lint error overlay
-      overlay: true,
+
       // enable HMR
       hot: true,
-      // use historyAPI for routes
-      historyApiFallback: true
+
+      // middleware options
+      add: (app, middleware, options) => {
+        // add history API fallback
+        app.use(convert(history()));
+
+        // webpack waiting page
+        app.use(webpackServeWaitpage(options));
+
+        middleware.webpack();
+        middleware.content();
+      }
     },
 
     // bundled code output
     output: {
       path: path.resolve(__dirname, outputPath),
-      // needed for common chunks
-      filename: 'static/js/[name].js'
+      filename: 'static/js/[name].js',
+      chunkFilename: '[name].[chunkhash].js'
     },
 
     module: {
@@ -68,7 +82,15 @@ export default function(env, args) {
             // default loader for ts and tsx
             {
               test: /\.tsx?$/,
-              use: ['awesome-typescript-loader'],
+              use: [
+                {
+                  loader: 'awesome-typescript-loader',
+                  options: {
+                    silent: true,
+                    transpileOnly: true
+                  }
+                }
+              ],
 
               exclude: /node_modules/
             },
@@ -92,13 +114,9 @@ export default function(env, args) {
       ]
     },
     plugins: [
-      // add hot loading for webpack dev server
-      new webpack.HotModuleReplacementPlugin(),
-
       // load css into separate .css file
       new MiniCssExtractPlugin({
-        filename: 'static/css/[name].css',
-        chunkFilename: 'static/css/[id].css'
+        filename: 'static/css/[name].css'
       }),
 
       // HTML generation, put before other manifest plugins

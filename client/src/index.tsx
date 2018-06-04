@@ -1,5 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { hot } from 'react-hot-loader';
 import app from './App';
 
 // preload routes for SSR
@@ -9,7 +10,9 @@ const renderApp = (App, target) => {
   // render or hydrate depending on SSR status
   const renderMethod = main.hasChildNodes() ? 'hydrate' : 'render';
 
-  ReactDOM[renderMethod](<App />, main);
+  // hot load application
+  const AppContainer = hot(module)(App);
+  ReactDOM[renderMethod](<AppContainer />, main);
 };
 
 const registerServiceWorker = () => {

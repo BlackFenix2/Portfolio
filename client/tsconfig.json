@@ -6,29 +6,23 @@
     //tsconfig rule since tslint doesnt handle unused
     "noUnusedLocals": true,
 
-    // use latest ES version including proposed features
-    "module": "esnext",
+    // use latest ES version including proposed features, compile down to ES5
+    "module": "commonjs",
     "target": "esnext",
 
     // targets node
     "moduleResolution": "node",
 
-    //force case-sensitive imports to avoid compile-time errors
+    // force case-sensitive imports to avoid compile-time errors
     "forceConsistentCasingInFileNames": true,
 
-    //allows default import of modules without default, shorthand for import * as item from 'module'
-    "allowSyntheticDefaultImports": true,
+    // allows default import of modules without default exports, shorthand for import * as item from 'module'
+    "esModuleInterop": true,
 
     // ALIAS  src path
     "baseUrl": "./src/",
     "paths": {
       "src/*": ["*"]
     }
-  },
-
-  // Typescript Loader options
-  "awesomeTypescriptLoaderOptions": {
-    // "useCache": true,
-    "silent": true
   }
 }

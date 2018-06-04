@@ -12,7 +12,7 @@ declare module '*.png' {
   const image: any;
   export default image;
 }
-//load CSS modules
+// load CSS modules
 declare module '*.css' {
   interface IClassNames {
     [className: string]: string;

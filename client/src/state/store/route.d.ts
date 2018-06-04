@@ -1,8 +1,8 @@
 interface Route {
-  url: String;
-  name: String;
+  url: string;
+  name: string;
 
-  children?: Array<Route>;
+  children?: Route[];
 }
 
 interface Routes extends Array<Route> {}
