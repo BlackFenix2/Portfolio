@@ -71,7 +71,7 @@ export default function(env, args) {
     output: {
       path: path.resolve(__dirname, outputPath),
       filename: 'static/js/[name].js',
-      chunkFilename: '[name].[chunkhash].js'
+      chunkFilename: 'static/js/[name].[chunkhash].js'
     },
 
     module: {

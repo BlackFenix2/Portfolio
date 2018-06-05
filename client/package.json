@@ -81,6 +81,7 @@
     "react-dom": "^16.4.0",
     "react-fullscreen-crossbrowser": "^1.0.9",
     "react-hot-loader": "^4.2.0",
+    "react-imported-component": "^4.4.1",
     "react-modal": "^3.4.5",
     "react-motion": "^0.5.2",
     "react-redux": "^5.0.6",

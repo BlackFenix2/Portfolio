@@ -1,7 +1,7 @@
 client/node_modules
 client/build
-client/yarn-error.log
 client/coverage
+client/yarn-error.log
 client/.awcache
 
 server/bin

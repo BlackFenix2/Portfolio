@@ -4,7 +4,7 @@ import {
 } from '@fortawesome/fontawesome-free-regular';
 import { faStar as star } from '@fortawesome/fontawesome-free-solid';
 import Icon from '@fortawesome/react-fontawesome';
-import React from 'react';
+import * as React from 'react';
 
 interface IProps {
   starCount: number;

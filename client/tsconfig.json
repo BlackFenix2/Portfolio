@@ -6,8 +6,8 @@
     //tsconfig rule since tslint doesnt handle unused
     "noUnusedLocals": true,
 
-    // use latest ES version including proposed features, compile down to ES5
-    "module": "commonjs",
+    // use latest ES version including proposed features, compile down to commonjs
+    "module": "esnext",
     "target": "esnext",
 
     // targets node
@@ -18,6 +18,7 @@
 
     // allows default import of modules without default exports, shorthand for import * as item from 'module'
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
 
     // ALIAS  src path
     "baseUrl": "./src/",

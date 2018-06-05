@@ -1,28 +1,9 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { hot } from 'react-hot-loader';
 import app from './App';
 
-// preload routes for SSR
-const renderApp = (App, target) => {
-  const main = document.getElementById(target);
-
-  // render or hydrate depending on SSR status
-  const renderMethod = main.hasChildNodes() ? 'hydrate' : 'render';
-
-  // hot load application
-  const AppContainer = hot(module)(App);
-  ReactDOM[renderMethod](<AppContainer />, main);
-};
-
-const registerServiceWorker = () => {
-  if (window.location.protocol === 'https:' && 'serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js');
-  }
-};
+import * as tools from '../tools/render';
 
 // Insert App component here
-renderApp(app, 'react-app');
+tools.renderApp(app, 'react-app');
 
 // register service worker if https is configured
-registerServiceWorker();
+tools.registerServiceWorker();

@@ -62,11 +62,11 @@ class ShowCard extends React.PureComponent<IShow> {
             <h4>{this.props.year}</h4>
             <p className="w3-small">{this.props.description}</p>
             <div className="w3-center">
-              <Button variant="fab" onClick={this.decreaseRating}>
+              <Button mini variant="fab" onClick={this.decreaseRating}>
                 <Remove />
               </Button>
               <Rating starCount={this.state.rating} />
-              <Button variant="fab" onClick={this.increaseRating}>
+              <Button mini variant="fab" onClick={this.increaseRating}>
                 <Add />
               </Button>
             </div>
