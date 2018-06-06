@@ -1,5 +1,6 @@
 import history from 'connect-history-api-fallback';
 import HtmlWebPackPlugin from 'html-webpack-plugin';
+import HtmlTemplate from 'html-webpack-template';
 import convert from 'koa-connect';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
@@ -8,10 +9,10 @@ import webpack from 'webpack';
 import merge from 'webpack-merge';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
 import webpackServeWaitpage from 'webpack-serve-waitpage';
+import htmlParams from './tools/htmlParams';
+import paths from './tools/paths';
 
-const outputPath = path.resolve('build');
-
-const Icon = path.resolve('./src/img/loading.png');
+const outputPath = path.resolve(paths.buildDir);
 
 export default function(env, args) {
   // common config for client and server
@@ -20,7 +21,6 @@ export default function(env, args) {
     // set mode to development when called by webpack-serve
 
     mode: envMode,
-
     output: {
       publicPath: '/'
     },
@@ -40,7 +40,7 @@ export default function(env, args) {
   const clientConfig = {
     // find starting ts file
     entry: {
-      bundle: ['./src/index.tsx']
+      bundle: [paths.index]
     },
 
     // use source map in development
@@ -104,7 +104,7 @@ export default function(env, args) {
             {
               loader: 'url-loader',
               // exclude HTML framework elements regardless
-              exclude: [/\.(js|jsx|ts|tsx|mjs|css)$/, /\.html$/, /\.json$/],
+              exclude: [/\.(js|jsx|ts|tsx|mjs|ejs|css)$/, /\.html$/, /\.json$/],
               options: {
                 name: 'static/media/[name].[ext]'
               }
@@ -121,9 +121,15 @@ export default function(env, args) {
 
       // HTML generation, put before other manifest plugins
       new HtmlWebPackPlugin({
-        template: './src/index.html',
-        favicon: Icon
+        inject: false,
+        template: HtmlTemplate,
+        favicon: paths.Icon,
+        mobile: true,
+        lang: 'en-US',
+        appMountId: htmlParams.rootID,
+        title: htmlParams.title
       }),
+
       // add serviceworker
       new SWPrecacheWebpackPlugin(),
       // create manifest.json for PWA
@@ -137,7 +143,7 @@ export default function(env, args) {
 
         icons: [
           {
-            src: Icon,
+            src: paths.Icon,
             sizes: [16, 32, 48, 96, 128, 150, 180, 192, 256, 384, 512, 1024],
             destination: path.join('assets', 'icons')
           }

@@ -6,15 +6,9 @@ export const renderApp = (App, target) => {
   const main = document.getElementById(target);
 
   // render or hydrate depending on SSR status
-  const renderMethod = main.hasChildNodes() ? 'hydrate' : 'render';
+  const renderMethod = main.children.length > 1 ? 'hydrate' : 'render';
 
   // hot load application
   const AppContainer = hot(module)(App);
   ReactDOM[renderMethod](<AppContainer />, main);
-};
-
-export const registerServiceWorker = () => {
-  if (window.location.protocol === 'https:' && 'serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js');
-  }
 };

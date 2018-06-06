@@ -15,11 +15,11 @@ const history = createBrowserHistory();
 const App: React.SFC = () => (
   <Provider store={configureStore}>
     <ConnectedRouter history={history}>
-      <div>
+      <>
         <Header />
         <Body />
         <Footer />
-      </div>
+      </>
     </ConnectedRouter>
   </Provider>
 );

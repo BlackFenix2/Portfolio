@@ -1,11 +1,11 @@
-const tsc = require('typescript');
-const webpackConfig = require('fs').readFileSync('./webpack.config.ts', 'utf8');
-const options = {
+require('ts-node').register({
   compilerOptions: {
-    target: 'es5',
+    target: 'es6',
     module: 'commonjs',
-    esModuleInterop: true
-  }
-};
+    esModuleInterop: true,
+    allowSyntheticDefaultImports: true
+  },
+  pretty: true
+});
 
-eval(tsc.transpileModule(webpackConfig, options).outputText);
+module.exports = require('./webpack.config.ts');
