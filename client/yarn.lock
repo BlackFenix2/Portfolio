@@ -3185,14 +3185,6 @@ html-webpack-plugin@^3.0.6:
     toposort "^1.0.0"
     util.promisify "1.0.0"
 
-html-webpack-react-root-plugin@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/html-webpack-react-root-plugin/-/html-webpack-react-root-plugin-0.9.0.tgz#2af68e193423cedad2e8501100c59094dc2f3470"
-
-html-webpack-root-plugin@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/html-webpack-root-plugin/-/html-webpack-root-plugin-0.10.0.tgz#f16e34c16b8ab8c71779ad9af5bfb90aab953de2"
-
 html-webpack-template@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/html-webpack-template/-/html-webpack-template-6.2.0.tgz#3c9f15f616f4500927909d34adfbccb20d37943c"
@@ -7852,7 +7844,7 @@ uglify-to-browserify@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz#6e0924d6bda6b5afe349e39a6d632850a0f882b7"
 
-uglifyjs-webpack-plugin@^1.2.4:
+uglifyjs-webpack-plugin@^1.2.4, uglifyjs-webpack-plugin@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-1.2.5.tgz#2ef8387c8f1a903ec5e44fa36f9f3cbdcea67641"
   dependencies:

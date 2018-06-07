@@ -11,7 +11,6 @@ import WebpackPwaManifest from 'webpack-pwa-manifest';
 import webpackServeWaitpage from 'webpack-serve-waitpage';
 import htmlParams from './tools/htmlParams';
 import paths from './tools/paths';
-
 const outputPath = path.resolve(paths.buildDir);
 
 export default function(env, args) {
@@ -40,9 +39,32 @@ export default function(env, args) {
   const clientConfig = {
     // find starting ts file
     entry: {
+      // client entry
       bundle: [paths.index]
     },
 
+    // split chunks by vendors in node modules
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          common: {
+            chunks: 'initial',
+            maxInitialRequests: 5,
+            name: 'common',
+            minChunks: 2,
+            minSize: 0
+          },
+          vendor: {
+            test: /node_modules/,
+            chunks: 'initial',
+            name: 'vendor',
+            priority: 10,
+            enforce: true
+          }
+        }
+      },
+      runtimeChunk: true
+    },
     // use source map in development
     devtool: envMode.includes('development') ? 'source-map' : false,
 
@@ -71,7 +93,7 @@ export default function(env, args) {
     output: {
       path: path.resolve(__dirname, outputPath),
       filename: 'static/js/[name].js',
-      chunkFilename: 'static/js/[name].[chunkhash].js'
+      chunkFilename: 'static/js/[name].js'
     },
 
     module: {
@@ -100,13 +122,14 @@ export default function(env, args) {
               use: [MiniCssExtractPlugin.loader, 'css-loader']
             },
             // fallback loader if other loaders excluded
-            // URL loader falls back to file-loader
+            // URL loader falls back to file-loader if size limit is exceeded
             {
               loader: 'url-loader',
               // exclude HTML framework elements regardless
               exclude: [/\.(js|jsx|ts|tsx|mjs|ejs|css)$/, /\.html$/, /\.json$/],
               options: {
-                name: 'static/media/[name].[ext]'
+                name: 'static/media/[ext]/[name].[ext]',
+                limit: 8192
               }
             }
           ]
@@ -132,7 +155,8 @@ export default function(env, args) {
 
       // add serviceworker
       new SWPrecacheWebpackPlugin(),
-      // create manifest.json for PWA
+
+      // create manifest.json for PWA, injects into htmlwebpack plugin
       new WebpackPwaManifest({
         name: "Ernie's test app",
         short_name: 'ErnieApp',
