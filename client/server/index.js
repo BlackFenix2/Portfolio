@@ -5,11 +5,8 @@ const app = express();
 const port = process.env.PORT || 8080;
 const directory = path.resolve(__dirname, '..', 'build');
 
-//serve gzip files
+//serve static files and gzip files
 app.use(expressStaticGzip(directory));
-
-// serve static assets normally
-app.use(express.static(directory));
 
 // handle react-router routes in URL
 app.get('/*', (request, response) => {

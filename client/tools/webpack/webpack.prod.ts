@@ -20,6 +20,9 @@ const prodConfig: webpack.Configuration = {
   plugins: [
     // compresses output files to .gz
     new CompressionPlugin({
+      // exclude .html files from gzip
+      exclude: /\.html$/,
+      // remove original files
       deleteOriginalAssets: true
     }),
 
