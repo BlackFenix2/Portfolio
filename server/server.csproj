@@ -13,6 +13,7 @@
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.5.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="2.5.0" />
     <PackageReference Include="whois" Version="1.0.0" />
+    <PackageReference Include="WhoisClient.NET" Version="3.0.0" />
   </ItemGroup>
 
 
