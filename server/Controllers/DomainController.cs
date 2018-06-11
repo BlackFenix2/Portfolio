@@ -3,7 +3,6 @@ using server.Interfaces;
 using server.Models.Objects;
 using System;
 using System.Threading.Tasks;
-using Whois.NET;
 
 namespace server.Controllers
 {
@@ -42,13 +41,6 @@ namespace server.Controllers
             return Ok(Record);
         }
 
-        [HttpGet("test")]
-        public async Task<IActionResult> GetItem(string domain)
-        {
-            var result = await WhoisClient.QueryAsync("motologger.us");
 
-
-            return Ok(result);
-        }
     }
 }

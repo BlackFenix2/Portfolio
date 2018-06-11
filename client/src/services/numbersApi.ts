@@ -2,6 +2,8 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'http://numbersapi.com';
 
+
+
 const appService = {
   getPosts() {
     return new Promise(resolve => {

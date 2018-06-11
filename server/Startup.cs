@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,7 +44,12 @@ namespace server
             //adds Whois Service
             services.AddScoped<IDnsService, DnsService>();
 
-            services.AddMvc();
+            // add mvc with automatic CSRF protection
+            services.AddMvc(options =>
+            {
+                // add antiforgery when authentication is configured
+                // options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+            });
 
             // add API documentation to JSON
             services.AddSwaggerGen(c =>

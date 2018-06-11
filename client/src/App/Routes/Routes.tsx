@@ -3,7 +3,6 @@ import * as React from 'react';
 
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import { AnimatedSwitch } from 'react-router-transition';
 import CustomRoutes from './CustomRoutes';
 import RouteGenerator from './RouteGenerator';
 import { setPageRouteAsync } from './routeHelpers';
@@ -19,18 +18,10 @@ class Routes extends React.Component<{ routes: any }> {
     return (
       // Weird Juryrig, involing stateless components return array of routes directly to switch parent.
       <Switch>
-        <AnimatedSwitch
-          atEnter={{
-            opacity: 1
-          }}
-          atLeave={{ opacity: 1 }}
-          atActive={{ opacity: 1 }}
-        >
-          <Route exact path="/" component={Home} />
-          {RouteGenerator(this.props)}
-          {CustomRoutes()}
-          <Route component={PageNotFound} />
-        </AnimatedSwitch>
+        <Route exact path="/" component={Home} />
+        {RouteGenerator(this.props)}
+        {CustomRoutes()}
+        <Route component={PageNotFound} />
       </Switch>
     );
   }

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-serve --progress",
+    "start": "webpack-serve",
     "build:dev": "yarn build && node server/index.js",
     "test": "yarn jest",
     "lint": "yarn tslint src/**/*.ts{,x}",
