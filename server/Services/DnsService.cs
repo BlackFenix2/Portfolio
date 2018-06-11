@@ -31,7 +31,7 @@ namespace server.Services
 
                     MxRecords = MxRecords.Answers.MxRecords().Select(x => x.Exchange.ToString()).ToList(),
                     ARecords = ARecords.Answers.ARecords().Select(x => x.Address.ToString()).ToList(),
-                    CnameRecords = CnameRecords.Answers.CnameRecords().Select(x => x.ToString()).ToList()
+                    CnameRecords = CnameRecords.Answers.CnameRecords().Select(x => x.RecordToString()).ToList()
                 };
                 return dnsRecords;
             }
