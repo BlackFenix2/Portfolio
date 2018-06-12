@@ -11,7 +11,7 @@ const Details = props => (
   <div className="w3-panel">
     <img
       // nasty Require
-      src={require(`../img/posters/${props.poster}`)} // eslint-disable-line
+      src={require(`src/lib/img/posters/${props.poster}`)} // eslint-disable-line
       alt="where is the item"
       style={imgStyle}
     />

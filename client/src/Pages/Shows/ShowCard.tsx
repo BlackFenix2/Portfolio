@@ -43,7 +43,7 @@ class ShowCard extends React.PureComponent<IShow> {
         }))
       : null;
   public render() {
-    const image = require(`src/img/posters/${this.props.poster}`);
+    const image = require(`src/lib/img/posters/${this.props.poster}`);
     return (
       <div className="w3-card-4 w3-row">
         <div className="w3-col w3-half">

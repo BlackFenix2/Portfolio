@@ -10,5 +10,5 @@ export const renderApp = (App, target) => {
 
   // hot load application
   const AppContainer = hot(module)(App);
-  ReactDOM[renderMethod](<AppContainer />, main);
+  ReactDOM[renderMethod](React.createElement(AppContainer), main);
 };

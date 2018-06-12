@@ -6,8 +6,8 @@ import '@fortawesome/fontawesome';
 import 'w3-css';
 
 // Custom css
-import '../css/site.css';
+import 'src/lib/css/site.css';
 
-import '../css/flex.css';
+import 'src/lib/css/flex.css';
 
-import '../css/animate.css';
+import 'src/lib/css/animate.css';
