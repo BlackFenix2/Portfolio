@@ -2,12 +2,6 @@
   "name": "root-app",
   "version": "0.1.0",
   "license": "MIT",
-  "reactSnap": {
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox"
-    ]
-  },
   "scripts": {
     "heroku-postbuild": "cd client && yarn install && yarn run build"
   }

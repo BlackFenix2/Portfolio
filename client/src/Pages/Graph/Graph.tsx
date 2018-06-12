@@ -22,7 +22,7 @@ class Graph extends React.Component<IProps> {
   public render() {
     return (
       <div>
-        <h2>This is the graphw page</h2>
+        <h2>This is the graph page</h2>
         <p>Height: {this.props.graph.height}</p>
         <p>Width: {this.props.graph.width}</p>
         <div>
