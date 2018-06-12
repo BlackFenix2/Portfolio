@@ -3,19 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "license": "MIT",
-  "reactSnap": {
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox"
-    ]
-  },
   "scripts": {
     "start": "webpack-serve",
     "build:dev": "yarn build && node server/index.js",
     "test": "yarn jest",
     "lint": "yarn tslint src/**/*.ts{,x}",
-    "build": "webpack --progress",
-    "postbuild": "react-snap",
+    "build": "webpack --progress && yarn react-snap",
     "analyze": "source-map-explorer dist/static/js/bundle.js",
     "update": "yarn upgrade-interactive --latest"
   },
