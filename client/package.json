@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "license": "MIT",
+  "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
   "scripts": {
     "start": "webpack-serve",
     "build:dev": "yarn build && node server/index.js",
