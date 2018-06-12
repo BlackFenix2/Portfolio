@@ -10,7 +10,8 @@
     "lint": "yarn tslint src/**/*.ts{,x}",
     "build": "webpack --progress",
     "analyze": "source-map-explorer dist/static/js/bundle.js",
-    "update": "yarn upgrade-interactive --latest"
+    "update": "yarn upgrade-interactive --latest",
+    "postbuild": "react-snap"
   },
   "devDependencies": {
     "@types/html-webpack-plugin": "^2.30.3",
