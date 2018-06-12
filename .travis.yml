@@ -1,4 +1,2 @@
 language: node_js
-node_js:
-  - '9.2.1'
 before_install: cd client

@@ -3,15 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "license": "MIT",
-  "engines": {
-    "node": "9.2.1"
-  },
-  "reactSnap": {
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox"
-    ]
-  },
   "scripts": {
     "start": "webpack-serve",
     "build:dev": "yarn build && node server/index.js",
