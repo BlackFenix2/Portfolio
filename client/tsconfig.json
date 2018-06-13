@@ -21,9 +21,9 @@
     "allowSyntheticDefaultImports": true,
 
     // ALIAS  src path
-    "baseUrl": "./src/",
+    "baseUrl": "./",
     "paths": {
-      "src/*": ["*"]
+      "src/*": ["src/*"]
     }
   }
 }

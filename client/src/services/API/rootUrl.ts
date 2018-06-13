@@ -4,7 +4,7 @@ const mode = process.env.NODE_ENV;
 const hostname = window && window.location && window.location.hostname;
 
 // determine if app is staging
-const staging = hostname !== 'fhs-react.herokuapp.com';
+const staging = hostname === process.env.STAGING;
 
 let rootUrl = '';
 if (mode === 'development') {

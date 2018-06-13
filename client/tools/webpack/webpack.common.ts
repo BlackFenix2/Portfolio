@@ -3,9 +3,12 @@ import HtmlTemplate from 'html-webpack-template';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
+import webpack from 'webpack';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
 import htmlParams from '../htmlParams';
 import paths from '../paths';
+
+import { staging } from '../env';
 
 const config = {
   entry: {
@@ -84,6 +87,12 @@ const config = {
     ]
   },
   plugins: [
+    // define environemt vars
+    new webpack.EnvironmentPlugin({
+      // set staging var
+      STAGING: staging
+    }),
+
     // load css into separate .css file
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].css'

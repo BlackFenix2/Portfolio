@@ -12,6 +12,7 @@ require('ts-node').register({
 });
 
 // check if command is webpack-serve or just webpack
+// cannout use .include() because ES5 :(
 const IS_DEV_SERVER = process.argv[1].indexOf('webpack-serve') >= 0;
 
 // load webpack config depending on dev or prod needs
