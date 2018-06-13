@@ -1,11 +1,15 @@
 const mode = process.env.NODE_ENV;
-const staging = process.env.STAGING;
-// tslint:disable-next-line:no-console
-console.log('staging: ', staging);
+
+// get current hostname
+const hostname = window && window.location && window.location.hostname;
+
+// determine if app is staging
+const staging = hostname !== 'fhs-react.herokuapp.com';
+
 let rootUrl = '';
 if (mode === 'development') {
   rootUrl = 'http://localhost:5000/api';
-} else if (staging === 'true') {
+} else if (staging) {
   rootUrl = 'https://fhs-dev-webapi.herokuapp.com/api';
 } else {
   rootUrl = 'https://fhs-webapi.herokuapp.com/api';
