@@ -1,5 +1,5 @@
 const mode = process.env.NODE_ENV;
-const staging = process.env.NODE_ENV_STAGING;
+const staging = process.env.STAGING;
 // tslint:disable-next-line:no-console
 console.log('staging: ', staging);
 let rootUrl = '';
