@@ -1,4 +1,4 @@
-import app from './App';
+import app from 'src/App';
 
 import * as tools from '../tools/render';
 

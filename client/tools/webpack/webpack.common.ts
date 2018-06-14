@@ -10,6 +10,8 @@ import paths from '../paths';
 
 import { staging } from '../env';
 
+// tslint:disable-next-line:no-console
+console.log('css loader: ', MiniCssExtractPlugin.loader);
 const config = {
   entry: {
     // client entry
@@ -20,6 +22,7 @@ const config = {
   optimization: {
     splitChunks: {
       cacheGroups: {
+        // bundle vendor modules
         vendor: {
           test: /node_modules/,
           chunks: 'all',
@@ -66,10 +69,24 @@ const config = {
 
             exclude: /node_modules/
           },
+
+          // load css modules
+          {
+            test: /\.module.css$/,
+            use: [
+              MiniCssExtractPlugin.loader,
+              // add css loader with modules
+              { loader: 'css-loader', options: { modules: true } }
+            ]
+          },
           // default css loader
           {
             test: /\.css$/,
-            use: [MiniCssExtractPlugin.loader, 'css-loader']
+            use: [
+              MiniCssExtractPlugin.loader,
+              // add css loader with modules
+              'css-loader'
+            ]
           },
           // fallback loader if other loaders excluded
           // URL loader falls back to file-loader if size limit is exceeded

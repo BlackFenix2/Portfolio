@@ -4,8 +4,6 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { checkMobile } from 'src/services/isMobile';
-
 const NavBar = props => <nav className="w3-bar">{props.children}</nav>;
 
 const NavItem = props => (
@@ -51,11 +49,6 @@ const User = props => (
   </div>
 );
 
-const MobileCheck = props => (
-  <div className="w3-bar-item w3-right">
-    <span>Mobile : {String(props.mobile)}</span>
-  </div>
-);
 class Nav extends React.Component<{ routes: any }> {
   public state;
   public render() {
@@ -65,7 +58,6 @@ class Nav extends React.Component<{ routes: any }> {
           <Icon icon={faHome} />
         </NavItem>
         <LinkGenerator routes={this.props.routes} />
-        <MobileCheck mobile={checkMobile()} />
         <User firstName="test" lastName="user" />
       </NavBar>
     );

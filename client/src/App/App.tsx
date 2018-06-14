@@ -7,9 +7,6 @@ import Body from './Body';
 import Footer from './Footer';
 import Header from './Header';
 
-// React CSS Libraries
-import './css';
-
 const history = createBrowserHistory();
 
 const App: React.SFC = () => (

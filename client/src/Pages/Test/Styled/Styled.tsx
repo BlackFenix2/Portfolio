@@ -4,10 +4,6 @@ import styled from 'styled-components';
 
 import LoadingIcon from 'src/components/elements/LoadingIcon';
 
-import * as item from './Styled.css';
-
-// tslint:disable-next-line:no-console
-console.log(item);
 const Button = props => (
   <StyledButton onClick={props.onClick} className={props.className}>
     {props.children}

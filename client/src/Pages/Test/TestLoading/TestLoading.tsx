@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Loading from 'src/components/shared/Loading';
 import FullExample from './FullExample';
 import MediaExample from './MediaExample';
