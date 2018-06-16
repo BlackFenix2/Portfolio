@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import actionCreators from '../../state/actions';
 
+import styles from './test.module.css';
+// tslint:disable-next-line:no-console
+console.log(styles);
 interface IProps {
   history: any;
   actions: any;
@@ -23,7 +26,7 @@ class Landing extends React.Component<IProps> {
   public render() {
     return (
       <div>
-        <h1>Welcome to the home page</h1>
+        <h1 className={styles.othertest}>Welcome to the home page</h1>
         <p>{this.props.searchTerm}</p>
         <form onSubmit={this.goToSearch}>
           <input

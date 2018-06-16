@@ -13,11 +13,11 @@
     "start": "webpack-serve",
     "build:dev": "yarn build && node server/index.js",
     "test": "yarn jest",
-    "lint": "yarn tslint src/**/*.ts{,x}",
+    "lint": "yarn tslint ./src/**/*.ts{,x}",
     "build": "webpack --progress",
     "analyze": "source-map-explorer dist/static/js/bundle.js",
     "update": "yarn upgrade-interactive --latest",
-    "postbuild": "react-snap"
+    "postbuild": "react-snap --no-sandbox --disable-setuid-sandbox"
   },
   "devDependencies": {
     "@types/html-webpack-plugin": "^2.30.3",
@@ -39,6 +39,7 @@
     "compression-webpack-plugin": "^1.1.11",
     "connect-history-api-fallback": "^1.5.0",
     "css-loader": "^0.28.11",
+    "extract-css-chunks-webpack-plugin": "^3.0.5",
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.0.6",
@@ -119,6 +120,8 @@
     "redux-saga": "^0.16.0",
     "redux-saga-routines": "^2.2.5",
     "rimraf": "^2.6.2",
+    "semantic-ui-css": "^2.3.1",
+    "semantic-ui-react": "^0.81.1",
     "serialize-javascript": "^1.4.0",
     "styled-components": "^3.3.0",
     "ts-jest": "^22.4.6",

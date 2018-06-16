@@ -10,8 +10,6 @@ import paths from '../paths';
 
 import { staging } from '../env';
 
-// tslint:disable-next-line:no-console
-console.log('css loader: ', MiniCssExtractPlugin.loader);
 const config = {
   entry: {
     // client entry
@@ -69,25 +67,26 @@ const config = {
 
             exclude: /node_modules/
           },
-
-          // load css modules
+          // css loader with modules
           {
             test: /\.module.css$/,
             use: [
               MiniCssExtractPlugin.loader,
               // add css loader with modules
-              { loader: 'css-loader', options: { modules: true } }
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: true
+                }
+              }
             ]
           },
-          // default css loader
+          // default css loader, catch global css imports
           {
             test: /\.css$/,
-            use: [
-              MiniCssExtractPlugin.loader,
-              // add css loader with modules
-              'css-loader'
-            ]
+            use: [MiniCssExtractPlugin.loader, 'css-loader']
           },
+
           // fallback loader if other loaders excluded
           // URL loader falls back to file-loader if size limit is exceeded
           {

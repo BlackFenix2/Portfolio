@@ -6,14 +6,9 @@ import { faStar as star } from '@fortawesome/fontawesome-free-solid';
 import Icon from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 
-import * as styles from './test.module.css';
-
 interface IProps {
   starCount: number;
 }
-
-// tslint:disable-next-line:no-console
-console.log(styles);
 
 class Rating extends React.PureComponent<IProps> {
   public getRating = starCount => {
@@ -40,7 +35,7 @@ const Star = () => <Icon icon={star} style={{ color: 'gold' }} />;
 const EmptyStar = () => <Icon icon={nostar} />;
 const NoStars = () => (
   <span>
-    <span className={styles.item}>No Stars!</span>
+    <span>No Stars!</span>
     <Icon icon={faFrown} />
   </span>
 );

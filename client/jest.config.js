@@ -1,9 +1,6 @@
 module.exports = {
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-    //parse css files without breaking
-    '\\.css$': 'jest-css',
-    '^(?!.*\\.(js|css|json)$)': 'jest-file'
+    '^.+\\.tsx?$': 'ts-jest'
   },
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
   testPathIgnorePatterns: ['/node_modules/'],

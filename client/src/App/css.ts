@@ -3,6 +3,8 @@
 
 import '@fortawesome/fontawesome';
 
+// import jsut css, no jQuery
+import 'semantic-ui-css/semantic.min.css';
 import 'w3-css';
 
 // Custom css
