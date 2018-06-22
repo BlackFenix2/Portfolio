@@ -5,8 +5,7 @@ import { bindActionCreators } from 'redux';
 import actionCreators from '../../state/actions';
 
 import styles from './test.module.css';
-// tslint:disable-next-line:no-console
-console.log(styles);
+
 interface IProps {
   history: any;
   actions: any;
@@ -26,7 +25,7 @@ class Landing extends React.Component<IProps> {
   public render() {
     return (
       <div>
-        <h1 className={styles.othertest}>Welcome to the home page</h1>
+        <h1>Welcome to the home page</h1>
         <p>{this.props.searchTerm}</p>
         <form onSubmit={this.goToSearch}>
           <input
@@ -35,7 +34,9 @@ class Landing extends React.Component<IProps> {
             type="text"
             placeholder="Search"
           />
-          <Link to="/Shows">or Browse All</Link>
+          <Link to="/Shows" className={styles.othertest}>
+            or Browse All
+          </Link>
         </form>
       </div>
     );

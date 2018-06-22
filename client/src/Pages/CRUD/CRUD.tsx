@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Button from '../../components/elements/Button';
+import { Loader } from 'semantic-ui-react';
+import Visibility from 'src/components/effects/Visibility';
 import fruitRoutines from '../../state/actions/FruitActions/fruitRoutines';
+import FruitTable from './FruitTable';
 import ModalContent from './ModalContent';
-import TableTest from './Table';
 import TestForm from './TestForm';
 
 interface IProps {
@@ -99,51 +100,36 @@ class CRUD extends React.Component<IProps> {
             <ModalContent
               visible={this.state.visible}
               toggleEvent={this.toggleEvent}
+              loading={this.props.fruits.isLoading}
             >
-              <div
-                className={
-                  this.state.optionSelect !== 'create' ? 'w3-hide' : ''
-                }
-              >
+              <Visibility active={this.state.optionSelect === 'create'}>
                 <TestForm
                   onSubmit={this.create}
                   initial={this.props.fruits.fruit}
                 />
-              </div>
-              <div
-                className={
-                  this.state.optionSelect !== 'details' ? 'w3-hide' : ''
-                }
-              >
+              </Visibility>
+              <Visibility active={this.state.optionSelect === 'details'}>
                 <TestForm
                   onSubmit={this.details}
                   initial={this.props.fruits.fruit}
                 />
-              </div>
-              <div
-                className={
-                  this.state.optionSelect !== 'update' ? 'w3-hide' : ''
-                }
-              >
+              </Visibility>
+              <Visibility active={this.state.optionSelect === 'update'}>
                 <TestForm
                   onSubmit={this.update}
                   initial={this.props.fruits.fruit}
                 />
-              </div>
-              <div
-                className={
-                  this.state.optionSelect !== 'delete' ? 'w3-hide' : ''
-                }
-              >
+              </Visibility>
+              <Visibility active={this.state.optionSelect === 'delete'}>
                 <TestForm
                   onSubmit={this.delete}
                   initial={this.props.fruits.fruit}
                 />
-              </div>
+              </Visibility>
             </ModalContent>
           </div>
           <div>
-            <TableTest
+            <FruitTable
               list={this.props.fruits.fruitList}
               deleteAction={this.deleteFetch}
               updateAction={this.updateFetch}
@@ -154,8 +140,9 @@ class CRUD extends React.Component<IProps> {
         </div>
 
         <div>
-          <Button loading={this.props.fruits.isLoading}>ttt</Button>
-          <button onClick={this.fetchFruits}>fetch fruits</button>
+          <button onClick={this.fetchFruits}>
+            Fetch fruits<Loader inline active={false} />
+          </button>
           <p>Loading: {String(this.props.fruits.isLoading)}</p>
           <p>Error: {String(this.props.fruits.error)}</p>
           <p>selected form: {this.state.optionSelect}</p>
@@ -176,4 +163,7 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({ ...fruitRoutines }, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CRUD);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CRUD);

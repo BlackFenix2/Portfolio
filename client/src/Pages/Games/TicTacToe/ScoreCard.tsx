@@ -1,21 +1,25 @@
 import * as React from 'react';
+import { Segment } from 'semantic-ui-react';
+import { Card } from 'src/components/elements/Card';
 
 const ScoreCard = props => (
-  <div className="w3-card w3-panel">
-    <h2>Score Card</h2>
-    <div>
-      <ul>
-        {Object.entries(props.stats).map((value, key) => (
-          <div key={key}>
-            <ScoreCardItem {...value[1]} gameNumber={Number(value[0]) + 1} />
-          </div>
-        ))}
-      </ul>
-    </div>
-    <div>
-      <button onClick={props.clearScore}>Clear Score</button>
-    </div>
-  </div>
+  <Card>
+    <Segment basic textAlign="center">
+      <h2>Score Card</h2>
+      <div>
+        <ul>
+          {Object.entries(props.stats).map((value, key) => (
+            <div key={key}>
+              <ScoreCardItem {...value[1]} gameNumber={Number(value[0]) + 1} />
+            </div>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <button onClick={props.clearScore}>Clear Score</button>
+      </div>
+    </Segment>
+  </Card>
 );
 
 const ScoreCardItem = props => (

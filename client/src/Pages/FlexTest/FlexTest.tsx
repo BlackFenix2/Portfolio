@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Progress } from 'src/components/elements';
-import * as Grid from 'src/components/elements/Grid';
+import { Button, Grid, Progress } from 'semantic-ui-react';
 import { Form, ResetButton, SubmitButton } from 'src/components/form';
 import { TextInput } from 'src/components/inputs';
 import API from 'src/services/numbersApi';
@@ -29,35 +28,43 @@ class FlexTest extends React.Component {
   public render() {
     return (
       <React.Fragment>
-        <Grid.Row>
-          <Grid.Col half>
-            <h6>{this.state.apiResult}</h6>
-            <button onClick={this.test}>new number fact</button>
-            <Form onSubmit={this.submit} form="TestForm">
-              <TextInput name="firstName" displayName="First Name" />
-              <TextInput name="lastName" displayName="Last Name" />
-              <TextInput name="Title" displayName="Title" />
-              <div>
-                <SubmitButton />
-                <ResetButton />
-              </div>
-            </Form>
-          </Grid.Col>
-          <Grid.Col half>{JSON.stringify(this.state.value, null, 4)}</Grid.Col>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Col half>
-            <input
-              onChange={this.change}
-              value={this.state.progressTest}
-              type="range"
-              placeholder="Progress"
-              min="0"
-              max="100"
-            />
-            <Progress percent={this.state.progressTest} />
-          </Grid.Col>
-        </Grid.Row>
+        <Grid columns={2}>
+          <Grid.Row>
+            <Grid.Column>
+              <p>{this.state.apiResult}</p>
+              <Button onClick={this.test}>new number fact</Button>
+              <Form onSubmit={this.submit} form="TestForm">
+                <TextInput name="firstName" displayName="First Name" />
+                <TextInput name="lastName" displayName="Last Name" />
+                <TextInput name="Title" displayName="Title" />
+                <div>
+                  <SubmitButton />
+                  <ResetButton />
+                </div>
+              </Form>
+            </Grid.Column>
+            <Grid.Column>
+              {JSON.stringify(this.state.value, null, 4)}
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column>
+              <input
+                onChange={this.change}
+                value={this.state.progressTest}
+                type="range"
+                placeholder="Progress"
+                min="0"
+                max="100"
+              />
+              <Progress
+                percent={this.state.progressTest}
+                indicating
+                autoSuccess
+              />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </React.Fragment>
     );
   }

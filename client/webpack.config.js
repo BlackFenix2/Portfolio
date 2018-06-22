@@ -1,5 +1,7 @@
 //root webpack mount
 
+//set node memory to 4GB to avoid memory heap exceptiond
+process.env.NODE_OPTIONS = '--max-old-space-size=4096';
 //register ts-node to compile ts webpack to commonjs modules
 require('ts-node').register({
   compilerOptions: {
@@ -8,6 +10,8 @@ require('ts-node').register({
     esModuleInterop: true,
     allowSyntheticDefaultImports: true
   },
+
+  //show pretty output for error messages
   pretty: true
 });
 

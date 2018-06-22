@@ -1,15 +1,14 @@
 import * as React from 'react';
+import { List } from 'semantic-ui-react';
 import { IDomainSummary } from './domainRecords';
 
 const SummaryInfo: React.SFC<IDomainSummary> = props => {
   return (
-    <div>
-      <ul className="w3-ul">
-        <li>Domain Owner?: {props.domainOwner || 'Empty'}</li>
-        <li>Domain locked?: {String(props.domainLocked)}</li>
-        <li>E-mail host?: {props.emailHost || 'Empty'}</li>
-      </ul>
-    </div>
+    <List relaxed="very" animated celled>
+      <List.Item>Domain Owner?: {props.domainOwner || 'Empty'}</List.Item>
+      <List.Item>Domain locked?: {String(props.domainLocked)}</List.Item>
+      <List.Item>E-mail host?: {props.emailHost || 'Empty'}</List.Item>
+    </List>
   );
 };
 

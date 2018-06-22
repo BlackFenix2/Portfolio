@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as Grid from '../../../components/elements/Grid';
+import { Divider, Grid, Segment } from 'semantic-ui-react';
+import Card from 'src/components/elements/Card/Card';
 import Board from './Board';
 import Debug from './Debug';
 import Options from './Options';
@@ -518,38 +519,35 @@ class TicTacToe extends React.Component {
 
   public render() {
     return (
-      <div className="w3-center">
-        <Grid.Body>
-          <Grid.RowPadding>
-            <Grid.Col quarter>
-              <Options
-                changePlayer={this.playerChanged}
-                resetGame={this.reset}
-                disabled={this.state.gameLocked}
-                playSelf={this.playSelf}
-                playSelfOnce={this.playSelfOnce}
-                playerCount={this.state.numOfPlayers}
-                toggleSound={this.toggleSound}
-                muted={this.state.muted}
-              />
-
-              <ScoreCard
-                stats={this.state.stats}
-                clearScore={this.clearScore}
-              />
-            </Grid.Col>
-            <Grid.Col half>
-              <div className="w3-card-4 w3-panel">
+      <Grid padded="horizontally">
+        <Grid.Row>
+          <Grid.Column width={4}>
+            <Options
+              changePlayer={this.playerChanged}
+              resetGame={this.reset}
+              disabled={this.state.gameLocked}
+              playSelf={this.playSelf}
+              playSelfOnce={this.playSelfOnce}
+              playerCount={this.state.numOfPlayers}
+              toggleSound={this.toggleSound}
+              muted={this.state.muted}
+            />
+            <Divider hidden />
+            <ScoreCard stats={this.state.stats} clearScore={this.clearScore} />
+          </Grid.Column>
+          <Grid.Column width={8}>
+            <Card>
+              <Segment basic textAlign="center">
                 <h2>Tic-Tac-Toe</h2>
                 <Board clicked={this.boxClicked} gameBoard={this.state.board} />
-              </div>
-            </Grid.Col>
-            <Grid.Col quarter>
-              <Debug {...this.state} />
-            </Grid.Col>
-          </Grid.RowPadding>
-        </Grid.Body>
-      </div>
+              </Segment>
+            </Card>
+          </Grid.Column>
+          <Grid.Column width={4}>
+            <Debug {...this.state} />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 }

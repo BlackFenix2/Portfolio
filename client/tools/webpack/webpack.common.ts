@@ -3,6 +3,7 @@ import HtmlTemplate from 'html-webpack-template';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
+import tsImportPluginFactory from 'ts-import-plugin';
 import webpack from 'webpack';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
 import htmlParams from '../htmlParams';
@@ -60,12 +61,22 @@ const config = {
                 loader: 'awesome-typescript-loader',
                 options: {
                   silent: true,
-                  transpileOnly: true
+                  transpileOnly: true,
+                  // transform ES6 imports to reduve package size
+                  getCustomTransformers: () => ({
+                    // load CSS for applicable packages
+                    before: [tsImportPluginFactory({ style: 'css' })]
+                  })
                 }
               }
             ],
 
             exclude: /node_modules/
+          },
+          // Less Loader
+          {
+            test: /\.less$/,
+            use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
           },
           // css loader with modules
           {
@@ -130,6 +141,8 @@ const config = {
 
     // create manifest.json for PWA, injects into htmlwebpack plugin
     new WebpackPwaManifest({
+      filename: 'manifest.json',
+      fingerprints: false,
       name: "Ernie's test app",
       short_name: 'ErnieApp',
       description: 'Test App',

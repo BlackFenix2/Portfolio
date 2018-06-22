@@ -3,9 +3,11 @@
 
 import '@fortawesome/fontawesome';
 
-// import jsut css, no jQuery
-import 'semantic-ui-css/semantic.min.css';
-import 'w3-css';
+// import just css, no jQuery
+import 'semantic-ui-css/semantic.css';
+
+// set default font to 16px
+import 'src/lib/css/font.css';
 
 // Custom css
 import 'src/lib/css/site.css';

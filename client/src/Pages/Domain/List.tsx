@@ -1,12 +1,14 @@
 import * as React from 'react';
-
+import { List } from 'semantic-ui-react';
 interface IProps {
   items: string[];
 }
-const List: React.SFC<IProps> = props => {
+const LocalList: React.SFC<IProps> = props => {
   return (
-    <ul className="w3-ul">{props.items.map((x, i) => <li key={i}>{x}</li>)}</ul>
+    <List relaxed="very" celled>
+      {props.items.map((x, i) => <List.Item key={i}>{x}</List.Item>)}
+    </List>
   );
 };
 
-export default List;
+export default LocalList;

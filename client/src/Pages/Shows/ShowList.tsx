@@ -1,17 +1,18 @@
 import * as React from 'react';
-
+import { Divider, Grid } from 'semantic-ui-react';
 import ShowCard from './ShowCard';
 
 const ShowList = (props: any) => (
   <div>
     <h1>List of shows</h1>
-    <div className="w3-row">
+    <Grid columns={3} stackable padded>
       {Object.values(props.shows).map((show: any) => (
-        <div className="w3-padding w3-col w3-third" key={show.title}>
+        <Grid.Column key={show.title}>
           <ShowCard {...show} />
-        </div>
+          <Divider hidden />
+        </Grid.Column>
       ))}
-    </div>
+    </Grid>
   </div>
 );
 

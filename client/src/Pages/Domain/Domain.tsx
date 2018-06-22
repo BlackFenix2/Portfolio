@@ -1,6 +1,7 @@
 import * as React from 'react';
-import * as Grid from '../../components/elements/Grid';
-import { domainAPI } from '../../services/API';
+import { Grid, Segment } from 'semantic-ui-react';
+import { Card } from 'src/components/elements/Card';
+import { domainAPI } from 'src/services/API';
 import Debug from './Debug';
 import DnsInfo from './DnsInfo';
 import DomainCard from './DomainCard';
@@ -70,40 +71,42 @@ export default class Domain extends React.Component<{}, IState> {
     const { error, errorMessage, loading } = this.state;
     const { whois, dns, summary } = this.state.response;
     return (
-      <Grid.Body>
-        <Grid.RowPadding>
-          <Grid.Col quarter>
+      <Grid stackable>
+        <Grid.Row>
+          <Grid.Column width={5}>
             <InputForm
               handleSubmit={this.handleSubmit}
               domain={this.state.domain}
               change={this.change}
               loading={loading}
             />
-          </Grid.Col>
-          <Grid.Col quarter>
-            <div className="w3-card-4 w3-container">
-              <h2>Domain Name</h2>
-              <p>{whois.domain}</p>
-            </div>
-          </Grid.Col>
-        </Grid.RowPadding>
-        <Grid.RowPadding>
-          <Grid.Col third>
+          </Grid.Column>
+          <Grid.Column width={5}>
+            <Card>
+              <Segment basic>
+                <h2>Domain Name</h2>
+                <p>{whois.domain}</p>
+              </Segment>
+            </Card>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={5}>
             <DomainCard name="WHOIS" loading={loading}>
               <WhoisInfo {...whois} />
             </DomainCard>
-          </Grid.Col>
-          <Grid.Col third>
+          </Grid.Column>
+          <Grid.Column width={5}>
             <DomainCard name="DNS" loading={loading}>
               <DnsInfo {...dns} />
             </DomainCard>
-          </Grid.Col>
-          <Grid.Col third>
+          </Grid.Column>
+          <Grid.Column width={5}>
             <DomainCard name="Summary" loading={loading}>
               <SummaryInfo {...summary} />
             </DomainCard>
-          </Grid.Col>
-          <Grid.Col third>
+          </Grid.Column>
+          <Grid.Column width={5}>
             <DomainCard name="Debug" loading={loading}>
               <Debug
                 loading={loading}
@@ -111,24 +114,30 @@ export default class Domain extends React.Component<{}, IState> {
                 errorMessage={errorMessage}
               />
             </DomainCard>
-          </Grid.Col>
-        </Grid.RowPadding>
-
-        <DomainCard name="Raw WHOIS" loading={loading}>
-          <div className="w3-panel">
-            <p>
-              {whois.raw
-                .replace('\r', '')
-                .split('\n')
-                .map((i, k) => {
-                  return <p key={k}>{i}</p>;
-                })}
-            </p>
-          </div>
-        </DomainCard>
-
-        <Legal />
-      </Grid.Body>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column>
+            <DomainCard name="Raw WHOIS" loading={loading}>
+              <Segment basic>
+                <p>
+                  {whois.raw
+                    .replace('\r', '')
+                    .split('\n')
+                    .map((i, k) => {
+                      return <p key={k}>{i}</p>;
+                    })}
+                </p>
+              </Segment>
+            </DomainCard>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column>
+            <Legal />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 }

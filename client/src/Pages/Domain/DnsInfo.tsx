@@ -1,20 +1,21 @@
 import * as React from 'react';
+import { List } from 'semantic-ui-react';
 import { IDnsRecord } from './domainRecords';
-import List from './List';
+import LocalList from './List';
 
 const DnsInfo: React.SFC<IDnsRecord> = props => {
   return (
-    <ul className="w3-ul">
-      <li>
-        A Record: <List items={props.aRecords} />
-      </li>
-      <li>
-        CNAME Record: <List items={props.cnameRecords} />
-      </li>
-      <li>
-        MX Records: <List items={props.mxRecords} />
-      </li>
-    </ul>
+    <List celled animated relaxed="very">
+      <List.Item>
+        A Record: <LocalList items={props.aRecords} />
+      </List.Item>
+      <List.Item>
+        CNAME Record: <LocalList items={props.cnameRecords} />
+      </List.Item>
+      <List.Item>
+        MX Records: <LocalList items={props.mxRecords} />
+      </List.Item>
+    </List>
   );
 };
 

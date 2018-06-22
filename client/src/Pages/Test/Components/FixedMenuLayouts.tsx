@@ -22,7 +22,9 @@ const FixedMenuLayout = () => (
 
         <Dropdown item simple text="Dropdown">
           <Dropdown.Menu>
-            <Dropdown.Item>List Item</Dropdown.Item>
+            <Menu.Item as="a" header>
+              Project Name
+            </Menu.Item>
             <Dropdown.Item>List Item</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Header>Header Item</Dropdown.Header>

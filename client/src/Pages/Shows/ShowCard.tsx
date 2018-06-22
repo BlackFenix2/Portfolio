@@ -1,14 +1,11 @@
 import { Button } from '@material-ui/core';
 import { Add, Remove } from '@material-ui/icons';
-import * as React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import Rating from 'src/components/shared/Rating';
-
+import { Container, Grid, Header, Image, Rating } from 'semantic-ui-react';
+import { Card } from 'src/components/elements/Card';
 // Image equalizer
-const imgStyle = {
-  width: '200px',
-  height: '300px'
-};
+import styles from './ShowCard.module.css';
 
 interface IShow {
   rating: number;
@@ -45,34 +42,42 @@ class ShowCard extends React.PureComponent<IShow> {
   public render() {
     const image = require(`src/lib/img/posters/${this.props.poster}`);
     return (
-      <div className="w3-card-4 w3-row">
-        <div className="w3-col w3-half">
-          <Link to={`/Details/${this.props.imdbID}`}>
-            <img
-              className="w3-image"
-              alt={`${this.props.title} Show Poster`}
-              src={image}
-              style={imgStyle}
-            />
-          </Link>
-        </div>
-        <div className="w3-col w3-half">
-          <div className="w3-container">
-            <h3>{this.props.title}</h3>
-            <h4>{this.props.year}</h4>
-            <p className="w3-small">{this.props.description}</p>
-            <div className="w3-center">
+      <Card>
+        <Grid stackable>
+          <Grid.Column width={7} className={styles.grid} floated="left">
+            <Link to={`/Details/${this.props.imdbID}`}>
+              <Image
+                alt={`${this.props.title} Show Poster`}
+                src={image}
+                className={styles.img}
+              />
+            </Link>
+          </Grid.Column>
+          <Grid.Column width={9} floated="right">
+            <Container>
+              <Header>{this.props.title}</Header>
+
+              <code>{this.props.year}</code>
+
+              <p>{this.props.description}</p>
+            </Container>
+            <Container textAlign="center">
               <Button mini variant="fab" onClick={this.decreaseRating}>
                 <Remove />
               </Button>
-              <Rating starCount={this.state.rating} />
+              <Rating
+                icon="star"
+                rating={this.state.rating}
+                maxRating={5}
+                disabled
+              />
               <Button mini variant="fab" onClick={this.increaseRating}>
                 <Add />
               </Button>
-            </div>
-          </div>
-        </div>
-      </div>
+            </Container>
+          </Grid.Column>
+        </Grid>
+      </Card>
     );
   }
 }

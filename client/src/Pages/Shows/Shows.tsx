@@ -2,9 +2,9 @@ import pickBy from 'lodash.pickby';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import SearchBar from '../../components/SearchBar';
-import actionCreators from '../../state/actions';
-import ShowList from '../Shows/ShowList';
+import SearchBar from 'src/components/SearchBar';
+import actionCreators from 'src/state/actions';
+import ShowList from './ShowList';
 
 import preload from './data.json';
 
@@ -50,4 +50,7 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(actionCreators, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Shows);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Shows);

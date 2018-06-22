@@ -3,22 +3,30 @@ import Icon from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Dropdown, Menu } from 'semantic-ui-react';
 
-const NavBar = props => <nav className="w3-bar">{props.children}</nav>;
-
-const NavItem = props => (
-  <Link className="w3-bar-item w3-button" to={props.url}>
+const NavBar = props => (
+  <Menu fixed="top" borderless>
     {props.children}
-  </Link>
+  </Menu>
 );
 
-const Dropdown = props => (
-  <div className="w3-dropdown-hover">
-    <button className="w3-button">{props.name}</button>
-    <div className="w3-dropdown-content w3-bar-block w3-card-4">
-      {props.children}
-    </div>
-  </div>
+const NavItem = props => (
+  // decorate menu as Link for React-Router
+  <Menu.Item
+    as={Link}
+    to={props.url}
+    active={props.active}
+    onClick={props.clickEvent}
+  >
+    {props.children}
+  </Menu.Item>
+);
+
+const DropdownComponent = props => (
+  <Dropdown item simple text={props.name}>
+    <Dropdown.Menu>{props.children}</Dropdown.Menu>
+  </Dropdown>
 );
 
 // generate simple nav links
@@ -27,37 +35,60 @@ const LinkGenerator = props => {
   const navLinks = routes.map(
     (item, key) =>
       item.children.length === 0 ? (
-        <NavItem key={key} url={item.url}>
+        <NavItem
+          key={key}
+          active={props.activeUrl === item.url}
+          url={item.url}
+          clickEvent={props.clickEvent}
+        >
           {item.name}
         </NavItem>
       ) : (
-        <Dropdown key={key} name={item.name}>
+        <DropdownComponent key={key} name={item.name}>
           {item.children.map((child, index) => (
-            <NavItem key={index} url={item.url + child.url}>
+            <NavItem
+              key={index}
+              active={props.activeUrl === item.url}
+              url={item.url + child.url}
+              clickEvent={props.clickEvent}
+            >
               {child.name}
             </NavItem>
           ))}
-        </Dropdown>
+        </DropdownComponent>
       )
   );
   return navLinks;
 };
 
 const User = props => (
-  <div className="w3-bar-item w3-right">
+  <Menu.Item position="right">
     <span>Hello {`${props.firstName} ${props.lastName}`}</span>
-  </div>
+  </Menu.Item>
 );
 
 class Nav extends React.Component<{ routes: any }> {
-  public state;
+  public state = { activeUrl: '/' };
+
+  public handleItemClick = (e, { to }) => {
+    this.setState({ activeUrl: to });
+  };
   public render() {
+    const { activeUrl } = this.state;
     return (
       <NavBar>
-        <NavItem url="/">
+        <NavItem
+          url="/"
+          active={activeUrl === '/'}
+          clickEvent={this.handleItemClick}
+        >
           <Icon icon={faHome} />
         </NavItem>
-        <LinkGenerator routes={this.props.routes} />
+        <LinkGenerator
+          routes={this.props.routes}
+          clickEvent={this.handleItemClick}
+          activeUrl={activeUrl}
+        />
         <User firstName="test" lastName="user" />
       </NavBar>
     );

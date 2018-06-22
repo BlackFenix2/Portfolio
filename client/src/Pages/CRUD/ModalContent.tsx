@@ -1,20 +1,13 @@
 import * as React from 'react';
-import Modal from 'src/components/elements/Modal';
+import { Loader, Modal } from 'semantic-ui-react';
 
 const ModalContent = props => (
-  <Modal visible={props.visible}>
-    <div>
-      <header className="w3-container w3-teal">
-        <button
-          onClick={props.toggleEvent}
-          className="w3-button w3-display-topright"
-        >
-          &times;
-        </button>
-        <h2>Apple</h2>
-      </header>
-      <div className="w3-panel">{props.children}</div>
-    </div>
+  <Modal open={props.visible} onClose={props.toggleEvent} size="tiny">
+    <Modal.Header>
+      <span> Fruit</span>
+      <Loader active={props.loading} />
+    </Modal.Header>
+    <Modal.Content>{props.children}</Modal.Content>
   </Modal>
 );
 
