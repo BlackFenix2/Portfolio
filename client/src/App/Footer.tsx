@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Container, Icon, Segment } from 'semantic-ui-react';
 
+import styles from './App.module.css';
 const Icons = () => (
   <div>
     <a
@@ -22,8 +23,8 @@ const CopyRight = () => (
 
 const Foot = () => (
   <footer>
-    <Segment inverted basic textAlign="center">
-      <Container>
+    <Segment inverted basic>
+      <Container textAlign="center">
         <Icons />
         <CopyRight />
       </Container>

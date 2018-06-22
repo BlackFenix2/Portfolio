@@ -1,6 +1,6 @@
+import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import HtmlWebPackPlugin from 'html-webpack-plugin';
 import HtmlTemplate from 'html-webpack-template';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
 import tsImportPluginFactory from 'ts-import-plugin';
@@ -76,13 +76,13 @@ const config = {
           // Less Loader
           {
             test: /\.less$/,
-            use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
+            use: [ExtractCssChunks.loader, 'css-loader', 'less-loader']
           },
           // css loader with modules
           {
             test: /\.module.css$/,
             use: [
-              MiniCssExtractPlugin.loader,
+              ExtractCssChunks.loader,
               // add css loader with modules
               {
                 loader: 'css-loader',
@@ -95,7 +95,7 @@ const config = {
           // default css loader, catch global css imports
           {
             test: /\.css$/,
-            use: [MiniCssExtractPlugin.loader, 'css-loader']
+            use: [ExtractCssChunks.loader, 'css-loader']
           },
 
           // fallback loader if other loaders excluded
@@ -121,7 +121,7 @@ const config = {
     }),
 
     // load css into separate .css file
-    new MiniCssExtractPlugin({
+    new ExtractCssChunks({
       filename: 'static/css/[name].css'
     }),
 

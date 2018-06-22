@@ -10,6 +10,3 @@ tools.renderApp(app, htmlParams.rootID);
 
 // register service worker if https is configured
 config.registerServiceWorker();
-
-// tslint:disable-next-line:no-console
-console.log('Node Options: ', process.env.NODE_OPTIONS);
