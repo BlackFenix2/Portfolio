@@ -3,7 +3,7 @@ import { Add, Remove } from '@material-ui/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Grid, Header, Image, Rating } from 'semantic-ui-react';
-import { Card } from 'src/components/elements/Card';
+import Card from 'src/components/elements/Card';
 // Image equalizer
 import styles from './ShowCard.module.css';
 

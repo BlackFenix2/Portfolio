@@ -3,6 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "license": "MIT",
+  "reactSnap": {
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ]
+  },
   "scripts": {
     "start": "webpack-serve",
     "build:dev": "yarn build && node server/index.js",
@@ -12,12 +18,6 @@
     "analyze": "source-map-explorer dist/static/js/bundle.js",
     "update": "yarn upgrade-interactive --latest",
     "postbuild": "react-snap"
-  },
-  "reactSnap": {
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox"
-    ]
   },
   "devDependencies": {
     "@types/html-webpack-plugin": "^2.30.3",

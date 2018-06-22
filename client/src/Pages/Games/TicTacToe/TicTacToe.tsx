@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Divider, Grid, Segment } from 'semantic-ui-react';
-import Card from 'src/components/elements/Card/Card';
+import Card from 'src/components/elements/Card';
 import Board from './Board';
 import Debug from './Debug';
 import Options from './Options';

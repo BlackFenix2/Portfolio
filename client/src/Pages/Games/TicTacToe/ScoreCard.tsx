@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Segment } from 'semantic-ui-react';
-import { Card } from 'src/components/elements/Card';
+import Card from 'src/components/elements/Card';
 
 const ScoreCard = props => (
   <Card>
