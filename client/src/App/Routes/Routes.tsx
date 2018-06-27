@@ -1,17 +1,15 @@
-import loadableComponents from 'loadable-components';
 import * as React from 'react';
 
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import universal from 'react-universal-component';
 import CustomRoutes from './CustomRoutes';
 import RouteGenerator from './RouteGenerator';
 import { setPageRouteAsync } from './routeHelpers';
 
 const Home = setPageRouteAsync('/Home');
 
-const PageNotFound = loadableComponents(() =>
-  import('src/components/shared/NotFound')
-);
+const PageNotFound = universal(() => import('src/components/shared/NotFound'));
 
 class Routes extends React.Component<{ routes: any }> {
   public render() {

@@ -15,7 +15,13 @@ module.exports = {
     'ts-jest': {
       skipBabel: true
     }
-  }
+  },
+
+  //configure Enzyme
+  setupFiles: ['./tools/jestSetup.ts'],
+
+  //display tests with description
+  verbose: true
 
   // collectCoverage: true
 };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Input, Segment } from 'semantic-ui-react';
-import { Card } from 'src/components/elements/Card';
+import Card from 'src/components/elements/Card';
 interface IProps {
   item?: string;
   handleSubmit: any;

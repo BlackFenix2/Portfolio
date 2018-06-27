@@ -119,7 +119,6 @@ const config = {
       // set staging var
       STAGING: staging
     }),
-
     // load css into separate .css file
     new ExtractCssChunks({
       filename: 'static/css/[name].css'

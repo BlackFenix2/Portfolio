@@ -23,7 +23,7 @@ const CopyRight = () => (
 
 const Foot = () => (
   <footer>
-    <Segment inverted basic>
+    <Segment inverted vertical>
       <Container textAlign="center">
         <Icons />
         <CopyRight />

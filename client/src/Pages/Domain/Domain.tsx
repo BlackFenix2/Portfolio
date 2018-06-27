@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Grid, Segment } from 'semantic-ui-react';
-import { Card } from 'src/components/elements/Card';
+import Card from 'src/components/elements/Card';
 import { domainAPI } from 'src/services/API';
 import Debug from './Debug';
 import DnsInfo from './DnsInfo';
@@ -72,8 +72,8 @@ export default class Domain extends React.Component<{}, IState> {
     const { whois, dns, summary } = this.state.response;
     return (
       <Grid stackable>
-        <Grid.Row>
-          <Grid.Column width={5}>
+        <Grid.Row columns={4}>
+          <Grid.Column>
             <InputForm
               handleSubmit={this.handleSubmit}
               domain={this.state.domain}
@@ -81,7 +81,7 @@ export default class Domain extends React.Component<{}, IState> {
               loading={loading}
             />
           </Grid.Column>
-          <Grid.Column width={5}>
+          <Grid.Column>
             <Card>
               <Segment basic>
                 <h2>Domain Name</h2>
@@ -90,23 +90,23 @@ export default class Domain extends React.Component<{}, IState> {
             </Card>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row>
-          <Grid.Column width={5}>
+        <Grid.Row columns={4}>
+          <Grid.Column>
             <DomainCard name="WHOIS" loading={loading}>
               <WhoisInfo {...whois} />
             </DomainCard>
           </Grid.Column>
-          <Grid.Column width={5}>
+          <Grid.Column>
             <DomainCard name="DNS" loading={loading}>
               <DnsInfo {...dns} />
             </DomainCard>
           </Grid.Column>
-          <Grid.Column width={5}>
+          <Grid.Column>
             <DomainCard name="Summary" loading={loading}>
               <SummaryInfo {...summary} />
             </DomainCard>
           </Grid.Column>
-          <Grid.Column width={5}>
+          <Grid.Column>
             <DomainCard name="Debug" loading={loading}>
               <Debug
                 loading={loading}

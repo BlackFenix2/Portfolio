@@ -1,19 +1,18 @@
-import loadableComponents from 'loadable-components';
 import * as React from 'react';
+import universal from 'react-universal-component';
 import Loading from 'src/components/shared/Loading';
 import NotFound from 'src/components/shared/NotFound';
 
 const config = {
-  ErrorComponent: props => (
+  error: props => (
     <NotFound code={props.error.code} message={props.error.message} />
   ),
-  LoadingComponent: () => <Loading />
+  loading: () => <Loading />,
+  minDelay: 500
 };
 
 // const pageUrl = 'src/Pages';
 
 export function setPageRouteAsync(Name) {
-  return loadableComponents(() => import(`src/Pages${Name}`), {
-    ...config
-  });
+  return universal(() => import(`src/Pages${Name}`), { ...config });
 }

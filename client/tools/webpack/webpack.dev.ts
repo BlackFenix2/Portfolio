@@ -7,7 +7,7 @@ import common from './webpack.common';
 const devConfig = {
   // set mode to development, enables dev defaults
   mode: 'development',
-  // use source map
+  // use source map, override dev mode default
   devtool: 'source-map',
 
   // webpack-serve dev options
@@ -16,7 +16,7 @@ const devConfig = {
     open: true,
 
     // enable HMR
-    hot: true,
+    // hot: true,
 
     // middleware options
     add: (app, middleware, options) => {
