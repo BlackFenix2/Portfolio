@@ -519,7 +519,7 @@ class TicTacToe extends React.Component {
 
   public render() {
     return (
-      <Grid padded="horizontally">
+      <Grid padded="horizontally" stackable>
         <Grid.Row>
           <Grid.Column width={4}>
             <Options
