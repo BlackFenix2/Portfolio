@@ -9,9 +9,6 @@ import 'semantic-ui-css/semantic.css';
 // set default font to 16px
 import 'src/lib/css/font.css';
 
-// Custom css
-import 'src/lib/css/site.css';
-
 import 'src/lib/css/flex.css';
 
 import 'src/lib/css/animate.css';

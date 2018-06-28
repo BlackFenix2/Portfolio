@@ -503,7 +503,7 @@ class TicTacToe extends React.Component {
   public scoreClicked = boardOrder => {
     // display winning pattern
     const displayBoard = Array(9).fill('');
-    for (const i in boardOrder.length) {
+    for (const i in boardOrder) {
       if (parseInt(i, 10) % 2 === 0) {
         displayBoard.splice(boardOrder[i], 1, 'X');
       } else {
