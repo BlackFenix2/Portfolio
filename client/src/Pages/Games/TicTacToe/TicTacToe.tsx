@@ -39,7 +39,7 @@ class TicTacToe extends React.Component {
       return;
     }
     // start player turn
-    const correctInput = this.startTurn(e.target.dataset.square);
+    const correctInput = await this.startTurn(e.target.dataset.square);
     // start bot turn
     if (this.state.numOfPlayers <= 1 && !this.state.gameEnded && correctInput) {
       this.setState({ gameLocked: true });

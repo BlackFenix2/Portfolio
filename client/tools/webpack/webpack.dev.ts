@@ -16,7 +16,9 @@ const devConfig = {
     open: true,
 
     // enable HMR
-    // hot: true,
+    hot: {
+      allEntries:true
+    },
 
     // middleware options
     add: (app, middleware, options) => {
