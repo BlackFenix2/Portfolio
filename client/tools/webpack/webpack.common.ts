@@ -62,7 +62,7 @@ const config = {
                 options: {
                   silent: true,
                   transpileOnly: true,
-                  // transform ES6 imports to reduve package size
+                  // transform ES6 imports to reduce package size
                   getCustomTransformers: () => ({
                     // load CSS for applicable packages
                     before: [tsImportPluginFactory({ style: 'css' })]

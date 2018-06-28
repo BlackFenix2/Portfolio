@@ -16,31 +16,31 @@
     // pull request for fixer:  https://github.com/palantir/tslint/pull/3663
     "prefer-template": true,
 
-    //disabled, some object keys require specific order for API FETCH
+    // disabled, some object keys require specific order for API FETCH
     "object-literal-sort-keys": false,
 
-    //disabled, need lambas to pass values in event handlers, will enable to refactor code
+    // disabled, need lambas to pass values in event handlers, will enable to refactor code
     "jsx-no-lambda": false,
 
-    //disabled, modules like redux-saga requires submodules for functionality.
+    // disabled, modules like redux-saga requires submodules for functionality.
     "no-submodule-imports": false,
 
     // disabled, all types auto-fix to interface. rule would be redundant.
     "interface-name": false,
 
-    //disabled, conflicts with module alias
+    // disabled, conflicts with module alias
     "no-implicit-dependencies": false,
 
     // debatable ,incremnts only used in for loops
     "no-increment-decrement": false,
 
-    // diabled, alias defaults do not cause syntax errors
+    // disabled, alias defaults do not cause syntax errors
     "import-name": false,
 
-    //enabled, allows pascal casing for React Stateless Components
+    // enabled, allows pascal casing for React Stateless Components
     "variable-name": [true, "allow-pascal-case"],
 
-    //disabled, allows implict 'true' when passing in boolean to component
+    // disabled, allows implict 'true' when passing in boolean to component
     "jsx-boolean-value": false
   }
 }

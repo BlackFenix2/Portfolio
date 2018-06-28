@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Container, Icon, Segment } from 'semantic-ui-react';
 
-import styles from './App.module.css';
+
 const Icons = () => (
   <div>
     <a
