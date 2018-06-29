@@ -155,7 +155,6 @@ class TicTacToe extends React.Component {
       gameLocked: true
     });
 
-    // tslint:disable-next-line:no-increment-decrement
     for (let i = 0; i < this.state.warGamesCount; i++) {
       do {
         await this.sleep(this.state.warGamesDelay);
@@ -179,6 +178,12 @@ class TicTacToe extends React.Component {
       },
       this.reset
     );
+  };
+
+  public aiTurn = async players => {
+    if (players > 0) {
+      await this.sleep(1000);
+    }
   };
 
   public cpuTurn = async players => {

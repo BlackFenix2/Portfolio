@@ -3,8 +3,8 @@ using System;
 
 namespace server.Controllers
 {
-    [Route("api/[controller]")]
-    public class ValuesController : Controller
+
+    public class ValuesController : ApiController
     {
         // GET api/values
         [HttpGet]

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace server.Controllers
 {
-    [Route("api/Root")]
-    public class RootController : Controller
+
+    public class RootController : ApiController
     {
         // GET: api/Root
         [HttpGet]

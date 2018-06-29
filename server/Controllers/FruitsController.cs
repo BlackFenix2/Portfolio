@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace server.Controllers
 {
-    [Route("api/[controller]")]
-    public class FruitsController : Controller
+
+    public class FruitsController : ApiController
     {
         private IRepository<Fruit> _repo;
 

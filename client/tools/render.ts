@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { hot } from 'react-hot-loader';
+// import { hot } from 'react-hot-loader';
 
 export const renderApp = (App, target) => {
   const main = document.getElementById(target);
@@ -9,6 +9,6 @@ export const renderApp = (App, target) => {
   const renderMethod = main.children.length > 1 ? 'hydrate' : 'render';
 
   // hot load application
-  const AppContainer = hot(module)(App);
-  ReactDOM[renderMethod](React.createElement(AppContainer), main);
+  // const AppContainer = hot(module)(App);
+  ReactDOM[renderMethod](React.createElement(App), main);
 };

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace server.Controllers
 {
-    [Route("api/[controller]")]
-    public class DomainController : Controller
+
+    public class DomainController : ApiController
     {
         public IWhoisService _WhoisService;
         public IDnsService _DnsService;
