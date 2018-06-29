@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Segment, Select } from 'semantic-ui-react';
+import { Container, Divider, Radio, Segment, Select } from 'semantic-ui-react';
 import Card from 'src/components/elements/Card';
 
 const options = [
@@ -10,8 +10,10 @@ const options = [
 
 const Options = props => (
   <Card>
-    <Segment basic textAlign="center">
-      <h2>Options</h2>
+    <Segment basic>
+      <Container textAlign="center">
+        <h2>Options</h2>
+      </Container>
       <p>Players?</p>
       <Select
         onChange={props.changePlayer}
@@ -32,11 +34,16 @@ const Options = props => (
           </button>
         </div>
       )}
-      <div>
-        <button onClick={props.toggleSound}>
-          Toggle Mute Test:{String(props.muted)}
-        </button>
-      </div>
+      <Segment compact>
+        <Radio toggle label="Toggle Mute" onChange={props.toggleSound} />
+      </Segment>
+      <Segment compact>
+        <Radio
+          toggle
+          label="Toggle Machine Learning"
+          onChange={props.toggleMachineLearning}
+        />
+      </Segment>
     </Segment>
   </Card>
 );

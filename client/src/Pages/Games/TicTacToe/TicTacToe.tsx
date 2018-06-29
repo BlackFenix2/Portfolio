@@ -25,7 +25,8 @@ class TicTacToe extends React.Component {
     acrossPatternCheck: 0,
     acrossSpecialCheck: 0,
     randomCheck: 0,
-    muted: false
+    muted: false,
+    machineLearning: false
   };
 
   public boxClicked = async e => {
@@ -39,13 +40,19 @@ class TicTacToe extends React.Component {
       return;
     }
     // start player turn
-    const correctInput = await this.startTurn(e.target.dataset.square);
+    const correctInput = this.startTurn(e.target.dataset.square);
     // start bot turn
     if (this.state.numOfPlayers <= 1 && !this.state.gameEnded && correctInput) {
       this.setState({ gameLocked: true });
       await this.cpuTurn(this.state.numOfPlayers);
       this.setState({ gameLocked: false });
     }
+  };
+
+  public toggleMachineLearning = () => {
+    this.setState({
+      machineLearning: !this.state.machineLearning
+    });
   };
 
   public startTurn = async loc => {
@@ -184,9 +191,26 @@ class TicTacToe extends React.Component {
     if (players > 0) {
       await this.sleep(1000);
     }
+
+    // pick random number
+    if (!this.state.gameEnded) {
+      let random;
+      do {
+        random = Math.floor(Math.random() * 9);
+      } while (this.state.board[random] !== '');
+      this.startTurn(random);
+    }
   };
 
   public cpuTurn = async players => {
+    if (this.state.machineLearning) {
+      await this.aiTurn(players);
+    } else {
+      await this.oldCpuTurn(players);
+    }
+  };
+
+  public oldCpuTurn = async players => {
     if (players > 0) {
       await this.sleep(1000);
     }
@@ -536,6 +560,8 @@ class TicTacToe extends React.Component {
               playerCount={this.state.numOfPlayers}
               toggleSound={this.toggleSound}
               muted={this.state.muted}
+              toggleMachineLearning={this.toggleMachineLearning}
+              machineLearning={this.state.machineLearning}
             />
             <Divider hidden />
             <ScoreCard stats={this.state.stats} clearScore={this.clearScore} />
