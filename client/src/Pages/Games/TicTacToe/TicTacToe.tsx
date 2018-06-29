@@ -298,9 +298,7 @@ class TicTacToe extends React.Component {
               return;
             }
             // pattern 2 check for X O X or O X O in straight/diagonal or hook
-            const innerPattern =
-              // this.state.board[1] !== this.state.board[7] ? [3, 5] : [1, 7];
-              [0, 2, 6, 8];
+            const innerPattern = [0, 2, 6, 8];
             do {
               random =
                 innerPattern[Math.floor(Math.random() * innerPattern.length)];
@@ -331,7 +329,10 @@ class TicTacToe extends React.Component {
 
         const pattern = [0, 2, 6, 8];
         do {
-          random = pattern[Math.floor(Math.random() * pattern.length)];
+          random =
+            this.state.totalMoves === 5 && this.state.board[4] === ''
+              ? 4
+              : pattern[Math.floor(Math.random() * pattern.length)];
         } while (this.state.board[random] !== '');
         this.startTurn(random);
         this.setState((prevState: any) => ({
