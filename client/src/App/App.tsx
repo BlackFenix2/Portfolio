@@ -12,11 +12,11 @@ const history = createBrowserHistory();
 const App: React.SFC = () => (
   <Provider store={configureStore}>
     <ConnectedRouter history={history} basename="/">
-      <>
+      <React.Fragment>
         <Header />
         <Body />
         <Footer />
-      </>
+      </React.Fragment>
     </ConnectedRouter>
   </Provider>
 );

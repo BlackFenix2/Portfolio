@@ -171,8 +171,6 @@ class TicTacToe extends React.Component {
         },
         () => this.reset(this.state.warGamesDelay)
       );
-      // tslint:disable-next-line:no-console
-      console.log(`game delay ${this.state.warGamesDelay}`);
     }
 
     this.setState(
@@ -352,10 +350,11 @@ class TicTacToe extends React.Component {
     }
   };
 
-  public playerChanged = e => {
+  public playerChanged = (e, { value }) => {
     this.reset();
+
     this.setState({
-      numOfPlayers: e.target.value
+      numOfPlayers: e.target.value === undefined ? value : e.target.value
     });
   };
 

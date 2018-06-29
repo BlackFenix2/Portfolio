@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Segment } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
 import Error from './Error';
 // Routes
 import Routes from './Routes';

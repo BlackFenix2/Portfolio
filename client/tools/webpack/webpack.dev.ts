@@ -15,11 +15,6 @@ const devConfig = {
     // open default browser on load
     open: true,
 
-    // enable HMR
-    hot: {
-      allEntries:true
-    },
-
     // middleware options
     add: (app, middleware, options) => {
       // add history API fallback

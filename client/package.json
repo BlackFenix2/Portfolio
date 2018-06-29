@@ -40,6 +40,7 @@
     "@types/uglifyjs-webpack-plugin": "^1.1.0",
     "@types/webpack": "^4.4.0",
     "@types/webpack-env": "^1.13.6",
+    "@types/webpack-hot-client": "^4.0.0",
     "awesome-typescript-loader": "^5.0.0",
     "clean-webpack-plugin": "^0.1.19",
     "compression-webpack-plugin": "^1.1.11",
