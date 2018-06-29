@@ -31,6 +31,7 @@ class TicTacToe extends React.Component {
 
   public boxClicked = async e => {
     // check for player or CPU input
+
     if (
       this.state.gameEnded ||
       this.state.gameLocked ||

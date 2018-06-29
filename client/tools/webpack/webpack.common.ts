@@ -37,7 +37,11 @@ const config = {
     publicPath: '/',
     path: path.resolve(__dirname, paths.buildDir),
     filename: 'static/js/[name].js',
-    chunkFilename: 'static/js/[name].js'
+    chunkFilename: 'static/js/[name].js',
+
+    // testing hot stuff
+    hotUpdateChunkFilename: 'hot/hot-update.js',
+    hotUpdateMainFilename: 'hot/hot-update.json'
   },
   resolve: {
     // namespace src to avoid ../../

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Container, Divider, Radio, Segment, Select } from 'semantic-ui-react';
+import { Container, Radio, Segment, Select } from 'semantic-ui-react';
 import Card from 'src/components/elements/Card';
 
 const options = [
-  { key: '2', text: '2', value: '2' },
-  { key: '1', text: '1', value: '1' },
-  { key: '0', text: 'Zero', value: '0' }
+  { key: '2', text: '2', value: 2 },
+  { key: '1', text: '1', value: 1 },
+  { key: '0', text: 'Zero', value: 0 }
 ];
 
 const Options = props => (
@@ -24,7 +24,7 @@ const Options = props => (
       <button onClick={props.resetGame} disabled={props.disabled}>
         Reset
       </button>
-      {props.playerCount === '0' && (
+      {props.playerCount === 0 && (
         <div>
           <button onClick={props.playSelf} disabled={props.disabled}>
             Play itself
@@ -34,10 +34,10 @@ const Options = props => (
           </button>
         </div>
       )}
-      <Segment compact>
+      <Segment compact basic>
         <Radio toggle label="Toggle Mute" onChange={props.toggleSound} />
       </Segment>
-      <Segment compact>
+      <Segment compact basic>
         <Radio
           toggle
           label="Toggle Machine Learning"
