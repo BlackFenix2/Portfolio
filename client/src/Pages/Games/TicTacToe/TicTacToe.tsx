@@ -84,41 +84,11 @@ class TicTacToe extends React.Component<any, any> {
         }),
         () => {
           const result = this.checkWinner();
-          if (result === 'X') {
+          // only stop the game when there is a winner or a draw
+          if (result) {
             this.setState({
               gameEnded: true,
-              winner: 'X',
-              boxOrder: [],
-              stats: [
-                ...this.state.stats,
-                {
-                  winner: result,
-                  totalMoves: this.state.totalMoves,
-                  boxOrder: this.state.boxOrder,
-                  scoreClicked: this.scoreClicked
-                }
-              ]
-            });
-          } else if (result === 'O') {
-            this.setState({
-              gameEnded: true,
-              winner: 'O',
-              boxOrder: [],
-              stats: [
-                ...this.state.stats,
-                {
-                  winner: result,
-                  totalMoves: this.state.totalMoves,
-                  boxOrder: this.state.boxOrder,
-                  scoreClicked: this.scoreClicked
-                }
-              ]
-            });
-          } else if (result === 'draw') {
-            this.setState({
-              gameEnded: true,
-              winner: 'draw',
-              boxOrder: [],
+              winner: result,
               stats: [
                 ...this.state.stats,
                 {
@@ -134,7 +104,12 @@ class TicTacToe extends React.Component<any, any> {
       );
       return true;
     }
-    return false;
+    // catch Error attempting to fill in non-empty slot
+    throw new Error(
+      `Turn Error: Player ${
+        this.state.turn
+      } attempted to fill a non-empty slot: ${loc}`
+    );
   };
 
   public sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -196,18 +171,63 @@ class TicTacToe extends React.Component<any, any> {
     );
   };
 
+  /**
+   * Pick random number on board not in use
+   * @returns {number}
+   */
+  public pickRandom = () => {
+    let random;
+    do {
+      random = Math.floor(Math.random() * 9);
+    } while (this.state.board[random] !== '');
+    return random;
+  };
+
   public aiTurn = async players => {
     if (players > 0) {
       await this.sleep(1000);
     }
 
     if (!this.state.gameEnded) {
-      // pick random number
-      let random;
-      do {
-        random = Math.floor(Math.random() * 9);
-      } while (this.state.board[random] !== '');
-      this.startTurn(random);
+      const { stats } = this.state;
+
+      // find winning scorecards based on current player
+      const winningMoves = stats.filter(
+        x => x.winner === this.state.turn || x.winner === 'draw'
+      );
+
+      // const losingMoves = stats.filter(
+      //   x => x.winner !== this.state.turn && x.winner !== 'draw'
+      // );
+
+      // begin reading stats for optimal moves
+      if (stats.length > 0) {
+        try {
+          // get the minimum amount of moves to win for current player
+          const optimalWinningMoves = winningMoves.reduce(
+            (min, p) => (p.totalMoves < min ? p.totalMoves : min),
+            winningMoves[0].totalMoves
+          );
+
+          // get the optimal winning index
+          const winningIndex = winningMoves.find(
+            x => x.totalMoves <= optimalWinningMoves
+          ).totalMoves;
+          const numberPicked =
+            winningMoves[winningIndex].boxOrder[this.state.totalMoves];
+
+          await this.startTurn(numberPicked);
+        } catch (error) {
+          // pick random number if selected space is occupied
+          const random = this.pickRandom();
+          this.startTurn(random);
+        }
+      }
+      // pick random if stats are empty
+      else {
+        const random = this.pickRandom();
+        this.startTurn(random);
+      }
     }
   };
 
@@ -514,7 +534,7 @@ class TicTacToe extends React.Component<any, any> {
     if (totalMoves === 9) {
       return 'draw';
     }
-    return '';
+    return null;
   };
 
   public reset = (delay?: number) => {
