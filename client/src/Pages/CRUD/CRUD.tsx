@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Loader } from 'semantic-ui-react';
 import Visibility from 'src/components/effects/Visibility';
-import fruitRoutines from '../../state/actions/FruitActions/fruitRoutines';
+import fruitRoutines from 'src/state/actions/FruitActions/fruitRoutines';
 import FruitTable from './FruitTable';
 import ModalContent from './ModalContent';
 import TestForm from './TestForm';

@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { Container, Radio, Segment, Select } from 'semantic-ui-react';
+import {
+  Button,
+  Container,
+  Icon,
+  Input,
+  Label,
+  Radio,
+  Segment,
+  Select
+} from 'semantic-ui-react';
 import Card from 'src/components/elements/Card';
 
 const options = [
@@ -21,9 +30,17 @@ const Options = props => (
         placeholder="Choose number of Players"
         options={options}
       />
-      <button onClick={props.resetGame} disabled={props.disabled}>
+      <Button onClick={props.resetGame} disabled={props.disabled}>
         Reset
-      </button>
+      </Button>
+      <Input
+        value={props.delay}
+        onChange={props.setDelay}
+        type="range"
+        min={100}
+        max={1000}
+      />
+      <Label>{props.delay}</Label>
       {props.playerCount === 0 && (
         <div>
           <button onClick={props.playSelf} disabled={props.disabled}>
@@ -35,7 +52,8 @@ const Options = props => (
         </div>
       )}
       <Segment compact basic>
-        <Radio toggle label="Toggle Mute" onChange={props.toggleSound} />
+        <Radio toggle onChange={props.toggleSound} />
+        <Icon color="black" name={props.muted ? 'volume off' : 'volume up'} />
       </Segment>
       <Segment compact basic>
         <Radio
