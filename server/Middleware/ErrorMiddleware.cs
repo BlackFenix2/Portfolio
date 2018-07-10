@@ -37,7 +37,7 @@ namespace server.Middleware
 
             var result = JsonConvert.SerializeObject(new
             {
-                error = exception.Message,
+                error = exception.StackTrace,
                 message = exception.Message
             });
             context.Response.ContentType = "application/json";

@@ -19,16 +19,16 @@ namespace server.Data
             _dbSet = dbContext.Set<T>();
         }
 
-        //Async CRUD
+        public async Task<bool> FindByIdAsync(Guid id)
+        {
+            return await _dbSet.AnyAsync(x => x.Id == id);
+        }
+
         public async Task<T> GetByIdAsync(Guid id)
         {
             return await _dbSet.FindAsync(id);
         }
 
-        public async Task<List<T>> ListAsync()
-        {
-            return await _dbSet.ToListAsync();
-        }
 
         public async Task<List<T>> ListAsync(ResourceParameters resource)
         {
@@ -36,6 +36,18 @@ namespace server.Data
             .OrderBy(a => a.Id)
             .Skip(resource.PageSize * (resource.PageNumber - 1))
             .Take(resource.PageSize).ToListAsync();
+        }
+
+        public async Task<PagedList<T>> PagedListAsync(ResourceParameters resource)
+        {
+
+            var collectionBeforePaging = _dbSet
+            .OrderBy(a => a.Id);
+            await Task.Delay(0);
+            return PagedList<T>.Create(collectionBeforePaging, resource.PageNumber, resource.PageSize);
+
+
+
         }
 
         public async Task<T> AddAsync(T entity)
@@ -47,21 +59,32 @@ namespace server.Data
 
         public async Task UpdateAsync(T entity)
         {
-            _dbContext.Entry(entity).State = EntityState.Modified;
+            _dbSet.Update(entity);
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(T entity)
+        public async Task UpdateAsync(Guid id, T entity)
         {
-            _dbContext.Set<T>().Remove(entity);
+            entity.Id = id;
+            _dbSet.Update(entity);
             await _dbContext.SaveChangesAsync();
         }
+
+
+        public async Task DeleteAsync(T entity)
+        {
+            _dbSet.Remove(entity);
+            await _dbContext.SaveChangesAsync();
+        }
+
 
         public async Task DeleteAsync(Guid id)
         {
             var item = await _dbSet.FindAsync(id);
-            _dbContext.Set<T>().Remove(item);
+            _dbSet.Remove(item);
             await _dbContext.SaveChangesAsync();
         }
+
+
     }
 }

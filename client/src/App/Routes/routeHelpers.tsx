@@ -8,7 +8,7 @@ const config = {
     <NotFound code={props.error.code} message={props.error.message} />
   ),
   loading: () => <Loading />,
-  minDelay: 500
+  minDelay: 300
 };
 
 // const pageUrl = 'src/Pages';

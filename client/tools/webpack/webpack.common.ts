@@ -3,7 +3,7 @@ import HtmlWebPackPlugin from 'html-webpack-plugin';
 import HtmlTemplate from 'html-webpack-template';
 import path from 'path';
 import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
-// import tsImportPluginFactory from 'ts-import-plugin';
+
 import webpack from 'webpack';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
 import htmlParams from '../htmlParams';
@@ -66,12 +66,6 @@ const config = {
                 options: {
                   silent: true,
                   transpileOnly: true
-
-                  // transform ES6 imports to reduce package size
-                  // getCustomTransformers: () => ({
-                  //   // load CSS for applicable packages
-                  //   before: [tsImportPluginFactory({ style: 'css' })]
-                  // })
                 }
               }
             ],

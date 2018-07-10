@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-const filterResults = collection =>
+export const filterResults = collection =>
   _.pickBy(
     collection,
     value =>

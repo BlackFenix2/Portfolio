@@ -11,9 +11,9 @@ namespace server.Models.Entities
         public string Notes { get; set; }
 
         [Required]
-        public int Calories { get; set; }
+        public int? Calories { get; set; }
 
         [Required]
-        public bool Rotten { get; set; }
+        public bool? Rotten { get; set; }
     }
 }

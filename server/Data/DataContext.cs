@@ -15,5 +15,6 @@ namespace server.Data
         }
 
         public DbSet<Fruit> Fruit { get; set; }
+        public DbSet<Farm> Farm { get; set; }
     }
 }

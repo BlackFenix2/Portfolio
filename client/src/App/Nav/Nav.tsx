@@ -1,9 +1,7 @@
-import { faHome } from '@fortawesome/fontawesome-free-solid';
-import Icon from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Dropdown, Menu } from 'semantic-ui-react';
+import { Dropdown, Icon, Menu } from 'semantic-ui-react';
 
 const NavBar = props => (
   <Menu fixed="top" borderless>
@@ -82,7 +80,7 @@ class Nav extends React.Component<{ routes: any }> {
           active={activeUrl === '/'}
           clickEvent={this.handleItemClick}
         >
-          <Icon icon={faHome} />
+          <Icon name="home" />
         </NavItem>
         <LinkGenerator
           routes={this.props.routes}

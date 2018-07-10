@@ -21,9 +21,11 @@ const DomainCard: React.SFC<IProps> = props => (
         </Header>
       </Segment>
     </div>
-    <Collapse isOpened={!props.loading}>
-      <div>{props.children}</div>
-    </Collapse>
+    <div>
+      <Collapse isOpened={!props.loading}>
+        <div>{props.children}</div>
+      </Collapse>
+    </div>
   </Card>
 );
 

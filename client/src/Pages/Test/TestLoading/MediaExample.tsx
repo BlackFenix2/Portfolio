@@ -25,16 +25,6 @@ const Example = () => (
     <MediaQuery minResolution="2dppx">
       <div>You are retina</div>
     </MediaQuery>
-
-    <MediaQuery>
-      {matches => {
-        if (matches) {
-          return <div>Media query matches!</div>;
-        }
-
-        return <div>Media query does not match!</div>;
-      }}
-    </MediaQuery>
   </div>
 );
 

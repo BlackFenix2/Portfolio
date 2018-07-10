@@ -4,10 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace server.Models
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         [Key]
-        [HiddenInput(DisplayValue = false)]
         public Guid Id { get; set; }
     }
 }

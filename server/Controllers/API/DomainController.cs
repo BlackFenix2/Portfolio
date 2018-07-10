@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
+using server.Controllers;
 using server.Interfaces;
 using server.Models.Objects;
 using System;
 using System.Threading.Tasks;
 
-namespace server.Controllers
+namespace server.API.Controllers
 {
 
     public class DomainController : ApiController

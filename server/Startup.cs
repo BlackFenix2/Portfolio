@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using server.Data;
 using server.Interfaces;
 using server.Middleware;
@@ -14,7 +16,7 @@ namespace server
 {
     public class Startup
     {
-        private IHostingEnvironment Env;
+        private readonly IHostingEnvironment Env;
 
         public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
@@ -32,29 +34,41 @@ namespace server
             //     options.UseInMemoryDatabase("server")
             // );
             services.AddDbContextPool<DataContext>(options =>
-                        options.UseSqlite("Data Source=database.db"));
+                        options
+                        // enable lazy loading of navigatio n properties(foreign keys in database)
+                        .UseLazyLoadingProxies()
+                        .UseSqlite("Data Source=database.db"));
 
 
-
+            // add cross origin resource sharing for serving API requests
             services.AddCors();
-            //adds repository patterns for each DbSet
+            // adds repository patterns for each DbSet
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
-            //adds Whois Service
+            // adds Whois Service
             services.AddScoped<IWhoisService, WhoisService>();
-            //adds Whois Service
+            // adds Whois Service
             services.AddScoped<IDnsService, DnsService>();
 
-            // add mvc with automatic CSRF protection
+            // add MVC with automatic CSRF protection
             services.AddMvc(options =>
             {
-                // add antiforgery when authentication is configured
-                // options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-            });
 
-            // add API documentation to JSON
+                // add antiforgery when authentication is configured
+                // not yet enabled untill authentication/authorization is configured
+                // options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+            })
+            //handle JSON cycle loops with related EF core entities
+            .AddJsonOptions(
+                options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                }
+            );
+
+            //add API documentation to JSON
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1", });
+                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1", Description = "Test API for the testing tests" });
             });
         }
 
@@ -68,10 +82,8 @@ namespace server
                                     .AllowAnyHeader()
                                     .AllowCredentials()
             );
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+
+            // catch internal server errors and send as response
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
             app.UseMvc();
 
@@ -82,6 +94,7 @@ namespace server
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API");
+                //set swagger page at '/' route
                 c.RoutePrefix = string.Empty;
             });
         }

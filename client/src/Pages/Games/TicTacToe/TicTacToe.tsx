@@ -191,6 +191,8 @@ class TicTacToe extends React.Component<any, any> {
     if (!this.state.gameEnded) {
       const { stats } = this.state;
 
+      // TODO: Finish Machine learning, read whole boxorder rather than just winning indexes.
+
       // find winning scorecards based on current player
       const winningMoves = stats.filter(
         x => x.winner === this.state.turn || x.winner === 'draw'

@@ -12,7 +12,5 @@ tools.renderApp(app, htmlParams.rootID);
 config.registerServiceWorker();
 
 if (module.hot) {
-  module.hot.accept('src/App', () =>
-    tools.renderApp(require('src/App').default, htmlParams.rootID)
-  );
+  module.hot.accept();
 }

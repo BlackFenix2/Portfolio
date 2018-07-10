@@ -1,7 +1,6 @@
 // add w3-css library
 // added component CSS manually to address SSR issues
 
-import '@fortawesome/fontawesome';
 
 // import just css, no jQuery
 import 'semantic-ui-css/semantic.css';
