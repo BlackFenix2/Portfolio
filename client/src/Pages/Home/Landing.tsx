@@ -25,7 +25,7 @@ class Landing extends React.Component<IProps> {
   public render() {
     return (
       <div>
-        <h1>Welcome to thew home page</h1>
+        <h1>Welcome to the home page</h1>
         <p>{this.props.searchTerm}</p>
         <form onSubmit={this.goToSearch}>
           <input

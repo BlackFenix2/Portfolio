@@ -11,6 +11,7 @@ using server.Interfaces;
 using server.Middleware;
 using server.Services;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
 
 namespace server
 {
@@ -33,11 +34,24 @@ namespace server
             // services.AddDbContextPool<DataContext>(options =>
             //     options.UseInMemoryDatabase("server")
             // );
-            services.AddDbContextPool<DataContext>(options =>
-                        options
-                        // enable lazy loading of navigatio n properties(foreign keys in database)
-                        .UseLazyLoadingProxies()
-                        .UseSqlite("Data Source=database.db"));
+            //services.AddDbContextPool<DataContext>(options =>
+            //            options
+            //            // enable lazy loading of navigatio n properties(foreign keys in database)
+            //            .UseLazyLoadingProxies()
+            //            .UseSqlite("Data Source=database.db"));
+
+            //use postgres database, load env variables due to 
+            services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(options =>
+            {
+                var pgUserId = Environment.GetEnvironmentVariable("POSTGRES_USER_ID");
+                var pgPassword = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD");
+                var pgHost = Environment.GetEnvironmentVariable("POSTGRES_HOST");
+                var pgPort = Environment.GetEnvironmentVariable("POSTGRES_PORT");
+                var pgDatabase = Environment.GetEnvironmentVariable("POSTGRES_DB");
+
+                var connStr = $"Server={pgHost};Port={pgPort};User Id={pgUserId};Password={pgPassword};Database={pgDatabase}";
+                options.UseLazyLoadingProxies().UseNpgsql(connStr);
+            });
 
 
             // add cross origin resource sharing for serving API requests
