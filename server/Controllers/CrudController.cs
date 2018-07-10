@@ -118,14 +118,16 @@ namespace server.Controllers
         [HttpOptions]
         public async Task<IActionResult> Options()
         {
-            await Response.Headers.AddAsync("Allow", "GET,OPTIONS,POST")
+            await Task.Delay(0);
+            Response.Headers.Add("Allow", "GET,OPTIONS,POST");
             return Ok();
         }
 
         [HttpOptions("{id}")]
-        public async Task<IActionResult> Options()
+        public async Task<IActionResult> IdOptions()
         {
-            await Response.Headers.AddAsync("Allow", "DELETE,GET,OPTIONS,PUT")
+            await Task.Delay(0);
+            Response.Headers.Add("Allow", "DELETE,GET,OPTIONS,PUT");
             return Ok();
         }
 
