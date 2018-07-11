@@ -7,3 +7,4 @@ server
 client/.vscode
 client/src
 client/webpack.config.js
+client/node_modules
