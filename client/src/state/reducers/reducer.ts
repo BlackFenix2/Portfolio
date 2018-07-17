@@ -1,28 +1,21 @@
-import types from '../types';
-
 // other reducers
+import { handleAction } from 'redux-actions';
+import actions from '../actions';
 import fruitReducer from './crudReducer';
 
 export const fruits = fruitReducer;
 
-export const searchTerm = (state = '', action) => {
-  switch (action.type) {
-    case types.SET_SEARCH_TERM:
-      return action.payload;
-    default:
-      return state;
-  }
-};
+export const searchTerm = handleAction(
+  actions.setSearchTerm,
+  (state = '', action) => action.payload,
+  {}
+);
 
-export const graphArea = (state = {}, action) => {
-  switch (action.type) {
-    case types.SET_GRAPH_AREA:
-      return action.payload;
-
-    default:
-      return state;
-  }
-};
+export const graphArea = handleAction(
+  actions.setGraphArea,
+  (state = '', action) => action.payload,
+  {}
+);
 
 export const routes = (state = {}) => state;
 

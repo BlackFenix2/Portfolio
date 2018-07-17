@@ -18,6 +18,10 @@
     // allows default import of modules without default exports, shorthand for import * as item from 'module'
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+
+    //Allow decorators
+    "experimentalDecorators": true,
+
     // ALIAS  src path
     "baseUrl": "./",
     "paths": {

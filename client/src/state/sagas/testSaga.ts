@@ -1,8 +1,8 @@
 import { take } from 'redux-saga/effects';
-import types from '../types';
+import actions from '../actions';
 
 export default function* currentUserSaga() {
-  const item = yield take(types.SET_SEARCH_TERM);
+  const item = yield take(actions.setSearchTerm);
   // tslint:disable-next-line:no-console
   console.info('searchterm was set', item);
 }

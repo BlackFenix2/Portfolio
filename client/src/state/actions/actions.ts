@@ -1,12 +1,8 @@
-import types from '../types';
+import { createAction } from 'redux-actions';
 
 const rootActions = {
-  setSearchTerm(searchTerm) {
-    return { type: types.SET_SEARCH_TERM, payload: searchTerm };
-  },
-  setGraphArea(height, width) {
-    return { type: types.SET_GRAPH_AREA, payload: { height, width } };
-  }
+  setSearchTerm: createAction('SET_SEARCH_TERM'),
+  setGraphArea: createAction('SET_GRAPH_AREA')
 };
 
 export default rootActions;

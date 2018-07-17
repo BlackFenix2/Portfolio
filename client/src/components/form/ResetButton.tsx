@@ -1,25 +1,28 @@
 import * as React from 'react';
+import { Button } from 'semantic-ui-react';
 import { FormContext } from './formContext';
 
 interface IProps {
   name?: string;
   className?: string;
+  loading?: boolean;
 }
 
 class ResetButton extends React.Component<IProps> {
   public state;
   public render() {
-    const { name, children, className } = this.props;
+    const { name, children, className, loading } = this.props;
     return (
       <FormContext.Consumer>
         {(context: any) => (
-          <button
+          <Button
             type="reset"
             disabled={context.submitting || context.pristine}
             className={className}
+            loading={loading}
           >
             {children || name || 'Reset'}
-          </button>
+          </Button>
         )}
       </FormContext.Consumer>
     );

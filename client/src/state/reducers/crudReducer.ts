@@ -1,3 +1,4 @@
+import { handleActions } from 'redux-actions';
 import {
   addFruit,
   deleteFruit,
@@ -6,116 +7,65 @@ import {
   updateFruit
 } from '../actions/FruitActions/fruitRoutines';
 
-export default function fruits(state = {}, action) {
-  switch (action.type) {
-    case getFruitList.TRIGGER:
-      return { ...state, isLoading: true };
-    case getFruitList.SUCCESS:
-      return {
-        ...state,
-        fruitList: action.payload,
-        isLoading: false,
-        error: false
-      };
-    case getFruitList.FAILURE:
-      return {
-        ...state,
-        isLoading: false,
-        error: true,
-        errorData: action.payload
-      };
-    case getFruitList.FULFILL:
-      return {
-        ...state,
-        isLoading: false
-      };
+const trigger = state => ({
+  ...state,
+  isLoading: true
+});
 
-    case getFruit.TRIGGER:
-      return { ...state, isLoading: true };
-    case getFruit.SUCCESS:
-      return {
-        ...state,
-        fruit: action.payload,
-        isLoading: false,
-        error: false
-      };
-    case getFruit.FAILURE:
-      return {
-        ...state,
-        isLoading: false,
-        error: true,
-        errorData: action.payload
-      };
-    case getFruit.FULFILL:
-      return {
-        ...state,
-        isLoading: false
-      };
-    case addFruit.TRIGGER:
-      return { ...state, isLoading: true };
-    case addFruit.SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        error: false
-      };
-    case addFruit.FAILURE:
-      return {
-        ...state,
-        isLoading: false,
-        error: true,
-        errorData: action.payload
-      };
-    case addFruit.FULFILL:
-      return {
-        ...state,
-        isLoading: false
-      };
+const successList = (state, action) => ({
+  ...state,
+  fruitList: action.payload,
+  isLoading: false,
+  error: false
+});
 
-    case updateFruit.TRIGGER:
-      return { ...state, isLoading: true };
-    case updateFruit.SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        error: false
-      };
-    case updateFruit.FAILURE:
-      return {
-        ...state,
-        isLoading: false,
-        error: true,
-        errorData: action.payload
-      };
-    case updateFruit.FULFILL:
-      return {
-        ...state,
-        isLoading: false
-      };
+const success = (state, action) => ({
+  ...state,
+  fruit: action.payload,
+  isLoading: false,
+  error: false
+});
 
-    case deleteFruit.TRIGGER:
-      return { ...state, isLoading: true };
+const failure = (state, action) => ({
+  ...state,
+  isLoading: false,
+  error: true,
+  errorData: action.payload
+});
 
-    case deleteFruit.SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        error: false
-      };
-    case deleteFruit.FAILURE:
-      return {
-        ...state,
-        isLoading: false,
-        error: true,
-        errorData: action.payload
-      };
-    case deleteFruit.FULFILL:
-      return {
-        ...state,
-        isLoading: false
-      };
+const fulfill = state => ({
+  ...state,
+  isLoading: false
+});
 
-    default:
-      return state;
-  }
-}
+const fruits = handleActions(
+  {
+    [getFruitList.TRIGGER]: trigger,
+    [getFruitList.SUCCESS]: successList,
+    [getFruitList.FAILURE]: failure,
+    [getFruitList.FULFILL]: fulfill,
+
+    [getFruit.TRIGGER]: trigger,
+    [getFruit.SUCCESS]: success,
+    [getFruit.FAILURE]: failure,
+    [getFruit.FULFILL]: fulfill,
+
+    [addFruit.TRIGGER]: trigger,
+    [addFruit.SUCCESS]: success,
+    [addFruit.FAILURE]: failure,
+    [addFruit.FULFILL]: fulfill,
+
+    [updateFruit.TRIGGER]: trigger,
+    [updateFruit.SUCCESS]: success,
+    [updateFruit.FAILURE]: failure,
+    [updateFruit.FULFILL]: fulfill,
+
+    [deleteFruit.TRIGGER]: trigger,
+    [deleteFruit.SUCCESS]: success,
+    [deleteFruit.FAILURE]: failure,
+    [deleteFruit.FULFILL]: fulfill
+  },
+  {}
+);
+
+export default fruits;

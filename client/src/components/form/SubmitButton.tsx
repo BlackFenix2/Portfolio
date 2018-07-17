@@ -1,30 +1,28 @@
 import * as React from 'react';
-import { FormContext } from './formContext';
-
+import { Button } from 'semantic-ui-react';
+import { FormContext, FormProps } from './formContext';
 interface IProps {
   name?: string;
   className?: string;
+  loading?: boolean;
+  forceEnable?: boolean;
 }
 
 class SubmitButton extends React.Component<IProps> {
-  // public static contextTypes = {
-  //   pristine: () => null,
-  //   submitting: () => null
-  // };
   public state;
   public render() {
-    const { name, children, className } = this.props;
-    // const { pristine, submitting } = this.context;
+    const { name, children, className, loading, forceEnable } = this.props;
     return (
       <FormContext.Consumer>
-        {(context: any) => (
-          <button
+        {(context: FormProps) => (
+          <Button
             type="submit"
-            disabled={context.submitting || context.pristine}
+            disabled={(context.submitting || context.pristine) && !forceEnable}
             className={className}
+            loading={loading}
           >
             {children || name || 'Submit'}
-          </button>
+          </Button>
         )}
       </FormContext.Consumer>
     );

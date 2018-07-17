@@ -14,6 +14,6 @@ namespace server.Models.Entities
         public int? Calories { get; set; }
 
         [Required]
-        public bool? Rotten { get; set; }
+        public bool Rotten { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import FixedMenuLayouts from './FixedMenuLayouts';
+import FixedMenuLayout from 'src/Pages/Test/Components/FixedMenuLayouts';
 
 const Components: React.SFC = () => {
-  return <FixedMenuLayouts />;
+  return <FixedMenuLayout />;
 };
 
 export default Components;

@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { Loader, Modal } from 'semantic-ui-react';
+import { Modal } from 'semantic-ui-react';
 
 const ModalContent = props => (
   <Modal open={props.visible} onClose={props.toggleEvent} size="tiny">
     <Modal.Header>
       <span> Fruit</span>
-      <Loader active={props.loading} />
     </Modal.Header>
     <Modal.Content>{props.children}</Modal.Content>
   </Modal>

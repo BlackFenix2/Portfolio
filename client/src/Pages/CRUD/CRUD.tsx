@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Loader } from 'semantic-ui-react';
 import Visibility from 'src/components/effects/Visibility';
+import TestDisplay from 'src/Pages/CRUD/testDisplay';
 import fruitRoutines from 'src/state/actions/FruitActions/fruitRoutines';
 import FruitTable from './FruitTable';
 import ModalContent from './ModalContent';
@@ -13,8 +14,15 @@ interface IProps {
   fruits: any;
 }
 
-class CRUD extends React.Component<IProps> {
+interface State {
+  uiLoading: boolean;
+  visible: boolean;
+  optionSelect: string;
+}
+
+class CRUD extends React.Component<IProps, State> {
   public state = {
+    uiLoading: false,
     visible: false,
     optionSelect: 'create'
   };
@@ -26,28 +34,39 @@ class CRUD extends React.Component<IProps> {
     this.props.actions.getFruitList();
   };
 
+  public setLoading = (bool: boolean) => {
+    this.setState({
+      uiLoading: bool
+    });
+  };
+
   public create = value => {
     this.props.actions.addFruit(value);
+    this.setLoading(true);
     this.sleep(1000).then(() => {
       this.fetchFruits();
       this.toggleEvent();
+      this.setLoading(false);
     });
   };
 
   public delete = id => {
     this.props.actions.deleteFruit(id);
-
+    this.setLoading(true);
     this.sleep(1000).then(() => {
       this.fetchFruits();
       this.toggleEvent();
+      this.setLoading(false);
     });
   };
 
   public update = value => {
     this.props.actions.updateFruit(value);
+    this.setLoading(true);
     this.sleep(1000).then(() => {
       this.fetchFruits();
       this.toggleEvent();
+      this.setLoading(false);
     });
   };
 
@@ -100,30 +119,34 @@ class CRUD extends React.Component<IProps> {
             <ModalContent
               visible={this.state.visible}
               toggleEvent={this.toggleEvent}
-              loading={this.props.fruits.isLoading}
+              loading={this.state.uiLoading}
             >
               <Visibility active={this.state.optionSelect === 'create'}>
                 <TestForm
                   onSubmit={this.create}
                   initial={this.props.fruits.fruit}
+                  {...this.state}
                 />
               </Visibility>
               <Visibility active={this.state.optionSelect === 'details'}>
-                <TestForm
+                <TestDisplay
                   onSubmit={this.details}
                   initial={this.props.fruits.fruit}
+                  {...this.state}
                 />
               </Visibility>
               <Visibility active={this.state.optionSelect === 'update'}>
                 <TestForm
                   onSubmit={this.update}
                   initial={this.props.fruits.fruit}
+                  {...this.state}
                 />
               </Visibility>
               <Visibility active={this.state.optionSelect === 'delete'}>
-                <TestForm
+                <TestDisplay
                   onSubmit={this.delete}
                   initial={this.props.fruits.fruit}
+                  {...this.state}
                 />
               </Visibility>
             </ModalContent>

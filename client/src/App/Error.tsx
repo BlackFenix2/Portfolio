@@ -15,7 +15,7 @@ class Error extends React.Component {
       const { error, info } = this.state;
       return (
         <div>
-          <h1>you broke it dingus!</h1>
+          <h1>you broke it doofus!</h1>
           <p>{error.message}</p>
           <p>
             {info.componentStack.split('\n').map(i => (

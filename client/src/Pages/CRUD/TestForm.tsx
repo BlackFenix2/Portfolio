@@ -12,8 +12,8 @@ const TestForm = props => (
       <TextInput name="name" displayName="Name" />
       <TextInput name="notes" displayName="Notes" />
       <TextInput name="calories" displayName="Calories" />
-      <div className="w3-padding-16">
-        <SubmitButton className="w3-button w3-teal" />
+      <div>
+        <SubmitButton loading={props.uiLoading} />
         <ResetButton className="w3-button w3-teal" />
       </div>
     </Form>

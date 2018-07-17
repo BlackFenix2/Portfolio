@@ -17,11 +17,11 @@ namespace server
 {
     public class Startup
     {
-        private readonly IHostingEnvironment Env;
+        private readonly IHostingEnvironment _env;
 
         public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
-            Env = env;
+            _env = env;
             Configuration = configuration;
         }
 
@@ -30,28 +30,34 @@ namespace server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //inmemory DataBase for testing (wipes data on re-compile or server restart)
-            // services.AddDbContextPool<DataContext>(options =>
-            //     options.UseInMemoryDatabase("server")
-            // );
-            //services.AddDbContextPool<DataContext>(options =>
-            //            options
-            //            // enable lazy loading of navigatio n properties(foreign keys in database)
-            //            .UseLazyLoadingProxies()
-            //            .UseSqlite("Data Source=database.db"));
 
-            //use postgres database, load env variables due to 
-            services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(options =>
+
+            if (_env.IsDevelopment())
             {
-                var pgUserId = Environment.GetEnvironmentVariable("POSTGRES_USER_ID");
-                var pgPassword = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD");
-                var pgHost = Environment.GetEnvironmentVariable("POSTGRES_HOST");
-                var pgPort = Environment.GetEnvironmentVariable("POSTGRES_PORT");
-                var pgDatabase = Environment.GetEnvironmentVariable("POSTGRES_DB");
+                //use in memory database
+                services.AddDbContextPool<DataContext>(options =>
+                {
+                    options.UseInMemoryDatabase("Test");
+                });
+            }
+            else
+            {
+                //use postgres database, load env variables due to Heroku servers
+                services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(options =>
+                {
+                    var pgUserId = Environment.GetEnvironmentVariable("POSTGRES_USER_ID");
+                    var pgPassword = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD");
+                    var pgHost = Environment.GetEnvironmentVariable("POSTGRES_HOST");
+                    var pgPort = Environment.GetEnvironmentVariable("POSTGRES_PORT");
+                    var pgDatabase = Environment.GetEnvironmentVariable("POSTGRES_DB");
 
-                var connStr = $"Server={pgHost};Port={pgPort};User Id={pgUserId};Password={pgPassword};Database={pgDatabase}";
-                options.UseLazyLoadingProxies().UseNpgsql(connStr);
-            });
+                    var connStr = $"Server={pgHost};Port={pgPort};User Id={pgUserId};Password={pgPassword};Database={pgDatabase}";
+                    options.UseLazyLoadingProxies().UseNpgsql(connStr);
+                });
+            }
+
+
+
 
 
             // add cross origin resource sharing for serving API requests

@@ -1,23 +1,24 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import actionCreators from '../../state/actions';
+import actions from 'src/state/actions';
 
 interface IProps {
   actions: any;
   graph: any;
 }
 class Graph extends React.Component<IProps> {
-  public handleChange = event =>
+  public handleChange = event => {
     event.target.name === 'heightRange'
-      ? this.props.actions.setGraphArea(
-          event.target.value,
-          this.props.graph.width
-        )
-      : this.props.actions.setGraphArea(
-          this.props.graph.height,
-          event.target.value
-        );
+      ? this.props.actions.setGraphArea({
+          height: event.target.value,
+          width: this.props.graph.width
+        })
+      : this.props.actions.setGraphArea({
+          height: this.props.graph.height,
+          width: event.target.value
+        });
+  };
 
   public render() {
     return (
@@ -58,7 +59,7 @@ class Graph extends React.Component<IProps> {
 const mapStateToProps = ({ graphArea }) => ({ graph: graphArea });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actionCreators, dispatch)
+  actions: bindActionCreators(actions, dispatch)
 });
 export default connect(
   mapStateToProps,
