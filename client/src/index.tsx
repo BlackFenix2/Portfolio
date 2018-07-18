@@ -1,5 +1,6 @@
 import app from 'src/App';
 
+import * as config from '../tools/config';
 import * as tools from '../tools/render';
 
 import htmlParams from '../tools/htmlParams';
@@ -8,7 +9,7 @@ import htmlParams from '../tools/htmlParams';
 tools.renderApp(app, htmlParams.rootID);
 
 // register service worker if https is configured
-// config.registerServiceWorker();
+config.registerServiceWorker();
 
 // add Hot Module Reloading
 if (module.hot) {

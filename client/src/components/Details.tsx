@@ -20,11 +20,6 @@ const Details = props => (
     <Link to="/Shows" className="w3-button w3-teal">
       Go Back
     </Link>
-    <div className="w3-card">
-      <pre>
-        <code>{JSON.stringify(props, null, 4)}</code>
-      </pre>
-    </div>
   </div>
 );
 

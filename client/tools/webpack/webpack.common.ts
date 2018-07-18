@@ -2,7 +2,7 @@ import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import HtmlWebPackPlugin from 'html-webpack-plugin';
 import HtmlTemplate from 'html-webpack-template';
 import path from 'path';
-// import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
+import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
 
 import webpack from 'webpack';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
@@ -135,7 +135,7 @@ const config = {
     }),
 
     // add serviceworker
-    // new SWPrecacheWebpackPlugin(),
+    new SWPrecacheWebpackPlugin(),
 
     // create manifest.json for PWA, injects into htmlwebpack plugin
     new WebpackPwaManifest({
