@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "reactSnap": {
+    "width": 1920,
+    "height": 1080,
     "minifyHtml": {
       "sortClassName": false
     },
@@ -21,7 +23,8 @@
     "analyze": "source-map-explorer dist/static/js/bundle.js",
     "update": "yarn upgrade-interactive --latest",
     "prebuild": "yarn install",
-    "build": "webpack --progress"
+    "build": "webpack --progress",
+    "postbuild": "react-snap"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.11",
