@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Collapse } from 'react-collapse';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Dropdown, Icon, Menu } from 'semantic-ui-react';
+import { Icon, Menu } from 'semantic-ui-react';
 
 const NavBar = props => (
   <Menu fixed="top" vertical fluid borderless>
@@ -87,7 +87,7 @@ class MobileNav extends React.Component<{ routes: any }, State> {
 
           <Icon name="align justify" onClick={this.handleHamburgerClick} />
         </Menu.Item>
-        <Collapse isOpened={this.state.visible}>
+        <Collapse isOpened={this.state.visible} style={{ overflow: 'scroll' }}>
           <LinkGenerator
             routes={this.props.routes}
             clickEvent={this.handleItemClick}
