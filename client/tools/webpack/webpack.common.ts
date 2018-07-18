@@ -135,7 +135,7 @@ const config = {
     }),
 
     // add serviceworker
-    new SWPrecacheWebpackPlugin(),
+    // new SWPrecacheWebpackPlugin(),
 
     // create manifest.json for PWA, injects into htmlwebpack plugin
     new WebpackPwaManifest({
