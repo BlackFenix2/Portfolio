@@ -9,7 +9,7 @@ import htmlParams from '../tools/htmlParams';
 tools.renderApp(app, htmlParams.rootID);
 
 // register service worker if https is configured
-config.registerServiceWorker();
+// config.registerServiceWorker();
 
 // add Hot Module Reloading
 if (module.hot) {
