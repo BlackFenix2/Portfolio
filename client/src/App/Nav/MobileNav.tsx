@@ -87,7 +87,7 @@ class MobileNav extends React.Component<{ routes: any }, State> {
 
           <Icon name="align justify" onClick={this.handleHamburgerClick} />
         </Menu.Item>
-        <Collapse isOpened={this.state.visible} style={{ overflow: 'scroll' }}>
+        <Collapse isOpened={this.state.visible} style={{ overflow: 'auto' }}>
           <LinkGenerator
             routes={this.props.routes}
             clickEvent={this.handleItemClick}
