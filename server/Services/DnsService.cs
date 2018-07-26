@@ -35,9 +35,9 @@ namespace server.Services
                 };
                 return dnsRecords;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                return new DnsRecord();
             }
         }
 

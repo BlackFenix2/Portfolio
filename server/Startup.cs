@@ -37,7 +37,7 @@ namespace server
                 //use in memory database
                 services.AddDbContextPool<DataContext>(options =>
                 {
-                    options.UseInMemoryDatabase("Test");
+                    options.UseLazyLoadingProxies().UseInMemoryDatabase("Test");
                 });
             }
             else
