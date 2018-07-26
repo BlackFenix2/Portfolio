@@ -38,7 +38,18 @@ namespace server.Services
             }
             catch (Exception)
             {
-                return new DnsRecord();
+                return new DnsRecord()
+                {
+                    MxRecords = new List<string>(){
+                        "empty"
+                    },
+                    ARecords = new List<string>(){
+                        "empty"
+                    },
+                    CnameRecords = new List<string>(){
+                        "empty"
+                    }
+                };
             }
         }
 
