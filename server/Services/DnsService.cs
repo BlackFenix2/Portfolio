@@ -12,10 +12,11 @@ namespace server.Services
     {
         public async Task<DnsRecord> GetDnsInfoAsync(string domain)
         {
-            var lookup = new LookupClient();
+
 
             try
             {
+                var lookup = new LookupClient();
                 // QueryType cannot be ANY, will throw an IndexOutOfRange exception.
                 var ARecords = await lookup.QueryAsync(domain, QueryType.A);
 
