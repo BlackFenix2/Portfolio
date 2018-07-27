@@ -13,9 +13,7 @@ const FruitTable = props => {
           <Table.Header>
             <Table.Row>
               <TableHeaderRowGenerator entity={props} />
-              {Object.entries(props.list[0]).map(([key], index) => (
-                <Table.HeaderCell key={index}>{key}</Table.HeaderCell>
-              ))}
+
               <Table.HeaderCell>Options</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
@@ -53,7 +51,7 @@ const FruitTable = props => {
 };
 
 const TableHeaderRowGenerator = ({ entity }) => {
-  return Object.entries(entity.list[0]).map(([key], index) => (
+  Object.entries(entity.list[0]).map(([key], index) => (
     <Table.HeaderCell key={index}>{key}</Table.HeaderCell>
   ));
 };
