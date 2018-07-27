@@ -5,6 +5,16 @@ const app = express();
 const port = process.env.PORT || 8080;
 const directory = path.resolve(__dirname, '..', 'build');
 
+// redirect to https in production
+var env = process.env.NODE_ENV || 'production';
+if ('production' == env) {
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https')
+      res.redirect(`https://${req.headers.host}${req.url}`);
+    else next();
+  });
+}
+
 //serve static files and gzip files
 app.use(expressStaticGzip(directory));
 
