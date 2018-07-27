@@ -3,6 +3,9 @@ import { Button, Table } from 'semantic-ui-react';
 
 const FruitTable = props => {
   try {
+    if (!props.list.length) {
+      throw new Error();
+    }
     return (
       <div>
         <Button onClick={props.createAction}>Create</Button>
@@ -11,11 +14,7 @@ const FruitTable = props => {
             <h3>Fruit</h3>
           </caption>
           <Table.Header>
-            <Table.Row>
-              <TableHeaderRowGenerator entity={props} />
-
-              <Table.HeaderCell>Options</Table.HeaderCell>
-            </Table.Row>
+            <TableHeaderRowGenerator entity={props.list} />
           </Table.Header>
           <Table.Body>
             {Object.entries(props.list).map(([key, value]) => (
@@ -50,10 +49,13 @@ const FruitTable = props => {
   }
 };
 
-const TableHeaderRowGenerator = ({ entity }) => {
-  Object.entries(entity.list[0]).map(([key], index) => (
-    <Table.HeaderCell key={index}>{key}</Table.HeaderCell>
-  ));
-};
+const TableHeaderRowGenerator = ({ entity }) => (
+  <Table.Row>
+    {Object.entries(entity[0]).map(([key], index) => (
+      <Table.HeaderCell key={index}>{key}</Table.HeaderCell>
+    ))}
+    <Table.HeaderCell>Options</Table.HeaderCell>
+  </Table.Row>
+);
 
 export default FruitTable;
