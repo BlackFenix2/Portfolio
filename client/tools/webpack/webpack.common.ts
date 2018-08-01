@@ -67,11 +67,19 @@ const config = {
                   silent: true,
                   transpileOnly: true
                 }
+              },
+              {
+                loader: 'tslint-loader',
+                options: {
+                  emitErrors: true,
+                  failOnHint: true
+                }
               }
             ]
 
             // exclude: /node_modules/
           },
+
           // Less Loader
           {
             test: /\.less$/,

@@ -32,32 +32,9 @@ namespace server
         {
 
 
-            if (_env.IsDevelopment())
-            {
-                //use in memory database
-                services.AddDbContextPool<DataContext>(options =>
-                {
-                    options.UseLazyLoadingProxies().UseInMemoryDatabase("Test");
-                });
-            }
-            else
-            {
-                //use postgres database, load env variables due to Heroku servers
-                services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(options =>
-                {
-                    var pgUserId = Environment.GetEnvironmentVariable("POSTGRES_USER_ID");
-                    var pgPassword = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD");
-                    var pgHost = Environment.GetEnvironmentVariable("POSTGRES_HOST");
-                    var pgPort = Environment.GetEnvironmentVariable("POSTGRES_PORT");
-                    var pgDatabase = Environment.GetEnvironmentVariable("POSTGRES_DB");
 
-                    var connStr = $"Server={pgHost};Port={pgPort};User Id={pgUserId};Password={pgPassword};Database={pgDatabase}";
-                    options.UseLazyLoadingProxies().UseNpgsql(connStr);
-                });
-            }
-
-
-
+            //add Database to app
+            services.AddDbContext<DataContext>();
 
 
             // add cross origin resource sharing for serving API requests

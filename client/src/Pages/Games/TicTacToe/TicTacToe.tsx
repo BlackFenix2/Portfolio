@@ -136,7 +136,7 @@ class TicTacToe extends React.Component<any, any> {
         `Warning: The computer will play itself for ${
           this.state.warGamesCount
         } games`
-      ) === false
+      )
     ) {
       return;
     }

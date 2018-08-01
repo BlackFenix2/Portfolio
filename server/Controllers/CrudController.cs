@@ -22,7 +22,7 @@ namespace server.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetList(ResourceParameters resource)
+        public async Task<IActionResult> GetList([FromQuery]ResourceParameters resource)
         {
             var PagedList = await _repo.PagedListAsync(resource);
 
@@ -56,6 +56,10 @@ namespace server.Controllers
         public async Task<IActionResult> Get(Guid id)
         {
             var item = await _repo.GetByIdAsync(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
             return Ok(item);
         }
 
@@ -63,10 +67,10 @@ namespace server.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]T value)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
             await _repo.AddAsync(value);
 
 

@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 namespace server.API.Controllers
 {
 
-    public class FruitsController : CrudController<Fruit>
+    public class Fruits : CrudController<Fruit>
     {
-        public FruitsController(IRepository<Fruit> Repo) : base(Repo) { }
+        public Fruits(IRepository<Fruit> Repo) : base(Repo) { }
     }
 }

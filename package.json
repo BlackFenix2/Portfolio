@@ -3,6 +3,6 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "heroku-postbuild": "cd client && yarn install && yarn run build"
+    "heroku-postbuild": "cd client && yarn run build"
   }
 }

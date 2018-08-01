@@ -1,13 +1,18 @@
 import * as React from 'react';
-import { Modal } from 'semantic-ui-react';
+import { Modal, TransitionablePortal } from 'semantic-ui-react';
 
 const ModalContent = props => (
-  <Modal open={props.visible} onClose={props.toggleEvent} size="tiny">
-    <Modal.Header>
-      <span> Fruit</span>
-    </Modal.Header>
-    <Modal.Content>{props.children}</Modal.Content>
-  </Modal>
+  <TransitionablePortal
+    open={props.visible}
+    transition={{ animation: 'fade down', duration: 600 }}
+  >
+    <Modal open={true} onClose={props.toggleEvent} size="tiny">
+      <Modal.Header>
+        <span> Fruit</span>
+      </Modal.Header>
+      <Modal.Content>{props.children}</Modal.Content>
+    </Modal>
+  </TransitionablePortal>
 );
 
 export default ModalContent;

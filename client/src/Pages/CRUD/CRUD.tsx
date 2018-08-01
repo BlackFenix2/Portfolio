@@ -80,8 +80,7 @@ class CRUD extends React.Component<IProps, State> {
     this.setState({
       optionSelect: 'create'
     });
-
-    this.details(id);
+    this.toggleEvent();
   };
 
   public updateFetch = id => {

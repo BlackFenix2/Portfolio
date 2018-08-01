@@ -6,6 +6,7 @@ namespace server.Controllers
     /// Controller with the prefixed route 'API/[controller]'
     /// </summary>
     [Route("api/[controller]")]
+    [ApiController]
     public abstract class ApiController : ControllerBase
     {
     }
