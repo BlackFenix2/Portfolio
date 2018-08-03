@@ -8,18 +8,18 @@ using Newtonsoft.Json;
 using server.Data;
 using server.Helpers;
 using server.Models;
+using Microsoft.Extensions.DependencyInjection;
+
 
 namespace server.Controllers
 {
 
     public abstract class CrudController<T> : ApiController where T : BaseEntity
     {
-        private IRepository<T> _repo;
 
-        public CrudController(IRepository<T> Repo)
-        {
-            _repo = Repo;
-        }
+        protected IRepository<T> _repo => HttpContext.RequestServices.GetService<IRepository<T>>();
+
+
 
         [HttpGet]
         public async Task<IActionResult> GetList([FromQuery]ResourceParameters resource)

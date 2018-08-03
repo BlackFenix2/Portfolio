@@ -13,6 +13,6 @@ namespace server.Controllers.API
 
     public class FarmsController : CrudController<Farm>
     {
-        public FarmsController(IRepository<Farm> Repo) : base(Repo) { }
+
     }
 }
