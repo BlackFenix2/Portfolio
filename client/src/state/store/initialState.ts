@@ -38,6 +38,10 @@ const routes: Routes = [
       {
         url: '/Components',
         name: 'Component Test'
+      },
+      {
+        url: '/Login',
+        name: 'Login Test'
       }
     ]
   },

@@ -2,25 +2,27 @@ import * as React from 'react';
 
 interface State {
   value: string;
+  localStorage: string;
 }
 
 export default class Login extends React.Component<any, State> {
   public state = {
-    value: 'Empty'
+    value: '',
+    localStorage: ''
   };
 
   public componentDidMount() {
     this.setState({
-      value: localStorage.getItem('test')
+      localStorage: localStorage.getItem('test')
     });
   }
   public getStorage = () => {
     this.setState({
-      value: localStorage.getItem('test')
+      localStorage: localStorage.getItem('test')
     });
   };
 
-  public setStorage = item => {
+  public setStorage = () => {
     localStorage.setItem('test', this.state.value);
   };
 
@@ -34,7 +36,7 @@ export default class Login extends React.Component<any, State> {
     return (
       <div>
         <h1>Login Test</h1>
-        <p>Storage: {this.state.value}</p>
+        <p>Storage: {this.state.localStorage}</p>
         <hr />
         <input value={this.state.value} onChange={this.changeValue} />
         <button onClick={this.setStorage}>Set Localstorage</button>
