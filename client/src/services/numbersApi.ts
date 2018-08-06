@@ -1,14 +1,12 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://numbersapi.com';
-
-
+axios.defaults.baseURL = 'https://api.chucknorris.io';
 
 const appService = {
   getPosts() {
     return new Promise(resolve => {
       axios
-        .get('/random/trivia')
+        .get('/jokes/random')
         .then(response => {
           resolve(response.data);
         })

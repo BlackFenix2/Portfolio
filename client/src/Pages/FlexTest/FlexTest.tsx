@@ -4,11 +4,19 @@ import { Form, ResetButton, SubmitButton } from 'src/components/form';
 import { TextInput } from 'src/components/inputs';
 import API from 'src/services/numbersApi';
 
-class FlexTest extends React.Component {
+interface State {
+  value: {};
+  progressTest: number;
+  apiResult: {};
+}
+
+class FlexTest extends React.Component<any, State> {
   public state = {
     value: {},
     progressTest: 0,
-    apiResult: ''
+    apiResult: {
+      value: ''
+    }
   };
   public componentDidMount() {
     this.test();
@@ -31,8 +39,8 @@ class FlexTest extends React.Component {
         <Grid columns={2}>
           <Grid.Row>
             <Grid.Column>
-              <p>{this.state.apiResult}</p>
-              <Button onClick={this.test}>new number fact</Button>
+              <p>{this.state.apiResult.value}</p>
+              <Button onClick={this.test}>new Chuck Norris fact</Button>
               <Form onSubmit={this.submit} form="TestForm">
                 <TextInput name="firstName" displayName="First Name" />
                 <TextInput name="lastName" displayName="Last Name" />
