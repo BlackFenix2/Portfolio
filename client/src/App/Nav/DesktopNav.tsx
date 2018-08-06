@@ -61,11 +61,12 @@ const LinkGenerator = props => {
 
 const User = props => (
   <Menu.Item position="right">
+    {/* <span>Login: {String(props.login)}</span> */}
     <span>Hello {`${props.firstName} ${props.lastName}`}</span>
   </Menu.Item>
 );
 
-class DesktopNav extends React.Component<{ routes: any }> {
+class DesktopNav extends React.Component<{ routes: any; auth: any }> {
   public state = { activeUrl: '/' };
 
   public handleItemClick = (e, { to }) => {
@@ -87,11 +88,15 @@ class DesktopNav extends React.Component<{ routes: any }> {
           clickEvent={this.handleItemClick}
           activeUrl={activeUrl}
         />
-        <User firstName="test" lastName="user" />
+        <User
+          firstName={this.props.auth.user.firstName}
+          lastName={this.props.auth.user.lastName}
+          login={this.props.auth.loggedIn}
+        />
       </NavBar>
     );
   }
 }
-const mapStateToProps = ({ routes }) => ({ routes });
+const mapStateToProps = ({ auth, routes }) => ({ auth, routes });
 
 export default connect(mapStateToProps)(DesktopNav);

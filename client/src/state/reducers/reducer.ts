@@ -20,3 +20,5 @@ export const graphArea = handleAction(
 export const routes = (state = {}) => state;
 
 export const user = (state = {}) => state;
+
+export const auth = (state = {}) => state;

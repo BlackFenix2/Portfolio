@@ -36,12 +36,8 @@ const config = {
   output: {
     publicPath: '/',
     path: path.resolve(__dirname, paths.buildDir),
-    filename: 'static/js/[name].js',
-    chunkFilename: 'static/js/[name].js',
-
-    // testing hot stuff
-    hotUpdateChunkFilename: 'hot/hot-update.js',
-    hotUpdateMainFilename: 'hot/hot-update.json'
+    filename: 'static/js/[name].[hash].js',
+    chunkFilename: 'static/js/[name].[hash].js'
   },
   resolve: {
     // namespace src to avoid ../../
@@ -128,7 +124,7 @@ const config = {
     }),
     // load css into separate .css file
     new ExtractCssChunks({
-      filename: 'static/css/[name].css'
+      filename: 'static/css/[name].[hash].css'
     }),
 
     // HTML generation, put before other manifest plugins
@@ -147,13 +143,11 @@ const config = {
 
     // create manifest.json for PWA, injects into htmlwebpack plugin
     new WebpackPwaManifest({
-      filename: 'manifest.json',
-      fingerprints: false,
       name: "Ernie's test app",
       short_name: 'ErnieApp',
       description: 'Test App',
-      background_color: '#01579b',
-      theme_color: '#01579b',
+      background_color: '#000000',
+      theme_color: '#3c3c3c',
       start_url: '/',
 
       icons: [

@@ -4,15 +4,19 @@ const initialState: any = {
     width: 100
   },
   searchTerm: '',
-  user: {
-    firstName: 'test',
-    lastName: 'user'
-  },
   fruits: {
     fruitList: [],
     isLoading: false,
     error: false,
     errorData: []
+  }
+};
+
+const auth = {
+  loggedIn: false,
+  user: {
+    firstName: 'John',
+    lastName: 'Doe'
   }
 };
 
@@ -89,4 +93,4 @@ const routes: Routes = [
   }
 ];
 
-export default { ...initialState, routes };
+export default { ...initialState, routes, auth };

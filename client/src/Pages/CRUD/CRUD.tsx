@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Loader } from 'semantic-ui-react';
 import Visibility from 'src/components/effects/Visibility';
+import AnimatedModal from 'src/components/elements/Modal';
 import TestDisplay from 'src/Pages/CRUD/testDisplay';
 import fruitRoutines from 'src/state/actions/FruitActions/fruitRoutines';
 import FruitTable from './FruitTable';
-import ModalContent from './ModalContent';
 import TestForm from './TestForm';
 
 interface IProps {
@@ -115,10 +115,10 @@ class CRUD extends React.Component<IProps, State> {
         <div>
           <h2>Fruits Table</h2>
           <div>
-            <ModalContent
+            <AnimatedModal
+              header={'Fruit'}
               visible={this.state.visible}
               toggleEvent={this.toggleEvent}
-              loading={this.state.uiLoading}
             >
               <Visibility active={this.state.optionSelect === 'create'}>
                 <TestForm
@@ -148,7 +148,7 @@ class CRUD extends React.Component<IProps, State> {
                   {...this.state}
                 />
               </Visibility>
-            </ModalContent>
+            </AnimatedModal>
           </div>
           <div>
             <FruitTable

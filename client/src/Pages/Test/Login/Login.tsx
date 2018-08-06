@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Register from 'src/App/Authentication/Register';
 
 interface State {
   value: string;
@@ -38,9 +39,11 @@ export default class Login extends React.Component<any, State> {
         <h1>Login Test</h1>
         <p>Storage: {this.state.localStorage}</p>
         <hr />
-        <input value={this.state.value} onChange={this.changeValue} />
-        <button onClick={this.setStorage}>Set Localstorage</button>
-        <button onClick={this.getStorage}>Get Localstorage</button>
+        <div>
+          <input value={this.state.value} onChange={this.changeValue} />
+          <button onClick={this.setStorage}>Set Localstorage</button>
+          <button onClick={this.getStorage}>Get Localstorage</button>
+        </div>
       </div>
     );
   }
