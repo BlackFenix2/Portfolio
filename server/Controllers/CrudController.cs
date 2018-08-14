@@ -21,6 +21,13 @@ namespace server.Controllers
 
 
 
+
+        /// <summary>
+        /// Get list of Item
+        /// </summary>
+        /// <param name="resource"></param>
+        /// <returns>ttt</returns>
+        /// <example>Men's basketball shoes</example>
         [HttpGet]
         public async Task<IActionResult> GetList([FromQuery]ResourceParameters resource)
         {

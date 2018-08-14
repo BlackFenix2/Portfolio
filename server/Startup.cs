@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -14,8 +16,13 @@ using server.Identity;
 using server.Interfaces;
 using server.Middleware;
 using server.Services;
+using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace server
@@ -70,8 +77,35 @@ namespace server
             //add API documentation to JSON
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1", Description = "Test API for the testing tests" });
+                c.SwaggerDoc("v1", new Info
+                {
+                    Title = "My API",
+                    Version = "v1",
+                    Description = "Test API for the testing tests"
+                }
+                );
+
+                // handle secure API Endpoints for SwaggerUI
+                c.OperationFilter<SecurityRequirementsOperationFilter>();
+
+                // handle JWT Bearer for API
+                c.AddSecurityDefinition("oauth2", new ApiKeyScheme
+                {
+                    Description = "Standard Authorization header using the Bearer scheme. Example: \"bearer {token}\"",
+                    In = "header",
+                    Name = "Authorization",
+                    Type = "apiKey"
+                });
+
+
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
             });
+
+
 
 
             // Add Identity
@@ -91,7 +125,7 @@ namespace server
                 })
                 .AddJwtBearer(cfg =>
                 {
-                    cfg.RequireHttpsMetadata = false;
+                    cfg.RequireHttpsMetadata = true;
                     cfg.SaveToken = true;
                     cfg.TokenValidationParameters = new TokenValidationParameters
                     {
@@ -116,11 +150,35 @@ namespace server
             );
 
             // catch internal server errors and send as response
-            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
+            // app.UseMiddleware(typeof(ErrorMiddleware));
 
-            //use authentication
+            // testing new exception handler for .net core 2.1
+            // Handle global uncaught exceptions
+            app.UseExceptionHandler(errorApp =>
+            {
+                errorApp.Run(async context =>
+                {
+
+                    var exception = context.Features.Get<IExceptionHandlerFeature>().Error;
+
+                    //Create new JSON Object
+                    var result = JsonConvert.SerializeObject(new
+                    {
+                        error = exception.StackTrace,
+                        message = exception.Message
+                    });
+
+                    // parse the response for JSON
+                    context.Response.ContentType = "application/json";
+                    await context.Response.WriteAsync(result);
+                });
+            });
+
+            //use JWT authentication
             app.UseAuthentication();
 
+
+            //use MVC routing
             app.UseMvc();
 
             // add swagger ui for API

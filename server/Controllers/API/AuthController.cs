@@ -6,7 +6,6 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -20,52 +19,65 @@ namespace server.Controllers.API
     {
 
 
-        private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
         private readonly IConfiguration _configuration;
+        private readonly IPasswordHasher<User> _hasher;
 
         public AuthController(
             UserManager<User> userManager,
-            SignInManager<User> signInManager,
-            IConfiguration configuration
+            IConfiguration configuration,
+            IPasswordHasher<User> hasher
             )
         {
             _userManager = userManager;
-            _signInManager = signInManager;
             _configuration = configuration;
+            _hasher = hasher;
         }
 
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> Register([FromBody] User user)
+        public async Task<IActionResult> Register([FromBody] UserDTO userDTO)
         {
 
-
-            var result = await _userManager.CreateAsync(user, user.Password);
-
+            var user = new User
+            {
+                UserName = userDTO.Email,
+                Email = userDTO.Email,
+                FirstName = userDTO.FirstName,
+                LastName = userDTO.LastName
+            };
+            var result = await _userManager.CreateAsync(user, userDTO.Password);
             if (result.Succeeded)
             {
-                await _signInManager.SignInAsync(user, false);
-                return await GenerateJwtTokenAsync(user.Email, user);
+
+                return Ok(await GenerateJwtTokenAsync(user));
             }
 
-            return BadRequest(result.Errors.First().Description);
+            return BadRequest(result.Errors.Select(x => x.Description).ToList());
         }
 
 
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> Login([FromBody] User user)
+        public async Task<IActionResult> Login([FromBody] UserDTO userDTO)
         {
-            var result = await _signInManager.PasswordSignInAsync(user.Email, user.Password, false, false);
 
-            if (result.Succeeded)
+
+
+            var user = await _userManager.FindByEmailAsync(userDTO.Email);
+            if (user != null)
             {
-                var appUser = _userManager.Users.SingleOrDefault(r => r.Email == user.Email);
-                return Ok(await GenerateJwtTokenAsync(user.Email, appUser));
+
+                if (_hasher.VerifyHashedPassword(user, user.PasswordHash, userDTO.Password) == PasswordVerificationResult.Success)
+                {
+                    return Ok(await GenerateJwtTokenAsync(user));
+
+                }
+                return BadRequest("Invalid Password");
             }
 
-            return BadRequest("invalid Password");
+
+            return BadRequest("User not found");
         }
 
         [HttpPost("[action]")]
@@ -87,16 +99,20 @@ namespace server.Controllers.API
         {
 
             await Task.Delay(0);
-            return Ok();
+            return Ok(User.Identity.Name);
         }
 
-
-        private async Task<IActionResult> GenerateJwtTokenAsync(string email, User user)
+        /// <summary>
+        /// Generate JWT Response Object
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        private async Task<TokenResponse> GenerateJwtTokenAsync(User user)
         {
             await Task.Delay(0);
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, email),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
                 new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
                 new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName),
                 new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName),
@@ -118,7 +134,11 @@ namespace server.Controllers.API
 
 
 
-            return Ok(new JwtSecurityTokenHandler().WriteToken(token));
+            return new TokenResponse()
+            {
+                Token = new JwtSecurityTokenHandler().WriteToken(token),
+                Expiration = token.ValidTo
+            };
         }
     }
 }

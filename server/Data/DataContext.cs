@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using server.Identity;
 using server.Models.Entities;
 using System;
 
 namespace server.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext
     {
         private readonly IHostingEnvironment _env;
         public DataContext(DbContextOptions<DataContext> options, IHostingEnvironment Env) : base(options)
@@ -49,5 +51,6 @@ namespace server.Data
         //List of Entities
         public DbSet<Fruit> Fruit { get; set; }
         public DbSet<Farm> Farm { get; set; }
+        public DbSet<User> User { get; set; }
     }
 }

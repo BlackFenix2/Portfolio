@@ -14,9 +14,6 @@ namespace server.Identity
 
         public string LastName { get; set; }
 
-        //TODO add encrypted attribute for entity values
-        public string Password { get; set; }
-
 
     }
 }

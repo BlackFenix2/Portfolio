@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace server.Middleware
 {
-    public class ErrorHandlingMiddleware
+    public class ErrorMiddleware
     {
         private readonly RequestDelegate _next;
 
-        public ErrorHandlingMiddleware(RequestDelegate next)
+        public ErrorMiddleware(RequestDelegate next)
         {
             _next = next;
         }

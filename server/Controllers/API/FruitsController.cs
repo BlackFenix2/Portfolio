@@ -11,7 +11,11 @@ namespace server.API.Controllers
 
     public class FruitsController : CrudController<Fruit>
     {
-
+        /// <summary>
+        /// Testing Extension to API Routes
+        /// </summary>
+        /// <param name="resource"></param>
+        /// <returns></returns>
         [HttpGet("test/whyme")]
         public async Task<IActionResult> Test([FromQuery]ResourceParameters resource)
         {
