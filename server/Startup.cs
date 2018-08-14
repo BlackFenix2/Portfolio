@@ -85,23 +85,31 @@ namespace server
                 }
                 );
 
-                // handle secure API Endpoints for SwaggerUI
-                c.OperationFilter<SecurityRequirementsOperationFilter>();
-
-                // handle JWT Bearer for API
-                c.AddSecurityDefinition("oauth2", new ApiKeyScheme
+                try
                 {
-                    Description = "Standard Authorization header using the Bearer scheme. Example: \"bearer {token}\"",
-                    In = "header",
-                    Name = "Authorization",
-                    Type = "apiKey"
-                });
+                    // handle secure API Endpoints for SwaggerUI
+                    c.OperationFilter<SecurityRequirementsOperationFilter>();
+
+                    // handle JWT Bearer for API
+                    c.AddSecurityDefinition("oauth2", new ApiKeyScheme
+                    {
+                        Description = "Standard Authorization header using the Bearer scheme. Example: \"bearer {token}\"",
+                        In = "header",
+                        Name = "Authorization",
+                        Type = "apiKey"
+                    });
 
 
-                // Set the comments path for the Swagger JSON and UI.
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
+                    // Set the comments path for the Swagger JSON and UI.
+                    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                    c.IncludeXmlComments(xmlPath);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Exception setting up Swagger JWT: " + ex.Message);
+                }
+
 
             });
 
