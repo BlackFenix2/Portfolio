@@ -133,7 +133,7 @@ namespace server
                 })
                 .AddJwtBearer(cfg =>
                 {
-                    cfg.RequireHttpsMetadata = true;
+                    cfg.RequireHttpsMetadata = false;
                     cfg.SaveToken = true;
                     cfg.TokenValidationParameters = new TokenValidationParameters
                     {

@@ -36,8 +36,8 @@ const config = {
   output: {
     publicPath: '/',
     path: path.resolve(__dirname, paths.buildDir),
-    filename: 'static/js/[name].[hash].js',
-    chunkFilename: 'static/js/[name].[hash].js'
+    filename: 'static/js/[name].js',
+    chunkFilename: 'static/js/[name].js'
   },
   resolve: {
     // namespace src to avoid ../../
@@ -124,7 +124,7 @@ const config = {
     }),
     // load css into separate .css file
     new ExtractCssChunks({
-      filename: 'static/css/[name].[hash].css'
+      filename: 'static/css/[name].css'
     }),
 
     // HTML generation, put before other manifest plugins
