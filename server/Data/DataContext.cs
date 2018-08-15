@@ -18,7 +18,7 @@ namespace server.Data
             //check for in-memory database before updating database
             if (!Database.IsInMemory())
             {
-                Database.MigrateAsync();
+                Database.Migrate();
             }
         }
         //configure Datacontext
@@ -29,8 +29,9 @@ namespace server.Data
 
             if (_env.IsDevelopment())
             {
-                //use in memory database
-                options.UseLazyLoadingProxies().UseInMemoryDatabase("Test");
+                // create local SQL Database
+                var connStr = "Server=(localdb)\\mssqllocaldb;Database=DevData;Trusted_Connection=True;MultipleActiveResultSets=True";
+                options.UseLazyLoadingProxies().UseSqlServer(connStr);
             }
             else
             {
