@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "heroku-postbuild": "cd client && yarn run build"
+    "heroku-postbuild": "cd client && yarn run build",
+    "start": "node client/server/index.js"
   }
 }
