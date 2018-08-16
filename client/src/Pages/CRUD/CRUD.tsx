@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Button, Loader } from 'semantic-ui-react';
 import Visibility from 'src/components/effects/Visibility';
 import AnimatedModal from 'src/components/elements/Modal';
-import TestDisplay from 'src/Pages/CRUD/testDisplay';
+import TestDisplay from 'src/Pages/CRUD/TestDisplay';
 import fruitRoutines from 'src/state/actions/FruitActions/fruitRoutines';
 import FruitTable from './FruitTable';
 import TestForm from './TestForm';
@@ -121,11 +121,7 @@ class CRUD extends React.Component<IProps, State> {
               toggleEvent={this.toggleEvent}
             >
               <Visibility active={this.state.optionSelect === 'create'}>
-                <TestForm
-                  onSubmit={this.create}
-                  initial={this.props.fruits.fruit}
-                  {...this.state}
-                />
+                <TestForm onSubmit={this.create} {...this.state} />
               </Visibility>
               <Visibility active={this.state.optionSelect === 'details'}>
                 <TestDisplay
