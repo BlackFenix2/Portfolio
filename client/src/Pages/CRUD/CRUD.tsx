@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Loader } from 'semantic-ui-react';
+import { Button, Loader } from 'semantic-ui-react';
 import Visibility from 'src/components/effects/Visibility';
 import AnimatedModal from 'src/components/elements/Modal';
 import TestDisplay from 'src/Pages/CRUD/testDisplay';
@@ -162,9 +162,10 @@ class CRUD extends React.Component<IProps, State> {
         </div>
 
         <div>
-          <button onClick={this.fetchFruits}>
-            Fetch fruits<Loader inline active={false} />
-          </button>
+          <Button onClick={this.fetchFruits}>
+            Fetch fruits
+            <Loader inline active={false} />
+          </Button>
           <p>Loading: {String(this.props.fruits.isLoading)}</p>
           <p>Error: {String(this.props.fruits.error)}</p>
           <p>selected form: {this.state.optionSelect}</p>
