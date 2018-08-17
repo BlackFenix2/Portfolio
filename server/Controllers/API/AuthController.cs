@@ -36,7 +36,7 @@ namespace server.Controllers.API
 
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> Register([FromBody] UserDTO userDTO)
+        public async Task<IActionResult> Register([FromBody] UserRegistrationDTO userDTO)
         {
 
             var user = new User
@@ -59,7 +59,7 @@ namespace server.Controllers.API
 
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> Login([FromBody] UserDTO userDTO)
+        public async Task<IActionResult> Login([FromBody] UserLoginDTO userDTO)
         {
 
 
