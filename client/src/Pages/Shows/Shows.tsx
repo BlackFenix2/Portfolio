@@ -6,7 +6,7 @@ import SearchBar from 'src/components/SearchBar';
 import actionCreators from 'src/state/actions';
 import ShowList from './ShowList';
 
-import preload from './data.json';
+import preload from './datas.json';
 
 interface IProps {
   actions: any;
