@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using server.Data;
 using server.Identity;
 using server.Interfaces;
+using server.Helpers;
 using server.Middleware;
 using server.Services;
 using Swashbuckle.AspNetCore.Filters;
@@ -24,6 +25,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace server
 {
@@ -57,6 +59,8 @@ namespace server
             services.AddScoped<IWhoisService, WhoisService>();
             // adds Whois Service
             services.AddScoped<IDnsService, DnsService>();
+            // adds Token Service
+            services.AddScoped<ITokenService, TokenService>();
 
             // add MVC with automatic CSRF protection
             services.AddMvc(options =>
@@ -122,27 +126,10 @@ namespace server
                 .AddEntityFrameworkStores<DataContext>()
                 .AddDefaultTokenProviders();
 
-
-            services
-                .AddAuthentication(options =>
-                {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-
-                })
-                .AddJwtBearer(cfg =>
-                {
-                    cfg.RequireHttpsMetadata = false;
-                    cfg.SaveToken = true;
-                    cfg.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidIssuer = Configuration["JwtIssuer"],
-                        ValidAudience = Configuration["JwtIssuer"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtKey"])),
-                        ClockSkew = TimeSpan.Zero
-                    };
-                });
+            //Add JWT Authentication
+            services.AddJwtAuthentication();
+                
+                
 
         }
 

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using server.Identity;
+using server.Interfaces;
 
 namespace server.Controllers.API
 {
@@ -20,17 +21,17 @@ namespace server.Controllers.API
 
 
         private readonly UserManager<User> _userManager;
-        private readonly IConfiguration _configuration;
+        private readonly ITokenService _tokenService;
         private readonly IPasswordHasher<User> _hasher;
 
         public AuthController(
             UserManager<User> userManager,
-            IConfiguration configuration,
+            ITokenService tokenService,
             IPasswordHasher<User> hasher
             )
         {
             _userManager = userManager;
-            _configuration = configuration;
+            _tokenService = tokenService;
             _hasher = hasher;
         }
 
@@ -50,7 +51,7 @@ namespace server.Controllers.API
             if (result.Succeeded)
             {
 
-                return Ok(await GenerateJwtTokenAsync(user));
+                return Ok(await _tokenService.GenerateToken(user));
             }
 
             return BadRequest(result.Errors.Select(x => x.Description).ToList());
@@ -70,7 +71,7 @@ namespace server.Controllers.API
 
                 if (_hasher.VerifyHashedPassword(user, user.PasswordHash, userDTO.Password) == PasswordVerificationResult.Success)
                 {
-                    return Ok(await GenerateJwtTokenAsync(user));
+                    return Ok(await _tokenService.GenerateToken(user));
 
                 }
                 return BadRequest("Invalid Password");
@@ -102,43 +103,6 @@ namespace server.Controllers.API
             return Ok(User.Identity.Name);
         }
 
-        /// <summary>
-        /// Generate JWT Response Object
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-        private async Task<TokenResponse> GenerateJwtTokenAsync(User user)
-        {
-            await Task.Delay(0);
-            var claims = new List<Claim>
-            {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-                new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
-                new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName),
-                new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
-            };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtKey"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expires = DateTime.Now.AddDays(Convert.ToDouble(_configuration["JwtExpireDays"]));
-
-            var token = new JwtSecurityToken(
-                _configuration["JwtIssuer"],
-                _configuration["JwtIssuer"],
-                claims,
-                expires: expires,
-                signingCredentials: creds
-            );
-
-
-
-            return new TokenResponse()
-            {
-                Token = new JwtSecurityTokenHandler().WriteToken(token),
-                Expiration = token.ValidTo
-            };
-        }
+       
     }
 }

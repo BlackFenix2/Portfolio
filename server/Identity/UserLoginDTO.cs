@@ -10,9 +10,11 @@ namespace server.Identity
     public class UserLoginDTO
     {
 
+        [Required]
         public string Email { get; set; }
 
-        //TODO add encrypted attribute for entity values
+        
+        [Required]
         public string Password { get; set; }
 
 

@@ -9,14 +9,14 @@ namespace server.Identity
 {
     public class UserRegistrationDTO
     {
-
+        [Required]
         public string FirstName { get; set; }
-
+        [Required]
         public string LastName { get; set; }
-
+        [Required]
         public string Email { get; set; }
 
-        //TODO add encrypted attribute for entity values
+        [Required]
         public string Password { get; set; }
 
 

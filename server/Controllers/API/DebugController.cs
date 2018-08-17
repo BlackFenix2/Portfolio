@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using server.Controllers;
 using server.Data;
+using server.Helpers;
 using server.Identity;
 
 namespace server.API.Controllers
@@ -52,6 +53,8 @@ namespace server.API.Controllers
             return Ok(_userManager.Users.ToList());
 
         }
+
+        
 
     }
 }
