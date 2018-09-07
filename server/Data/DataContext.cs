@@ -20,7 +20,7 @@ namespace server.Data
             //check for in-memory database before updating database
             if (!Database.IsInMemory())
             {
-                Database.Migrate();
+                Database.EnsureCreated();
             }
         }
         //configure Datacontext
@@ -58,19 +58,16 @@ namespace server.Data
             //run base model creation
             base.OnModelCreating(modelBuilder);
 
-            //check for sql server to apply encryption at rest.
-            if (Database.IsSqlServer())
+
+            //check for [Encrypted] attribute
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
-                //check for [Encrypted] attribute
-                foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+                foreach (var property in entityType.GetProperties())
                 {
-                    foreach (var property in entityType.GetProperties())
+                    var attributes = property.PropertyInfo?.GetCustomAttributes(typeof(EncryptedAttribute), false) ?? new object[0];
+                    if (attributes.Any())
                     {
-                        var attributes = property.PropertyInfo?.GetCustomAttributes(typeof(EncryptedAttribute), false) ?? new object[0];
-                        if (attributes.Any())
-                        {
-                            property.SetValueConverter(new EncryptedConverter());
-                        }
+                        property.SetValueConverter(new EncryptedConverter());
                     }
                 }
             }
