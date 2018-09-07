@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -12,9 +13,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using server.Data;
+using server.Helpers;
 using server.Identity;
 using server.Interfaces;
-using server.Helpers;
 using server.Middleware;
 using server.Services;
 using Swashbuckle.AspNetCore.Filters;
@@ -25,7 +26,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace server
 {
@@ -128,8 +128,8 @@ namespace server
 
             //Add JWT Authentication
             services.AddJwtAuthentication();
-                
-                
+
+
 
         }
 
@@ -144,8 +144,7 @@ namespace server
                                     .AllowCredentials()
             );
 
-            // catch internal server errors and send as response
-            // app.UseMiddleware(typeof(ErrorMiddleware));
+
 
             // testing new exception handler for .net core 2.1
             // Handle global uncaught exceptions

@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace server.Models
+namespace server.Data
 {
     public abstract class BaseEntity
     {

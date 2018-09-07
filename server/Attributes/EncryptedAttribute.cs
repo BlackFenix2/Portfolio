@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace server.Attributes
 {
-    public class EncryptedAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
+    sealed class EncryptedAttribute : Attribute
     {
     }
 }

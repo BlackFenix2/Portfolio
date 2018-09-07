@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using server.Controllers;
 using server.Data;
+using server.Data.Entities;
 using server.Helpers;
-using server.Models.Entities;
 using System;
 using System.Threading.Tasks;
 
@@ -16,7 +16,7 @@ namespace server.API.Controllers
         /// </summary>
         /// <param name="resource"></param>
         /// <returns></returns>
-        [HttpGet("test/whyme")]
+        [HttpGet("test/addedRoute")]
         public async Task<IActionResult> Test([FromQuery]ResourceParameters resource)
         {
             var model = await _repo.PagedListAsync(resource);

@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using server.Attributes;
+using server.Data.Entities;
 using server.Identity;
-using server.Models.Entities;
 using System;
+using System.Linq;
 
 namespace server.Data
 {
@@ -48,10 +50,34 @@ namespace server.Data
             }
         }
 
+        /// <summary>
+        /// enable data enctyption at rest for properties with [Encrypted] Attribute
+        /// </summary>
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //run base model creation
+            base.OnModelCreating(modelBuilder);
+
+
+            //check for [Encrypted] attribute
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            {
+                foreach (var property in entityType.GetProperties())
+                {
+                    var attributes = property.PropertyInfo?.GetCustomAttributes(typeof(EncryptedAttribute), false) ?? new object[0];
+                    if (attributes.Any())
+                    {
+                        property.SetValueConverter(new EncryptedConverter());
+                    }
+                }
+            }
+        }
+
 
         //List of Entities
         public DbSet<Fruit> Fruit { get; set; }
         public DbSet<Farm> Farm { get; set; }
         public DbSet<User> User { get; set; }
+        public DbSet<Secret> Secret { get; set; }
     }
 }

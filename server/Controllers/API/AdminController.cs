@@ -26,7 +26,7 @@ namespace server.Controllers.API
         /// <returns></returns>
         [HttpPost("[action]")]
         [Authorize]
-        public async Task<IActionResult> RemoveUser(string email)
+        public async Task<IActionResult> RemoveUser([FromBody]string email)
         {
 
             var user = await _userManager.FindByEmailAsync(email);

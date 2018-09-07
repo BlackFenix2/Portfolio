@@ -22,18 +22,7 @@ namespace server.Helpers
         /// <returns></returns>
         public static AuthenticationBuilder AddJwtAuthentication(this IServiceCollection services)
         {
-            var item = new JwtBearerOptions
-            {
-                RequireHttpsMetadata = false,
-                SaveToken = true,
-                TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidIssuer = Keys.Jwt.Issuer,
-                    ValidAudience = Keys.Jwt.Issuer,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Keys.Jwt.Key)),
-                    ClockSkew = TimeSpan.Zero
-                }
-            };
+            
             return services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

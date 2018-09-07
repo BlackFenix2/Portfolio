@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace server.Models.Entities
+namespace server.Data.Entities
 {
     public class Fruit : BaseEntity
     {

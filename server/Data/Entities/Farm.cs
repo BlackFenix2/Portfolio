@@ -1,10 +1,11 @@
-﻿using System;
+﻿using server.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace server.Models.Entities
+namespace server.Data.Entities
 {
     public class Farm : BaseEntity
     {

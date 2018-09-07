@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using server.Attributes;
 using server.Data;
 using server.Helpers;
 using server.Models;
-using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 
 namespace server.Controllers
@@ -16,18 +17,18 @@ namespace server.Controllers
 
     public abstract class CrudController<T> : ApiController where T : BaseEntity
     {
-
         protected IRepository<T> _repo => HttpContext.RequestServices.GetService<IRepository<T>>();
 
 
 
 
+
+
         /// <summary>
-        /// Get list of Item
+        /// Get list of Entity
         /// </summary>
         /// <param name="resource"></param>
-        /// <returns>ttt</returns>
-        /// <example>Men's basketball shoes</example>
+        /// <returns>PagedList</returns>
         [HttpGet]
         public async Task<IActionResult> GetList([FromQuery]ResourceParameters resource)
         {
@@ -51,7 +52,6 @@ namespace server.Controllers
                 previousPageLink,
                 nextPageLink
             };
-
             Response.Headers.Add("X-Pagination",
                 JsonConvert.SerializeObject(paginationMetadata));
 
@@ -74,10 +74,11 @@ namespace server.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]T value)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
+            if (!ModelState.IsValid)
+            {
+                //im a teapot
+                return StatusCode(418, ModelState);
+            }
             await _repo.AddAsync(value);
 
 
