@@ -58,19 +58,24 @@ namespace server.Data
             //run base model creation
             base.OnModelCreating(modelBuilder);
 
-
-            //check for [Encrypted] attribute
-            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            //check for sql server to apply encryption at rest.
+            if (Database.IsSqlServer())
             {
-                foreach (var property in entityType.GetProperties())
+                //check for [Encrypted] attribute
+                foreach (var entityType in modelBuilder.Model.GetEntityTypes())
                 {
-                    var attributes = property.PropertyInfo?.GetCustomAttributes(typeof(EncryptedAttribute), false) ?? new object[0];
-                    if (attributes.Any())
+                    foreach (var property in entityType.GetProperties())
                     {
-                        property.SetValueConverter(new EncryptedConverter());
+                        var attributes = property.PropertyInfo?.GetCustomAttributes(typeof(EncryptedAttribute), false) ?? new object[0];
+                        if (attributes.Any())
+                        {
+                            property.SetValueConverter(new EncryptedConverter());
+                        }
                     }
                 }
             }
+
+
         }
 
 
