@@ -1,8 +1,10 @@
 client/node_modules
 client/build
+client/dist
 client/coverage
 client/yarn-error.log
 client/.awcache
+client/.cache
 
 server/bin
 server/obj
