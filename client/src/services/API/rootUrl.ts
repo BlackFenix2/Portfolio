@@ -10,9 +10,9 @@ let rootUrl = '';
 if (mode === 'development') {
   rootUrl = 'http://localhost:5000/api';
 } else if (staging) {
-  rootUrl = 'https://fhs-dev-webapi.herokuapp.com/api';
+  rootUrl = 'https://fhs-webapi.azurewebsites.net/api';
 } else {
-  rootUrl = 'https://fhs-webapi.herokuapp.com/api';
+  rootUrl = 'https://fhs-webapi.azurewebsites.net/api';
 }
 
 export default rootUrl;
