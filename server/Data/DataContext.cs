@@ -20,7 +20,7 @@ namespace server.Data
             //check for in-memory database before updating database
             if (!Database.IsInMemory())
             {
-                Database.EnsureCreated();
+                Database.Migrate();
             }
         }
         //configure Datacontext
@@ -37,15 +37,8 @@ namespace server.Data
             }
             else
             {
-                //use postgres database, load env variables due to Heroku servers
-                var pgUserId = Environment.GetEnvironmentVariable("POSTGRES_USER_ID");
-                var pgPassword = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD");
-                var pgHost = Environment.GetEnvironmentVariable("POSTGRES_HOST");
-                var pgPort = Environment.GetEnvironmentVariable("POSTGRES_PORT");
-                var pgDatabase = Environment.GetEnvironmentVariable("POSTGRES_DB");
-
-                var connStr = $"Server={pgHost};Port={pgPort};User Id={pgUserId};Password={pgPassword};Database={pgDatabase}";
-                options.UseLazyLoadingProxies().UseNpgsql(connStr);
+                var connStr = "Server=tcp:fhs-db.database.windows.net,1433;Initial Catalog=PortfolioDB;Persist Security Info=False;User ID=Devin_98@msn.com;Password=Has9eduv;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+                options.UseLazyLoadingProxies().UseSqlServer(connStr);
 
             }
         }
