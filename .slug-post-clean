@@ -2,8 +2,12 @@ node_modules
 readme.md  
 yarn.lock
 server
+.vscode
 
+client/.cache
 client/.vscode
-client/src
-client/webpack.config.js
 client/node_modules
+client/src
+client/tools
+client/typings
+client/webpack.config.js
