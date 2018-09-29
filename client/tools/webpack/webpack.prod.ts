@@ -1,6 +1,5 @@
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import uglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import webpack from 'webpack';
@@ -41,9 +40,7 @@ const prodConfig: webpack.Configuration = {
     // clean build folder
     new CleanWebpackPlugin([`${paths.buildDir}/*`], {
       allowExternal: true
-    }),
-
-    new CopyWebpackPlugin([{ from: 'server' }])
+    })
   ]
 };
 

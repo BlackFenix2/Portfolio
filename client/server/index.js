@@ -3,7 +3,7 @@ const path = require('path');
 const expressStaticGzip = require('express-static-gzip');
 const app = express();
 const port = process.env.PORT || 8080;
-const directory = path.resolve(__dirname, '..', 'build');
+const directory = path.resolve(__dirname, '..', 'build') || '';
 
 // redirect to https in production
 var env = process.env.NODE_ENV || 'production';
