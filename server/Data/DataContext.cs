@@ -37,7 +37,7 @@ namespace server.Data
             }
             else
             {
-                var connStr = "Server=tcp:fhs-db.database.windows.net,1433;Initial Catalog=PortfolioDB;Persist Security Info=False;User ID=Devin_98/@msn.com;Password={Has9eduv};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+                var connStr = "Server=tcp:fhs-db.database.windows.net,1433;Initial Catalog=Portfolio-DB;Persist Security Info=False;User ID=test.user;Password=Has9eduv;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
                 options.UseLazyLoadingProxies().UseSqlServer(connStr);
 
             }
