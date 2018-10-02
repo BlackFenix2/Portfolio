@@ -8,11 +8,11 @@ const imgStyle = {
 };
 
 class Details extends React.Component<any> {
-  public async render() {
+  public render() {
     return (
       <div className="w3-panel">
         <img
-          src={await import(`src/lib/img/posters/${this.props.poster}`)}
+          src={require(`src/lib/img/posters/${this.props.poster}`)}
           alt="where is the item"
           style={imgStyle}
         />

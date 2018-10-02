@@ -39,8 +39,8 @@ class ShowCard extends React.PureComponent<IShow> {
           rating: prevState.rating - 1
         }))
       : null;
-  public async render() {
-    const image = await import(`src/lib/img/posters/${this.props.poster}`);
+  public render() {
+    const image = require(`src/lib/img/posters/${this.props.poster}`);
     return (
       <Card>
         <Grid stackable>
