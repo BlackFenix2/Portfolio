@@ -7,20 +7,24 @@ const imgStyle = {
   height: '400px'
 };
 
-const Details = props => (
-  <div className="w3-panel">
-    <img
-      src={require(`src/lib/img/posters/${props.poster}`)}
-      alt="where is the item"
-      style={imgStyle}
-    />
-    <h1>{props.title}</h1>
+class Details extends React.Component<any> {
+  public async render() {
+    return (
+      <div className="w3-panel">
+        <img
+          src={await import(`src/lib/img/posters/${this.props.poster}`)}
+          alt="where is the item"
+          style={imgStyle}
+        />
+        <h1>{this.props.title}</h1>
 
-    <p>{props.description}</p>
-    <Link to="/Shows" className="w3-button w3-teal">
-      Go Back
-    </Link>
-  </div>
-);
+        <p>{this.props.description}</p>
+        <Link to="/Shows" className="w3-button w3-teal">
+          Go Back
+        </Link>
+      </div>
+    );
+  }
+}
 
 export default Details;

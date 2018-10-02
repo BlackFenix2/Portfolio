@@ -4,18 +4,10 @@ module.exports = {
   },
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
   testPathIgnorePatterns: ['/node_modules/'],
-  testURL: 'http://localhost',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleNameMapper: {
     //src path
     '^src/(.*)': '<rootDir>/src/$1'
-  },
-  moduleDirectories: ['node_modules', 'src'],
-  //tell ts-jest to skip babel since we have zero babel
-  globals: {
-    'ts-jest': {
-      skipBabel: true
-    }
   },
 
   //configure Enzyme
@@ -23,6 +15,4 @@ module.exports = {
 
   //display tests with description
   verbose: true
-
-  // collectCoverage: true
 };
