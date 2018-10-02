@@ -10,9 +10,13 @@ To run the project you must have [NodeJS], [Yarn] or NPM (Use Yarn!), and [.net 
 
 1. Open your CLI/IDE (recommend [Visual Studio Code]) at the root of this project.
 
+   - or open the server folder .sln with [Visual Studio] and the client folder with [Visual Studio Code]
+
 2. Run command `dotnet run` or vscode task `debug` to start WebAPI server
 
-3. Run command `cd client`
+   - or just debug in Visual Studio
+
+3. Run command `cd client` (unless you are already in the client folder)
 
 4. Run command `yarn start` for Dev Server
 
@@ -20,7 +24,8 @@ To run the project you must have [NodeJS], [Yarn] or NPM (Use Yarn!), and [.net 
 
 6. Run command `yarn build:dev` for Build with express server
 
-[visual studio code]: https://code.visualstudio.com/ 'Visoal Studio Code'
+[visual studio code]: https://code.visualstudio.com/ 'Visual Studio Code'
+[visual studio]: https://visualstudio.microsoft.com/ 'Visual Studio'
 [.net core 2.1 sdk]: https://www.microsoft.com/net/download '.NET Core'
 [yarn]: https://yarnpkg.com 'Yarn Package Manager'
 [nodejs]: https://nodejs.org 'NodeJS'

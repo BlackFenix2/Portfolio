@@ -8,7 +8,7 @@
     "start": "webpack-serve",
     "build:dev": "yarn build && node server/index.js",
     "test": "yarn jest",
-    "lint": "yarn tslint  ./src/**/*.ts{,x} --project tsconfig.json",
+    "lint": "yarn tslint src/**/*.ts{,x}",
     "analyze": "source-map-explorer dist/static/js/bundle.js",
     "update": "yarn upgrade-interactive --latest",
     "prebuild": "yarn install",
