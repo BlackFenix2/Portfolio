@@ -1,8 +1,5 @@
 {
   "name": "root-app",
   "version": "0.1.0",
-  "license": "MIT",
-  "scripts": {
-    "start": "node client/server/index.js"
-  }
+  "license": "MIT"
 }
