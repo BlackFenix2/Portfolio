@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/BlackFenix2/Portfolio.svg?branch=master)](https://travis-ci.org/BlackFenix2/Portfolio)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![Build status](https://dev.azure.com/ErnieFrancis/WebAPI/_apis/build/status/WebAPI-Azure%20Web%20App%20for%20ASP.NET-CI)](https://dev.azure.com/ErnieFrancis/WebAPI/_build/latest?definitionId=12)
+[![Build status](https://dev.azure.com/ErnieFrancis/WebAPI/_apis/build/status/React-CI)](https://dev.azure.com/ErnieFrancis/WebAPI/_build/latest?definitionId=11)
 
 This is a simple proof of concept for Full-stack React with [ASP.NET Core]
 
