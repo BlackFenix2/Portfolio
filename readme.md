@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/BlackFenix2/Portfolio.svg?branch=master)](https://travis-ci.org/BlackFenix2/Portfolio)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![Build status](https://dev.azure.com/ErnieFrancis/React-WebAPI/_apis/build/status/React-CI)](https://dev.azure.com/ErnieFrancis/WebAPI/_build/latest?definitionId=11)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 This is a simple proof of concept for Full-stack React with [ASP.NET Core]
 
