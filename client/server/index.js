@@ -5,13 +5,15 @@ const expressStaticGzip = require('express-static-gzip');
 const app = express();
 const port = process.env.PORT || 8080;
 
-//juryrig untill i torubleshoot imports.
+//juryrig untill i troubleshoot imports.
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
-const buildDir = resolveApp('');
 
-// const directory = path.resolve(__dirname, '..', 'build') || '';
-const directory = buildDir;
+//check for build folder on local production server
+const directory = fs.existsSync(resolveApp('build'))
+  ? resolveApp('build')
+  : resolveApp('');
+
 console.log(directory);
 // redirect to https in production
 var env = process.env.NODE_ENV || 'production';
@@ -32,6 +34,7 @@ app.get('/*', (request, response) => {
   response.sendFile(path.resolve(directory, 'index.html'));
 });
 
+// run app and listen on available port 80
 app.listen(port, () =>
   console.log(`Server started on port: ${port}, serving files at ${directory}`)
 );
