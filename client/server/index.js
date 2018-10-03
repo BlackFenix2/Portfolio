@@ -8,7 +8,7 @@ const port = process.env.PORT || 8080;
 //juryrig untill i torubleshoot imports.
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
-const buildDir = resolveApp('build');
+const buildDir = resolveApp('');
 
 // const directory = path.resolve(__dirname, '..', 'build') || '';
 const directory = buildDir;

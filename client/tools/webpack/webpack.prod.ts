@@ -50,6 +50,8 @@ const serverConfig: webpack.Configuration = {
   // target node
   target: 'node',
 
+  mode: 'production',
+
   entry: {
     server: [paths.serverIndex]
   },
