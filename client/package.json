@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "reactSnap": {
+    "inlineCss": true,
     "viewport": {
       "width": 1920,
       "height": 1080
@@ -62,7 +63,7 @@
     "prettier": "^1.13.7",
     "react-addons-test-utils": "^15.6.2",
     "react-emotion": "^9.2.12",
-    "react-snap": "^1.15.0",
+    "react-snap": "^1.19.0",
     "redux-immutable-state-invariant": "^2.1.0",
     "style-loader": "^0.22.1",
     "sw-precache-webpack-plugin": "^0.11.5",
