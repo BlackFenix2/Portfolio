@@ -1,12 +1,18 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const expressStaticGzip = require('express-static-gzip');
 const app = express();
 const port = process.env.PORT || 8080;
-const directory = path.resolve(__dirname, '..', 'build') || '';
 
-// path to Dev Certificate
+//juryrig untill i torubleshoot imports.
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+const buildDir = resolveApp('build');
 
+// const directory = path.resolve(__dirname, '..', 'build') || '';
+const directory = buildDir;
+console.log(directory);
 // redirect to https in production
 var env = process.env.NODE_ENV || 'production';
 
@@ -26,4 +32,6 @@ app.get('/*', (request, response) => {
   response.sendFile(path.resolve(directory, 'index.html'));
 });
 
-app.listen(port, () => console.log(`Server started on port: ${port}`));
+app.listen(port, () =>
+  console.log(`Server started on port: ${port}, serving files at ${directory}`)
+);
