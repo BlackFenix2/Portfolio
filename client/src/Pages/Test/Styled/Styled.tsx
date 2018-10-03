@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import styled from 'styled-components';
+import styled from 'react-emotion';
 
 import LoadingIcon from 'src/components/elements/LoadingIcon';
 
@@ -12,14 +12,11 @@ const Button = props => (
 
 const ButtonContainer = props => (
   <Button {...props}>
-    <span>{props.children}</span>
-    <span>
-      <LoadingIcon active={props.loading} />
-    </span>
+    {props.children} <LoadingIcon active={props.loading} />
   </Button>
 );
 
-const StyledButton = styled.button`
+const StyledButton = styled('button')`
   background-color: black;
   color: white;
   border: none;
@@ -35,26 +32,35 @@ const StyledButton = styled.button`
 
 interface StyledProps {
   name?: string;
+}
+
+interface StyledState {
   loading: boolean;
 }
 
-const clickEvent = props => {
-  // tslint:disable-next-line:no-console
-  console.log('Clicked');
-};
+class Styled extends React.Component<StyledProps, StyledState> {
+  public state = {
+    loading: false
+  };
 
-const Styled: React.SFC<StyledProps> = props => (
-  <div>
-    <h2>Styled Tests</h2>
-    <button>unstyled Button</button>
-    <button className="w3-button w3-blue">Classic CSS</button>
-    <ButtonContainer onClick={() => clickEvent(props.loading)}>
-      Styled Button Component
-    </ButtonContainer>
-    <StyledButton onClick={() => clickEvent(props.loading)}>
-      Styled Button
-    </StyledButton>
-  </div>
-);
+  public clickEvent = () => {
+    this.setState({
+      loading: !this.state.loading
+    });
+  };
+
+  public render() {
+    return (
+      <div>
+        <h2>Styled Tests</h2>
+        <button className="w3-button w3-blue">Classic CSS</button>
+        <ButtonContainer onClick={this.clickEvent} loading={this.state.loading}>
+          Styled Button Component
+        </ButtonContainer>
+        <StyledButton onClick={this.clickEvent}>Styled Button</StyledButton>
+      </div>
+    );
+  }
+}
 
 export default Styled;

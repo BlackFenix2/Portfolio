@@ -3,7 +3,7 @@ import Modal from 'src/components/elements/Modal';
 
 class Register extends Component {
   public state = {
-    visible: true
+    visible: false
   };
 
   public toggleEvent = () => {
