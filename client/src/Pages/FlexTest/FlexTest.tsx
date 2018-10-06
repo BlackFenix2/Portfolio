@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, Grid, Progress } from 'semantic-ui-react';
 import { Form, ResetButton, SubmitButton } from 'src/components/form';
 import { TextInput } from 'src/components/inputs';
-import API from 'src/services/numbersApi';
+import API from 'src/services/norrisApi';
 
 interface State {
   value: {};
@@ -15,7 +15,8 @@ class FlexTest extends React.Component<any, State> {
     value: {},
     progressTest: 0,
     apiResult: {
-      value: ''
+      value: '',
+      icon_url: ''
     }
   };
   public componentDidMount() {
@@ -40,7 +41,14 @@ class FlexTest extends React.Component<any, State> {
           <Grid.Row>
             <Grid.Column>
               <p>{this.state.apiResult.value}</p>
-              <Button onClick={this.test}>new Chuck Norris fact</Button>
+
+              <Button onClick={this.test}>
+                <img
+                  onClick={this.test}
+                  src={this.state.apiResult.icon_url}
+                  alt="Chuck Norris Image"
+                />
+              </Button>
               <Form onSubmit={this.submit} form="TestForm">
                 <TextInput name="firstName" displayName="First Name" />
                 <TextInput name="lastName" displayName="Last Name" />

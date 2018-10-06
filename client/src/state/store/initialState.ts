@@ -79,6 +79,12 @@ const routes: Routes = [
 
     children: []
   },
+  {
+    url: '/Cats',
+    name: 'Cats',
+
+    children: []
+  },
 
   {
     url: '/Games',

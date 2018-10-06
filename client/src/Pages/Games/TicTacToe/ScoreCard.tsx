@@ -29,14 +29,11 @@ interface State {
 class ScoreCard extends React.Component<Props, State> {
   // default active state
   public state = {
-    active: 'Total Games',
+    active: '',
     filteredList: this.props.stats
   };
 
   public filterList = (stats, content) => {
-    if (content === 'Total Games') {
-      return stats;
-    }
     if (content === 'Draws') {
       return stats.filter(x => x.winner === 'draw');
     }
@@ -52,10 +49,17 @@ class ScoreCard extends React.Component<Props, State> {
   public activeChange = (e, { content }) => {
     const { stats } = this.props;
     const list = this.filterList(stats, content);
-    this.setState({
-      active: content,
-      filteredList: list
-    });
+    if (content === this.state.active) {
+      this.setState({
+        active: '',
+        filteredList: list
+      });
+    } else {
+      this.setState({
+        active: content,
+        filteredList: list
+      });
+    }
   };
 
   public render() {
@@ -68,13 +72,6 @@ class ScoreCard extends React.Component<Props, State> {
           </Segment>
 
           <Label.Group>
-            <Label
-              as="a"
-              content="Total Games"
-              detail={this.props.stats.length || 0}
-              color={this.state.active === 'Total Games' ? 'blue' : null}
-              onClick={this.activeChange}
-            />
             <Label
               as="a"
               content="Draws"
@@ -132,14 +129,20 @@ class ScoreCard extends React.Component<Props, State> {
 const ScoreCardItem = props => (
   <List.List>
     <List.Content>
-      <List.Item>Game:{props.gameNumber}</List.Item>
-      <List.Item>Total Moves:{props.totalMoves}</List.Item>
+      <List.Item>
+        Game:
+        {props.gameNumber}
+      </List.Item>
+      <List.Item>
+        Total Moves:
+        {props.totalMoves}
+      </List.Item>
       <List.Item>Board Order: {props.boxOrder}</List.Item>
       <List.Item>
         Winner:
         {props.winner}
       </List.Item>
-      <button onClick={() => props.scoreClicked(props.boxOrder)}>board</button>
+      <Button onClick={() => props.scoreClicked(props.boxOrder)}>board</Button>
     </List.Content>
   </List.List>
 );

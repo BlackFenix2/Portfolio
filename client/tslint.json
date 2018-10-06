@@ -12,8 +12,6 @@
     "exclude": ["/node_modules/"]
   },
   "rules": {
-    "no-boolean-literal-compare": true,
-
     // enabled, template string is cleaner than concat strings
     // pull request for fixer:  https://github.com/palantir/tslint/pull/3663
     "prefer-template": true,

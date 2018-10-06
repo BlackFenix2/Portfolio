@@ -3,9 +3,10 @@ import { Collapse } from 'react-collapse';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Icon, Menu } from 'semantic-ui-react';
+import MobileDropdownComponent from './MobileDropdownComponent';
 
 const NavBar = props => (
-  <Menu fixed="top" vertical fluid borderless>
+  <Menu fixed="top" vertical fluid>
     {props.children}
   </Menu>
 );
@@ -22,8 +23,6 @@ const NavItem = props => (
   </Menu.Item>
 );
 
-const DropdownComponent = props => <Menu.Menu>{props.children}</Menu.Menu>;
-
 // generate simple nav links
 const LinkGenerator = props => {
   const { routes } = props;
@@ -39,7 +38,7 @@ const LinkGenerator = props => {
           {item.name}
         </NavItem>
       ) : (
-        <DropdownComponent key={key} name={item.name}>
+        <MobileDropdownComponent key={key} name={item.name}>
           {item.children.map((child, index) => (
             <NavItem
               key={index}
@@ -50,7 +49,7 @@ const LinkGenerator = props => {
               {child.name}
             </NavItem>
           ))}
-        </DropdownComponent>
+        </MobileDropdownComponent>
       )
   );
   return navLinks;
@@ -61,6 +60,7 @@ interface State {
   activeUrl: string;
 }
 
+// tslint:disable-next-line:max-classes-per-file
 class MobileNav extends React.Component<{ routes: any }, State> {
   public state = {
     visible: false,

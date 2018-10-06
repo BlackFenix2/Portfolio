@@ -20,6 +20,15 @@ interface State {
   optionSelect: string;
 }
 
+const mapStateToProps = ({ fruits }) => ({ fruits });
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({ ...fruitRoutines }, dispatch)
+});
+
+@connect(
+  mapStateToProps,
+  mapDispatchToProps
+)
 class CRUD extends React.Component<IProps, State> {
   public state = {
     uiLoading: false,
@@ -177,12 +186,4 @@ class CRUD extends React.Component<IProps, State> {
   }
 }
 
-const mapStateToProps = ({ fruits }) => ({ fruits });
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ ...fruitRoutines }, dispatch)
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CRUD);
+export default CRUD;

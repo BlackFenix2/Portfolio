@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { Login as LoginModal } from 'src/App/Authentication';
 import Register from 'src/App/Authentication/Register';
-
 interface State {
   value: string;
   localStorage: string;
@@ -46,6 +46,7 @@ export default class Login extends React.Component<any, State> {
           <button onClick={this.getStorage}>Get Localstorage</button>
         </div>
         <Register />
+        <LoginModal />
       </div>
     );
   }

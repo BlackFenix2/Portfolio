@@ -15,6 +15,7 @@
     // use latest ES version including proposed features
     "module": "esnext",
     "target": "esnext",
+
     // targets node
     "moduleResolution": "node",
 
@@ -23,7 +24,6 @@
 
     // allows default import of modules without default exports, shorthand for import * as item from 'module'
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
 
     //Allow decorators
     "experimentalDecorators": true,

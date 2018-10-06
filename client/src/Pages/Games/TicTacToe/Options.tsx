@@ -30,9 +30,11 @@ const Options = props => (
         placeholder="Choose number of Players"
         options={options}
       />
-      <Button onClick={props.resetGame} disabled={props.disabled}>
-        Reset
-      </Button>
+      <div>
+        <Button onClick={props.resetGame} disabled={props.disabled}>
+          Reset
+        </Button>
+      </div>
       <Input
         value={props.delay}
         onChange={props.setDelay}
@@ -43,12 +45,12 @@ const Options = props => (
       <Label>{props.delay}</Label>
       {props.playerCount === 0 && (
         <div>
-          <button onClick={props.playSelf} disabled={props.disabled}>
+          <Button onClick={props.playSelf} disabled={props.disabled}>
             Play itself
-          </button>
-          <button onClick={props.playSelfOnce} disabled={props.disabled}>
+          </Button>
+          <Button onClick={props.playSelfOnce} disabled={props.disabled}>
             Play Self once
-          </button>
+          </Button>
         </div>
       )}
       <Segment compact basic>

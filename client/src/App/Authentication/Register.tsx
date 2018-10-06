@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import Modal from 'src/components/elements/Modal';
 
-class Register extends Component {
+interface Props {
+  visible?: boolean;
+}
+class Register extends Component<Props> {
   public state = {
-    visible: false
+    visible: this.props.visible
   };
 
   public toggleEvent = () => {
@@ -14,7 +17,7 @@ class Register extends Component {
   public render() {
     return (
       <Modal
-        header={'Register'}
+        header="Register"
         visible={this.state.visible}
         toggleEvent={this.toggleEvent}
       >

@@ -12,12 +12,6 @@ const appService = {
         })
         .catch(error => error);
     });
-  },
-
-  getPostsAsync() {
-    return new Promise(resolve => {
-      setTimeout(() => resolve('test async'), 2000);
-    });
   }
 };
 

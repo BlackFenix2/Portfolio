@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "license": "MIT",
   "reactSnap": {
-    "inlineCss": true,
     "viewport": {
       "width": 1920,
       "height": 1080

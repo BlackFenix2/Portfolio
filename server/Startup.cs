@@ -136,6 +136,10 @@ namespace server
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            //initialize Database on startup
+            app.InitializeData();
+
+
             //allow MVC Routes to be accessed outside of server
             app.UseCors(
                 options => options.AllowAnyOrigin()

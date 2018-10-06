@@ -1,0 +1,8 @@
+.normal {
+  transition: 0.5s;
+}
+
+.flipped {
+  transition: 0.5s;
+  transform: scaleY(-1);
+}
