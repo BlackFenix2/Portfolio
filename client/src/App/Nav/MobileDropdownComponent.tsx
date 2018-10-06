@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { Collapse } from 'react-collapse';
 import { Icon, Menu } from 'semantic-ui-react';
 
-import styles from './MobileDropdownComponent.module.css';
+import * as styles from './MobileDropdownComponent.module.css';
 
 class MobileDropdownComponent extends React.Component<any> {
   public state = {

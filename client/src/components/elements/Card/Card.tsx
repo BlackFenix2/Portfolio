@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from './card.module.css';
+import styles from './card.module.css';
 
 export default class App extends React.Component<any, any> {
   public render() {

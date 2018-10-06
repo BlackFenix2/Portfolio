@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import Modal from 'src/components/elements/Modal';
 
 interface Props {
   visible?: boolean;
 }
-class Register extends Component<Props> {
+class Register extends React.Component<Props> {
   public state = {
     visible: this.props.visible
   };

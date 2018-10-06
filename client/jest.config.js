@@ -7,7 +7,8 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleNameMapper: {
     //src path
-    '^src/(.*)': '<rootDir>/src/$1'
+    '^src/(.*)': '<rootDir>/src/$1',
+    '\\.(css|less)$': 'identity-obj-proxy'
   },
 
   //configure Enzyme

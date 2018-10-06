@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Form, Input, Label } from 'semantic-ui-react';
 import Modal from 'src/components/elements/Modal';
 
 interface Props {
   visible?: boolean;
 }
-class Login extends Component<Props> {
+class Login extends React.Component<Props> {
   public state = {
     visible: this.props.visible
   };

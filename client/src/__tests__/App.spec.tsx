@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import React from 'react';
+import * as React from 'react';
 
 // get app without css imports to avoid jest erros
 import App from 'src/App/App';
