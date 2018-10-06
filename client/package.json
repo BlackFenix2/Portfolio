@@ -3,12 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "license": "MIT",
-  "reactSnap": {
-    "viewport": {
-      "width": 1920,
-      "height": 1080
-    }
-  },
   "scripts": {
     "prestart": "yarn install",
     "start": "webpack-serve",
@@ -33,7 +27,6 @@
     "@types/react-dom": "^16.0.5",
     "@types/react-fontawesome": "^1.6.3",
     "@types/react-motion": "^0.0.27",
-    "@types/react-responsive": "^3.0.1",
     "@types/react-router-dom": "^4.2.7",
     "@types/react-test-renderer": "^16.0.1",
     "@types/reduce-reducers": "^0.1.3",
@@ -100,10 +93,12 @@
     "history": "^4.7.2",
     "lodash": "^4.17.4",
     "lodash.pickby": "^4.6.0",
+    "lodash.throttle": "^4.1.1",
     "material-ui": "^1.0.0-beta.26",
     "rc-collapse": "^1.9.3",
     "react": "^16.4.0",
     "react-collapse": "^4.0.3",
+    "react-device-detect": "^1.6.1",
     "react-dom": "^16.4.0",
     "react-hot-loader": "^4.3.3",
     "react-motion": "^0.5.2",
