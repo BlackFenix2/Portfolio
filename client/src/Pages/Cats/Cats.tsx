@@ -5,6 +5,8 @@ interface State {
   number: number;
 }
 
+import styles from './Cats.module.css';
+
 class Cats extends React.Component<any, State> {
   public state = {
     result: 200,
@@ -25,6 +27,7 @@ class Cats extends React.Component<any, State> {
         <img
           src={`https://http.cat/${this.state.number}.jpg`}
           alt="No cat found :("
+          className={styles.img}
         />
 
         <hr />
