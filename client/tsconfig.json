@@ -1,11 +1,5 @@
 {
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "typescript-styled-plugin"
-      }
-    ],
-
     // compile JSX syntax to JS
     "jsx": "react",
 
