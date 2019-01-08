@@ -4,8 +4,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Whois;
-using Whois.Extensions;
 
 namespace server.Services
 {
@@ -13,56 +13,34 @@ namespace server.Services
     {
         public WhoisRecord GetWhoisInfo(string domain)
         {
-            //validate domain befor emakign whois Query
+            //validate domain before making whois Query
             try
             {
                 domain = Cleanse(domain);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
             var record = new WhoisRecord();
             var whoisResult = new WhoisLookup().Lookup(domain);
+            var records = whoisResult.ParsedResponse;
 
-            List<string> parameters = new List<string>
-            {
-                "Creation Date:",
-                "Registrar Registration Expiration Date:",
-                "Registry Expiry Date:",
-                "Registrar:",
-                "Domain Status:",
-                "Registrant Email:",
-                "Admin Email:",
-                "Name Server:"
-            };
-
-            var records = GetWHOISValues(whoisResult.Text, parameters);
-
-            record.Raw = whoisResult.ToString();
+            record.Raw = whoisResult.Content;
             record.Domain = domain;
-            // try to populate whois record.
+            // try to populate whois record,
             try
             {
-                record.Created = DateTime.Parse(records["Creation Date:"]
-                            .FirstOrDefault());
+                record.Created = records.Registered;
 
-                var test = records["Registry Expiry Date:"].FirstOrDefault();
-                record.Expired = DateTime.Parse(records
-                .First(x => (x.Key == "Registrar Registration Expiration Date:" && x.Value.FirstOrDefault() != null)
-                || (x.Key == "Registry Expiry Date:" && x.Value.FirstOrDefault() != null))
-                .Value
-                .FirstOrDefault());
+                record.Expired = records.Expiration;
 
-                record.DomainStatus = records["Domain Status:"]
-                // trim whitespace for clean domain status list
-                .Select(x => x.SubstringBeforeChar(" ").Trim())
-                .ToList();
+                record.DomainStatus = records.DomainStatus;
 
-                record.Nameservers = records["Name Server:"];
+                record.Nameservers = records.NameServers;
 
-                record.Registrant.Email = records["Registrant Email:"].FirstOrDefault();
-                record.Admin.Email = records["Admin Email:"].FirstOrDefault();
+                record.Registrant.Email = records.Registrant.Email;
+                record.Admin.Email = records.AdminContact.Email;
             }
             catch (Exception)
             {
@@ -72,25 +50,48 @@ namespace server.Services
             return record;
         }
 
-        private Dictionary<string, List<string>> GetWHOISValues(ArrayList text, List<string> parameters)
+        public async Task<WhoisRecord> GetWhoisInfoAsync(string domain)
         {
-            var TextList = text.ToArray().OfType<string>().ToList();
-            Dictionary<string, List<String>> dict = new Dictionary<string, List<String>>();
-
-            foreach (var item in parameters)
+            //validate domain before making whois Query
+            try
             {
-                var values = TextList
-                    .Where(x => x.Contains(item))
-                    .Select(x => x.SubstringAfterChar(":").Trim())
-                    .ToList();
-                dict.Add(item, values);
+                domain = Cleanse(domain);
             }
-            return dict;
+            catch (InvalidOperationException)
+            {
+                throw;
+            }
+            var record = new WhoisRecord();
+            var whoisResult = await new WhoisLookup().LookupAsync(domain);
+
+            var records = whoisResult.ParsedResponse;
+
+            record.Raw = whoisResult.Content;
+            record.Domain = domain;
+            // try to populate whois record.
+            try
+            {
+                record.Created = records.Registered;
+
+                record.Expired = records.Expiration;
+
+                record.DomainStatus = records.DomainStatus;
+
+                record.Nameservers = records.NameServers;
+
+                record.Registrant.Email = records.Registrant.Email;
+                record.Admin.Email = records.AdminContact.Email;
+            }
+            catch (Exception)
+            {
+                return record;
+            }
+
+            return record;
         }
 
         private string Cleanse(string domain)
         {
-            
             return domain;
         }
     }

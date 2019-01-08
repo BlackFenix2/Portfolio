@@ -1,31 +1,21 @@
-﻿
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Routing;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using server.Data;
 using server.Helpers;
 using server.Identity;
 using server.Interfaces;
-using server.Middleware;
 using server.Services;
 using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace server
 {
@@ -44,12 +34,8 @@ namespace server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-
-
             //add Database to app
             services.AddDbContext<DataContext>();
-
 
             // add cross origin resource sharing for serving API requests
             services.AddCors();
@@ -63,19 +49,13 @@ namespace server
             services.AddScoped<ITokenService, TokenService>();
 
             // add MVC with automatic CSRF protection
-            services.AddMvc(options =>
-            {
-
-                // add antiforgery when authentication is configured
-                // not yet enabled untill authentication/authorization is configured
-                // options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-            })
+            services.AddMvc()
             //handle JSON cycle loops with related EF core entities
             .AddJsonOptions(
                 options =>
-                {
-                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                }
+
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+
             );
 
             //add API documentation to JSON
@@ -103,7 +83,6 @@ namespace server
                         Type = "apiKey"
                     });
 
-
                     // Set the comments path for the Swagger JSON and UI.
                     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -113,12 +92,7 @@ namespace server
                 {
                     Console.WriteLine("Exception setting up Swagger JWT: " + ex.Message);
                 }
-
-
             });
-
-
-
 
             // Add Identity
             // TODO move glob to separate file
@@ -128,17 +102,13 @@ namespace server
 
             //Add JWT Authentication
             services.AddJwtAuthentication();
-
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
             //initialize Database on startup
             app.InitializeData();
-
 
             //allow MVC Routes to be accessed outside of server
             app.UseCors(
@@ -148,15 +118,12 @@ namespace server
                                     .AllowCredentials()
             );
 
-
-
             // testing new exception handler for .net core 2.1
             // Handle global uncaught exceptions
             app.UseExceptionHandler(errorApp =>
             {
                 errorApp.Run(async context =>
                 {
-
                     var exception = context.Features.Get<IExceptionHandlerFeature>().Error;
 
                     //Create new JSON Object
@@ -174,7 +141,6 @@ namespace server
 
             //use JWT authentication
             app.UseAuthentication();
-
 
             //use MVC routing
             app.UseMvc();
