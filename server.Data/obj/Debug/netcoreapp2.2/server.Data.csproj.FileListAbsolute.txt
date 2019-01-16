@@ -1,0 +1,3 @@
+C:\Users\Asus\Dropbox\SourceCode\ReactSource\Profile\server.Data\obj\Debug\netcoreapp2.2\server.Data.csproj.CoreCompileInputs.cache
+C:\Users\Asus\Dropbox\SourceCode\ReactSource\Profile\server.Data\obj\Debug\netcoreapp2.2\server.Data.AssemblyInfoInputs.cache
+C:\Users\Asus\Dropbox\SourceCode\ReactSource\Profile\server.Data\obj\Debug\netcoreapp2.2\server.Data.AssemblyInfo.cs

@@ -26,7 +26,7 @@ class TicTacToe extends React.Component<any, any> {
     warGamesCount: 40,
     warGamesDelay: 1000,
     selectedBox: undefined,
-    stats: [] as [Stats],
+    stats: [] as Stats[],
     boxOrder: [],
     diagPatternCheck: 0,
     acrossPatternCheck: 0,
@@ -132,7 +132,7 @@ class TicTacToe extends React.Component<any, any> {
 
   public playSelf = async () => {
     if (
-      confirm(
+      !confirm(
         `Warning: The computer will play itself for ${
           this.state.warGamesCount
         } games`

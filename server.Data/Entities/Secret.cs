@@ -1,5 +1,5 @@
 ﻿
-using server.Attributes;
+using server.Data.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
