@@ -7,7 +7,7 @@ import Options from './Options';
 import ScoreCard from './ScoreCard';
 import { playCircle, playCross, playGame, toggleMute } from './Sounds';
 
-interface Stats {
+export interface Stats {
   winner: string;
   gameNumber: number;
   totalMoves: number;

@@ -11,19 +11,17 @@ import Card from 'src/components/elements/Card';
 
 interface Props {
   clearScore: () => void;
-  stats: [
-    {
-      winner: string;
-      gameNumber: number;
-      totalMoves: number;
-      boxOrder: [number];
-    }
-  ];
+  stats: Array<{
+    winner: string;
+    gameNumber: number;
+    totalMoves: number;
+    boxOrder: [number];
+  }>;
 }
 
 interface State {
   active: string;
-  filteredList: [object];
+  filteredList: object[];
 }
 
 class ScoreCard extends React.Component<Props, State> {

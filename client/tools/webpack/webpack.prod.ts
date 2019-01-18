@@ -2,7 +2,7 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import path from 'path';
-import uglifyJSPlugin from 'uglifyjs-webpack-plugin';
+import terserJSPlugin from 'terser-webpack-plugin';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 import paths from '../paths';
@@ -19,7 +19,7 @@ const prodConfig: webpack.Configuration = {
 
   optimization: {
     minimizer: [
-      new uglifyJSPlugin({
+      new terserJSPlugin({
         parallel: true
       })
     ]

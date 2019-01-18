@@ -16,6 +16,10 @@
     // pull request for fixer:  https://github.com/palantir/tslint/pull/3663
     "prefer-template": true,
 
+    //resolving tslint conflict with Microsoft
+    //https://github.com/palantir/tslint/issues/2946
+    "prefer-array-literal": [true, { "allow-type-parameters": true }],
+
     // disabled, some object keys require specific order for API FETCH
     "object-literal-sort-keys": false,
 

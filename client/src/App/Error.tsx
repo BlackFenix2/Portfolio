@@ -1,15 +1,17 @@
 import React from 'react';
 
 class Error extends React.Component {
+  public static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
   public state = {
     error: null,
     hasError: false,
     info: null
   };
   public componentDidCatch(error, info) {
-    this.setState({ error, info, hasError: true });
+    this.setState({ error, info });
   }
-
   public render() {
     if (this.state.hasError) {
       const { error, info } = this.state;
@@ -17,9 +19,10 @@ class Error extends React.Component {
         <div>
           <h1>you broke it doofus!</h1>
           <p>{error.message}</p>
+
           <p>
-            {info.componentStack.split('\n').map(i => (
-              <span>
+            {info.componentStack.split('\n').map((i, key) => (
+              <span key={key}>
                 {i}
                 <br />
               </span>
