@@ -1,16 +1,13 @@
 import React from 'react';
 
 class Error extends React.Component {
-  public static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
   public state = {
     error: null,
     hasError: false,
     info: null
   };
   public componentDidCatch(error, info) {
-    this.setState({ error, info });
+    this.setState({ error, info, hasError: true });
   }
   public render() {
     if (this.state.hasError) {

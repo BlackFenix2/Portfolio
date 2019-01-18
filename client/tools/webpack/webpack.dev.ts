@@ -1,4 +1,5 @@
 import history from 'connect-history-api-fallback';
+import ErrorOverlayPlugin from 'error-overlay-webpack-plugin';
 import convert from 'koa-connect';
 import merge from 'webpack-merge';
 import webpackServeWaitpage from 'webpack-serve-waitpage';
@@ -10,6 +11,8 @@ const devConfig = {
   // use source map, override dev mode default
   devtool: 'source-map',
 
+  // add error overlay like CRA
+  plugins: [new ErrorOverlayPlugin()],
   // webpack-serve dev options
   serve: {
     // open default browser on load
