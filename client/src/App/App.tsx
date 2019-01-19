@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import configureStore from 'src/state/store/configureStore';
 
-import { todoStore } from 'src/state/stores/TodoStore';
+import { todoStore } from 'src/state/stores/todoStore';
 import Body from './Body';
 import Footer from './Footer';
 import Header from './Header';
@@ -16,7 +16,7 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={configureStore}>
-        <MobxProvider store={todoStore}>
+        <MobxProvider todoStore={todoStore}>
           <ConnectedRouter history={history} basename="/">
             <AppLayout />
           </ConnectedRouter>

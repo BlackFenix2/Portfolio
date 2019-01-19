@@ -8,6 +8,8 @@ interface Todo {
 class TodoStore {
   @observable todoList: Todo[] = [];
 
+  @observable testState: string = 'test';
+
   constructor() {
     reaction(
       () => this.todoList.filter(todo => !todo.isComplete),

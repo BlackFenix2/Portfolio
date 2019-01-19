@@ -21,12 +21,24 @@ class Todo extends React.Component<any, any> {
   render() {
     return (
       <div>
+        <div>
+          <p>Test State:{this.props.todoStore.testState}</p>
+        </div>
         <label>New Task</label>
         <input value={this.task} onChange={this.handleTaskChange} />
         <button onClick={this.handleAddTodo}>Add</button>
+        <TodoList />
       </div>
     );
   }
 }
+
+const TodoList = inject('todoStore')(
+  observer(({ todoStore: { todoList } }) =>
+    todoList.map((todo, idx) => <TodoListItem key={idx} todo={todo} />)
+  )
+);
+
+const TodoListItem = ({ todo }) => <div>{todo.task}</div>;
 
 export default Todo;
