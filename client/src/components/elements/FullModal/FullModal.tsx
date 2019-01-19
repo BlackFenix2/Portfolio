@@ -6,8 +6,8 @@ interface Props {
 }
 
 class FullModal extends React.Component<Props> {
-  public state;
-  public render() {
+  state;
+  render() {
     if (!this.props.visible) {
       return null;
     }

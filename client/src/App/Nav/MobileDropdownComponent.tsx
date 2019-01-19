@@ -5,16 +5,16 @@ import { Icon, Menu } from 'semantic-ui-react';
 import * as styles from './MobileDropdownComponent.module.css';
 
 class MobileDropdownComponent extends React.Component<any> {
-  public state = {
+  state = {
     visible: false
   };
-  public toggleVisible = () => {
+  toggleVisible = () => {
     this.setState({
       visible: !this.state.visible
     });
   };
 
-  public render() {
+  render() {
     return (
       <React.Fragment>
         <Menu.Item name={this.props.name} onClick={this.toggleVisible}>

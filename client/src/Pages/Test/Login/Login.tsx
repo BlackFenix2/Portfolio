@@ -7,33 +7,33 @@ interface State {
 }
 
 export default class Login extends React.Component<any, State> {
-  public state = {
+  state = {
     value: '',
     localStorage: ''
   };
 
-  public componentDidMount() {
+  componentDidMount() {
     this.setState({
       localStorage: localStorage.getItem('test')
     });
   }
-  public getStorage = () => {
+  getStorage = () => {
     this.setState({
       localStorage: localStorage.getItem('test')
     });
   };
 
-  public setStorage = () => {
+  setStorage = () => {
     localStorage.setItem('test', this.state.value);
   };
 
-  public changeValue = e => {
+  changeValue = e => {
     this.setState({
       value: e.target.value
     });
   };
 
-  public render() {
+  render() {
     return (
       <div>
         <h1>Login Test</h1>

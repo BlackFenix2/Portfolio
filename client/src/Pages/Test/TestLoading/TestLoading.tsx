@@ -1,17 +1,10 @@
 import * as React from 'react';
-import Loading from 'src/components/shared/Loading';
-import FullExample from './FullExample';
-// import MediaExample from './MediaExample';
-
-const test = 'MediaExample';
-const MediaExample = React.lazy(() => import(`./${test}`));
+import AsyncComponent from 'src/components/shared/AsyncComponent';
+import MediaExample from './MediaExample';
 
 const TestComponent = () => (
   <div>
-    <React.Suspense fallback={<Loading />}>
-      <FullExample />
-      <MediaExample />
-    </React.Suspense>
+    <AsyncComponent importPath="./MediaExample" />
   </div>
 );
 

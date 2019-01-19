@@ -13,16 +13,16 @@ interface IProps {
 }
 
 class Landing extends React.Component<IProps> {
-  public goToSearch = event => {
+  goToSearch = event => {
     event.preventDefault();
     this.props.history.push('/Shows');
   };
 
-  public handleSearchTermChange = event => {
+  handleSearchTermChange = event => {
     this.props.actions.setSearchTerm(event.target.value);
   };
 
-  public render() {
+  render() {
     return (
       <div>
         <h1>Welcome to the home page</h1>

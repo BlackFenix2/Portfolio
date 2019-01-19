@@ -5,8 +5,8 @@ import Error from './Error';
 import Routes from './Routes';
 
 class Body extends React.Component {
-  public state;
-  public render() {
+  state;
+  render() {
     return (
       <main style={{ marginTop: '3em' }}>
         <Segment basic>

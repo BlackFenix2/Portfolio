@@ -16,16 +16,16 @@ const ProgressItem = styled.div`
   transition: 0.5s;
 `;
 class ProgressBar extends React.Component<IProps> {
-  public getColor = () => {
+  getColor = () => {
     if (this.props.percent >= 100) {
       return 'green';
     }
     return this.props.percent > 50 ? 'lightgreen' : 'red';
   };
-  public getProgress = () =>
+  getProgress = () =>
     this.props.percent > 100 ? '100%' : `${this.props.percent}%`;
 
-  public render() {
+  render() {
     const styles = {
       barWidth: this.getProgress(),
       color: this.getColor()

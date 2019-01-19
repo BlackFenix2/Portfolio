@@ -6,16 +6,16 @@ interface Props {
   visible?: boolean;
 }
 class Login extends React.Component<Props> {
-  public state = {
+  state = {
     visible: this.props.visible
   };
 
-  public toggleEvent = () => {
+  toggleEvent = () => {
     this.setState({
       visible: !this.state.visible
     });
   };
-  public render() {
+  render() {
     return (
       <Modal
         header={'Login'}

@@ -16,6 +16,9 @@
     // pull request for fixer:  https://github.com/palantir/tslint/pull/3663
     "prefer-template": true,
 
+    // modified, removes code-bloat accessors in TS React.
+    "member-access": [true, "no-public"],
+
     //resolving tslint conflict with Microsoft
     //https://github.com/palantir/tslint/issues/2946
     "prefer-array-literal": [true, { "allow-type-parameters": true }],

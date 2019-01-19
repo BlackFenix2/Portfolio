@@ -26,12 +26,12 @@ interface State {
 
 class ScoreCard extends React.Component<Props, State> {
   // default active state
-  public state = {
+  state = {
     active: '',
     filteredList: this.props.stats
   };
 
-  public filterList = (stats, content) => {
+  filterList = (stats, content) => {
     if (content === 'Draws') {
       return stats.filter(x => x.winner === 'draw');
     }
@@ -44,7 +44,7 @@ class ScoreCard extends React.Component<Props, State> {
     return stats;
   };
 
-  public activeChange = (e, { content }) => {
+  activeChange = (e, { content }) => {
     const { stats } = this.props;
     const list = this.filterList(stats, content);
     if (content === this.state.active) {
@@ -60,7 +60,7 @@ class ScoreCard extends React.Component<Props, State> {
     }
   };
 
-  public render() {
+  render() {
     return (
       <Card>
         <Container textAlign="center">

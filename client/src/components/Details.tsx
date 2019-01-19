@@ -8,7 +8,7 @@ const imgStyle = {
 };
 
 class Details extends React.Component<any> {
-  public render() {
+  render() {
     return (
       <div className="w3-panel">
         <img

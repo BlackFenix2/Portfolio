@@ -7,7 +7,7 @@ const Desktop = props => <Responsive {...props} minWidth={992} />;
 const Mobile = props => <Responsive {...props} maxWidth={992} />;
 
 class Nav extends React.Component {
-  public render() {
+  render() {
     return (
       <React.Fragment>
         <Desktop>

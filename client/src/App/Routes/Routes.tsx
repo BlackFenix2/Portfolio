@@ -10,7 +10,7 @@ const Home = setPageRouteAsync('/Home');
 const PageNotFound = universal(() => import('src/components/shared/NotFound'));
 
 class Routes extends React.Component<{ routes: any }> {
-  public render() {
+  render() {
     return (
       // Weird Juryrig, involing stateless components return array of routes directly to switch parent.
       <Switch>

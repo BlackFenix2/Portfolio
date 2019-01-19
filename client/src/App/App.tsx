@@ -1,8 +1,11 @@
 import { createBrowserHistory } from 'history';
+import { Provider as MobxProvider } from 'mobx-react';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import configureStore from 'src/state/store/configureStore';
+
+import { todoStore } from 'src/state/stores/TodoStore';
 import Body from './Body';
 import Footer from './Footer';
 import Header from './Header';
@@ -10,19 +13,25 @@ import Header from './Header';
 const history = createBrowserHistory();
 
 class App extends React.Component {
-  public render() {
+  render() {
     return (
       <Provider store={configureStore}>
-        <ConnectedRouter history={history} basename="/">
-          <React.Fragment>
-            <Header />
-            <Body />
-            <Footer />
-          </React.Fragment>
-        </ConnectedRouter>
+        <MobxProvider store={todoStore}>
+          <ConnectedRouter history={history} basename="/">
+            <AppLayout />
+          </ConnectedRouter>
+        </MobxProvider>
       </Provider>
     );
   }
 }
+
+const AppLayout = () => (
+  <React.Fragment>
+    <Header />
+    <Body />
+    <Footer />
+  </React.Fragment>
+);
 
 export default App;

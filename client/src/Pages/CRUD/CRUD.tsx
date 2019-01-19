@@ -30,26 +30,26 @@ const mapDispatchToProps = dispatch => ({
   mapDispatchToProps
 )
 class CRUD extends React.Component<IProps, State> {
-  public state = {
+  state = {
     uiLoading: false,
     visible: false,
     optionSelect: 'create'
   };
-  public componentDidMount() {
+  componentDidMount() {
     this.fetchFruits();
   }
-  public sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-  public fetchFruits = () => {
+  sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+  fetchFruits = () => {
     this.props.actions.getFruitList();
   };
 
-  public setLoading = (bool: boolean) => {
+  setLoading = (bool: boolean) => {
     this.setState({
       uiLoading: bool
     });
   };
 
-  public create = value => {
+  create = value => {
     this.props.actions.addFruit(value);
     this.setLoading(true);
     this.sleep(1000).then(() => {
@@ -59,7 +59,7 @@ class CRUD extends React.Component<IProps, State> {
     });
   };
 
-  public delete = id => {
+  delete = id => {
     this.props.actions.deleteFruit(id);
     this.setLoading(true);
     this.sleep(1000).then(() => {
@@ -69,7 +69,7 @@ class CRUD extends React.Component<IProps, State> {
     });
   };
 
-  public update = value => {
+  update = value => {
     this.props.actions.updateFruit(value);
     this.setLoading(true);
     this.sleep(1000).then(() => {
@@ -79,46 +79,46 @@ class CRUD extends React.Component<IProps, State> {
     });
   };
 
-  public details = id => {
+  details = id => {
     this.props.actions.getFruit(id);
 
     this.toggleEvent();
   };
 
-  public createFetch = id => {
+  createFetch = id => {
     this.setState({
       optionSelect: 'create'
     });
     this.toggleEvent();
   };
 
-  public updateFetch = id => {
+  updateFetch = id => {
     this.setState({
       optionSelect: 'update'
     });
     this.details(id);
   };
 
-  public deleteFetch = id => {
+  deleteFetch = id => {
     this.setState({
       optionSelect: 'delete'
     });
     this.details(id);
   };
 
-  public detailsFetch = id => {
+  detailsFetch = id => {
     this.setState({
       optionSelect: 'details'
     });
     this.details(id);
   };
-  public toggleEvent = () => {
+  toggleEvent = () => {
     this.setState({
       visible: !this.state.visible
     });
   };
 
-  public render() {
+  render() {
     return (
       <React.Fragment>
         <div>

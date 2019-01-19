@@ -5,7 +5,7 @@ export interface Props {
 }
 
 export default class Page extends React.Component<Props, any> {
-  public render() {
+  render() {
     return (
       <div>
         <h2>Pages</h2>

@@ -30,31 +30,30 @@ const DropdownComponent = props => (
 // generate simple nav links
 const LinkGenerator = props => {
   const { routes } = props;
-  const navLinks = routes.map(
-    (item, key) =>
-      item.children.length === 0 ? (
-        <NavItem
-          key={key}
-          active={props.activeUrl === item.url}
-          url={item.url}
-          clickEvent={props.clickEvent}
-        >
-          {item.name}
-        </NavItem>
-      ) : (
-        <DropdownComponent key={key} name={item.name}>
-          {item.children.map((child, index) => (
-            <NavItem
-              key={index}
-              active={props.activeUrl === item.url}
-              url={item.url + child.url}
-              clickEvent={props.clickEvent}
-            >
-              {child.name}
-            </NavItem>
-          ))}
-        </DropdownComponent>
-      )
+  const navLinks = routes.map((item, key) =>
+    item.children.length === 0 ? (
+      <NavItem
+        key={key}
+        active={props.activeUrl === item.url}
+        url={item.url}
+        clickEvent={props.clickEvent}
+      >
+        {item.name}
+      </NavItem>
+    ) : (
+      <DropdownComponent key={key} name={item.name}>
+        {item.children.map((child, index) => (
+          <NavItem
+            key={index}
+            active={props.activeUrl === item.url}
+            url={item.url + child.url}
+            clickEvent={props.clickEvent}
+          >
+            {child.name}
+          </NavItem>
+        ))}
+      </DropdownComponent>
+    )
   );
   return navLinks;
 };
@@ -67,12 +66,12 @@ const User = props => (
 );
 
 class DesktopNav extends React.Component<{ routes: any; auth: any }> {
-  public state = { activeUrl: '/' };
+  state = { activeUrl: '/' };
 
-  public handleItemClick = (e, { to }) => {
+  handleItemClick = (e, { to }) => {
     this.setState({ activeUrl: to });
   };
-  public render() {
+  render() {
     const { activeUrl } = this.state;
     return (
       <NavBar>

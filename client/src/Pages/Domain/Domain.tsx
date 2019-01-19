@@ -19,13 +19,13 @@ interface IState {
 }
 
 export default class Domain extends React.Component<{}, IState> {
-  public recaptchaInstance: any;
+  recaptchaInstance: any;
   constructor(props) {
     super(props);
     this.state = initialState;
   }
 
-  public getDomain = async domain => {
+  getDomain = async domain => {
     // set the loading state
 
     this.setState({
@@ -51,23 +51,23 @@ export default class Domain extends React.Component<{}, IState> {
     }
   };
 
-  public change = event => {
+  change = event => {
     this.setState({
       domain: event.target.value
     });
   };
 
-  public handleSubmit = event => {
+  handleSubmit = event => {
     event.preventDefault();
     this.reset();
     this.getDomain(this.state.domain);
   };
 
-  public reset = () => {
+  reset = () => {
     this.setState(initialState);
   };
 
-  public render() {
+  render() {
     const { error, errorMessage, loading } = this.state;
     const { whois, dns, summary } = this.state.response;
     return (

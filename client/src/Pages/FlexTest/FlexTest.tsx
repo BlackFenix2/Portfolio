@@ -11,7 +11,7 @@ interface State {
 }
 
 class FlexTest extends React.Component<any, State> {
-  public state = {
+  state = {
     value: {},
     progressTest: 0,
     apiResult: {
@@ -19,22 +19,22 @@ class FlexTest extends React.Component<any, State> {
       icon_url: ''
     }
   };
-  public componentDidMount() {
+  componentDidMount() {
     this.test();
   }
 
-  public submit = value => {
+  submit = value => {
     this.setState({ value });
   };
-  public change = event => {
+  change = event => {
     this.setState({ progressTest: parseInt(event.target.value, 10) });
   };
-  public test = async () => {
+  test = async () => {
     const result = await API.getPosts();
     this.setState({ apiResult: result });
   };
 
-  public render() {
+  render() {
     return (
       <React.Fragment>
         <Grid columns={2}>

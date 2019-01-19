@@ -14,11 +14,11 @@ interface IProps {
 }
 
 class Shows extends React.Component<IProps> {
-  public setSearchTerm = event => {
+  setSearchTerm = event => {
     this.props.actions.setSearchTerm(event.target.value);
   };
 
-  public filterResults = collection =>
+  filterResults = collection =>
     pickBy(
       collection,
       value =>
@@ -28,7 +28,7 @@ class Shows extends React.Component<IProps> {
           .match(this.props.searchTerm.toUpperCase())
     );
 
-  public render() {
+  render() {
     return (
       <div>
         <SearchBar

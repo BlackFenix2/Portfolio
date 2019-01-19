@@ -8,19 +8,19 @@ interface State {
 import styles from './Cats.module.css';
 
 class Cats extends React.Component<any, State> {
-  public state = {
+  state = {
     result: 200,
     number: 200
   };
 
-  public change = async e => {
+  change = async e => {
     this.setState({ result: e.target.value });
   };
 
-  public GetCat = async e => {
+  GetCat = async e => {
     this.setState({ number: this.state.result });
   };
-  public render() {
+  render() {
     return (
       <div>
         <h2>HTTP Cats</h2>

@@ -22,6 +22,12 @@ const auth = {
 
 const routes: Routes = [
   {
+    url: '/Todo',
+    name: 'Todo',
+
+    children: []
+  },
+  {
     url: '/Shows',
     name: 'Shows',
 

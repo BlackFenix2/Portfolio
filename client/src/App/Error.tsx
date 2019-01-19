@@ -1,15 +1,15 @@
 import React from 'react';
 
 class Error extends React.Component {
-  public state = {
+  state = {
     error: null,
     hasError: false,
     info: null
   };
-  public componentDidCatch(error, info) {
+  componentDidCatch(error, info) {
     this.setState({ error, info, hasError: true });
   }
-  public render() {
+  render() {
     if (this.state.hasError) {
       const { error, info } = this.state;
       return (
@@ -18,12 +18,14 @@ class Error extends React.Component {
           <p>{error.message}</p>
 
           <p>
-            {info.componentStack.split('\n').map((i, key) => (
-              <span key={key}>
-                {i}
-                <br />
-              </span>
-            ))}
+            {info.componentStack
+              .split('\n')
+              .map((i: React.ReactNode, key: React.ReactText) => (
+                <span key={key}>
+                  {i}
+                  <br />
+                </span>
+              ))}
           </p>
         </div>
       );

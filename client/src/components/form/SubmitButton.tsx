@@ -9,8 +9,8 @@ interface IProps {
 }
 
 class SubmitButton extends React.Component<IProps> {
-  public state;
-  public render() {
+  state;
+  render() {
     const { name, children, className, loading, forceEnable } = this.props;
     return (
       <FormContext.Consumer>

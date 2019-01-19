@@ -15,7 +15,7 @@ export interface Stats {
 }
 
 class TicTacToe extends React.Component<any, any> {
-  public state = {
+  state = {
     turn: 'X',
     board: Array(9).fill(''),
     totalMoves: 0,
@@ -37,7 +37,7 @@ class TicTacToe extends React.Component<any, any> {
     delay: 1000
   };
 
-  public boxClicked = async e => {
+  boxClicked = async e => {
     // check for player or CPU input
 
     if (
@@ -58,13 +58,13 @@ class TicTacToe extends React.Component<any, any> {
     }
   };
 
-  public toggleMachineLearning = () => {
+  toggleMachineLearning = () => {
     this.setState({
       machineLearning: !this.state.machineLearning
     });
   };
 
-  public startTurn = async loc => {
+  startTurn = async loc => {
     if (this.state.board[loc] === '') {
       if (this.state.turn === 'X') {
         playCross();
@@ -112,9 +112,9 @@ class TicTacToe extends React.Component<any, any> {
     );
   };
 
-  public sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+  sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-  public playSelfOnce = async () => {
+  playSelfOnce = async () => {
     this.reset();
     this.setState({
       gameLocked: true
@@ -130,7 +130,7 @@ class TicTacToe extends React.Component<any, any> {
     });
   };
 
-  public playSelf = async () => {
+  playSelf = async () => {
     if (
       !confirm(
         `Warning: The computer will play itself for ${
@@ -175,7 +175,7 @@ class TicTacToe extends React.Component<any, any> {
    * Pick random number on board not in use
    * @returns {number}
    */
-  public pickRandom = () => {
+  pickRandom = () => {
     let random;
     do {
       random = Math.floor(Math.random() * 9);
@@ -183,7 +183,7 @@ class TicTacToe extends React.Component<any, any> {
     return random;
   };
 
-  public aiTurn = async players => {
+  aiTurn = async players => {
     if (players > 0) {
       await this.sleep(1000);
     }
@@ -234,7 +234,7 @@ class TicTacToe extends React.Component<any, any> {
   };
 
   // check for machine Learning toggle, otherwise use the static AI
-  public cpuTurn = async players => {
+  cpuTurn = async players => {
     if (this.state.machineLearning) {
       await this.aiTurn(players);
     } else {
@@ -242,7 +242,7 @@ class TicTacToe extends React.Component<any, any> {
     }
   };
 
-  public oldCpuTurn = async players => {
+  oldCpuTurn = async players => {
     if (players > 0) {
       await this.sleep(1000);
     }
@@ -411,7 +411,7 @@ class TicTacToe extends React.Component<any, any> {
     }
   };
 
-  public playerChanged = (e, { value }) => {
+  playerChanged = (e, { value }) => {
     this.reset();
 
     this.setState({
@@ -419,13 +419,13 @@ class TicTacToe extends React.Component<any, any> {
     });
   };
 
-  public clearScore = () => {
+  clearScore = () => {
     this.setState({
       stats: []
     });
   };
 
-  public checkBoard = () => {
+  checkBoard = () => {
     const moves = [
       [0, 3, 6],
       [1, 4, 7],
@@ -512,7 +512,7 @@ class TicTacToe extends React.Component<any, any> {
     return '';
   };
 
-  public checkWinner = () => {
+  checkWinner = () => {
     const moves = [
       [0, 3, 6],
       [1, 4, 7],
@@ -539,7 +539,7 @@ class TicTacToe extends React.Component<any, any> {
     return null;
   };
 
-  public reset = (delay?: number) => {
+  reset = (delay?: number) => {
     this.setState({
       turn: 'X',
       board: Array(9).fill(''),
@@ -554,14 +554,14 @@ class TicTacToe extends React.Component<any, any> {
     playGame();
   };
 
-  public toggleSound = () => {
+  toggleSound = () => {
     toggleMute();
     this.setState((prevState: any) => ({
       muted: !prevState.muted
     }));
   };
 
-  public scoreClicked = boardOrder => {
+  scoreClicked = boardOrder => {
     // display winning pattern
     const displayBoard = Array(9).fill('');
     for (const i in boardOrder) {
@@ -577,13 +577,13 @@ class TicTacToe extends React.Component<any, any> {
       boxOrder: boardOrder
     });
   };
-  public setDelay = (e, { value }) => {
+  setDelay = (e, { value }) => {
     this.setState({
       delay: value
     });
   };
 
-  public render() {
+  render() {
     return (
       <Grid padded="horizontally" stackable>
         <Grid.Row>

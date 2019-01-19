@@ -9,8 +9,8 @@ interface IProps {
 }
 
 class ResetButton extends React.Component<IProps> {
-  public state;
-  public render() {
+  state;
+  render() {
     const { name, children, className, loading } = this.props;
     return (
       <FormContext.Consumer>

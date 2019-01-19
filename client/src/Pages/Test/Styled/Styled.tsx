@@ -39,17 +39,17 @@ interface StyledState {
 }
 
 class Styled extends React.Component<StyledProps, StyledState> {
-  public state = {
+  state = {
     loading: false
   };
 
-  public clickEvent = () => {
+  clickEvent = () => {
     this.setState({
       loading: !this.state.loading
     });
   };
 
-  public render() {
+  render() {
     return (
       <div>
         <h2>Styled Tests</h2>

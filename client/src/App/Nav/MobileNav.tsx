@@ -26,31 +26,30 @@ const NavItem = props => (
 // generate simple nav links
 const LinkGenerator = props => {
   const { routes } = props;
-  const navLinks = routes.map(
-    (item, key) =>
-      item.children.length === 0 ? (
-        <NavItem
-          key={key}
-          active={props.activeUrl === item.url}
-          url={item.url}
-          clickEvent={props.clickEvent}
-        >
-          {item.name}
-        </NavItem>
-      ) : (
-        <MobileDropdownComponent key={key} name={item.name}>
-          {item.children.map((child, index) => (
-            <NavItem
-              key={index}
-              active={props.activeUrl === item.url}
-              url={item.url + child.url}
-              clickEvent={props.clickEvent}
-            >
-              {child.name}
-            </NavItem>
-          ))}
-        </MobileDropdownComponent>
-      )
+  const navLinks = routes.map((item, key) =>
+    item.children.length === 0 ? (
+      <NavItem
+        key={key}
+        active={props.activeUrl === item.url}
+        url={item.url}
+        clickEvent={props.clickEvent}
+      >
+        {item.name}
+      </NavItem>
+    ) : (
+      <MobileDropdownComponent key={key} name={item.name}>
+        {item.children.map((child, index) => (
+          <NavItem
+            key={index}
+            active={props.activeUrl === item.url}
+            url={item.url + child.url}
+            clickEvent={props.clickEvent}
+          >
+            {child.name}
+          </NavItem>
+        ))}
+      </MobileDropdownComponent>
+    )
   );
   return navLinks;
 };
@@ -62,22 +61,22 @@ interface State {
 
 // tslint:disable-next-line:max-classes-per-file
 class MobileNav extends React.Component<{ routes: any }, State> {
-  public state = {
+  state = {
     visible: false,
     activeUrl: '/'
   };
 
-  public homeButtonCLick = () => {
+  homeButtonCLick = () => {
     this.setState({ visible: false });
   };
-  public handleItemClick = (e, { to }) => {
+  handleItemClick = (e, { to }) => {
     this.setState({ activeUrl: to, visible: false });
   };
 
-  public handleHamburgerClick = () => {
+  handleHamburgerClick = () => {
     this.setState({ visible: !this.state.visible });
   };
-  public render() {
+  render() {
     return (
       <NavBar>
         <Menu.Item position="right">

@@ -18,28 +18,28 @@ interface IShow {
 }
 
 class ShowCard extends React.PureComponent<IShow> {
-  public static defaultProps = {
+  static defaultProps = {
     rating: 0
   };
 
-  public state = {
+  state = {
     rating: this.props.rating
   };
 
-  public increaseRating = () =>
+  increaseRating = () =>
     this.state.rating < 5
       ? this.setState((prevState: IShow) => ({
           rating: prevState.rating + 1
         }))
       : null;
 
-  public decreaseRating = () =>
+  decreaseRating = () =>
     this.state.rating > 0
       ? this.setState((prevState: IShow) => ({
           rating: prevState.rating - 1
         }))
       : null;
-  public render() {
+  render() {
     const image = require(`src/lib/img/posters/${this.props.poster}`);
     return (
       <Card>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 class SuspenseTest extends React.Component<any, any> {
-  public render() {
+  render() {
     return (
       <div>
         <p>www</p>

@@ -8,7 +8,7 @@ interface IProps {
   graph: any;
 }
 class Graph extends React.Component<IProps> {
-  public handleChange = event => {
+  handleChange = event => {
     event.target.name === 'heightRange'
       ? this.props.actions.setGraphArea({
           height: event.target.value,
@@ -20,7 +20,7 @@ class Graph extends React.Component<IProps> {
         });
   };
 
-  public render() {
+  render() {
     return (
       <div>
         <h2>This is the graph page</h2>
