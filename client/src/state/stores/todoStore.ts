@@ -5,21 +5,10 @@ interface Todo {
   isComplete: boolean;
 }
 
-class TodoStore {
+export class TodoStore {
   @observable todoList: Todo[] = [];
 
   @observable testState: string = 'test';
-
-  constructor() {
-    reaction(
-      () => this.todoList.filter(todo => !todo.isComplete),
-      incompletedTasks => {
-        if (incompletedTasks.length > 5) {
-          alert("Dude. You've got too much on your plate.");
-        }
-      }
-    );
-  }
 
   @computed
   get completedTasks(): number {
@@ -28,12 +17,23 @@ class TodoStore {
 
   @action
   addTodo(task: string) {
-    this.todoList.push({ task, isComplete: false });
+    if (task) {
+      this.todoList.push({ task, isComplete: false });
+    }
   }
 
   @action
   completeTodo(completedTodo: Todo) {
     this.todoList.find(todo => todo === completedTodo).isComplete = true;
+  }
+
+  @action
+  toggleTodo(completedTodo: Todo) {
+    this.todoList.find(
+      todo => todo === completedTodo
+    ).isComplete = this.todoList.find(todo => todo === completedTodo).isComplete
+      ? false
+      : true;
   }
 }
 

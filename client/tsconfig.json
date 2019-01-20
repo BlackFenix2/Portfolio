@@ -3,11 +3,8 @@
     // compile JSX syntax to JS
     "jsx": "react",
 
-    //tsconfig rule since tslint doesnt handle unused
-    "noUnusedLocals": true,
-
     // use latest ES version including proposed features
-    "module": "esnext",
+    // "module": "esnext",
     "target": "esnext",
 
     // targets node

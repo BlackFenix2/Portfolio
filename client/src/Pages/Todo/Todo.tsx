@@ -1,10 +1,13 @@
 import { observable } from 'mobx';
 import { inject, observer } from 'mobx-react';
 import * as React from 'react';
+import { TodoStore } from 'src/state/stores/todoStore';
 
-@inject('todoStore')
+@inject(({ todoStore }) => ({
+  todoStore
+}))
 @observer
-class Todo extends React.Component<any, any> {
+class Todo extends React.Component<{ todoStore?: TodoStore }, any> {
   @observable private task: string = '';
 
   handleTaskChange = ({
@@ -13,32 +16,45 @@ class Todo extends React.Component<any, any> {
     this.task = value;
   };
 
-  handleAddTodo = () => {
+  handleAddTodo = (e: React.SyntheticEvent) => {
+    e.preventDefault();
     this.props.todoStore.addTodo(this.task);
     this.task = '';
   };
 
   render() {
     return (
-      <div>
+      <>
         <div>
           <p>Test State:{this.props.todoStore.testState}</p>
         </div>
         <label>New Task</label>
-        <input value={this.task} onChange={this.handleTaskChange} />
-        <button onClick={this.handleAddTodo}>Add</button>
-        <TodoList />
-      </div>
+        <form onSubmit={this.handleAddTodo}>
+          <input value={this.task} onChange={this.handleTaskChange} />
+          <button>Add</button>
+        </form>
+        <div>
+          <TodoList />
+        </div>
+      </>
     );
   }
 }
 
 const TodoList = inject('todoStore')(
-  observer(({ todoStore: { todoList } }) =>
-    todoList.map((todo, idx) => <TodoListItem key={idx} todo={todo} />)
-  )
+  observer(({ todoStore: { todoList } }) => (
+    <ul>
+      {todoList.map((todo, idx) => (
+        <TodoListItem key={idx} todo={todo} />
+      ))}
+    </ul>
+  ))
 );
 
-const TodoListItem = ({ todo }) => <div>{todo.task}</div>;
+const TodoListItem = ({ todo }) => (
+  <li>
+    {todo.task} <input type="checkbox" value={todo.isComplete} />
+  </li>
+);
 
 export default Todo;
