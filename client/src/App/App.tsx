@@ -28,8 +28,8 @@ class App extends React.Component {
 
 const AppLayout = () => (
   <React.Fragment>
-    <Header />
     <DevTools />
+    <Header />
     <Body />
     <Footer />
   </React.Fragment>

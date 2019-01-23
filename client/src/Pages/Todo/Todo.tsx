@@ -1,13 +1,10 @@
 import { observable } from 'mobx';
 import { inject, observer } from 'mobx-react';
 import * as React from 'react';
-import { TodoStore } from 'src/state/stores/todoStore';
+import { todoStore } from 'src/state/stores/todoStore';
 
-@inject(({ todoStore }) => ({
-  todoStore
-}))
-@observer
-class Todo extends React.Component<{ todoStore?: TodoStore }, any> {
+@observer(['todoStore'])
+class Todo extends React.Component<any> {
   @observable private task: string = '';
 
   handleTaskChange = ({
@@ -18,7 +15,12 @@ class Todo extends React.Component<{ todoStore?: TodoStore }, any> {
 
   handleAddTodo = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    this.props.todoStore.addTodo(this.task);
+    todoStore.addTodo(this.task);
+    this.task = '';
+  };
+
+  handleClearTodo = (e: React.SyntheticEvent) => {
+    todoStore.clearTodo();
     this.task = '';
   };
 
@@ -26,13 +28,14 @@ class Todo extends React.Component<{ todoStore?: TodoStore }, any> {
     return (
       <>
         <div>
-          <p>Test State:{this.props.todoStore.testState}</p>
+          <p>Test State:{todoStore.testState}</p>
         </div>
         <label>New Task</label>
         <form onSubmit={this.handleAddTodo}>
           <input value={this.task} onChange={this.handleTaskChange} />
           <button>Add</button>
         </form>
+        <button onClick={this.handleClearTodo}>Clear TODO</button>
         <div>
           <TodoList />
         </div>

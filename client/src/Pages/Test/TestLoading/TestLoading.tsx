@@ -1,10 +1,11 @@
 import * as React from 'react';
 import AsyncComponent from 'src/components/shared/AsyncComponent';
-import MediaExample from './MediaExample';
+
+const MediaExample = React.lazy(() => import('./MediaExample'));
 
 const TestComponent = () => (
   <div>
-    <AsyncComponent importPath="./MediaExample" />
+    <AsyncComponent LazyComponent={MediaExample} />
   </div>
 );
 

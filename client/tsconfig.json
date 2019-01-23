@@ -4,7 +4,7 @@
     "jsx": "react",
 
     // use latest ES version including proposed features
-    // "module": "esnext",
+    "module": "esnext",
     "target": "esnext",
 
     // targets node

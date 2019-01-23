@@ -18,6 +18,7 @@ export class TodoStore {
   @action
   addTodo(task: string) {
     if (task) {
+      this.testState = 'added TODO';
       this.todoList.push({ task, isComplete: false });
     }
   }
@@ -25,6 +26,12 @@ export class TodoStore {
   @action
   completeTodo(completedTodo: Todo) {
     this.todoList.find(todo => todo === completedTodo).isComplete = true;
+  }
+
+  @action
+  clearTodo() {
+    this.testState = 'Removed';
+    this.todoList = [];
   }
 
   @action
