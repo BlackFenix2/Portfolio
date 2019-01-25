@@ -1,11 +1,19 @@
 import { observable } from 'mobx';
 import { inject, observer } from 'mobx-react';
 import * as React from 'react';
-import { todoStore } from 'src/state/stores/todoStore';
+import TodoStore from 'src/state/stores/todoStore';
 
-@observer(['todoStore'])
-class Todo extends React.Component<any> {
-  @observable private task: string = '';
+interface Props {
+  TodoStore: TodoStore;
+}
+
+@observer([TodoStore.name])
+class Todo extends React.Component<Props> {
+  @observable task: string = '';
+
+  clearInput = () => {
+    this.task = '';
+  };
 
   handleTaskChange = ({
     currentTarget: { value }
@@ -15,20 +23,26 @@ class Todo extends React.Component<any> {
 
   handleAddTodo = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    todoStore.addTodo(this.task);
-    this.task = '';
+    this.props.TodoStore.addTodo(this.task);
+    this.clearInput();
   };
 
   handleClearTodo = (e: React.SyntheticEvent) => {
-    todoStore.clearTodo();
-    this.task = '';
+    this.props.TodoStore.clearTodo();
+    this.clearInput();
+  };
+
+  handleToggleTask = todo => {
+    this.props.TodoStore.toggleTodo(todo);
   };
 
   render() {
     return (
       <>
         <div>
-          <p>Test State:{todoStore.testState}</p>
+          <p>Test State:{this.props.TodoStore.testState}</p>
+          <p>Test Task:{this.task}</p>
+          <p>Completed Tasks:{this.props.TodoStore.completedTasks}</p>
         </div>
         <label>New Task</label>
         <form onSubmit={this.handleAddTodo}>
@@ -37,26 +51,32 @@ class Todo extends React.Component<any> {
         </form>
         <button onClick={this.handleClearTodo}>Clear TODO</button>
         <div>
-          <TodoList />
+          <TodoList
+            list={this.props.TodoStore.todoList}
+            changeEvent={this.handleToggleTask}
+          />
         </div>
       </>
     );
   }
 }
 
-const TodoList = inject('todoStore')(
-  observer(({ todoStore: { todoList } }) => (
-    <ul>
-      {todoList.map((todo, idx) => (
-        <TodoListItem key={idx} todo={todo} />
-      ))}
-    </ul>
-  ))
+const TodoList = ({ list, changeEvent }) => (
+  <ul>
+    {list.map((todo, idx) => (
+      <TodoListItem key={idx} todo={todo} changeEvent={changeEvent} />
+    ))}
+  </ul>
 );
 
-const TodoListItem = ({ todo }) => (
+const TodoListItem = ({ todo, changeEvent }) => (
   <li>
-    {todo.task} <input type="checkbox" value={todo.isComplete} />
+    {todo.task}
+    <input
+      type="checkbox"
+      value={todo.isComplete}
+      onChange={() => changeEvent(todo)}
+    />
   </li>
 );
 

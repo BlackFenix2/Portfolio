@@ -1,36 +1,29 @@
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import actions from 'src/state/actions';
 
-interface IProps {
-  actions: any;
-  graph: any;
-}
-class Graph extends React.Component<IProps> {
+@observer
+class Graph extends React.Component {
+  @observable graphHeight: number = 100;
+  @observable graphWidth: number = 100;
+
   handleChange = event => {
     event.target.name === 'heightRange'
-      ? this.props.actions.setGraphArea({
-          height: event.target.value,
-          width: this.props.graph.width
-        })
-      : this.props.actions.setGraphArea({
-          height: this.props.graph.height,
-          width: event.target.value
-        });
+      ? (this.graphHeight = event.target.value)
+      : (this.graphWidth = event.target.value);
   };
 
   render() {
     return (
       <div>
         <h2>This is the graph page</h2>
-        <p>Height: {this.props.graph.height}</p>
-        <p>Width: {this.props.graph.width}</p>
+        <p>Height: {this.graphHeight}</p>
+        <p>Width: {this.graphWidth}</p>
         <div>
           <input
             type="range"
             name="heightRange"
-            value={this.props.graph.height}
+            value={this.graphHeight}
             min="10"
             max="210"
             onChange={this.handleChange}
@@ -38,7 +31,7 @@ class Graph extends React.Component<IProps> {
           <input
             type="range"
             name="widthRange"
-            value={this.props.graph.width}
+            value={this.graphWidth}
             min="10"
             max="210"
             onChange={this.handleChange}
@@ -46,22 +39,12 @@ class Graph extends React.Component<IProps> {
         </div>
         <div>
           <svg width="200" height="210">
-            <rect
-              height={this.props.graph.height}
-              width={this.props.graph.width}
-            />
+            <rect height={this.graphHeight} width={this.graphWidth} />
           </svg>
         </div>
       </div>
     );
   }
 }
-const mapStateToProps = ({ graphArea }) => ({ graph: graphArea });
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actions, dispatch)
-});
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Graph);
+export default Graph;

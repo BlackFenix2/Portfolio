@@ -1,25 +1,28 @@
-import { createBrowserHistory } from 'history';
+import createBrowserHistory from 'history/createBrowserHistory';
 import { Provider as MobxProvider } from 'mobx-react';
-import DevTools from 'mobx-react-devtools';
+import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
+import { Router } from 'react-router';
 import configureStore from 'src/state/store/configureStore';
-import { todoStore } from 'src/state/stores/todoStore';
+import rootStore from 'src/state/stores';
 import Body from './Body';
 import Footer from './Footer';
 import Header from './Header';
 
-const history = createBrowserHistory();
+// set up Mobx Routing Store
+const browserHistory = createBrowserHistory();
+const RoutingStore = new RouterStore();
+const history = syncHistoryWithStore(browserHistory, RoutingStore);
 
 class App extends React.Component {
   render() {
     return (
       <Provider store={configureStore}>
-        <MobxProvider todoStore={todoStore}>
-          <ConnectedRouter history={history} basename="/">
+        <MobxProvider {...rootStore} routing={RoutingStore}>
+          <Router history={history}>
             <AppLayout />
-          </ConnectedRouter>
+          </Router>
         </MobxProvider>
       </Provider>
     );
@@ -28,7 +31,6 @@ class App extends React.Component {
 
 const AppLayout = () => (
   <React.Fragment>
-    <DevTools />
     <Header />
     <Body />
     <Footer />

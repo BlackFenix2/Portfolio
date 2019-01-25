@@ -1,29 +1,35 @@
+import { observer } from 'mobx-react';
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { Route, Switch, withRouter } from 'react-router-dom';
-import universal from 'react-universal-component';
+import { Route, Switch } from 'react-router-dom';
+import withRouter from 'react-router-dom/withRouter';
+import AsyncComponent from 'src/components/shared/AsyncComponent';
+import RouteStore from 'src/state/stores/routesStore';
 import CustomRoutes from './CustomRoutes';
 import RouteGenerator from './RouteGenerator';
-import { setPageRouteAsync } from './routeHelpers';
+import { setPageRouteSuspenseAsync } from './routeHelpers';
 
-const Home = setPageRouteAsync('/Home');
-const PageNotFound = universal(() => import('src/components/shared/NotFound'));
+const Home = setPageRouteSuspenseAsync('/Home');
+const PageNotFound = React.lazy(() => import('src/components/shared/NotFound'));
 
-class Routes extends React.Component<{ routes: any }> {
+@withRouter
+@observer([RouteStore.name])
+class Routes extends React.Component<{ RouteStore?: RouteStore }, any> {
   render() {
     return (
       // Weird Juryrig, involing stateless components return array of routes directly to switch parent.
       <Switch>
-        <Route exact path="/" component={Home} />
-        {RouteGenerator(this.props)}
+        <Route exact path="/">
+          {Home}
+        </Route>
+        {RouteGenerator(this.props.RouteStore)}
         {CustomRoutes()}
-        <Route component={PageNotFound} />
+        <Route>
+          <AsyncComponent LazyComponent={PageNotFound} />
+        </Route>
       </Switch>
     );
   }
 }
 
-const mapStateToProps = ({ routes }) => ({ routes });
-
 // export with router to prevent blocked updates
-export default withRouter(connect(mapStateToProps)(Routes));
+export default Routes;

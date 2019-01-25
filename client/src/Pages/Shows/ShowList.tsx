@@ -5,6 +5,7 @@ import ShowCard from './ShowCard';
 const ShowList = (props: any) => (
   <div>
     <h1>List of shows</h1>
+
     <Grid columns={3} stackable padded>
       {Object.values(props.shows).map((show: any) => (
         <Grid.Column key={show.title}>

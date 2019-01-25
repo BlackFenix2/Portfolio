@@ -54,6 +54,7 @@ class FlexTest extends React.Component<any, State> {
                 <TextInput name="lastName" displayName="Last Name" />
                 <TextInput name="Title" displayName="Title" />
                 <div>
+                  <button>Submit</button>
                   <SubmitButton />
                   <ResetButton />
                 </div>

@@ -1,7 +1,10 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, Icon, Menu } from 'semantic-ui-react';
+
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
+import RouteStore from 'src/state/stores/routesStore';
 
 const NavBar = props => (
   <Menu fixed="top" borderless>
@@ -65,37 +68,37 @@ const User = props => (
   </Menu.Item>
 );
 
-class DesktopNav extends React.Component<{ routes: any; auth: any }> {
+@observer([RouteStore.name])
+class DesktopNav extends React.Component<{
+  RouteStore: RouteStore;
+  auth: any;
+}> {
   state = { activeUrl: '/' };
 
+  @observable activeUrl: string = '/';
+
   handleItemClick = (e, { to }) => {
-    this.setState({ activeUrl: to });
+    this.activeUrl = to;
   };
   render() {
-    const { activeUrl } = this.state;
     return (
       <NavBar>
         <NavItem
           url="/"
-          active={activeUrl === '/'}
+          active={this.activeUrl === '/'}
           clickEvent={this.handleItemClick}
         >
           <Icon name="home" />
         </NavItem>
         <LinkGenerator
-          routes={this.props.routes}
+          routes={this.props.RouteStore.routes}
           clickEvent={this.handleItemClick}
-          activeUrl={activeUrl}
+          activeUrl={this.activeUrl}
         />
-        <User
-          firstName={this.props.auth.user.firstName}
-          lastName={this.props.auth.user.lastName}
-          login={this.props.auth.loggedIn}
-        />
+        <User firstName={'john'} lastName={'Doe'} login={false} />
       </NavBar>
     );
   }
 }
-const mapStateToProps = ({ auth, routes }) => ({ auth, routes });
 
-export default connect(mapStateToProps)(DesktopNav);
+export default DesktopNav;

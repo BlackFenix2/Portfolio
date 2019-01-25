@@ -1,56 +1,32 @@
-import pickBy from 'lodash.pickby';
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import SearchBar from 'src/components/SearchBar';
-import actionCreators from 'src/state/actions';
 import ShowList from './ShowList';
 
-import preload from './datas.json';
+import { observer } from 'mobx-react';
+import ShowStore from 'src/state/stores/showStore';
 
 interface IProps {
-  actions: any;
-  searchTerm: string;
+  ShowStore: ShowStore;
 }
 
+@observer([ShowStore.name])
 class Shows extends React.Component<IProps> {
   setSearchTerm = event => {
-    this.props.actions.setSearchTerm(event.target.value);
+    this.props.ShowStore.searchTerm = event.target.value;
   };
-
-  filterResults = collection =>
-    pickBy(
-      collection,
-      value =>
-        value.title.toUpperCase().match(this.props.searchTerm.toUpperCase()) ||
-        value.description
-          .toUpperCase()
-          .match(this.props.searchTerm.toUpperCase())
-    );
 
   render() {
     return (
       <div>
         <SearchBar
           doSearch={this.setSearchTerm}
-          searchTerm={this.props.searchTerm}
+          searchTerm={this.props.ShowStore.searchTerm}
         />
 
-        <ShowList
-          searchTerm={this.props.searchTerm}
-          shows={this.filterResults(preload.shows)}
-        />
+        <ShowList shows={this.props.ShowStore.shows} />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ searchTerm }) => ({ searchTerm });
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actionCreators, dispatch)
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Shows);
+export default Shows;

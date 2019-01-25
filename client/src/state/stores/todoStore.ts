@@ -4,8 +4,11 @@ interface Todo {
   task: string;
   isComplete: boolean;
 }
+/**
+ * Store to maintain Todo State
+ */
 
-export class TodoStore {
+export default class TodoStore {
   @observable todoList: Todo[] = [];
 
   @observable testState: string = 'test';
@@ -43,5 +46,3 @@ export class TodoStore {
       : true;
   }
 }
-
-export const todoStore = new TodoStore();

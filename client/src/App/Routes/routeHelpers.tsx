@@ -1,18 +1,8 @@
 import * as React from 'react';
 
-import universal from 'react-universal-component';
-import Loading from 'src/components/shared/Loading';
-import NotFound from 'src/components/shared/NotFound';
+import AsyncComponent from 'src/components/shared/AsyncComponent';
 
-const config = {
-  error: props => (
-    <NotFound code={props.error.code} message={props.error.message} />
-  ),
-  loading: () => <Loading />
-};
-
-// const pageUrl = 'src/Pages';
-
-export function setPageRouteAsync(Name) {
-  return universal(() => import(`src/Pages${Name}`), { ...config });
+export function setPageRouteSuspenseAsync(Name) {
+  const item = React.lazy(() => import(`src/Pages${Name}`));
+  return <AsyncComponent LazyComponent={item} />;
 }
