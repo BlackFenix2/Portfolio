@@ -1,17 +1,18 @@
+import { observable } from 'mobx';
+import { inject, observer } from 'mobx-react';
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Button, Loader } from 'semantic-ui-react';
 import Visibility from 'src/components/effects/Visibility';
 import AnimatedModal from 'src/components/elements/Modal';
 import TestDisplay from 'src/Pages/CRUD/TestDisplay';
-import fruitRoutines from 'src/state/actions/FruitActions/fruitRoutines';
+import FruitStore from 'src/state/stores/fruitStore';
 import FruitTable from './FruitTable';
 import TestForm from './TestForm';
 
 interface IProps {
   actions: any;
   fruits: any;
+  FruitStore?: FruitStore;
 }
 
 interface State {
@@ -20,37 +21,28 @@ interface State {
   optionSelect: string;
 }
 
-const mapStateToProps = ({ fruits }) => ({ fruits });
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ ...fruitRoutines }, dispatch)
-});
-
-@connect(
-  mapStateToProps,
-  mapDispatchToProps
-)
+@inject(FruitStore.name)
+@observer
 class CRUD extends React.Component<IProps, State> {
-  state = {
-    uiLoading: false,
-    visible: false,
-    optionSelect: 'create'
-  };
+  @observable visible: boolean = false;
+  @observable uiLoading: boolean = false;
+  @observable optionSelect: string = 'create';
+
   componentDidMount() {
     this.fetchFruits();
   }
   sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
   fetchFruits = () => {
-    this.props.actions.getFruitList();
+    this.props.FruitStore.getFruitList();
   };
 
   setLoading = (bool: boolean) => {
-    this.setState({
-      uiLoading: bool
-    });
+    this.uiLoading = bool;
   };
 
   create = value => {
-    this.props.actions.addFruit(value);
+    this.props.FruitStore.addFruit(value);
     this.setLoading(true);
     this.sleep(1000).then(() => {
       this.fetchFruits();
@@ -60,7 +52,7 @@ class CRUD extends React.Component<IProps, State> {
   };
 
   delete = id => {
-    this.props.actions.deleteFruit(id);
+    this.props.FruitStore.deleteFruit(id);
     this.setLoading(true);
     this.sleep(1000).then(() => {
       this.fetchFruits();
@@ -70,7 +62,7 @@ class CRUD extends React.Component<IProps, State> {
   };
 
   update = value => {
-    this.props.actions.updateFruit(value);
+    this.props.FruitStore.updateFruit(value);
     this.setLoading(true);
     this.sleep(1000).then(() => {
       this.fetchFruits();
@@ -80,42 +72,33 @@ class CRUD extends React.Component<IProps, State> {
   };
 
   details = id => {
-    this.props.actions.getFruit(id);
+    this.props.FruitStore.getFruit(id);
 
     this.toggleEvent();
   };
 
   createFetch = id => {
-    this.setState({
-      optionSelect: 'create'
-    });
+    this.optionSelect = 'create';
     this.toggleEvent();
   };
 
   updateFetch = id => {
-    this.setState({
-      optionSelect: 'update'
-    });
+    this.optionSelect = 'update';
+
     this.details(id);
   };
 
   deleteFetch = id => {
-    this.setState({
-      optionSelect: 'delete'
-    });
+    this.optionSelect = 'delete';
     this.details(id);
   };
 
   detailsFetch = id => {
-    this.setState({
-      optionSelect: 'details'
-    });
+    this.optionSelect = 'details';
     this.details(id);
   };
   toggleEvent = () => {
-    this.setState({
-      visible: !this.state.visible
-    });
+    this.visible = !this.visible;
   };
 
   render() {
@@ -126,38 +109,38 @@ class CRUD extends React.Component<IProps, State> {
           <div>
             <AnimatedModal
               header={'Fruit'}
-              visible={this.state.visible}
+              visible={this.visible}
               toggleEvent={this.toggleEvent}
             >
-              <Visibility active={this.state.optionSelect === 'create'}>
-                <TestForm onSubmit={this.create} {...this.state} />
+              <Visibility active={this.optionSelect === 'create'}>
+                <TestForm onSubmit={this.create} {...this} />
               </Visibility>
-              <Visibility active={this.state.optionSelect === 'details'}>
+              <Visibility active={this.optionSelect === 'details'}>
                 <TestDisplay
                   onSubmit={this.details}
-                  initial={this.props.fruits.fruit}
-                  {...this.state}
+                  initial={this.props.FruitStore.fruit}
+                  {...this}
                 />
               </Visibility>
-              <Visibility active={this.state.optionSelect === 'update'}>
+              <Visibility active={this.optionSelect === 'update'}>
                 <TestForm
                   onSubmit={this.update}
-                  initial={this.props.fruits.fruit}
-                  {...this.state}
+                  initial={this.props.FruitStore.fruit}
+                  {...this}
                 />
               </Visibility>
-              <Visibility active={this.state.optionSelect === 'delete'}>
+              <Visibility active={this.optionSelect === 'delete'}>
                 <TestDisplay
                   onSubmit={this.delete}
-                  initial={this.props.fruits.fruit}
-                  {...this.state}
+                  initial={this.props.FruitStore.fruit}
+                  {...this}
                 />
               </Visibility>
             </AnimatedModal>
           </div>
           <div>
             <FruitTable
-              list={this.props.fruits.fruitList}
+              list={this.props.FruitStore.fruitList}
               deleteAction={this.deleteFetch}
               updateAction={this.updateFetch}
               detailsAction={this.detailsFetch}
@@ -171,14 +154,13 @@ class CRUD extends React.Component<IProps, State> {
             Fetch fruits
             <Loader inline active={false} />
           </Button>
-          <p>Loading: {String(this.props.fruits.isLoading)}</p>
-          <p>Error: {String(this.props.fruits.error)}</p>
-          <p>selected form: {this.state.optionSelect}</p>
+          <p>Loading: {String(this.props.FruitStore.isLoading)}</p>
+          <p>Error: {String(this.props.FruitStore.error)}</p>
+          <p>selected form: {this.optionSelect}</p>
           <div>
             <h2>Errors:</h2>
 
-            <p>{JSON.stringify(this.props.fruits.errorData)}</p>
-            <p>{JSON.stringify(this.props.fruits.errorData.message)}</p>
+            <p>{JSON.stringify(this.props.FruitStore.errorData)}</p>
           </div>
         </div>
       </React.Fragment>

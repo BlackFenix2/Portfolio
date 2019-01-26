@@ -1,8 +1,9 @@
+import { inject, observer } from 'mobx-react';
 import * as React from 'react';
 import { Collapse } from 'react-collapse';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Icon, Menu } from 'semantic-ui-react';
+import RouteStore from 'src/state/stores/routeStore';
 import MobileDropdownComponent from './MobileDropdownComponent';
 
 const NavBar = props => (
@@ -59,8 +60,9 @@ interface State {
   activeUrl: string;
 }
 
-// tslint:disable-next-line:max-classes-per-file
-class MobileNav extends React.Component<{ routes: any }, State> {
+@inject(RouteStore.name)
+@observer
+class MobileNav extends React.Component<{ RouteStore?: RouteStore }, State> {
   state = {
     visible: false,
     activeUrl: '/'
@@ -88,7 +90,7 @@ class MobileNav extends React.Component<{ routes: any }, State> {
         </Menu.Item>
         <Collapse isOpened={this.state.visible} style={{ overflow: 'auto' }}>
           <LinkGenerator
-            routes={this.props.routes}
+            routes={this.props.RouteStore.routes}
             clickEvent={this.handleItemClick}
             activeUrl={this.state.activeUrl}
           />
@@ -97,6 +99,5 @@ class MobileNav extends React.Component<{ routes: any }, State> {
     );
   }
 }
-const mapStateToProps = ({ routes }) => ({ routes });
 
-export default connect(mapStateToProps)(MobileNav);
+export default MobileNav;

@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Button, Grid, Progress } from 'semantic-ui-react';
-import { Form, ResetButton, SubmitButton } from 'src/components/form';
-import { TextInput } from 'src/components/inputs';
 import API from 'src/services/norrisApi';
+import TestForm from './TestForm';
 
 interface State {
   value: {};
@@ -41,24 +40,13 @@ class FlexTest extends React.Component<any, State> {
           <Grid.Row>
             <Grid.Column>
               <p>{this.state.apiResult.value}</p>
-
               <Button onClick={this.test}>
                 <img
-                  onClick={this.test}
                   src={this.state.apiResult.icon_url}
                   alt="Chuck Norris Image"
                 />
               </Button>
-              <Form onSubmit={this.submit} form="TestForm">
-                <TextInput name="firstName" displayName="First Name" />
-                <TextInput name="lastName" displayName="Last Name" />
-                <TextInput name="Title" displayName="Title" />
-                <div>
-                  <button>Submit</button>
-                  <SubmitButton />
-                  <ResetButton />
-                </div>
-              </Form>
+              <TestForm onSubmit={this.submit} />
             </Grid.Column>
             <Grid.Column>
               {JSON.stringify(this.state.value, null, 4)}

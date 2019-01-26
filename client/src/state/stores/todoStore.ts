@@ -4,9 +4,6 @@ interface Todo {
   task: string;
   isComplete: boolean;
 }
-/**
- * Store to maintain Todo State
- */
 
 export default class TodoStore {
   @observable todoList: Todo[] = [];

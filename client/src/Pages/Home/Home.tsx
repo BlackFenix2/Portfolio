@@ -5,8 +5,11 @@ import { inject, observer } from 'mobx-react';
 import ShowStore from 'src/state/stores/showStore';
 import styles from './test.module.css';
 
-interface IProps {
+interface IProps extends Test {
   routing: any;
+}
+
+interface Test {
   ShowStore: ShowStore;
 }
 @inject('routing', ShowStore.name)

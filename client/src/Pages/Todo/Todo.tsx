@@ -6,8 +6,8 @@ import TodoStore from 'src/state/stores/todoStore';
 interface Props {
   TodoStore: TodoStore;
 }
-
-@observer([TodoStore.name])
+@inject(TodoStore.name)
+@observer
 class Todo extends React.Component<Props> {
   @observable task: string = '';
 

@@ -1,11 +1,16 @@
+import { Text } from 'informed';
 import * as React from 'react';
-import { Field } from 'redux-form';
-import { TextField } from 'redux-form-material-ui';
-import { Input } from 'semantic-ui-react';
-const TextInput = props => (
+
+interface Props {
+  displayName: string;
+  name: string;
+}
+const TextInput = (props: Props) => (
   <div>
-    {/* <Input label={props.displayName} /> */}
-    <Field name={props.name} component={TextField} label={props.displayName} />
+    <div>
+      <label htmlFor={props.displayName}>{props.displayName}</label>
+    </div>
+    <Text field={props.name} />
   </div>
 );
 

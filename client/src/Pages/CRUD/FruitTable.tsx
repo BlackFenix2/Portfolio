@@ -1,5 +1,3 @@
-
-
 import * as React from 'react';
 import { Button, Table } from 'semantic-ui-react';
 

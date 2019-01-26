@@ -4,7 +4,7 @@ import { Dropdown, Icon, Menu } from 'semantic-ui-react';
 
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
-import RouteStore from 'src/state/stores/routesStore';
+import RouteStore from 'src/state/stores/routeStore';
 
 const NavBar = props => (
   <Menu fixed="top" borderless>
@@ -70,8 +70,8 @@ const User = props => (
 
 @observer([RouteStore.name])
 class DesktopNav extends React.Component<{
-  RouteStore: RouteStore;
-  auth: any;
+  RouteStore?: RouteStore;
+  auth?: any;
 }> {
   state = { activeUrl: '/' };
 

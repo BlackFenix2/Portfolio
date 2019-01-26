@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Segment } from 'semantic-ui-react';
-import { Form, ResetButton, SubmitButton } from '../../components/form';
+import { Form, ResetButton, SubmitButton } from 'src/components/form';
 
 const TestDisplay = props => (
   <div>

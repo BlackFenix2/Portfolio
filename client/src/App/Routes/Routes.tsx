@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import withRouter from 'react-router-dom/withRouter';
 import AsyncComponent from 'src/components/shared/AsyncComponent';
-import RouteStore from 'src/state/stores/routesStore';
+import RouteStore from 'src/state/stores/routeStore';
 import CustomRoutes from './CustomRoutes';
 import RouteGenerator from './RouteGenerator';
 import { setPageRouteSuspenseAsync } from './routeHelpers';
