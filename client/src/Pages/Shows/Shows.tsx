@@ -2,18 +2,15 @@ import * as React from 'react';
 import SearchBar from 'src/components/SearchBar';
 import ShowList from './ShowList';
 
-import { inject, observer } from 'mobx-react';
+import { inject } from 'mmlpx';
+import { observer } from 'mobx-react';
 import ShowStore from 'src/state/stores/showStore';
 
-interface IProps {
-  ShowStore: ShowStore;
-}
-
-@inject(ShowStore.name)
 @observer
-class Shows extends React.Component<IProps> {
+class Shows extends React.Component {
+  @inject() ShowStore: ShowStore;
   setSearchTerm = event => {
-    this.props.ShowStore.searchTerm = event.target.value;
+    this.ShowStore.searchTerm = event.target.value;
   };
 
   render() {
@@ -21,10 +18,10 @@ class Shows extends React.Component<IProps> {
       <div>
         <SearchBar
           doSearch={this.setSearchTerm}
-          searchTerm={this.props.ShowStore.searchTerm}
+          searchTerm={this.ShowStore.searchTerm}
         />
 
-        <ShowList shows={this.props.ShowStore.shows} />
+        <ShowList shows={this.ShowStore.shows} />
       </div>
     );
   }

@@ -18,7 +18,7 @@
 
     //Allow decorators
     "experimentalDecorators": true,
-
+    "emitDecoratorMetadata": true,
     // ALIAS  src path
     "baseUrl": "./",
     "paths": {

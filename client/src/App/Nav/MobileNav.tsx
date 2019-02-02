@@ -60,7 +60,7 @@ interface State {
   activeUrl: string;
 }
 
-@inject(RouteStore.name)
+@inject('RouteStore')
 @observer
 class MobileNav extends React.Component<{ RouteStore?: RouteStore }, State> {
   state = {

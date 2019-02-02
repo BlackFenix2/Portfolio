@@ -1,3 +1,4 @@
+import { Store } from 'mmlpx';
 import { action, computed, observable, reaction } from 'mobx';
 
 interface Todo {
@@ -5,6 +6,7 @@ interface Todo {
   isComplete: boolean;
 }
 
+@Store
 export default class TodoStore {
   @observable todoList: Todo[] = [];
 

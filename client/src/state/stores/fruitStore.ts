@@ -1,9 +1,12 @@
+import { Store } from 'mmlpx';
 import { action, autorun, observable } from 'mobx';
 import { fruitAPI } from 'src/services/API';
 
 interface Fruit {
   id?: number;
 }
+
+@Store
 export default class FruitStore {
   @observable fruit: Fruit = {};
 

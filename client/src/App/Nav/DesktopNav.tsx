@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Dropdown, Icon, Menu } from 'semantic-ui-react';
 
 import { observable } from 'mobx';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import RouteStore from 'src/state/stores/routeStore';
 
 const NavBar = props => (
@@ -68,7 +68,8 @@ const User = props => (
   </Menu.Item>
 );
 
-@observer([RouteStore.name])
+@inject('RouteStore')
+@observer
 class DesktopNav extends React.Component<{
   RouteStore?: RouteStore;
   auth?: any;

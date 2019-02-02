@@ -1,37 +1,35 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import { inject, observer } from 'mobx-react';
+import { inject } from 'mmlpx';
+import { observer } from 'mobx-react';
 import ShowStore from 'src/state/stores/showStore';
 import styles from './test.module.css';
 
-interface IProps extends Test {
+interface IProps {
   routing: any;
 }
 
-interface Test {
-  ShowStore: ShowStore;
-}
-@inject('routing', ShowStore.name)
 @observer
 class Home extends React.Component<IProps> {
+  @inject() ShowStore: ShowStore;
   goToSearch = event => {
     event.preventDefault();
     this.props.routing.push('/Shows');
   };
 
   handleSearchTermChange = event => {
-    this.props.ShowStore.searchTerm = event.target.value;
+    this.ShowStore.searchTerm = event.target.value;
   };
 
   render() {
     return (
       <div>
-        <p>{this.props.ShowStore.searchTerm}</p>
+        <p>{this.ShowStore.searchTerm}</p>
         <form onSubmit={this.goToSearch}>
           <input
             onChange={this.handleSearchTermChange}
-            value={this.props.ShowStore.searchTerm}
+            value={this.ShowStore.searchTerm}
             type="text"
             placeholder="Search"
           />

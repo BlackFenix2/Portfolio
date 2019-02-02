@@ -6,9 +6,11 @@ export const renderApp = (App, target) => {
   const main = document.getElementById(target);
 
   // render or hydrate depending on SSR status
-  // const renderMethod = main.children.length > 1 ? 'hydrate' : 'render';
-  const renderMethod = 'render';
+  const renderMethod = main.children.length > 1 ? 'hydrate' : 'render';
+
+  // temp render untill senamtic-ui is replaced with Material-UI
+  const tempRenderMethod = 'render';
   // hot load application
   const AppContainer = hot(module)(App);
-  ReactDOM[renderMethod](React.createElement(AppContainer), main);
+  ReactDOM[tempRenderMethod](React.createElement(AppContainer), main);
 };

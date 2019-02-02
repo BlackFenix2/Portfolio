@@ -2,8 +2,9 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import path from 'path';
-import terserJSPlugin from 'terser-webpack-plugin';
+import terserPlugin from 'terser-webpack-plugin';
 import webpack from 'webpack';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import merge from 'webpack-merge';
 import paths from '../paths';
 import common from './webpack.common';
@@ -19,8 +20,13 @@ const prodConfig: webpack.Configuration = {
 
   optimization: {
     minimizer: [
-      new terserJSPlugin({
-        parallel: true
+      new terserPlugin({
+        cache: true,
+        parallel: true,
+        terserOptions: {
+          // keep function names for Mobx Injection
+          keep_fnames: true
+        }
       })
     ]
   },
@@ -41,6 +47,9 @@ const prodConfig: webpack.Configuration = {
     // clean build folder
     new CleanWebpackPlugin([`${paths.buildDir}/*`], {
       allowExternal: true
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static'
     })
   ]
 };

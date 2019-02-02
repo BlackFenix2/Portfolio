@@ -1,5 +1,6 @@
-import { action, computed, observable, reaction } from 'mobx';
+import { Store } from 'mmlpx';
 
+@Store
 export default class RouteStore {
   readonly routes: Routes = [
     {
