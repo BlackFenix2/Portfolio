@@ -18,11 +18,24 @@
 
     //Allow decorators
     "experimentalDecorators": true,
+
+    //needed for mmlpx
     "emitDecoratorMetadata": true,
+
+    //remove unneeded comments
+    "removeComments": true,
+
     // ALIAS  src path
     "baseUrl": "./",
     "paths": {
       "src/*": ["src/*"]
     }
+  },
+
+  //testing support for mobx-remotedev package
+  "awesomeTypescriptLoaderOptions": {
+    "useBabel": true,
+    //add Babel 7
+    "babelCore": "@babel/core"
   }
 }

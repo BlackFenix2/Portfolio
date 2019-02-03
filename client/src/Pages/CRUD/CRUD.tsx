@@ -1,5 +1,6 @@
+import { inject } from 'mmlpx';
 import { observable } from 'mobx';
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 import * as React from 'react';
 import { Button, Loader } from 'semantic-ui-react';
 import Visibility from 'src/components/effects/Visibility';
@@ -12,7 +13,6 @@ import TestForm from './TestForm';
 interface IProps {
   actions: any;
   fruits: any;
-  FruitStore?: FruitStore;
 }
 
 interface State {
@@ -21,9 +21,10 @@ interface State {
   optionSelect: string;
 }
 
-@inject(FruitStore.name)
 @observer
 class CRUD extends React.Component<IProps, State> {
+  @inject() FruitStore: FruitStore;
+
   @observable visible: boolean = false;
   @observable uiLoading: boolean = false;
   @observable optionSelect: string = 'create';
@@ -34,7 +35,7 @@ class CRUD extends React.Component<IProps, State> {
   sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
   fetchFruits = () => {
-    this.props.FruitStore.getFruitList();
+    this.FruitStore.getFruitList();
   };
 
   setLoading = (bool: boolean) => {
@@ -42,7 +43,7 @@ class CRUD extends React.Component<IProps, State> {
   };
 
   create = value => {
-    this.props.FruitStore.addFruit(value);
+    this.FruitStore.addFruit(value);
     this.setLoading(true);
     this.sleep(1000).then(() => {
       this.fetchFruits();
@@ -52,7 +53,7 @@ class CRUD extends React.Component<IProps, State> {
   };
 
   delete = id => {
-    this.props.FruitStore.deleteFruit(id);
+    this.FruitStore.deleteFruit(id);
     this.setLoading(true);
     this.sleep(1000).then(() => {
       this.fetchFruits();
@@ -62,7 +63,7 @@ class CRUD extends React.Component<IProps, State> {
   };
 
   update = value => {
-    this.props.FruitStore.updateFruit(value);
+    this.FruitStore.updateFruit(value);
     this.setLoading(true);
     this.sleep(1000).then(() => {
       this.fetchFruits();
@@ -72,7 +73,7 @@ class CRUD extends React.Component<IProps, State> {
   };
 
   details = id => {
-    this.props.FruitStore.getFruit(id);
+    this.FruitStore.getFruit(id);
 
     this.toggleEvent();
   };
@@ -118,21 +119,21 @@ class CRUD extends React.Component<IProps, State> {
               <Visibility active={this.optionSelect === 'details'}>
                 <TestDisplay
                   onSubmit={this.details}
-                  initial={this.props.FruitStore.fruit}
+                  initial={this.FruitStore.fruit}
                   {...this}
                 />
               </Visibility>
               <Visibility active={this.optionSelect === 'update'}>
                 <TestForm
                   onSubmit={this.update}
-                  initial={this.props.FruitStore.fruit}
+                  initial={this.FruitStore.fruit}
                   {...this}
                 />
               </Visibility>
               <Visibility active={this.optionSelect === 'delete'}>
                 <TestDisplay
                   onSubmit={this.delete}
-                  initial={this.props.FruitStore.fruit}
+                  initial={this.FruitStore.fruit}
                   {...this}
                 />
               </Visibility>
@@ -140,7 +141,7 @@ class CRUD extends React.Component<IProps, State> {
           </div>
           <div>
             <FruitTable
-              list={this.props.FruitStore.fruitList}
+              list={this.FruitStore.fruitList}
               deleteAction={this.deleteFetch}
               updateAction={this.updateFetch}
               detailsAction={this.detailsFetch}
@@ -154,13 +155,13 @@ class CRUD extends React.Component<IProps, State> {
             Fetch fruits
             <Loader inline active={false} />
           </Button>
-          <p>Loading: {String(this.props.FruitStore.isLoading)}</p>
-          <p>Error: {String(this.props.FruitStore.error)}</p>
+          <p>Loading: {String(this.FruitStore.isLoading)}</p>
+          <p>Error: {String(this.FruitStore.error)}</p>
           <p>selected form: {this.optionSelect}</p>
           <div>
             <h2>Errors:</h2>
 
-            <p>{JSON.stringify(this.props.FruitStore.errorData)}</p>
+            <p>{JSON.stringify(this.FruitStore.errorData)}</p>
           </div>
         </div>
       </React.Fragment>

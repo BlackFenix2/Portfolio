@@ -1,16 +1,14 @@
+import { inject } from 'mmlpx';
 import { observable } from 'mobx';
-import { inject, observer } from 'mobx-react';
+import { inject as MobxInject, observer } from 'mobx-react';
 import * as React from 'react';
 import TodoStore from 'src/state/stores/todoStore';
 
-interface Props {
-  TodoStore: TodoStore;
-}
-@inject(TodoStore.name)
 @observer
-class Todo extends React.Component<Props> {
+class Todo extends React.Component {
   @observable task: string = '';
 
+  @inject() TodoStore: TodoStore;
   clearInput = () => {
     this.task = '';
   };
@@ -23,26 +21,26 @@ class Todo extends React.Component<Props> {
 
   handleAddTodo = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    this.props.TodoStore.addTodo(this.task);
+    this.TodoStore.addTodo(this.task);
     this.clearInput();
   };
 
   handleClearTodo = (e: React.SyntheticEvent) => {
-    this.props.TodoStore.clearTodo();
+    this.TodoStore.clearTodo();
     this.clearInput();
   };
 
   handleToggleTask = todo => {
-    this.props.TodoStore.toggleTodo(todo);
+    this.TodoStore.toggleTodo(todo);
   };
 
   render() {
     return (
       <>
         <div>
-          <p>Test State:{this.props.TodoStore.testState}</p>
+          <p>Test State:{this.TodoStore.testState}</p>
           <p>Test Task:{this.task}</p>
-          <p>Completed Tasks:{this.props.TodoStore.completedTasks}</p>
+          <p>Completed Tasks:{this.TodoStore.completedTasks}</p>
         </div>
         <label>New Task</label>
         <form onSubmit={this.handleAddTodo}>
@@ -52,7 +50,7 @@ class Todo extends React.Component<Props> {
         <button onClick={this.handleClearTodo}>Clear TODO</button>
         <div>
           <TodoList
-            list={this.props.TodoStore.todoList}
+            list={this.TodoStore.todoList}
             changeEvent={this.handleToggleTask}
           />
         </div>

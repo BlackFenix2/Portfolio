@@ -60,9 +60,8 @@ interface State {
   activeUrl: string;
 }
 
-@inject('RouteStore')
 @observer
-class MobileNav extends React.Component<{ RouteStore?: RouteStore }, State> {
+class MobileNav extends React.Component<{ Routes: RouteStore }, State> {
   state = {
     visible: false,
     activeUrl: '/'
@@ -90,7 +89,7 @@ class MobileNav extends React.Component<{ RouteStore?: RouteStore }, State> {
         </Menu.Item>
         <Collapse isOpened={this.state.visible} style={{ overflow: 'auto' }}>
           <LinkGenerator
-            routes={this.props.RouteStore.routes}
+            routes={this.props.Routes.routes}
             clickEvent={this.handleItemClick}
             activeUrl={this.state.activeUrl}
           />

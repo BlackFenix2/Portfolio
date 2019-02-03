@@ -1,20 +1,23 @@
+import { inject } from 'mmlpx';
 import React from 'react';
 import { Responsive } from 'semantic-ui-react';
 import DesktopNav from 'src/App/Nav/DesktopNav';
 import MobileNav from 'src/App/Nav/MobileNav';
+import RouteStore from 'src/state/stores/routeStore';
 
 const Desktop = props => <Responsive {...props} minWidth={992} />;
 const Mobile = props => <Responsive {...props} maxWidth={992} />;
 
 class Nav extends React.Component {
+  @inject() RouteStore: RouteStore;
   render() {
     return (
       <React.Fragment>
         <Desktop>
-          <DesktopNav />
+          <DesktopNav Routes={this.RouteStore} />
         </Desktop>
         <Mobile>
-          <MobileNav />
+          <MobileNav Routes={this.RouteStore} />
         </Mobile>
       </React.Fragment>
     );

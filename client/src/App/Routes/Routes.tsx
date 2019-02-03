@@ -1,4 +1,5 @@
-import { inject, observer } from 'mobx-react';
+import { inject } from 'mmlpx';
+import { observer } from 'mobx-react';
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import withRouter from 'react-router-dom/withRouter';
@@ -11,10 +12,11 @@ import { setPageRouteSuspenseAsync } from './routeHelpers';
 const Home = setPageRouteSuspenseAsync('/Home');
 const PageNotFound = React.lazy(() => import('src/components/shared/NotFound'));
 
-@inject('RouteStore')
 @withRouter
 @observer
-class Routes extends React.Component<{ RouteStore?: RouteStore }, any> {
+class Routes extends React.Component {
+  @inject() RouteStore: RouteStore;
+
   render() {
     return (
       // Weird Juryrig, involing stateless components return array of routes directly to switch parent.
@@ -22,7 +24,7 @@ class Routes extends React.Component<{ RouteStore?: RouteStore }, any> {
         <Route exact path="/">
           {Home}
         </Route>
-        {RouteGenerator(this.props.RouteStore)}
+        {RouteGenerator(this.RouteStore)}
         {CustomRoutes()}
         <Route>
           <AsyncComponent LazyComponent={PageNotFound} />

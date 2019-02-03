@@ -3,7 +3,6 @@ import { Provider as MobxProvider } from 'mobx-react';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import * as React from 'react';
 import { Router } from 'react-router';
-import rootStore from 'src/state/stores';
 import Body from './Body';
 import Footer from './Footer';
 import Header from './Header';
@@ -16,7 +15,7 @@ const history = syncHistoryWithStore(browserHistory, RoutingStore);
 class App extends React.Component {
   render() {
     return (
-      <MobxProvider {...rootStore} routing={RoutingStore}>
+      <MobxProvider routing={RoutingStore}>
         <Router history={history}>
           <AppLayout />
         </Router>

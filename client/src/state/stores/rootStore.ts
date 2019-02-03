@@ -1,18 +1,21 @@
 import remotedev from 'mobx-remotedev';
 
 // import stores
+import fruitStore from './fruitStore';
+import routeStore from './routeStore';
+import showStore from './showStore';
+import todoStore from './todoStore';
 
-import FruitStore from './fruitStore';
-import RouteStore from './routeStore';
-import ShowStore from './showStore';
-import TodoStore from './todoStore';
+const TodoStore = new todoStore();
+const ShowStore = new showStore();
+const FruitStore = new fruitStore();
+const RouteStore = new routeStore();
 
-class RootStore {
-  TodoStore = new TodoStore();
-  ShowStore = new ShowStore();
-  FruitStore = new FruitStore();
-  RouteStore = new RouteStore();
-}
+const RootStore = {
+  // TodoStore,
+  // ShowStore,
+  // FruitStore
+  // RouteStore
+};
 
-// export default remotedev(new RootStore(), { global: true });
-export default new RootStore();
+export default RootStore;

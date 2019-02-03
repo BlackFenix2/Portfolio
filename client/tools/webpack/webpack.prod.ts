@@ -4,7 +4,6 @@ import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import path from 'path';
 import terserPlugin from 'terser-webpack-plugin';
 import webpack from 'webpack';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import merge from 'webpack-merge';
 import paths from '../paths';
 import common from './webpack.common';
@@ -21,7 +20,7 @@ const prodConfig: webpack.Configuration = {
   optimization: {
     minimizer: [
       new terserPlugin({
-        cache: true,
+        // cache: true,
         parallel: true,
         terserOptions: {
           // keep function names for Mobx Injection
@@ -47,9 +46,6 @@ const prodConfig: webpack.Configuration = {
     // clean build folder
     new CleanWebpackPlugin([`${paths.buildDir}/*`], {
       allowExternal: true
-    }),
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static'
     })
   ]
 };

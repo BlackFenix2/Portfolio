@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button, Fab } from '@material-ui/core';
 import { Add, Remove } from '@material-ui/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -62,18 +62,18 @@ class ShowCard extends React.PureComponent<IShow> {
               <p>{this.props.description}</p>
             </Container>
             <Container textAlign="center">
-              <Button mini variant="fab" onClick={this.decreaseRating}>
+              <Fab size="small" onClick={this.decreaseRating}>
                 <Remove />
-              </Button>
+              </Fab>
               <Rating
                 icon="star"
                 rating={this.state.rating}
                 maxRating={5}
                 disabled
               />
-              <Button mini variant="fab" onClick={this.increaseRating}>
+              <Fab size="small" onClick={this.increaseRating}>
                 <Add />
-              </Button>
+              </Fab>
             </Container>
           </Grid.Column>
         </Grid>

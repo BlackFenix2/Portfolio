@@ -68,10 +68,9 @@ const User = props => (
   </Menu.Item>
 );
 
-@inject('RouteStore')
 @observer
 class DesktopNav extends React.Component<{
-  RouteStore?: RouteStore;
+  Routes: RouteStore;
   auth?: any;
 }> {
   state = { activeUrl: '/' };
@@ -92,7 +91,7 @@ class DesktopNav extends React.Component<{
           <Icon name="home" />
         </NavItem>
         <LinkGenerator
-          routes={this.props.RouteStore.routes}
+          routes={this.props.Routes.routes}
           clickEvent={this.handleItemClick}
           activeUrl={this.activeUrl}
         />

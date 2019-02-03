@@ -13,6 +13,7 @@ interface IProps {
 @observer
 class Home extends React.Component<IProps> {
   @inject() ShowStore: ShowStore;
+
   goToSearch = event => {
     event.preventDefault();
     this.props.routing.push('/Shows');

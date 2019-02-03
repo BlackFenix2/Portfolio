@@ -1,6 +1,5 @@
 import { Store } from 'mmlpx';
 
-@Store
 export default class RouteStore {
   readonly routes: Routes = [
     {

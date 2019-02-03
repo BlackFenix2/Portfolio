@@ -1,9 +1,7 @@
 import { Dictionary, pickBy } from 'lodash';
-import { Store } from 'mmlpx';
 import { autorun, observable } from 'mobx';
 import preload from './datas.json';
 
-@Store
 export default class ShowStore {
   @observable searchTerm: string = '';
 

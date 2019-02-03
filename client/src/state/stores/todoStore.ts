@@ -1,12 +1,12 @@
-import { Store } from 'mmlpx';
-import { action, computed, observable, reaction } from 'mobx';
+import { action, computed, observable } from 'mobx';
+
+import remotedev from 'mobx-remotedev';
 
 interface Todo {
   task: string;
   isComplete: boolean;
 }
-
-@Store
+@remotedev({ onlyActions: true })
 export default class TodoStore {
   @observable todoList: Todo[] = [];
 
@@ -45,3 +45,5 @@ export default class TodoStore {
       : true;
   }
 }
+
+export const ttt = remotedev(TodoStore, { onlyActions: true });

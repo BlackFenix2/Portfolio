@@ -9,6 +9,7 @@ import ShowStore from 'src/state/stores/showStore';
 @observer
 class Shows extends React.Component {
   @inject() ShowStore: ShowStore;
+
   setSearchTerm = event => {
     this.ShowStore.searchTerm = event.target.value;
   };
