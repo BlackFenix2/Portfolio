@@ -47,7 +47,6 @@
     "@types/webpack-env": "^1.13.7",
     "@types/webpack-hot-client": "^4.0.0",
     "awesome-typescript-loader": "^5.2.1",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "clean-webpack-plugin": "^1.0.0",
     "compression-webpack-plugin": "^2.0.0",
     "connect-history-api-fallback": "^1.5.0",
@@ -110,7 +109,7 @@
     "mobx-react": "^5.4.3",
     "mobx-react-form": "^1.36.1",
     "mobx-react-router": "^4.0.5",
-    "mobx-remotedev": "^0.3.2",
+    "mobx-remotedev": "^0.3.3",
     "react": "^16.7.0",
     "react-collapse": "^4.0.3",
     "react-device-detect": "^1.6.1",
@@ -125,5 +124,8 @@
     "serialize-javascript": "^1.4.0",
     "ts-jest": "^23.10.5",
     "typeface-roboto": "^0.0.54"
+  },
+  "resolutions": {
+    "terser": "3.14.1"
   }
 }
