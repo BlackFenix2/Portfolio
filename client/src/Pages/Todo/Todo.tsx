@@ -1,6 +1,6 @@
 import { inject } from 'mmlpx';
 import { observable } from 'mobx';
-import { inject as MobxInject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 import * as React from 'react';
 import TodoStore from 'src/state/stores/todoStore';
 
@@ -9,6 +9,7 @@ class Todo extends React.Component {
   @observable task: string = '';
 
   @inject() TodoStore: TodoStore;
+
   clearInput = () => {
     this.task = '';
   };

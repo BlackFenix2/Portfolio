@@ -71,9 +71,9 @@ const config = {
                   failOnHint: true
                 }
               }
-            ]
+            ],
 
-            // exclude: /node_modules/
+            exclude: /node_modules/
           },
 
           // Less Loader

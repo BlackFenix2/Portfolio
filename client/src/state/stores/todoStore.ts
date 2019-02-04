@@ -46,4 +46,4 @@ export default class TodoStore {
   }
 }
 
-export const ttt = remotedev(TodoStore, { onlyActions: true });
+export const test = remotedev(TodoStore, { onlyActions: true });
