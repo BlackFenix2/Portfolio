@@ -4,6 +4,7 @@ import ShowList from './ShowList';
 
 import { inject } from 'mmlpx';
 import { observer } from 'mobx-react';
+import { Input } from 'semantic-ui-react';
 import ShowStore from 'src/state/stores/showStore';
 
 @observer
@@ -17,9 +18,11 @@ class Shows extends React.Component {
   render() {
     return (
       <div>
-        <SearchBar
-          doSearch={this.setSearchTerm}
-          searchTerm={this.ShowStore.searchTerm}
+        <Input
+          icon="search"
+          placeholder="Search..."
+          value={this.ShowStore.searchTerm}
+          onChange={this.setSearchTerm}
         />
 
         <ShowList shows={this.ShowStore.shows} />
