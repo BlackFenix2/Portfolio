@@ -1,5 +1,4 @@
 import * as React from 'react';
-import SearchBar from 'src/components/SearchBar';
 import ShowList from './ShowList';
 
 import { inject } from 'mmlpx';
