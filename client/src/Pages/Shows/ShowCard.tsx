@@ -2,8 +2,15 @@ import { Button, Fab } from '@material-ui/core';
 import { Add, Remove } from '@material-ui/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Grid, Header, Image, Rating } from 'semantic-ui-react';
-import Card from 'src/components/elements/Card';
+import {
+  Card,
+  Container,
+  Grid,
+  Header,
+  Image,
+  Rating
+} from 'semantic-ui-react';
+// import Card from 'src/components/elements/Card';
 // Image equalizer
 import styles from './ShowCard.module.css';
 
@@ -40,43 +47,39 @@ class ShowCard extends React.PureComponent<IShow> {
         }))
       : null;
   render() {
+    // TODO Remove require statement
     const image = require(`src/lib/img/posters/${this.props.poster}`);
     return (
-      <Card>
-        <Grid stackable>
-          <Grid.Column width={7} className={styles.grid} floated="left">
-            <Link to={`/Details/${this.props.imdbID}`}>
-              <Image
-                alt={`${this.props.title} Show Poster`}
-                src={image}
-                className={styles.img}
-              />
-            </Link>
-          </Grid.Column>
-          <Grid.Column width={9} floated="right">
-            <Container>
-              <Header>{this.props.title}</Header>
+      <Card raised>
+        <Link to={`/Details/${this.props.imdbID}`}>
+          <Image
+            alt={`${this.props.title} Show Poster`}
+            src={image}
+            className={styles.img}
+          />
+        </Link>
+        <Card.Content>
+          <Card.Header>{this.props.title}</Card.Header>
 
-              <code>{this.props.year}</code>
+          <Card.Meta>{this.props.year}</Card.Meta>
 
-              <p>{this.props.description}</p>
-            </Container>
-            <Container textAlign="center">
-              <Fab size="small" onClick={this.decreaseRating}>
-                <Remove />
-              </Fab>
-              <Rating
-                icon="star"
-                rating={this.state.rating}
-                maxRating={5}
-                disabled
-              />
-              <Fab size="small" onClick={this.increaseRating}>
-                <Add />
-              </Fab>
-            </Container>
-          </Grid.Column>
-        </Grid>
+          <Card.Description>{this.props.description}</Card.Description>
+        </Card.Content>
+
+        <Card.Content extra textAlign="center">
+          <Fab size="small" onClick={this.decreaseRating}>
+            <Remove />
+          </Fab>
+          <Rating
+            icon="star"
+            rating={this.state.rating}
+            maxRating={5}
+            disabled
+          />
+          <Fab size="small" onClick={this.increaseRating}>
+            <Add />
+          </Fab>
+        </Card.Content>
       </Card>
     );
   }

@@ -1,3 +1,4 @@
+import TextField from '@material-ui/core/TextField';
 import { inject } from 'mmlpx';
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
@@ -16,7 +17,7 @@ class Todo extends React.Component {
 
   handleTaskChange = ({
     currentTarget: { value }
-  }: React.SyntheticEvent<HTMLInputElement>) => {
+  }: React.ChangeEvent<HTMLInputElement>) => {
     this.task = value;
   };
 
@@ -39,13 +40,15 @@ class Todo extends React.Component {
     return (
       <>
         <div>
-          <p>Test State:{this.TodoStore.testState}</p>
-          <p>Test Task:{this.task}</p>
           <p>Completed Tasks:{this.TodoStore.completedTasks}</p>
         </div>
-        <label>New Task</label>
+
         <form onSubmit={this.handleAddTodo}>
-          <input value={this.task} onChange={this.handleTaskChange} />
+          <TextField
+            value={this.task}
+            label="Task"
+            onChange={this.handleTaskChange}
+          />
           <button>Add</button>
         </form>
         <button onClick={this.handleClearTodo}>Clear TODO</button>

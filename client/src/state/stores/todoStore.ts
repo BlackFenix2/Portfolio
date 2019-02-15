@@ -6,7 +6,7 @@ interface Todo {
   task: string;
   isComplete: boolean;
 }
-@mobxRemotedev({ onlyActions: true })
+@mobxRemotedev
 export default class TodoStore {
   @observable todoList: Todo[] = [];
 

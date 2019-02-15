@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Dropdown, Icon, Menu } from 'semantic-ui-react';
 
 import { observable } from 'mobx';
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 import RouteStore from 'src/state/stores/routeStore';
 
 const NavBar = props => (

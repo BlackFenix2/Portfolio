@@ -3,13 +3,12 @@ import HtmlWebPackPlugin from 'html-webpack-plugin';
 import HtmlTemplate from 'html-webpack-template';
 import path from 'path';
 import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
-
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import webpack from 'webpack';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
+import { staging } from '../env';
 import htmlParams from '../htmlParams';
 import paths from '../paths';
-
-import { staging } from '../env';
 
 const config = {
   entry: {
@@ -34,17 +33,24 @@ const config = {
   },
 
   output: {
+    // speeds up webpack builds
+    pathinfo: false,
     publicPath: '/',
     path: path.resolve(__dirname, paths.buildDir),
     filename: 'static/js/[name].js',
     chunkFilename: 'static/js/[name].js'
   },
   resolve: {
-    // namespace src to avoid ../../
-    // enabled untill webpack 4 support for Awesome-typescript-loader
+    // enabled untill i clean out absolute require statements in shows
     alias: {
       src: paths.codeRoot
     },
+
+    plugins: [
+      // add tsconfig paths to webpack
+      new TsconfigPathsPlugin()
+    ],
+
     // add file extensions to shorthand ES6 imports
     extensions: ['.ts', '.tsx', 'json', '.js', '.jsx', '.css']
   },
@@ -58,17 +64,11 @@ const config = {
             test: /\.tsx?$/,
             use: [
               {
-                loader: 'awesome-typescript-loader',
+                loader: 'ts-loader',
                 options: {
                   silent: true,
-                  transpileOnly: true
-                }
-              },
-              {
-                loader: 'tslint-loader',
-                options: {
-                  emitErrors: true,
-                  failOnHint: true
+                  experimentalWatchApi: true,
+                  happyPackMode: true
                 }
               }
             ],

@@ -36,5 +36,7 @@ app.get('/*', (request, response) => {
 
 // run app and listen on available port 80
 app.listen(port, () =>
-  console.log(`Server started on port: ${port}, serving files at ${directory}`)
+  console.log(
+    `Server started on http://localhost:${port}, serving files at ${directory}`
+  )
 );

@@ -1,9 +1,8 @@
 // add w3-css library
 // added component CSS manually to address SSR issues
 
-
 // import just css, no jQuery
-import 'semantic-ui-css/semantic.css';
+import 'semantic-ui-css/semantic.min.css';
 
 // set default font to 16px
 import 'src/lib/css/font.css';

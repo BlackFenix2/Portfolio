@@ -4,7 +4,11 @@ import { Icon, Menu } from 'semantic-ui-react';
 
 import * as styles from './MobileDropdownComponent.module.css';
 
-class MobileDropdownComponent extends React.Component<any> {
+interface Props {
+  name: string;
+}
+
+class MobileDropdownComponent extends React.Component<Props> {
   state = {
     visible: false
   };

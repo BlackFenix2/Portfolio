@@ -30,13 +30,5 @@
     "paths": {
       "src/*": ["src/*"]
     }
-  },
-
-  //testing support for mobx-remotedev package
-  "awesomeTypescriptLoaderOptions": {
-    //need babel for mobx-remotedev :(
-    "useBabel": true,
-    //add Babel 7
-    "babelCore": "@babel/core"
   }
 }

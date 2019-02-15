@@ -1,8 +1,8 @@
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 import * as React from 'react';
 import { Collapse } from 'react-collapse';
 import { Link } from 'react-router-dom';
-import { Icon, Menu } from 'semantic-ui-react';
+import { Icon, Menu, Sidebar } from 'semantic-ui-react';
 import RouteStore from 'src/state/stores/routeStore';
 import MobileDropdownComponent from './MobileDropdownComponent';
 
@@ -10,18 +10,6 @@ const NavBar = props => (
   <Menu fixed="top" vertical fluid>
     {props.children}
   </Menu>
-);
-
-const NavItem = props => (
-  // decorate menu as Link for React-Router
-  <Menu.Item
-    as={Link}
-    to={props.url}
-    active={props.active}
-    onClick={props.clickEvent}
-  >
-    {props.children}
-  </Menu.Item>
 );
 
 // generate simple nav links
@@ -55,6 +43,18 @@ const LinkGenerator = props => {
   return navLinks;
 };
 
+const NavItem = props => (
+  // decorate menu as Link for React-Router
+  <Menu.Item
+    as={Link}
+    to={props.url}
+    active={props.active}
+    onClick={props.clickEvent}
+  >
+    {props.children}
+  </Menu.Item>
+);
+
 interface State {
   visible: boolean;
   activeUrl: string;
@@ -87,13 +87,17 @@ class MobileNav extends React.Component<{ Routes: RouteStore }, State> {
 
           <Icon name="align justify" onClick={this.handleHamburgerClick} />
         </Menu.Item>
-        <Collapse isOpened={this.state.visible} style={{ overflow: 'auto' }}>
+        <Sidebar
+          visible={this.state.visible}
+          animation="overlay"
+          style={{ background: '#fff' }}
+        >
           <LinkGenerator
             routes={this.props.Routes.routes}
             clickEvent={this.handleItemClick}
             activeUrl={this.state.activeUrl}
           />
-        </Collapse>
+        </Sidebar>
       </NavBar>
     );
   }

@@ -1,5 +1,6 @@
+import CssBaseline from '@material-ui/core/CssBaseline';
 import createBrowserHistory from 'history/createBrowserHistory';
-import { Provider as MobxProvider } from 'mobx-react';
+import { Provider } from 'mobx-react';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import * as React from 'react';
 import { Router } from 'react-router';
@@ -15,11 +16,11 @@ const history = syncHistoryWithStore(browserHistory, RoutingStore);
 class App extends React.Component {
   render() {
     return (
-      <MobxProvider routing={RoutingStore}>
+      <Provider routing={RoutingStore}>
         <Router history={history}>
           <AppLayout />
         </Router>
-      </MobxProvider>
+      </Provider>
     );
   }
 }

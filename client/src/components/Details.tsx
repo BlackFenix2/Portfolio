@@ -12,6 +12,7 @@ class Details extends React.Component<any> {
     return (
       <div className="w3-panel">
         <img
+          // TODO Remove require statement
           src={require(`src/lib/img/posters/${this.props.poster}`)}
           alt="where is the item"
           style={imgStyle}

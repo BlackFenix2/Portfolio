@@ -7,6 +7,7 @@ import webpack from 'webpack';
 import merge from 'webpack-merge';
 import paths from '../paths';
 import common from './webpack.common';
+
 const prodConfig: webpack.Configuration = {
   // set mode to production, enables prod defaults
   mode: 'production',
