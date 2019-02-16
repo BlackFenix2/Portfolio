@@ -10,3 +10,4 @@ import 'src/lib/css/font.css';
 import 'src/lib/css/flex.css';
 
 import 'src/lib/css/animate.css';
+import 'src/lib/css/semantic-override.css';

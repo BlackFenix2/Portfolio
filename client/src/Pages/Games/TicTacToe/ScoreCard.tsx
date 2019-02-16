@@ -66,7 +66,9 @@ class ScoreCard extends React.Component<Props, State> {
         <Container textAlign="center">
           <h2>Score Card</h2>
           <Segment basic textAlign="center">
-            <Button onClick={this.props.clearScore}>Clear Score</Button>
+            <Button secondary onClick={this.props.clearScore}>
+              Clear Score
+            </Button>
           </Segment>
 
           <Label.Group>

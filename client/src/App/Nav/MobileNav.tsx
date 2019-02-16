@@ -77,6 +77,7 @@ class MobileNav extends React.Component<{ Routes: RouteStore }, State> {
   handleHamburgerClick = () => {
     this.setState({ visible: !this.state.visible });
   };
+  handleHideClick = () => this.setState({ visible: false });
   render() {
     return (
       <NavBar>
@@ -90,6 +91,7 @@ class MobileNav extends React.Component<{ Routes: RouteStore }, State> {
         <Sidebar
           visible={this.state.visible}
           animation="overlay"
+          onHide={this.handleHideClick}
           style={{ background: '#fff' }}
         >
           <LinkGenerator

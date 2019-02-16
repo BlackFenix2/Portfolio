@@ -19,13 +19,13 @@ class AsyncComponent extends React.Component<Props, State> {
     info: null
   };
 
-  componentDidCatch(error, info) {
+  componentDidCatch(error: any, info: any) {
     this.setState({ error, info, hasError: true });
   }
 
   render() {
     const { error, info } = this.state;
-    // tslint:disable-next-line:no-this-assignment
+
     const { LazyComponent } = this.props;
     return this.state.hasError ? (
       <div>

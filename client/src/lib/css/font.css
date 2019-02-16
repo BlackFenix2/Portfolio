@@ -1,6 +1,0 @@
-/* overide the default 14px font of semantic-ui */
-
-html,
-body {
-  font-size: 16px;
-}

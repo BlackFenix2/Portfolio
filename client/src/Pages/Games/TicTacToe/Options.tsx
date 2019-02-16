@@ -31,7 +31,7 @@ const Options = props => (
         options={options}
       />
       <div>
-        <Button onClick={props.resetGame} disabled={props.disabled}>
+        <Button primary onClick={props.resetGame} disabled={props.disabled}>
           Reset
         </Button>
       </div>

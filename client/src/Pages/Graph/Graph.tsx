@@ -1,16 +1,19 @@
+import Slider from '@material-ui/lab/Slider';
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
 import * as React from 'react';
+import { Divider } from 'semantic-ui-react';
 
 @observer
 class Graph extends React.Component {
   @observable graphHeight: number = 100;
   @observable graphWidth: number = 100;
 
-  handleChange = event => {
-    event.target.name === 'heightRange'
-      ? (this.graphHeight = event.target.value)
-      : (this.graphWidth = event.target.value);
+  handleHeightChange = (event, value) => {
+    this.graphHeight = value;
+  };
+  handleWidthChange = (event, value) => {
+    this.graphWidth = value;
   };
 
   render() {
@@ -20,21 +23,18 @@ class Graph extends React.Component {
         <p>Height: {this.graphHeight}</p>
         <p>Width: {this.graphWidth}</p>
         <div>
-          <input
-            type="range"
-            name="heightRange"
+          <Slider
+            min={10}
+            max={210}
             value={this.graphHeight}
-            min="10"
-            max="210"
-            onChange={this.handleChange}
+            onChange={this.handleHeightChange}
           />
-          <input
-            type="range"
-            name="widthRange"
+          <Divider />
+          <Slider
+            min={10}
+            max={210}
             value={this.graphWidth}
-            min="10"
-            max="210"
-            onChange={this.handleChange}
+            onChange={this.handleWidthChange}
           />
         </div>
         <div>

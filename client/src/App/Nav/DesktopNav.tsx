@@ -95,7 +95,7 @@ class DesktopNav extends React.Component<{
           clickEvent={this.handleItemClick}
           activeUrl={this.activeUrl}
         />
-        <User firstName={'john'} lastName={'Doe'} login={false} />
+        <User firstName={'John'} lastName={'Doe'} login={false} />
       </NavBar>
     );
   }

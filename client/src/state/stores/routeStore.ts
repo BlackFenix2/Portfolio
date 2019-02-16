@@ -81,6 +81,10 @@ export default class RouteStore {
         {
           url: '/TicTacToe',
           name: 'Tic Tac Toe'
+        },
+        {
+          url: '/FlappyBird',
+          name: 'Flappy Bird'
         }
       ]
     }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { inject } from 'mmlpx';
 import { observer } from 'mobx-react';
+import { Input } from 'semantic-ui-react';
 import ShowStore from 'src/state/stores/showStore';
 import styles from './test.module.css';
 
@@ -28,11 +29,11 @@ class Home extends React.Component<IProps> {
       <div>
         <p>{this.ShowStore.searchTerm}</p>
         <form onSubmit={this.goToSearch}>
-          <input
+          <Input
             onChange={this.handleSearchTermChange}
             value={this.ShowStore.searchTerm}
-            type="text"
-            placeholder="Search"
+            placeholder="Search..."
+            icon="search"
           />
           <Link to="/Shows" className={styles.othertest}>
             or Browse All

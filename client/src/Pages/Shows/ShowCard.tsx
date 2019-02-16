@@ -2,14 +2,7 @@ import { Button, Fab } from '@material-ui/core';
 import { Add, Remove } from '@material-ui/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Card,
-  Container,
-  Grid,
-  Header,
-  Image,
-  Rating
-} from 'semantic-ui-react';
+import { Card, Image, Rating } from 'semantic-ui-react';
 // import Card from 'src/components/elements/Card';
 // Image equalizer
 import styles from './ShowCard.module.css';
@@ -30,7 +23,8 @@ class ShowCard extends React.PureComponent<IShow> {
   };
 
   state = {
-    rating: this.props.rating
+    rating: this.props.rating,
+    loading: true
   };
 
   increaseRating = () =>
@@ -46,6 +40,12 @@ class ShowCard extends React.PureComponent<IShow> {
           rating: prevState.rating - 1
         }))
       : null;
+
+  setLoading = () => {
+    this.setState({
+      loading: false
+    });
+  };
   render() {
     // TODO Remove require statement
     const image = require(`src/lib/img/posters/${this.props.poster}`);
@@ -56,6 +56,7 @@ class ShowCard extends React.PureComponent<IShow> {
             alt={`${this.props.title} Show Poster`}
             src={image}
             className={styles.img}
+            onLoad={this.setLoading}
           />
         </Link>
         <Card.Content>
