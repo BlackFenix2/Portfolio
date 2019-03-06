@@ -8,7 +8,7 @@ class Body extends React.Component {
   state;
   render() {
     return (
-      <main style={{ marginTop: '3em' }}>
+      <main style={{ paddingTop: '3em' }}>
         <Segment basic>
           <Error>
             <Routes />

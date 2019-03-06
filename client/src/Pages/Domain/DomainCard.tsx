@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Collapse } from 'react-collapse';
 
-import { Header, Segment } from 'semantic-ui-react';
-import Card from 'src/components/elements/Card';
+import { Card, Grid, Header, Loader, Segment } from 'semantic-ui-react';
 import LoadingIcon from '../../components/elements/LoadingIcon';
 interface IProps {
   name: string;
@@ -10,22 +9,24 @@ interface IProps {
 }
 
 const DomainCard: React.SFC<IProps> = props => (
-  <Card>
-    <div>
-      <Segment basic inverted clearing>
+  <Card raised fluid>
+    <Card.Content>
+      <Card.Header>
         <Header as="h2" floated="left">
           <span>{props.name}</span>
         </Header>
         <Header as="h2" floated="right">
           <LoadingIcon active={props.loading} />
         </Header>
-      </Segment>
-    </div>
-    <div>
-      <Collapse isOpened={!props.loading}>
-        <div>{props.children}</div>
-      </Collapse>
-    </div>
+      </Card.Header>
+    </Card.Content>
+    <Card.Content>
+      <Card.Description>
+        <Collapse isOpened={!props.loading}>
+          <div>{props.children}</div>
+        </Collapse>
+      </Card.Description>
+    </Card.Content>
   </Card>
 );
 

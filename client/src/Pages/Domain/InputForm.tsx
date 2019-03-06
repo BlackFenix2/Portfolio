@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Button, Input, Segment } from 'semantic-ui-react';
-import Card from 'src/components/elements/Card';
+import { Button, Card, Form, Input, Segment } from 'semantic-ui-react';
 interface IProps {
   item?: string;
   handleSubmit: any;
@@ -11,19 +10,26 @@ interface IProps {
 
 const InputForm: React.SFC<IProps> = props => {
   return (
-    <Card>
-      <Segment basic>
-        <h2>Domain Input</h2>
-        <div>
-          <label>Domain Name</label>
-        </div>
-        <form onSubmit={props.handleSubmit}>
-          <Input required value={props.domain} onChange={props.change} />
-          <Button className="w3-button w3-teal" loading={props.loading}>
-            Submit
-          </Button>
-        </form>
-      </Segment>
+    <Card raised fluid>
+      <Card.Content>
+        <Card.Header>
+          <h2>Domain Input</h2>
+        </Card.Header>
+      </Card.Content>
+      <Card.Content>
+        <Form onSubmit={props.handleSubmit}>
+          <Form.Field>
+            <label>Domain Name</label>
+            <Input
+              action={{ color: 'blue', content: 'Search' }}
+              required
+              placeholder="Domain.com..."
+              value={props.domain}
+              onChange={props.change}
+            />
+          </Form.Field>
+        </Form>
+      </Card.Content>
     </Card>
   );
 };

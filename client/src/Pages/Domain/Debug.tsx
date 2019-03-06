@@ -9,7 +9,7 @@ interface IProps {
 
 const Debug: React.SFC<IProps> = props => {
   return (
-    <List celled animated relaxed="very">
+    <List divided animated relaxed="very">
       <List.Item>Loading: {String(props.loading)}</List.Item>
       <List.Item>Error: {String(props.error)}</List.Item>
       <List.Item>Error Message: {String(props.errorMessage)}</List.Item>

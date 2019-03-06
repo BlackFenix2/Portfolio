@@ -5,8 +5,10 @@ interface IProps {
 }
 const LocalList: React.SFC<IProps> = props => {
   return (
-    <List relaxed="very" celled>
-      {props.items.map((x, i) => <List.Item key={i}>{x}</List.Item>)}
+    <List relaxed="very">
+      {props.items.map((x, i) => (
+        <List.Item key={i}>{x}</List.Item>
+      ))}
     </List>
   );
 };

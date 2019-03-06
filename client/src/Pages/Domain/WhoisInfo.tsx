@@ -5,7 +5,7 @@ import LocalList from './List';
 
 const WhoisInfo: React.SFC<IWhoisRecord> = props => {
   return (
-    <List celled relaxed="very" animated>
+    <List divided relaxed="very" animated>
       <List.Item>
         Created Date: {new Date(props.created).toDateString()}
       </List.Item>

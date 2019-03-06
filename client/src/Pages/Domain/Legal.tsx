@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { Segment } from 'semantic-ui-react';
-import Card from 'src/components/elements/Card';
+import { Card, Segment } from 'semantic-ui-react';
 
 const Legal: React.SFC = () => {
   return (
-    <Card>
-      <Segment basic>
+    <Card raised fluid>
+      <Card.Content>
         <h3>NOTICE, DISCLAIMERS AND TERMS OF USE:</h3>
+      </Card.Content>
+      <Card.Content>
         <p>
           By submitting an inquiry,you agree to these terms of usage and
           limitations of warranty. In particular,you agree not to use this data
@@ -18,7 +19,7 @@ const Legal: React.SFC = () => {
           to collect or compile this data for any purpose, including mining this
           data for your own personal or commercial purposes.
         </p>
-      </Segment>
+      </Card.Content>
     </Card>
   );
 };

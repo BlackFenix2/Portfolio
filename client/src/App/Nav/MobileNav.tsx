@@ -1,6 +1,5 @@
 import { observer } from 'mobx-react';
 import * as React from 'react';
-import { Collapse } from 'react-collapse';
 import { Link } from 'react-router-dom';
 import { Icon, Menu, Sidebar } from 'semantic-ui-react';
 import RouteStore from 'src/state/stores/routeStore';

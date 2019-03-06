@@ -12,14 +12,14 @@ class Nav extends React.Component {
   @inject() RouteStore: RouteStore;
   render() {
     return (
-      <React.Fragment>
+      <>
         <Desktop>
           <DesktopNav Routes={this.RouteStore} />
         </Desktop>
         <Mobile>
           <MobileNav Routes={this.RouteStore} />
         </Mobile>
-      </React.Fragment>
+      </>
     );
   }
 }

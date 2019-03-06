@@ -5,7 +5,7 @@ import LocalList from './List';
 
 const DnsInfo: React.SFC<IDnsRecord> = props => {
   return (
-    <List celled animated relaxed="very">
+    <List divided animated relaxed="very">
       <List.Item>
         A Record: <LocalList items={props.aRecords} />
       </List.Item>

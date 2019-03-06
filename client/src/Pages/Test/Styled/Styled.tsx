@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import styled from '@emotion/styled';
 
+import { Accordion, Transition } from 'semantic-ui-react';
 import LoadingIcon from 'src/components/elements/LoadingIcon';
 
 const Button = props => (
@@ -36,11 +37,13 @@ interface StyledProps {
 
 interface StyledState {
   loading: boolean;
+  activeIndex: number;
 }
 
 class Styled extends React.Component<StyledProps, StyledState> {
   state = {
-    loading: false
+    loading: false,
+    activeIndex: 0
   };
 
   clickEvent = () => {
@@ -49,7 +52,16 @@ class Styled extends React.Component<StyledProps, StyledState> {
     });
   };
 
+  handleClick = (e, titleProps) => {
+    const { index } = titleProps;
+    const { activeIndex } = this.state;
+    const newIndex = activeIndex === index ? -1 : index;
+
+    this.setState({ activeIndex: newIndex });
+  };
+
   render() {
+    const { activeIndex } = this.state;
     return (
       <div>
         <h2>Styled Tests</h2>
@@ -58,6 +70,25 @@ class Styled extends React.Component<StyledProps, StyledState> {
           Styled Button Component
         </ButtonContainer>
         <StyledButton onClick={this.clickEvent}>Styled Button</StyledButton>
+
+        <Accordion>
+          <Accordion.Title
+            active={activeIndex === 0}
+            index={0}
+            onClick={this.handleClick}
+          >
+            Test
+          </Accordion.Title>
+          <Transition visible={activeIndex === 0}>
+            <Accordion.Content
+              active={activeIndex === 0}
+              index={0}
+              onClick={this.handleClick}
+            >
+              ttttt
+            </Accordion.Content>
+          </Transition>
+        </Accordion>
       </div>
     );
   }

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Grid, Segment } from 'semantic-ui-react';
-import Card from 'src/components/elements/Card';
+import { Card, Grid, Segment } from 'semantic-ui-react';
 import { domainAPI } from 'src/services/API';
 import Debug from './Debug';
 import DnsInfo from './DnsInfo';
@@ -82,11 +81,11 @@ export default class Domain extends React.Component<{}, IState> {
             />
           </Grid.Column>
           <Grid.Column>
-            <Card>
-              <Segment basic>
+            <Card raised fluid>
+              <Card.Content>
                 <h2>Domain Name</h2>
                 <p>{whois.domain}</p>
-              </Segment>
+              </Card.Content>
             </Card>
           </Grid.Column>
         </Grid.Row>
