@@ -73,8 +73,6 @@ class DesktopNav extends React.Component<{
   Routes: RouteStore;
   auth?: any;
 }> {
-  state = { activeUrl: '/' };
-
   @observable activeUrl: string = '/';
 
   handleItemClick = (e, { to }) => {

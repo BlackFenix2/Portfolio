@@ -1,15 +1,22 @@
 import * as React from 'react';
-import Bird from './Bird';
-import Board from './Board';
 
+import { Grid } from 'semantic-ui-react';
+import Board from './Board';
+import Debug from './Debug';
 export default class FlappyBird extends React.Component {
   render() {
     return (
-      <>
-        <Board x={20} y={30}>
-          <Bird x={100} y={100} size={50} />
-        </Board>
-      </>
+      <Grid stackable>
+        <Grid.Row>
+          <Grid.Column width={8}>
+            <h2>Flappy Bird Test</h2>
+            <Board height={window.innerHeight} width={window.innerWidth} />
+          </Grid.Column>
+          <Grid.Column width={8}>
+            <Debug />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 }

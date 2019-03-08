@@ -1,17 +1,13 @@
+import Konva from 'konva';
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
 import * as React from 'react';
+import { Circle, Group, Image, Rect } from 'react-konva';
+import useImage from 'use-image';
 
-export interface BirdProps {
-  x: number;
-  y: number;
-  size: number;
-}
+const Bird = props => {
+  const [image] = useImage('/src/lib/img/FlappyBird/bird.png');
+  return <Image x={props.x} y={props.y} image={image} draggable stroke="Red" />;
+};
 
-export default class Bird extends React.Component<BirdProps, any> {
-  render() {
-    return (
-      <React.Fragment>
-        <circle cx={this.props.x} cy={this.props.y} r={this.props.size} />
-      </React.Fragment>
-    );
-  }
-}
+export default Bird;

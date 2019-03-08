@@ -98,7 +98,17 @@ const config = {
           // default css loader, catch global css imports
           {
             test: /\.css$/,
-            use: [ExtractCssChunks.loader, 'css-loader']
+            use: [
+              {
+                loader: ExtractCssChunks.loader,
+                options: {
+                  hot: true,
+                  modules: true, // if you use cssModules, this can help.
+                  reloadAll: true // when desperation kicks in - this is a brute force HMR flag
+                }
+              },
+              'css-loader'
+            ]
           },
 
           // fallback loader if other loaders excluded
