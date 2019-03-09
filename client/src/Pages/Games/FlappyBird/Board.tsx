@@ -25,7 +25,8 @@ class Board extends React.Component<Props> {
   }
 
   PointEvent = () => {
-    console.log('Flappy Flap!');
+    this.input.bindKeys();
+    this.input.unBindKeys();
   };
 
   render() {

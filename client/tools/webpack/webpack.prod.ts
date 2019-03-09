@@ -45,9 +45,7 @@ const prodConfig: webpack.Configuration = {
     }),
 
     // clean build folder
-    new CleanWebpackPlugin([`${paths.buildDir}/*`], {
-      allowExternal: true
-    })
+    new CleanWebpackPlugin()
   ]
 };
 
