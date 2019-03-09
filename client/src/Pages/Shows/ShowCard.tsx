@@ -3,7 +3,6 @@ import { Add, Remove } from '@material-ui/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Image, Rating } from 'semantic-ui-react';
-// import Card from 'src/components/elements/Card';
 // Image equalizer
 import styles from './ShowCard.module.css';
 
@@ -48,6 +47,7 @@ class ShowCard extends React.PureComponent<IShow> {
   };
   render() {
     // TODO Remove require statement
+
     const image = require(`src/lib/img/posters/${this.props.poster}`);
     return (
       <Card raised>

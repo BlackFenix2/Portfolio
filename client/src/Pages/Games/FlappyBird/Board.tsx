@@ -25,8 +25,7 @@ class Board extends React.Component<Props> {
   }
 
   PointEvent = () => {
-    this.input.bindKeys();
-    this.input.unBindKeys();
+    console.log('Flappy Flap!');
   };
 
   render() {
@@ -39,9 +38,9 @@ class Board extends React.Component<Props> {
       >
         <Layer>
           <Background width={this.props.width} height={this.props.height} />
-          <Bird />
+          <Bird x={30} y={100} />
           <Pipe x={300} />
-          <Pipe x={300} y={500} rotate />
+          <Pipe x={300} y={550} rotate />
         </Layer>
       </Stage>
     );

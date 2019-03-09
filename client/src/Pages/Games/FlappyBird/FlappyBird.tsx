@@ -10,7 +10,13 @@ export default class FlappyBird extends React.Component {
         <Grid.Row>
           <Grid.Column width={8}>
             <h2>Flappy Bird Test</h2>
-            <Board height={window.innerHeight} width={window.innerWidth} />
+            <p>
+              assets shamelessly hotlinked from this guy ->
+              <a href="http://jimmyoliva.herokuapp.com/" target="blank">
+                http://jimmyoliva.herokuapp.com/
+              </a>
+            </p>
+            <Board height={400} width={600} />
           </Grid.Column>
           <Grid.Column width={8}>
             <Debug />
