@@ -1,7 +1,7 @@
 import { action, observable } from 'mobx';
 import Bird from 'src/state/objects/bird';
 
-import * as D3 from 'd3';
+import { interval, timer, Timer } from 'd3-timer';
 import Pipe from 'src/state/objects/pipe';
 import InputUtility, { KEY } from 'src/state/utility/inputUtility';
 
@@ -12,7 +12,7 @@ export default class BirdStore {
 
   SouthPipe: Pipe = new Pipe(300, 350);
 
-  timer: D3.Timer;
+  timer: Timer;
 
   input = new InputUtility();
 
@@ -30,7 +30,8 @@ export default class BirdStore {
   @action startGameLoop() {
     if (!this.GameStart) {
       this.GameStart = true;
-      this.timer = D3.interval(() => this.gameStep(), 10);
+      this.input.listen();
+      this.timer = interval(() => this.gameStep(), 10);
     }
   }
 
@@ -60,47 +61,34 @@ export default class BirdStore {
     this.Bird.y -= y;
   };
 
+  @action protected stopGame = () => {
+    this.timer.stop();
+    this.input.dispose();
+  };
+
   // draw frames for game, called in interval
   @action protected gameStep = () => {
     const { keys, speed } = this.input;
+    const gravity = 1;
     // check for input
+
+    // space key to flap bird, incease speed to offset gravity
     if (keys[KEY.SPACE]) {
-      if (this.input.velY < speed) {
+      if (this.input.velY < speed + 2) {
         this.input.velY++;
       }
     }
 
-    if (keys[KEY.W]) {
-      if (this.input.velY < speed) {
-        this.input.velY++;
-      }
-    }
-
-    if (keys[KEY.S]) {
-      if (this.input.velY > -speed) {
-        this.input.velY--;
-      }
-    }
-
-    if (keys[KEY.A]) {
-      if (this.input.velX > -speed) {
-        this.input.velX--;
-      }
-    }
-    if (keys[KEY.D]) {
-      if (this.input.velX < speed) {
-        this.input.velX++;
-      }
-    }
-
-    if (keys[KEY.P]) {
-      this.timer.stop();
-    }
-
-    // move bird
+    // set bird velocity
     this.input.velY *= this.input.friction;
     this.input.velX *= this.input.friction;
-    this.MoveBird(this.input.velX, this.input.velY);
+
+    // prevent bird from going out of bounds
+    if (this.Bird.y <= 0) {
+      this.Bird.y = 0;
+    }
+
+    this.MoveBird(this.input.velX, this.input.velY - gravity);
 
     // move pipe
     this.MovePipe(1, 0);
@@ -110,21 +98,24 @@ export default class BirdStore {
 
     // stop game if bird crashes
 
-    // check one and two ensure ship is inside the asteriod fields X axis
+    // check one and two ensure bird is inside the pipes X axis
 
     const one = this.Bird.x + this.Bird.width >= this.NorthPipe.x;
     const two = this.Bird.x <= this.SouthPipe.x + this.SouthPipe.width;
 
-    // check if the ship collided with the topmost pipe
+    // check if the bird collided with the topmost pipe
     const northCollide =
       this.Bird.y <= this.NorthPipe.y + this.NorthPipe.height;
 
-    // check if the ship collided with the bottommost pipe
+    // check if the bird collided with the bottommost pipe
     const southCollide = this.Bird.y + this.Bird.height >= this.SouthPipe.y;
 
     if (one && two && (northCollide || southCollide)) {
-      console.log('Flappy Bird crashed!');
-      this.timer.stop();
+      this.stopGame();
+    }
+
+    if (this.Bird.y >= 400 - this.Bird.height) {
+      this.stopGame();
     }
   };
 }

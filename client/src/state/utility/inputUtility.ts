@@ -16,13 +16,29 @@ export default class InputUtility {
   keys: [boolean] = [null];
   velY = 0;
   velX = 0;
-  readonly speed = 2;
+  readonly speed = 1;
   readonly friction = 0.95;
 
-  constructor() {
+  /**
+   *  add key listeners for input
+   *
+   * @memberof InputUtility
+   */
+  listen() {
     window.addEventListener('keydown', this.handleBindKeys);
     window.addEventListener('keyup', this.handleUnBindKeys);
   }
+
+  /**
+   *  remove key listeners for input
+   *
+   * @memberof InputUtility
+   */
+  dispose() {
+    window.removeEventListener('keydown', this.handleBindKeys);
+    window.removeEventListener('keyup', this.handleUnBindKeys);
+  }
+
   reset() {
     this.velY = 0;
     this.velX = 0;
@@ -33,12 +49,10 @@ export default class InputUtility {
       e.preventDefault();
     }
     this.keys[e.keyCode] = true;
-    console.log(this.keys);
   };
 
   private handleUnBindKeys = e => {
     e.preventDefault();
     this.keys[e.keyCode] = false;
-    console.log(this.keys);
   };
 }

@@ -11,7 +11,7 @@ interface Props {
 const Debug = observer((props: Props) => (
   <Segment basic textAlign="center">
     <h2>Debug</h2>
-    <code>{JSON.stringify(props.stats)}</code>
+    <code>{JSON.stringify(props.stats, null, 4)}</code>
   </Segment>
 ));
 
