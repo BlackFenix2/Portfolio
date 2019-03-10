@@ -1,4 +1,3 @@
-import Konva from 'konva';
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
 import * as React from 'react';
@@ -7,17 +6,18 @@ import useImage from 'use-image';
 
 const Pipe = props => {
   const [image] = useImage(
-    'http://jimmyoliva.herokuapp.com/images/pipeNorth.png'
+    props.rotate
+      ? 'http://jimmyoliva.herokuapp.com/images/pipeSouth.png'
+      : 'http://jimmyoliva.herokuapp.com/images/pipeNorth.png'
   );
+
   return (
     <Image
       x={props.x}
       y={props.y}
-      width={50}
-      height={240}
+      width={props.width}
+      height={props.height}
       image={image}
-      scaleY={props.rotate ? -1 : 1}
-      stroke="Red"
     />
   );
 };

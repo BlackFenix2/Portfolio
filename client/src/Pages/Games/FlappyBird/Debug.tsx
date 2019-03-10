@@ -1,12 +1,18 @@
+import json from '*.json';
+import { observer } from 'mobx-react';
 import * as React from 'react';
+import { Card, Segment } from 'semantic-ui-react';
+import BirdStore from 'src/state/stores/games/birdStore';
 
-export default class Debug extends React.Component<any, any> {
-  render() {
-    return (
-      <>
-        <h2>Debug</h2>
-        <p>Tests here!</p>
-      </>
-    );
-  }
+interface Props {
+  stats: BirdStore;
 }
+
+const Debug = observer((props: Props) => (
+  <Segment basic textAlign="center">
+    <h2>Debug</h2>
+    <code>{JSON.stringify(props.stats)}</code>
+  </Segment>
+));
+
+export default Debug;
