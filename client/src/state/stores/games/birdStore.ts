@@ -2,7 +2,7 @@ import { action, observable } from 'mobx';
 import Bird from 'src/state/objects/bird';
 
 import * as D3 from 'd3';
-import Pipe from 'src/state/objects/Pipe';
+import Pipe from 'src/state/objects/pipe';
 import InputUtility, { KEY } from 'src/state/utility/inputUtility';
 
 export default class BirdStore {
