@@ -7,6 +7,7 @@ import BirdStore from 'src/state/stores/games/birdStore';
 import Background from './Background';
 import Bird from './Bird';
 import Pipe from './Pipe';
+import PipeList from './PipeList';
 
 interface Props {
   height: number;
@@ -30,6 +31,8 @@ class Board extends React.Component<Props> {
             rotation={this.BirdStore.Bird.rotation}
             debug={this.props.debug}
           />
+
+          {/* <PipeList list={this.BirdStore.PipeList} /> */}
           <Pipe
             x={this.BirdStore.NorthPipe.x}
             y={this.BirdStore.NorthPipe.y}

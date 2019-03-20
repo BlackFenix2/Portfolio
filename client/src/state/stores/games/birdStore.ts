@@ -33,7 +33,7 @@ export default class BirdStore {
     if (!this.GameStart) {
       this.GameStart = true;
       this.input.listen(target);
-      this.timer = interval(() => this.gameStep(), 10);
+      this.timer = interval(() => this.gameStep(), 1);
     }
   }
 
