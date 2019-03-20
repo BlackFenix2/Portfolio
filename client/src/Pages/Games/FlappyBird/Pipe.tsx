@@ -18,6 +18,7 @@ const Pipe = props => {
       width={props.width}
       height={props.height}
       image={image}
+      stroke={props.debug ? 'Red' : ''}
     />
   );
 };

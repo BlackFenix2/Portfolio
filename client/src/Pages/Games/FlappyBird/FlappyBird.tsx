@@ -1,19 +1,35 @@
 import * as React from 'react';
 
 import { inject } from 'mmlpx';
-import { Grid } from 'semantic-ui-react';
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
+import { Button, Grid } from 'semantic-ui-react';
 import BirdStore from 'src/state/stores/games/birdStore';
 import Board from './Board';
 import Debug from './Debug';
+
+@observer
 export default class FlappyBird extends React.Component {
   @inject() BirdStore: BirdStore;
+
+  nv: HTMLDivElement;
+
+  @observable debugMode = false;
+
+  componentWillUnmount = () => {
+    this.BirdStore.unMountGame(this.nv);
+  };
 
   Reset = () => {
     this.BirdStore.Reset();
   };
 
   startGame = () => {
-    this.BirdStore.startGameLoop();
+    this.BirdStore.startGameLoop(this.nv);
+  };
+
+  Debug = () => {
+    this.debugMode = !this.debugMode;
   };
 
   render() {
@@ -23,8 +39,9 @@ export default class FlappyBird extends React.Component {
           <Grid.Column width={8}>
             <h2>
               Flappy Bird Test
-              <button onClick={this.startGame}>Start Game</button>
-              <button onClick={this.Reset}>Reset</button>
+              <Button onClick={this.startGame}>Start Game</Button>
+              <Button onClick={this.Reset}>Reset</Button>
+              <Button onClick={this.Debug}>Debug</Button>
             </h2>
             <p>
               assets shamelessly hotlinked from this guy ->
@@ -32,7 +49,9 @@ export default class FlappyBird extends React.Component {
                 http://jimmyoliva.herokuapp.com/
               </a>
             </p>
-            <Board height={400} width={600} />
+            <div ref={test => (this.nv = test)}>
+              <Board height={400} width={600} debug={this.debugMode} />
+            </div>
           </Grid.Column>
           <Grid.Column width={8}>
             <Debug stats={this.BirdStore} />

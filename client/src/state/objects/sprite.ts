@@ -6,8 +6,5 @@ export default class Sprite {
 
   width: number;
   height: number;
-  constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
-  }
+  rotation: number;
 }

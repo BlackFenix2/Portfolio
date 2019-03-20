@@ -1,16 +1,18 @@
 import { action, observable } from 'mobx';
 import Bird from 'src/state/objects/bird';
 
-import { interval, timer, Timer } from 'd3-timer';
+import { interval, Timer } from 'd3-timer';
 import Pipe from 'src/state/objects/pipe';
 import InputUtility, { KEY } from 'src/state/utility/inputUtility';
 
 export default class BirdStore {
-  Bird: Bird = new Bird(10, 300);
+  Bird: Bird = new Bird();
 
-  NorthPipe: Pipe = new Pipe(300, 0);
+  NorthPipe: Pipe = new Pipe();
 
-  SouthPipe: Pipe = new Pipe(300, 350);
+  SouthPipe: Pipe = new Pipe();
+
+  PipeList: [Pipe];
 
   timer: Timer;
 
@@ -27,10 +29,10 @@ export default class BirdStore {
     this.initial();
   };
 
-  @action startGameLoop() {
+  @action startGameLoop(target) {
     if (!this.GameStart) {
       this.GameStart = true;
-      this.input.listen();
+      this.input.listen(target);
       this.timer = interval(() => this.gameStep(), 10);
     }
   }
@@ -46,6 +48,15 @@ export default class BirdStore {
     this.input.reset();
   }
 
+  @action stopGame = () => {
+    this.timer.stop();
+  };
+
+  @action unMountGame = target => {
+    this.timer.stop();
+    this.input.dispose(target);
+  };
+
   @action protected MovePipe = (x: number = 0, y: number = 0) => {
     this.SouthPipe.x -= x;
     this.NorthPipe.x -= x;
@@ -59,21 +70,17 @@ export default class BirdStore {
   @action protected MoveBird = (x: number = 0, y: number = 0) => {
     this.Bird.x += x;
     this.Bird.y -= y;
-  };
-
-  @action protected stopGame = () => {
-    this.timer.stop();
-    this.input.dispose();
+    this.Bird.rotation = y;
   };
 
   // draw frames for game, called in interval
   @action protected gameStep = () => {
     const { keys, speed } = this.input;
-    const gravity = 1;
+    const gravity = 1.2;
     // check for input
 
     // space key to flap bird, incease speed to offset gravity
-    if (keys[KEY.SPACE]) {
+    if (keys[KEY.SPACE] || keys[KEY.mouseClick]) {
       if (this.input.velY < speed + 2) {
         this.input.velY++;
       }
