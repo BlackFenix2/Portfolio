@@ -1,8 +1,8 @@
 import { inject } from 'mmlpx';
 import { observer } from 'mobx-react';
 import * as React from 'react';
+import { withRouter } from 'react-router';
 import { Route, Switch } from 'react-router-dom';
-import withRouter from 'react-router-dom/withRouter';
 import AsyncComponent from 'src/components/shared/AsyncComponent';
 import RouteStore from 'src/state/stores/routeStore';
 import CustomRoutes from './CustomRoutes';
@@ -12,7 +12,6 @@ import { setPageRouteSuspenseAsync } from './routeHelpers';
 const Home = setPageRouteSuspenseAsync('/Home');
 const PageNotFound = React.lazy(() => import('src/components/shared/NotFound'));
 
-@withRouter
 @observer
 class Routes extends React.Component {
   @inject() RouteStore: RouteStore;

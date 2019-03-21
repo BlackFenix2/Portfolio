@@ -2,7 +2,7 @@ import { inject } from 'mmlpx';
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
 import * as React from 'react';
-import { Group, Layer, Rect, Stage, Text } from 'react-konva';
+import { Layer, Stage } from 'react-konva';
 import BirdStore from 'src/state/stores/games/birdStore';
 import Background from './Background';
 import Bird from './Bird';
