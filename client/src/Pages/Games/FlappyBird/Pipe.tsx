@@ -7,8 +7,8 @@ import useImage from 'use-image';
 const Pipe = props => {
   const [image] = useImage(
     props.rotate
-      ? 'http://jimmyoliva.herokuapp.com/images/pipeSouth.png'
-      : 'http://jimmyoliva.herokuapp.com/images/pipeNorth.png'
+      ? 'https://raw.githubusercontent.com/olivajames110/jimmyoliva/master/pages/projects/flappy_bird/images/pipeSouth.png'
+      : 'https://raw.githubusercontent.com/olivajames110/jimmyoliva/master/pages/projects/flappy_bird/images/pipeNorth.png'
   );
 
   return (

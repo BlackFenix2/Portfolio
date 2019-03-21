@@ -4,7 +4,7 @@ import { Image } from 'react-konva';
 import useImage from 'use-image';
 
 const Bird = props => {
-  const [image] = useImage('http://jimmyoliva.herokuapp.com/images/bird.png');
+  const [image] = useImage('https://raw.githubusercontent.com/olivajames110/jimmyoliva/master/pages/projects/flappy_bird/images/bird.png');
   return (
     <Image
       x={props.x}

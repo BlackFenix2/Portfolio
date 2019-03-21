@@ -3,7 +3,9 @@ import { Image } from 'react-konva';
 import useImage from 'use-image';
 
 const Background = props => {
-  const [image] = useImage('http://jimmyoliva.herokuapp.com/images/bg.png');
+  const [image] = useImage(
+    'https://raw.githubusercontent.com/olivajames110/jimmyoliva/master/pages/projects/flappy_bird/images/bg.png'
+  );
   return <Image width={props.width} height={props.height} image={image} />;
 };
 
