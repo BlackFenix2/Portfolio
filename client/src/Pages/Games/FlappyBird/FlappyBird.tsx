@@ -54,7 +54,7 @@ export default class FlappyBird extends React.Component {
             </div>
           </Grid.Column>
           <Grid.Column width={8}>
-            {/* <Debug stats={this.BirdStore} /> */}
+            {this.debugMode && <Debug stats={this.BirdStore} />}
           </Grid.Column>
         </Grid.Row>
       </Grid>

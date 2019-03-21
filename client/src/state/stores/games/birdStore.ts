@@ -33,7 +33,7 @@ export default class BirdStore {
     if (!this.GameStart) {
       this.GameStart = true;
       this.input.listen(target);
-      this.timer = interval(() => this.gameStep(), 10);
+      this.timer = interval(() => this.gameStep(), 0.01);
     }
   }
 
@@ -57,31 +57,31 @@ export default class BirdStore {
     this.input.dispose(target);
   };
 
-  @action protected MovePipe = (x: number = 0, y: number = 0) => {
-    this.SouthPipe.x -= x;
-    this.NorthPipe.x -= x;
+  protected MovePipe = (x: number = 0, y: number = 0) => {
+    this.SouthPipe.x -= x + 2;
+    this.NorthPipe.x -= x + 2;
   };
 
-  @action protected setPipe = (x: number = 600, y: number = 600) => {
+  protected setPipe = (x: number = 600, y: number = 600) => {
     this.SouthPipe.x = x;
     this.NorthPipe.x = x;
   };
 
-  @action protected MoveBird = (x: number = 0, y: number = 0) => {
+  protected MoveBird = (x: number = 0, y: number = 0) => {
     this.Bird.x += x;
     this.Bird.y -= y;
-    this.Bird.rotation = y;
+    this.Bird.rotation = y <= 2 ? y : 2;
   };
 
   // draw frames for game, called in interval
-  @action protected gameStep = () => {
+  protected gameStep = () => {
     const { keys, speed } = this.input;
-    const gravity = 1.2;
+    const gravity = 2;
     // check for input
 
     // space key to flap bird, incease speed to offset gravity
     if (keys[KEY.SPACE] || keys[KEY.mouseClick]) {
-      if (this.input.velY < speed + 2) {
+      if (this.input.velY < speed + gravity * 2) {
         this.input.velY++;
       }
     }

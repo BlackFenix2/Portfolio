@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Debug = observer((props: Props) => (
-  <Segment basic textAlign="center">
+  <Segment basic>
     <h2>Debug</h2>
     <code>{JSON.stringify(props.stats, null, 4)}</code>
   </Segment>
