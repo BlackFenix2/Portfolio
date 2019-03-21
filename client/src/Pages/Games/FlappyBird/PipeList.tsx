@@ -1,19 +1,25 @@
 import { observer } from 'mobx-react';
 import React from 'react';
 
-import Pipe from 'src/state/objects/pipe';
+import { Group } from 'react-konva';
+import Pipe from './Pipe';
 
-import { default as RenderPipe } from './Pipe';
-
-interface Props {
-  list: Pipe[];
-}
-
-const PipeList = (props: Props) => {
-  const listItems = props.list.map((PipeItem, index) => (
-    <RenderPipe key={index} x={PipeItem.x} y={PipeItem.y} />
+const PipeList = props => {
+  return props.list.map((PipeColumn, index) => (
+    <Group key={index}>
+      <Pipe
+        x={PipeColumn.NorthPipe.x}
+        y={PipeColumn.NorthPipe.y}
+        debug={props.debug}
+      />
+      <Pipe
+        rotate
+        x={PipeColumn.SouthPipe.x}
+        y={PipeColumn.SouthPipe.y}
+        debug={props.debug}
+      />
+    </Group>
   ));
-  return listItems;
 };
 
 export default PipeList;

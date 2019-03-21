@@ -32,22 +32,7 @@ class Board extends React.Component<Props> {
             debug={this.props.debug}
           />
 
-          {/* <PipeList list={this.BirdStore.PipeList} /> */}
-          <Pipe
-            x={this.BirdStore.NorthPipe.x}
-            y={this.BirdStore.NorthPipe.y}
-            width={this.BirdStore.NorthPipe.width}
-            height={this.BirdStore.NorthPipe.height}
-            debug={this.props.debug}
-          />
-          <Pipe
-            x={this.BirdStore.SouthPipe.x}
-            y={this.BirdStore.SouthPipe.y}
-            width={this.BirdStore.SouthPipe.width}
-            height={this.BirdStore.SouthPipe.height}
-            debug={this.props.debug}
-            rotate
-          />
+          <PipeList list={this.BirdStore.PipeList} debug={this.props.debug} />
         </Layer>
       </Stage>
     );
