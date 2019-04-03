@@ -40,9 +40,8 @@ export default class TodoStore {
   toggleTodo(completedTodo: Todo) {
     this.todoList.find(
       todo => todo === completedTodo
-    ).isComplete = this.todoList.find(todo => todo === completedTodo).isComplete
-      ? false
-      : true;
+    ).isComplete = !this.todoList.find(todo => todo === completedTodo)
+      .isComplete;
   }
 }
 

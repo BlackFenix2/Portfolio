@@ -40,7 +40,10 @@ class Todo extends React.Component {
     return (
       <>
         <div>
-          <p>Completed Tasks:{this.TodoStore.completedTasks}</p>
+          <p>
+            Completed Tasks:
+            {this.TodoStore.completedTasks}
+          </p>
         </div>
 
         <form onSubmit={this.handleAddTodo}>

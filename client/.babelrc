@@ -1,0 +1,35 @@
+{
+  "presets": [
+    //run current JS
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ],
+
+    // Compile typescript to javascript
+    "@babel/typescript",
+
+    // Convert JSX to React.CreateElement
+    "@babel/preset-react",
+
+    // Allow Emotion CSS transpilation
+    "@emotion/babel-preset-css-prop"
+  ],
+  "plugins": [
+    //transpile react-hot-loader
+    "react-hot-loader/babel",
+
+    // Allow dynamic imports
+    "@babel/plugin-syntax-dynamic-import",
+    // Allow decorator metadata
+    "babel-plugin-transform-typescript-metadata",
+    // Allow class decorators
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    // Allow class properties
+    ["@babel/plugin-proposal-class-properties", { "loose": true }]
+  ]
+}

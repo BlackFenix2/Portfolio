@@ -10,6 +10,7 @@ const Mobile = props => <Responsive {...props} maxWidth={992} />;
 
 class Nav extends React.Component {
   @inject() RouteStore: RouteStore;
+
   render() {
     return (
       <>

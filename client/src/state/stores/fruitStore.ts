@@ -27,6 +27,7 @@ export default class FruitStore {
       this.isLoading = false;
     }
   }
+
   @action async deleteFruit(id) {
     this.start();
     try {
@@ -38,6 +39,7 @@ export default class FruitStore {
       this.isLoading = false;
     }
   }
+
   @action async getFruit(id) {
     this.start();
     try {
@@ -49,6 +51,7 @@ export default class FruitStore {
       this.isLoading = false;
     }
   }
+
   @action async getFruitList() {
     this.start();
     try {
@@ -60,6 +63,7 @@ export default class FruitStore {
       this.isLoading = false;
     }
   }
+
   @action async updateFruit(id) {
     this.start();
     try {

@@ -26,12 +26,15 @@ class CRUD extends React.Component<IProps, State> {
   @inject() FruitStore: FruitStore;
 
   @observable visible: boolean = false;
+
   @observable uiLoading: boolean = false;
+
   @observable optionSelect: string = 'create';
 
   componentDidMount() {
     this.fetchFruits();
   }
+
   sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
   fetchFruits = () => {
@@ -98,6 +101,7 @@ class CRUD extends React.Component<IProps, State> {
     this.optionSelect = 'details';
     this.details(id);
   };
+
   toggleEvent = () => {
     this.visible = !this.visible;
   };
@@ -109,7 +113,7 @@ class CRUD extends React.Component<IProps, State> {
           <h2>Fruits Table</h2>
           <div>
             <AnimatedModal
-              header={'Fruit'}
+              header="Fruit"
               visible={this.visible}
               toggleEvent={this.toggleEvent}
             >
@@ -155,9 +159,18 @@ class CRUD extends React.Component<IProps, State> {
             Fetch fruits
             <Loader inline active={false} />
           </Button>
-          <p>Loading: {String(this.FruitStore.isLoading)}</p>
-          <p>Error: {String(this.FruitStore.error)}</p>
-          <p>selected form: {this.optionSelect}</p>
+          <p>
+            Loading:
+            {String(this.FruitStore.isLoading)}
+          </p>
+          <p>
+            Error:
+            {String(this.FruitStore.error)}
+          </p>
+          <p>
+            selected form:
+            {this.optionSelect}
+          </p>
           <div>
             <h2>Errors:</h2>
 

@@ -7,14 +7,21 @@ interface IProps {
   errorMessage: string;
 }
 
-const Debug: React.SFC<IProps> = props => {
-  return (
-    <List divided animated relaxed="very">
-      <List.Item>Loading: {String(props.loading)}</List.Item>
-      <List.Item>Error: {String(props.error)}</List.Item>
-      <List.Item>Error Message: {String(props.errorMessage)}</List.Item>
-    </List>
-  );
-};
+const Debug: React.SFC<IProps> = props => (
+  <List divided animated relaxed="very">
+    <List.Item>
+      Loading:
+      {String(props.loading)}
+    </List.Item>
+    <List.Item>
+      Error:
+      {String(props.error)}
+    </List.Item>
+    <List.Item>
+      Error Message:
+      {String(props.errorMessage)}
+    </List.Item>
+  </List>
+);
 
 export default Debug;

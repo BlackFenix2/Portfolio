@@ -1,3 +1,4 @@
+import axios from 'axios';
 import rootUrl from '../API/rootUrl';
 
 export const methods = {
@@ -9,23 +10,18 @@ export const methods = {
 
 export async function apiRequest(url, method, body?) {
   try {
-    const response = await fetch(rootUrl + url, {
+    const response = await axios.request({
       method,
-      body: JSON.stringify(body),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
+      url: rootUrl + url,
+      data: body
     });
 
     // await response out of promise
-    const data = await response;
-    // catch empty response string from throwing unneeded errors
-    const json = data.text().then(text => (text ? JSON.parse(text) : {}));
-    if (data.status < 200 || data.status > 299) {
-      throw json;
+    const { data } = response;
+    if (response.status < 200 || response.status > 299) {
+      throw data;
     }
-    return json;
+    return data;
   } catch (error) {
     // await error to resolve promise
     throw await error;
@@ -34,23 +30,18 @@ export async function apiRequest(url, method, body?) {
 
 export async function externalApiRequest(url, method, body?) {
   try {
-    const response = await fetch(url, {
+    const response = await axios.request({
       method,
-      body: JSON.stringify(body),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
+      url,
+      data: body
     });
 
     // await response out of promise
-    const data = await response;
-    // catch empty response string from throwing unneeded errors
-    const json = data.text().then(text => (text ? JSON.parse(text) : {}));
-    if (data.status < 200 || data.status > 299) {
-      throw json;
+    const { data } = response;
+    if (response.status < 200 || response.status > 299) {
+      throw data;
     }
-    return json;
+    return data;
   } catch (error) {
     // await error to resolve promise
     throw await error;

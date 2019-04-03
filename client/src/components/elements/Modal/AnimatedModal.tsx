@@ -13,7 +13,7 @@ const AnimatedModal = (props: Props) => (
     open={props.visible}
     transition={{ animation: 'fade down', duration: 600 }}
   >
-    <Modal open={true} onClose={props.toggleEvent} size="tiny">
+    <Modal open onClose={props.toggleEvent} size="tiny">
       <Modal.Header>
         <h1>{props.header}</h1>
       </Modal.Header>

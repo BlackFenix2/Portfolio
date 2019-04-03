@@ -1,10 +1,10 @@
 import * as React from 'react';
-import ShowList from './ShowList';
 
 import { inject } from 'mmlpx';
 import { observer } from 'mobx-react';
 import { Input } from 'semantic-ui-react';
 import ShowStore from 'src/state/stores/showStore';
+import ShowList from './ShowList';
 
 @observer
 class Shows extends React.Component {

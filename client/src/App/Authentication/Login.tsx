@@ -15,10 +15,11 @@ class Login extends React.Component<Props> {
       visible: !this.state.visible
     });
   };
+
   render() {
     return (
       <Modal
-        header={'Login'}
+        header="Login"
         visible={this.state.visible}
         toggleEvent={this.toggleEvent}
       >

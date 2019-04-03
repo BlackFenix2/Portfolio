@@ -1,17 +1,10 @@
-import axios from 'axios';
+import { externalApiRequest, methods } from './API/apiRoot';
 
-axios.defaults.baseURL = 'https://api.chucknorris.io';
+const rootUrl = 'https://api.chucknorris.io';
 
 const appService = {
-  getPosts() {
-    return new Promise(resolve => {
-      axios
-        .get('/jokes/random')
-        .then(response => {
-          resolve(response.data);
-        })
-        .catch(error => error);
-    });
+  async getPosts() {
+    return externalApiRequest(`${rootUrl}/jokes/random`, methods.GET);
   }
 };
 

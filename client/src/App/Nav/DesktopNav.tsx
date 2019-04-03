@@ -64,7 +64,10 @@ const LinkGenerator = props => {
 const User = props => (
   <Menu.Item position="right">
     {/* <span>Login: {String(props.login)}</span> */}
-    <span>Hello {`${props.firstName} ${props.lastName}`}</span>
+    <span>
+      Hello
+      {`${props.firstName} ${props.lastName}`}
+    </span>
   </Menu.Item>
 );
 
@@ -78,6 +81,7 @@ class DesktopNav extends React.Component<{
   handleItemClick = (e, { to }) => {
     this.activeUrl = to;
   };
+
   render() {
     return (
       <NavBar>
@@ -93,7 +97,7 @@ class DesktopNav extends React.Component<{
           clickEvent={this.handleItemClick}
           activeUrl={this.activeUrl}
         />
-        <User firstName={'John'} lastName={'Doe'} login={false} />
+        <User firstName="John" lastName="Doe" login={false} />
       </NavBar>
     );
   }

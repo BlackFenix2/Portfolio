@@ -6,6 +6,7 @@ import Routes from './Routes';
 
 class Body extends React.Component {
   state;
+
   render() {
     return (
       <main style={{ paddingTop: '3em' }}>

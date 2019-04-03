@@ -69,6 +69,7 @@ class MobileNav extends React.Component<{ Routes: RouteStore }, State> {
   homeButtonCLick = () => {
     this.setState({ visible: false });
   };
+
   handleItemClick = (e, { to }) => {
     this.setState({ activeUrl: to, visible: false });
   };
@@ -76,7 +77,9 @@ class MobileNav extends React.Component<{ Routes: RouteStore }, State> {
   handleHamburgerClick = () => {
     this.setState({ visible: !this.state.visible });
   };
+
   handleHideClick = () => this.setState({ visible: false });
+
   render() {
     return (
       <NavBar>

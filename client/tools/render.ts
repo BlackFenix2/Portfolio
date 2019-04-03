@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 
 export const renderApp = (App, target) => {
   const main = document.getElementById(target);
@@ -10,7 +10,8 @@ export const renderApp = (App, target) => {
 
   // temp render untill senamtic-ui is replaced with Material-UI
   const tempRenderMethod = 'render';
+
+  const AppContainer = hot(App);
   // hot load application
-  const AppContainer = hot(module)(App);
-  ReactDOM[tempRenderMethod](React.createElement(AppContainer), main);
+  ReactDOM[renderMethod](React.createElement(AppContainer), main);
 };

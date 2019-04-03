@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Login as LoginModal } from 'src/App/Authentication';
 import Register from 'src/App/Authentication/Register';
+
 interface State {
   value: string;
   localStorage: string;
@@ -17,6 +18,7 @@ export default class Login extends React.Component<any, State> {
       localStorage: localStorage.getItem('test')
     });
   }
+
   getStorage = () => {
     this.setState({
       localStorage: localStorage.getItem('test')
@@ -37,7 +39,10 @@ export default class Login extends React.Component<any, State> {
     return (
       <div>
         <h1>Login Test</h1>
-        <p>Storage: {this.state.localStorage}</p>
+        <p>
+          Storage:
+          {this.state.localStorage}
+        </p>
         <hr />
 
         <div>

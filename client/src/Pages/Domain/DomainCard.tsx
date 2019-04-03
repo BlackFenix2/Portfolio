@@ -3,6 +3,7 @@ import { Collapse } from 'react-collapse';
 
 import { Card, Grid, Header, Loader, Segment } from 'semantic-ui-react';
 import LoadingIcon from '../../components/elements/LoadingIcon';
+
 interface IProps {
   name: string;
   loading: boolean;

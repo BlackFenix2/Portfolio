@@ -2,6 +2,7 @@ import * as React from 'react';
 
 class Charts extends React.Component {
   state;
+
   render() {
     return (
       <div>

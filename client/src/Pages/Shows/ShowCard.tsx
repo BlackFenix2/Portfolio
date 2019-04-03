@@ -1,10 +1,9 @@
+import { css } from '@emotion/core';
 import { Fab } from '@material-ui/core';
 import { Add, Remove } from '@material-ui/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Image, Rating } from 'semantic-ui-react';
-// Image equalizer
-import styles from './ShowCard.module.css';
 
 interface IShow {
   rating: number;
@@ -45,6 +44,7 @@ class ShowCard extends React.PureComponent<IShow> {
       loading: false
     });
   };
+
   render() {
     // TODO Remove require statement
 
@@ -55,7 +55,10 @@ class ShowCard extends React.PureComponent<IShow> {
           <Image
             alt={`${this.props.title} Show Poster`}
             src={image}
-            className={styles.img}
+            css={css`
+              width: 300px;
+              height: 400px;
+            `}
             onLoad={this.setLoading}
           />
         </Link>

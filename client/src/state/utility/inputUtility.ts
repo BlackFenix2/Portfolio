@@ -15,9 +15,13 @@ export const KEY = {
 
 export default class InputUtility {
   keys: [boolean] = [null];
+
   velY = 0;
+
   velX = 0;
+
   readonly speed = 1;
+
   readonly friction = 0.95;
 
   /**

@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
-    // compile JSX syntax to JS
-    "jsx": "react",
+    //keep JSX syntax intact for babel transformation
+    "jsx": "preserve",
+
+    // allow babel to transpile file
+    "noEmit": true,
 
     // use latest ES version including proposed features
-    "module": "esnext",
     "target": "esnext",
+    "module": "esnext",
 
     // targets node
     "moduleResolution": "node",
@@ -16,16 +19,10 @@
     // allows default import of modules without default exports, shorthand for import * as item from 'module'
     "esModuleInterop": true,
 
-    //Allow decorators
+    //Allow decorators in TS Editor
     "experimentalDecorators": true,
 
-    //needed for mmlpx
-    "emitDecoratorMetadata": true,
-
-    //remove unneeded comments
-    "removeComments": true,
-
-    // ALIAS  src path
+    // ALIAS src path
     "baseUrl": "./",
     "paths": {
       "src/*": ["src/*"]

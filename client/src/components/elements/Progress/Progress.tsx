@@ -22,6 +22,7 @@ class ProgressBar extends React.Component<IProps> {
     }
     return this.props.percent > 50 ? 'lightgreen' : 'red';
   };
+
   getProgress = () =>
     this.props.percent > 100 ? '100%' : `${this.props.percent}%`;
 

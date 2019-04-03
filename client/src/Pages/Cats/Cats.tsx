@@ -1,11 +1,22 @@
 import * as React from 'react';
 import { Button, Form, Input, Label } from 'semantic-ui-react';
+
+import { css } from '@emotion/core';
+
 interface State {
   result: number;
   number: number;
 }
 
-import styles from './Cats.module.css';
+const catImage = css`
+  width: 100%;
+  height: auto;
+
+  @media screen and (min-width: 767px) {
+    width: auto;
+    height: auto;
+  }
+`;
 
 class Cats extends React.Component<any, State> {
   state = {
@@ -20,6 +31,7 @@ class Cats extends React.Component<any, State> {
   GetCat = async e => {
     this.setState({ number: this.state.result });
   };
+
   render() {
     return (
       <div>
@@ -27,7 +39,7 @@ class Cats extends React.Component<any, State> {
         <img
           src={`https://http.cat/${this.state.number}.jpg`}
           alt="No cat found :("
-          className={styles.img}
+          css={catImage}
         />
 
         <hr />

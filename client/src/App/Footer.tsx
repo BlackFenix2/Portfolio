@@ -16,7 +16,10 @@ const Icons = () => (
 
 const CopyRight = () => (
   <div>
-    <span>Ernie Francis &copy; {new Date().getFullYear()}</span>
+    <span>
+      Ernie Francis &copy;
+      {new Date().getFullYear()}
+    </span>
   </div>
 );
 

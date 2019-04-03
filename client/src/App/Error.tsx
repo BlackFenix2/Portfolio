@@ -6,9 +6,11 @@ class Error extends React.Component {
     hasError: false,
     info: null
   };
+
   componentDidCatch(error, info) {
     this.setState({ error, info, hasError: true });
   }
+
   render() {
     if (this.state.hasError) {
       const { error, info } = this.state;

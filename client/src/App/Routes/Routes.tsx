@@ -14,7 +14,7 @@ const PageNotFound = React.lazy(() => import('src/components/shared/NotFound'));
 
 @observer
 class Routes extends React.Component {
-  @inject() RouteStore: RouteStore;
+  @inject(RouteStore) RouteStore: any;
 
   render() {
     return (

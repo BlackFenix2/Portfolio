@@ -13,7 +13,7 @@ const TestDisplay = props => (
         {props.initial &&
           Object.entries(props.initial).map(([key, value]) => (
             <p key={key}>
-              {key} : {String(value)}
+              {key} :{String(value)}
             </p>
           ))}
       </div>

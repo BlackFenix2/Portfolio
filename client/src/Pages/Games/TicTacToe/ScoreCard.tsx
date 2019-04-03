@@ -137,7 +137,10 @@ const ScoreCardItem = props => (
         Total Moves:
         {props.totalMoves}
       </List.Item>
-      <List.Item>Board Order: {props.boxOrder}</List.Item>
+      <List.Item>
+        Board Order:
+        {props.boxOrder}
+      </List.Item>
       <List.Item>
         Winner:
         {props.winner}

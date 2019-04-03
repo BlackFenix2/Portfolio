@@ -1,17 +1,26 @@
+import { css } from '@emotion/core';
 import * as React from 'react';
 import { Collapse } from 'react-collapse';
 import { Icon, Menu } from 'semantic-ui-react';
-
-import * as styles from './MobileDropdownComponent.module.css';
 
 interface Props {
   name: string;
 }
 
+const flipped = css`
+  transition: 0.5s;
+  transform: scaleY(-1);
+`;
+
+const normal = css`
+  transition: 0.5s;
+`;
+
 class MobileDropdownComponent extends React.Component<Props> {
   state = {
     visible: false
   };
+
   toggleVisible = () => {
     this.setState({
       visible: !this.state.visible
@@ -26,7 +35,7 @@ class MobileDropdownComponent extends React.Component<Props> {
           <Icon
             name="angle down"
             color="black"
-            className={this.state.visible ? styles.flipped : styles.normal}
+            css={this.state.visible ? flipped : normal}
           />
         </Menu.Item>
         <Collapse isOpened={this.state.visible}>

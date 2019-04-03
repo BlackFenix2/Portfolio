@@ -577,6 +577,7 @@ class TicTacToe extends React.Component<any, any> {
       boxOrder: boardOrder
     });
   };
+
   setDelay = (e, { value }) => {
     this.setState({
       delay: value

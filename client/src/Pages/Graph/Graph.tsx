@@ -7,11 +7,13 @@ import { Divider } from 'semantic-ui-react';
 @observer
 class Graph extends React.Component {
   @observable graphHeight: number = 100;
+
   @observable graphWidth: number = 100;
 
   handleHeightChange = (event, value) => {
     this.graphHeight = value;
   };
+
   handleWidthChange = (event, value) => {
     this.graphWidth = value;
   };
@@ -20,8 +22,14 @@ class Graph extends React.Component {
     return (
       <div>
         <h2>This is the graph page</h2>
-        <p>Height: {this.graphHeight}</p>
-        <p>Width: {this.graphWidth}</p>
+        <p>
+          Height:
+          {this.graphHeight}
+        </p>
+        <p>
+          Width:
+          {this.graphWidth}
+        </p>
         <div>
           <Slider
             min={10}

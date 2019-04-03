@@ -9,6 +9,7 @@ import InputForm from './InputForm';
 import Legal from './Legal';
 import SummaryInfo from './SummaryInfo';
 import WhoisInfo from './WhoisInfo';
+
 interface IState {
   response: IDomainRecord;
   domain: string;
@@ -19,6 +20,7 @@ interface IState {
 
 export default class Domain extends React.Component<{}, IState> {
   recaptchaInstance: any;
+
   constructor(props) {
     super(props);
     this.state = initialState;
@@ -123,9 +125,9 @@ export default class Domain extends React.Component<{}, IState> {
                   {whois.raw
                     .replace('\r', '')
                     .split('\n')
-                    .map((i, k) => {
-                      return <p key={k}>{i}</p>;
-                    })}
+                    .map((i, k) => (
+                      <p key={k}>{i}</p>
+                    ))}
                 </p>
               </Segment>
             </DomainCard>

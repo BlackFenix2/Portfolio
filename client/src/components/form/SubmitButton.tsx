@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button } from 'semantic-ui-react';
 import { FormContext, FormProps } from './formContext';
+
 interface IProps {
   name?: string;
   className?: string;
@@ -10,6 +11,7 @@ interface IProps {
 
 class SubmitButton extends React.Component<IProps> {
   state;
+
   render() {
     const { name, children, className, loading, forceEnable } = this.props;
     return (

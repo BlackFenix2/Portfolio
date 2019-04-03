@@ -4,10 +4,10 @@ import HtmlTemplate from 'html-webpack-template';
 import path from 'path';
 import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
-import webpack from 'webpack';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
-import { staging } from '../env';
+import WorkboxPlugin from 'workbox-webpack-plugin';
 import htmlParams from '../htmlParams';
+import manifest from '../manifest';
 import paths from '../paths';
 
 const config = {
@@ -63,38 +63,16 @@ const config = {
           {
             test: /\.tsx?$/,
             use: [
-              {
-                loader: 'ts-loader',
-                options: {
-                  silent: true,
-                  experimentalWatchApi: true,
-                  happyPackMode: true
-                }
-              }
+              // thread-loader for expensive loader
+              'thread-loader',
+
+              // add babel for plugins, add cache option
+              'babel-loader?cacheDirectory'
             ],
 
             exclude: /node_modules/
           },
 
-          // Less Loader
-          {
-            test: /\.less$/,
-            use: [ExtractCssChunks.loader, 'css-loader', 'less-loader']
-          },
-          // css loader with modules
-          {
-            test: /\.module.css$/,
-            use: [
-              ExtractCssChunks.loader,
-              // add css loader with modules
-              {
-                loader: 'css-loader',
-                options: {
-                  modules: true
-                }
-              }
-            ]
-          },
           // default css loader, catch global css imports
           {
             test: /\.css$/,
@@ -127,11 +105,6 @@ const config = {
     ]
   },
   plugins: [
-    // define environemt vars
-    new webpack.EnvironmentPlugin({
-      // set staging var
-      STAGING: staging
-    }),
     // load css into separate .css file
     new ExtractCssChunks({
       filename: 'static/css/[name].css'
@@ -149,17 +122,16 @@ const config = {
     }),
 
     // add serviceworker
-    new SWPrecacheWebpackPlugin(),
+    new WorkboxPlugin.GenerateSW(),
 
     // create manifest.json for PWA, injects into htmlwebpack plugin
     new WebpackPwaManifest({
-      name: "Ernie's test app",
-      short_name: 'ErnieApp',
-      description: 'Test App',
-      background_color: '#000000',
-      theme_color: '#3c3c3c',
+      name: manifest.name,
+      short_name: manifest.short_name,
+      description: manifest.description,
+      background_color: manifest.background_color,
+      theme_color: manifest.theme_color,
       start_url: '/',
-
       icons: [
         {
           src: paths.Icon,

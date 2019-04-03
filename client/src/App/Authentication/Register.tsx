@@ -15,6 +15,7 @@ class Register extends React.Component<Props> {
       visible: !this.state.visible
     });
   };
+
   render() {
     return (
       <Modal

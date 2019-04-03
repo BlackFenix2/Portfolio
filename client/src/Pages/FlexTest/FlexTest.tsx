@@ -18,6 +18,7 @@ class FlexTest extends React.Component<any, State> {
       icon_url: ''
     }
   };
+
   componentDidMount() {
     this.test();
   }
@@ -25,9 +26,11 @@ class FlexTest extends React.Component<any, State> {
   submit = value => {
     this.setState({ value });
   };
+
   change = event => {
     this.setState({ progressTest: parseInt(event.target.value, 10) });
   };
+
   test = async () => {
     const result = await API.getPosts();
     this.setState({ apiResult: result });

@@ -10,7 +10,7 @@ interface Props {
 
 const Debug = observer((props: Props) => (
   <Segment basic>
-    <h2>Debug</h2>
+    <h2>Debwug</h2>
     <code>{JSON.stringify(props.stats, null, 4)}</code>
   </Segment>
 ));
