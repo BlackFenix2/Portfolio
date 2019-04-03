@@ -1,11 +1,13 @@
+import { css } from '@emotion/core';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 // Image equalizer
-const imgStyle = {
-  width: '300px',
-  height: '400px'
-};
+
+const imgStyle = css`
+  width: 300px;
+  height: 400px;
+`;
 
 class Details extends React.Component<any> {
   render() {
@@ -15,7 +17,7 @@ class Details extends React.Component<any> {
           // TODO Remove require statement
           src={require(`src/lib/img/posters/${this.props.poster}`)}
           alt="where is the item"
-          style={imgStyle}
+          css={imgStyle}
         />
         <h1>{this.props.title}</h1>
 

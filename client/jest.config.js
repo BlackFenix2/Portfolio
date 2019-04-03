@@ -1,5 +1,5 @@
 module.exports = {
-  //transpile Typescript files
+  //transpile Typescript files using babel
   transform: {
     '^.+\\.tsx?$': 'babel-jest'
   },
@@ -14,11 +14,7 @@ module.exports = {
   //add module ALIAS to jest
   moduleNameMapper: {
     //src path
-    '^src/(.*)': '<rootDir>/src/$1',
-
-    //allow css Modules
-    //TODO remove once css modules are replaced with emotion
-    '\\.(css|less)$': 'identity-obj-proxy'
+    '^src/(.*)': '<rootDir>/src/$1'
   },
 
   //configure Enzyme

@@ -121,7 +121,7 @@
     "react": "^16.8.6",
     "react-collapse": "^4.0.3",
     "react-device-detect": "^1.6.1",
-    "react-dom": "^16.8.6",
+    "react-dom": "npm:@hot-loader/react-dom",
     "react-hot-loader": "^4.8.2",
     "react-konva": "^16.8.6",
     "react-motion": "^0.5.2",
