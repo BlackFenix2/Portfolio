@@ -11,7 +11,7 @@ tools.renderApp(app, htmlParams.rootID);
 // register service worker if https is configured
 config.registerServiceWorker();
 
-// add Hot Module Reloading
+// add Hot Module Reloading (needed for lazy imports)
 if (module.hot) {
   module.hot.accept();
 }

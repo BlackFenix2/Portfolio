@@ -2,7 +2,6 @@ import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import HtmlWebPackPlugin from 'html-webpack-plugin';
 import HtmlTemplate from 'html-webpack-template';
 import path from 'path';
-import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
 import WorkboxPlugin from 'workbox-webpack-plugin';

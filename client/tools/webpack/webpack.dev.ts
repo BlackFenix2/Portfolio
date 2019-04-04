@@ -1,4 +1,4 @@
-import webpack, { HotModuleReplacementPlugin } from 'webpack';
+import webpack from 'webpack';
 import merge from 'webpack-merge';
 import common from './webpack.common';
 
@@ -19,9 +19,7 @@ const devConfig: webpack.Configuration = {
 
     // route all to index.html
     historyApiFallback: true
-  },
-
-  plugins: [new HotModuleReplacementPlugin()]
+  }
 };
 
 export default merge(common, devConfig);
