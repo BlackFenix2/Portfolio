@@ -5,11 +5,16 @@ import DesktopNav from 'src/App/Nav/DesktopNav';
 import MobileNav from 'src/App/Nav/MobileNav';
 import RouteStore from 'src/state/stores/routeStore';
 
-const Desktop = props => <Responsive {...props} minWidth={992} />;
-const Mobile = props => <Responsive {...props} maxWidth={992} />;
+const Desktop = props => <Responsive fireOnMount {...props} minWidth={992} />;
+const Mobile = props => <Responsive fireOnMount {...props} maxWidth={992} />;
 
 class Nav extends React.Component {
   @inject() RouteStore: RouteStore;
+
+  // juryrig to fix snapshot responsiveness
+  componentDidMount() {
+    this.setState({});
+  }
 
   render() {
     return (

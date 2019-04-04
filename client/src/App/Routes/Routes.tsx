@@ -10,7 +10,6 @@ import RouteGenerator from './RouteGenerator';
 import { setPageRouteSuspenseAsync } from './routeHelpers';
 
 const Home = setPageRouteSuspenseAsync('/Home');
-const PageNotFound = React.lazy(() => import('src/components/shared/NotFound'));
 
 @observer
 class Routes extends React.Component {
@@ -26,7 +25,7 @@ class Routes extends React.Component {
         {RouteGenerator(this.RouteStore)}
         {CustomRoutes()}
         <Route>
-          <AsyncComponent LazyComponent={PageNotFound} />
+          <AsyncComponent importString={'src/components/shared/NotFound'} />
         </Route>
       </Switch>
     );

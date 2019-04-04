@@ -1,11 +1,13 @@
 import * as React from 'react';
 import AsyncComponent from 'src/components/shared/AsyncComponent';
 
-const MediaExample = React.lazy(() => import('./MediaExample'));
-
 const TestComponent = () => (
   <div>
-    <AsyncComponent LazyComponent={MediaExample} />
+    <p>Page is loaded, waiting for submodules...</p>
+    <AsyncComponent
+      mockDelay={2000}
+      importStatement={import('./MediaExample')}
+    />
   </div>
 );
 

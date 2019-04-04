@@ -22,7 +22,6 @@
   "plugins": [
     //transpile react-hot-loader
     "react-hot-loader/babel",
-
     // Allow dynamic imports
     "@babel/plugin-syntax-dynamic-import",
     // Allow decorator metadata

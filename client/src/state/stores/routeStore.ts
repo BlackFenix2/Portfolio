@@ -35,18 +35,6 @@ export default class RouteStore {
       ]
     },
     {
-      url: '/FlexTest',
-      name: 'Flex Test',
-
-      children: []
-    },
-    {
-      url: '/Graph',
-      name: 'Graph',
-
-      children: []
-    },
-    {
       url: '/Error',
       name: 'Error',
 

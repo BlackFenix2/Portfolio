@@ -2,8 +2,8 @@ import * as React from 'react';
 import Loading from './Loading';
 
 interface Props {
-  LazyComponent: React.LazyExoticComponent<any>;
   mockDelay?: number;
+  importStatement: Promise<any>;
 }
 
 interface State {
@@ -26,7 +26,6 @@ class AsyncComponent extends React.Component<Props, State> {
   render() {
     const { error, info } = this.state;
 
-    const { LazyComponent } = this.props;
     return this.state.hasError ? (
       <div>
         <h1>you broke it doofus!</h1>
@@ -44,16 +43,27 @@ class AsyncComponent extends React.Component<Props, State> {
         </p>
       </div>
     ) : (
-      <AsyncLoader LazyComponent={LazyComponent} />
+      <AsyncLoader
+        mockDelay={this.props.mockDelay}
+        importStatement={this.props.importStatement}
+      />
     );
   }
 }
 
 const AsyncLoader = props => {
-  const { LazyComponent } = props;
+  const { mockDelay, importStatement } = props;
+
+  const Item = React.lazy(() =>
+    Promise.all([
+      importStatement,
+      new Promise(resolve => setTimeout(resolve, mockDelay))
+    ]).then(([moduleExports]) => moduleExports)
+  );
+
   return (
     <React.Suspense fallback={<Loading />}>
-      <LazyComponent />
+      <Item />
     </React.Suspense>
   );
 };
