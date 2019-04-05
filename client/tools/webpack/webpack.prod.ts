@@ -1,3 +1,4 @@
+import BrotliPlugin from 'brotli-webpack-plugin'
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
@@ -22,11 +23,11 @@ const prodConfig: webpack.Configuration = {
     minimizer: [
       new terserPlugin({
         // cache: true,
-        parallel: true,
-        terserOptions: {
-          // keep function names for Mobx Injection
-          keep_fnames: true
-        }
+        parallel: true
+        // terserOptions: {
+        //   // keep function names for Mobx Injection
+        //   keep_fnames: true
+        // }
       })
     ]
   },
@@ -42,6 +43,10 @@ const prodConfig: webpack.Configuration = {
       exclude: /\.html$/
       // remove original files (saves on server data)
       // deleteOriginalAssets: true
+    }),
+    new BrotliPlugin({
+      asset: '[path].br[query]',
+      test: /\.(js|ts|css|svg)$/
     }),
 
     // clean build folder

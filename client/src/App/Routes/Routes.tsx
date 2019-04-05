@@ -1,7 +1,6 @@
 import { inject } from 'mmlpx';
 import { observer } from 'mobx-react';
 import * as React from 'react';
-import { withRouter } from 'react-router';
 import { Route, Switch } from 'react-router-dom';
 import AsyncComponent from 'src/components/shared/AsyncComponent';
 import RouteStore from 'src/state/stores/routeStore';
@@ -13,7 +12,7 @@ const Home = setPageRouteSuspenseAsync('/Home');
 
 @observer
 class Routes extends React.Component {
-  @inject(RouteStore) RouteStore: any;
+  @inject() RouteStore: RouteStore;
 
   render() {
     return (
