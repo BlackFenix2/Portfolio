@@ -25,7 +25,9 @@ class Routes extends React.Component {
         {RouteGenerator(this.RouteStore)}
         {CustomRoutes()}
         <Route>
-          <AsyncComponent importString={'src/components/shared/NotFound'} />
+          <AsyncComponent
+            importStatement={import('src/components/shared/NotFound')}
+          />
         </Route>
       </Switch>
     );
