@@ -4,6 +4,7 @@ import { Add, Remove } from '@material-ui/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Image, Rating } from 'semantic-ui-react';
+import { trimString } from 'src/helpers/stringHelpers';
 
 interface IShow {
   rating: number;
@@ -13,6 +14,7 @@ interface IShow {
   title: string;
   year: any;
   description: string;
+  className?: string;
 }
 
 class ShowCard extends React.PureComponent<IShow> {
@@ -47,11 +49,12 @@ class ShowCard extends React.PureComponent<IShow> {
 
   render() {
     // TODO Remove require statement
-
+    // className needed because senamtic-ui-react cant wrap custom components in transition groups
+    const { className } = this.props;
     const image = require(`src/lib/img/posters/${this.props.poster}`);
     return (
-      <Card raised>
-        <Link to={`/Details/${this.props.imdbID}`}>
+      <Card raised className={className}>
+        <Link to={`/Shows/Details/${this.props.imdbID}`}>
           <Image
             alt={`${this.props.title} Show Poster`}
             src={image}
@@ -67,7 +70,9 @@ class ShowCard extends React.PureComponent<IShow> {
 
           <Card.Meta>{this.props.year}</Card.Meta>
 
-          <Card.Description>{this.props.description}</Card.Description>
+          <Card.Description>
+            {trimString(this.props.description, 60)}
+          </Card.Description>
         </Card.Content>
 
         <Card.Content extra textAlign="center">

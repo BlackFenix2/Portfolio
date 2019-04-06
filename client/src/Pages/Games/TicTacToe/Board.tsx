@@ -39,35 +39,35 @@ const style = css`
     background-color: lightgray;
   }
 
-  .board > div:nth-child(-n + 3) {
+  .board > div:nth-of-type(-n + 3) {
     border-top: 0;
   }
 
-  .board > div:nth-child(3n + 1) {
+  .board > div:nth-of-type(3n + 1) {
     border-left: 0;
   }
 
-  .board > div:nth-child(3n) {
+  .board > div:nth-of-type(3n) {
     border-right: 0;
   }
 
-  .board > div:nth-last-child(-n + 3) {
+  .board > div:nth-last-of-type(-n + 3) {
     border-bottom: 0;
   }
 
-  .board > div:first-child {
+  .board > div:first-of-type {
     border-radius: 20px 0 0 0;
   }
 
-  .board > div:nth-child(3) {
+  .board > div:nth-of-type(3) {
     border-radius: 0 20px 0 0;
   }
 
-  .board > div:nth-child(7) {
+  .board > div:nth-of-type(7) {
     border-radius: 0 0 0 20px;
   }
 
-  .board > div:nth-child(9) {
+  .board > div:nth-of-type(9) {
     border-radius: 0 0 20px 0;
   }
   @media screen and (min-width: 767px) {

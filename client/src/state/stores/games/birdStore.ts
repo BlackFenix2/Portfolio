@@ -60,7 +60,10 @@ export default class BirdStore {
   };
 
   @action unMountGame = target => {
-    this.timer.stop();
+    if (this.timer) {
+      this.timer.stop();
+    }
+
     this.input.dispose(target);
   };
 

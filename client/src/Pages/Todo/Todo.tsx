@@ -3,6 +3,7 @@ import { inject } from 'mmlpx';
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
 import * as React from 'react';
+import { List, Transition } from 'semantic-ui-react';
 import TodoStore from 'src/state/stores/todoStore';
 
 @observer
@@ -67,22 +68,22 @@ class Todo extends React.Component {
 }
 
 const TodoList = ({ list, changeEvent }) => (
-  <ul>
+  <Transition.Group as={List} duration={600} divided verticalAlign="middle">
     {list.map((todo, idx) => (
       <TodoListItem key={idx} todo={todo} changeEvent={changeEvent} />
     ))}
-  </ul>
+  </Transition.Group>
 );
 
-const TodoListItem = ({ todo, changeEvent }) => (
-  <li>
+const TodoListItem = ({ todo, changeEvent, className = '' }) => (
+  <List.Item className={className}>
     {todo.task}
     <input
       type="checkbox"
       value={todo.isComplete}
       onChange={() => changeEvent(todo)}
     />
-  </li>
+  </List.Item>
 );
 
 export default Todo;

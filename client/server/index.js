@@ -33,7 +33,9 @@ app.use(
     enableBrotli: true,
     //fallback to gzip if browser does not support brothli
     orderPreference: ['br', 'gz'],
+    //add response headers
     setHeaders: function(res, path) {
+      //control cache age
       res.setHeader('Cache-Control', 'public, max-age=31536000');
     }
   })

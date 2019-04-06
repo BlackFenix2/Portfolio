@@ -9,6 +9,7 @@ const imgStyle = css`
   height: 400px;
 `;
 
+// TODO move component inside shows pages,
 class Details extends React.Component<any> {
   render() {
     return (
