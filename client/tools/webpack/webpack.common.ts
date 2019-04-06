@@ -80,7 +80,6 @@ const config = {
                 loader: ExtractCssChunks.loader,
                 options: {
                   hot: true,
-                  modules: true, // if you use cssModules, this can help.
                   reloadAll: true // when desperation kicks in - this is a brute force HMR flag
                 }
               },

@@ -77,7 +77,6 @@
     "pretty-quick": "^1.10.0",
     "react-snap": "^1.19.0",
     "style-loader": "^0.23.1",
-    "sw-precache-webpack-plugin": "^0.11.5",
     "terser-webpack-plugin": "^1.2.3",
     "thread-loader": "^2.1.2",
     "ts-loader": "^5.3.3",

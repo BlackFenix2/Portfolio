@@ -27,7 +27,17 @@ app.use((req, res, next) => {
 });
 
 //serve static files and gzip files
-app.use(expressStaticGzip(directory));
+app.use(
+  expressStaticGzip(directory, {
+    //use brothli
+    enableBrotli: true,
+    //fallback to gzip if browser does not support brothli
+    orderPreference: ['br', 'gz'],
+    setHeaders: function(res, path) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000');
+    }
+  })
+);
 
 // pass all relative URL requests to index.html to be handled by React-Router
 app.get('/*', (request, response) => {
