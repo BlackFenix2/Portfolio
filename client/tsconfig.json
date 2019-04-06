@@ -1,4 +1,6 @@
 {
+  //exclude node_modules for type checking
+  "exclude": ["node_modules"],
   "compilerOptions": {
     //keep JSX syntax intact for babel transformation
     "jsx": "preserve",
@@ -12,6 +14,12 @@
 
     // targets node
     "moduleResolution": "node",
+
+    //resolve json
+    "resolveJsonModule": true,
+
+    //dont check pachage type declarations, i already dont trust them :(
+    "skipLibCheck": true,
 
     // force case-sensitive imports to avoid compile-time errors
     "forceConsistentCasingInFileNames": true,

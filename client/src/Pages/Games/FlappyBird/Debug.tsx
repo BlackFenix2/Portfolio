@@ -1,4 +1,3 @@
-import json from '*.json';
 import { observer } from 'mobx-react';
 import * as React from 'react';
 import { Card, Segment } from 'semantic-ui-react';
