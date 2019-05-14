@@ -29,7 +29,7 @@ class Cats extends React.Component<any, State> {
   };
 
   GetCat = async e => {
-    this.setState({ number: this.state.result });
+    this.setState(prevState => ({ number: prevState.result }));
   };
 
   render() {

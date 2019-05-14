@@ -1,0 +1,53 @@
+// test eslint file for typescript/eslint combo
+// https://github.com/typescript-eslint/typescript-eslint
+
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+
+  "parser": "@typescript-eslint/parser",
+
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
+  "plugins": ["@typescript-eslint"],
+
+  "rules": {
+    //typescript already handles path resolution
+    "import/no-unresolved": "off",
+
+    //permit JSX in tsx files
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", "tsx"] }
+    ],
+
+    //removes prop-types requirement because typescript
+    "react/prop-types": "off",
+
+    //destructuring props is not required
+    "react/destructuring-assignment": "off",
+
+    // why is this needed?
+    "react/button-has-type": "off",
+
+    //conflicts with prettier formatting (print limit)
+    "react/jsx-one-expression-per-line": "off",
+
+    // not needed for certail React Functions
+    "@typescript-eslint/explicit-function-return-type": "off",
+
+    // modified, removes code-bloat accessors in TS React.
+    "@typescript-eslint/explicit-member-accessibility": "off",
+
+    //allowing any keyword for simple types
+    "@typescript-eslint/no-explicit-any": "off"
+  }
+}

@@ -5,4 +5,4 @@ interface Route {
   children?: Route[];
 }
 
-interface Routes extends Array<Route> {}
+type Routes = Route[];

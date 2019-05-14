@@ -51,11 +51,6 @@ const Styled: React.FC<StyledProps> = () => {
     activeIndex: 0
   });
 
-  React.useEffect(() => {
-    console.log('loading test start');
-    return () => console.log('loading end');
-  }, [style.loading]);
-
   const onChangeEvent = () => {
     setStyle({ ...style, loading: !style.loading });
   };

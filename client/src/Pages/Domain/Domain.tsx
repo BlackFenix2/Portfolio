@@ -10,7 +10,7 @@ import Legal from './Legal';
 import SummaryInfo from './SummaryInfo';
 import WhoisInfo from './WhoisInfo';
 
-interface IState {
+interface State {
   response: IDomainRecord;
   domain: string;
   loading: boolean;
@@ -18,7 +18,40 @@ interface IState {
   errorMessage: string;
 }
 
-export default class Domain extends React.Component<{}, IState> {
+const initialState: State = {
+  response: {
+    whois: {
+      domain: '',
+      created: '',
+      expired: '',
+      nameservers: [''],
+      domainStatus: [''],
+      admin: {
+        email: ''
+      },
+      registrant: {
+        email: ''
+      },
+      raw: ''
+    },
+    dns: {
+      mxRecords: [''],
+      aRecords: [''],
+      cnameRecords: ['']
+    },
+    summary: {
+      domainLocked: undefined,
+      emailHost: undefined,
+      domainOwner: undefined
+    }
+  },
+  domain: '',
+  loading: false,
+  error: false,
+  errorMessage: ''
+};
+
+export default class Domain extends React.Component<{}, State> {
   recaptchaInstance: any;
 
   constructor(props) {
@@ -142,36 +175,3 @@ export default class Domain extends React.Component<{}, IState> {
     );
   }
 }
-
-const initialState: IState = {
-  response: {
-    whois: {
-      domain: '',
-      created: '',
-      expired: '',
-      nameservers: [''],
-      domainStatus: [''],
-      admin: {
-        email: ''
-      },
-      registrant: {
-        email: ''
-      },
-      raw: ''
-    },
-    dns: {
-      mxRecords: [''],
-      aRecords: [''],
-      cnameRecords: ['']
-    },
-    summary: {
-      domainLocked: undefined,
-      emailHost: undefined,
-      domainOwner: undefined
-    }
-  },
-  domain: '',
-  loading: false,
-  error: false,
-  errorMessage: ''
-};

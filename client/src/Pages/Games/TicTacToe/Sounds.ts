@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { circle, cross, game } from 'src/lib/audio';
 
 let sounds: any = {};
@@ -20,16 +21,16 @@ const status: any = {
 export const checkMute = () => status.muted;
 
 export const muteAll = () => {
-  Object.values(sounds).map((audio: any) => {
+  Object.values(sounds).map((audio: HTMLAudioElement) => {
     audio.load();
-    audio.muted = true;
+    audio.muted = false;
     return true;
   });
   status.mute = true;
 };
 
 export const unMuteAll = () => {
-  Object.values(sounds).map((audio: any) => {
+  Object.values(sounds).map((audio: HTMLAudioElement) => {
     audio.load();
     audio.muted = false;
     return true;

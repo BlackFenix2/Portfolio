@@ -3,7 +3,7 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import path from 'path';
-import terserPlugin from 'terser-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 import paths from '../paths';
@@ -21,7 +21,7 @@ const prodConfig: webpack.Configuration = {
 
   optimization: {
     minimizer: [
-      new terserPlugin({
+      new TerserPlugin({
         cache: true,
         parallel: true
       })

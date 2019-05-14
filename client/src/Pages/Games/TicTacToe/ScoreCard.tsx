@@ -11,12 +11,12 @@ import Card from 'src/components/elements/Card';
 
 interface Props {
   clearScore: () => void;
-  stats: Array<{
+  stats: {
     winner: string;
     gameNumber: number;
     totalMoves: number;
     boxOrder: [number];
-  }>;
+  }[];
 }
 
 interface State {

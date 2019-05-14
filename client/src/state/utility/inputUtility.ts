@@ -53,11 +53,11 @@ export default class InputUtility {
     this.velX = 0;
   }
 
-  private handleBindMouse = e => {
+  private handleBindMouse = () => {
     this.keys[KEY.mouseClick] = true;
   };
 
-  private handleUnBindMouse = e => {
+  private handleUnBindMouse = () => {
     this.keys[KEY.mouseClick] = false;
   };
 

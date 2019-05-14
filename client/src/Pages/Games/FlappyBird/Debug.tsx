@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react';
 import * as React from 'react';
-import { Card, Segment } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
 import BirdStore from 'src/state/stores/games/birdStore';
 
 interface Props {

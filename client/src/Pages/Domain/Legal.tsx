@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card, Segment } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 
 const Legal: React.SFC = () => (
   <Card raised fluid>

@@ -96,7 +96,7 @@ export default class BirdStore {
     // space key to flap bird, incease speed to offset gravity
     if (keys[KEY.SPACE] || keys[KEY.mouseClick]) {
       if (this.input.velY < speed + gravity * 2) {
-        this.input.velY++;
+        this.input.velY += 1;
       }
     }
 
