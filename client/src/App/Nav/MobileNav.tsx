@@ -75,7 +75,7 @@ class MobileNav extends React.Component<{ Routes: RouteStore }, State> {
   };
 
   handleHamburgerClick = () => {
-    this.setState({ visible: !this.state.visible });
+    this.setState(prevState => ({ visible: !prevState.visible }));
   };
 
   handleHideClick = () => this.setState({ visible: false });

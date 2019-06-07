@@ -5,11 +5,12 @@ import path from 'path';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
 import WorkboxPlugin from 'workbox-webpack-plugin';
+import webpack from 'webpack';
 import htmlParams from '../htmlParams';
 import manifest from '../manifest';
 import paths from '../paths';
 
-const config = {
+const config: webpack.Configuration = {
   entry: {
     // client entry
     bundle: [paths.index]

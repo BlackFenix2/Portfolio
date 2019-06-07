@@ -1,4 +1,3 @@
-import { observer } from 'mobx-react';
 import React from 'react';
 
 import { Group } from 'react-konva';

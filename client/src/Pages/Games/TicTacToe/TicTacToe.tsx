@@ -146,7 +146,7 @@ class TicTacToe extends React.Component<any, any> {
       gameLocked: true
     });
 
-    for (let i = 0; i < this.state.warGamesCount; i++) {
+    for (let i = 0; i < this.state.warGamesCount; i += 1) {
       do {
         await this.sleep(this.state.warGamesDelay);
         await this.cpuTurn(this.state.numOfPlayers);

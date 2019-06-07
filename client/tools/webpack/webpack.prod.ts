@@ -1,5 +1,5 @@
 import BrotliPlugin from 'brotli-webpack-plugin';
-import CleanWebpackPlugin from 'clean-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import path from 'path';

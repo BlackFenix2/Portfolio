@@ -16,15 +16,15 @@ const normal = css`
   transition: 0.5s;
 `;
 
-class MobileDropdownComponent extends React.Component<Props> {
+class MobileDropdownComponent extends React.Component<Props, any> {
   state = {
     visible: false
   };
 
   toggleVisible = () => {
-    this.setState({
-      visible: !this.state.visible
-    });
+    this.setState(prevState => ({
+      visible: !prevState.visible
+    }));
   };
 
   render() {

@@ -1,4 +1,4 @@
-export function search(collection, searchTerm) {
+export default function search(collection, searchTerm) {
   return collection.filter(
     item =>
       `${item.title} ${item.description}`

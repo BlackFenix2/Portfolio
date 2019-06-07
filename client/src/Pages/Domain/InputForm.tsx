@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Card, Form, Input, Segment } from 'semantic-ui-react';
+import { Card, Form, Input } from 'semantic-ui-react';
 
 interface IProps {
   item?: string;
@@ -19,7 +19,7 @@ const InputForm: React.SFC<IProps> = props => (
     <Card.Content>
       <Form onSubmit={props.handleSubmit}>
         <Form.Field>
-          <label>Domain Name</label>
+          <span>Domain Name</span>
           <Input
             action={{ color: 'blue', content: 'Search' }}
             required

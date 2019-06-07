@@ -20,22 +20,30 @@
   "plugins": ["@typescript-eslint", "json"],
 
   "rules": {
+    //
+    //"no-restricted-syntax": "off",
+
+    //depreciated
+    "jsx-a11y/label-has-for": "off",
+
     //typescript already handles path resolution
     "import/no-unresolved": "off",
 
+    "import/no-extraneous-dependencies": "off",
+
     // disabled, all types auto-fix to interface. rule would be redundant.
     "@typescript-eslint/interface-name-prefix": "off",
+
+    // established coding standards use a different naming convention
+    "@typescript-eslint/camelcase": "off",
 
     //turning off untill refactoring
     "react/no-array-index-key": "off",
 
     //permit JSX in tsx files
-    "react/jsx-filename-extension": [
-      1,
-      { "extensions": [".js", ".jsx", "tsx"] }
-    ],
+    "react/jsx-filename-extension": [1, { "extensions": ["tsx"] }],
 
-    //removes prop-types requirement because typescript
+    //removes prop-types requirement because Typescript
     "react/prop-types": "off",
 
     //destructuring props is not required

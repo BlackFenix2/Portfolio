@@ -1,8 +1,9 @@
-//root webpack mount
+/* eslint-disable global-require */
+// root webpack mount
 
-//set node memory to 4GB to avoid memory heap exceptions
+// set node memory to 4GB to avoid memory heap exceptions
 process.env.NODE_OPTIONS = '--max-old-space-size=4096';
-//register ts-node to compile ts webpack to commonjs modules
+// register ts-node to compile ts webpack to commonjs modules
 require('ts-node').register({
   compilerOptions: {
     target: 'es6',
@@ -12,7 +13,7 @@ require('ts-node').register({
     noUnusedParameters: false
   },
 
-  //show pretty output for error messages
+  // show pretty output for error messages
   pretty: true
 });
 
