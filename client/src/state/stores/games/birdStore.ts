@@ -67,12 +67,12 @@ export default class BirdStore {
     this.input.dispose(target);
   };
 
-  protected MovePipe = (index: number, x: number, y: number = 0) => {
+  protected MovePipe = (index: number, x: number) => {
     this.PipeList[index].SouthPipe.x -= x;
     this.PipeList[index].NorthPipe.x -= x;
   };
 
-  protected setPipe = (x: number = 600, y: number = 0) => {
+  protected setPipe = (x: number = 600) => {
     // set random with max height
     const random = Math.floor(Math.random() * 190);
     this.PipeList.push({
@@ -114,7 +114,7 @@ export default class BirdStore {
     // check each pipe in array for bird crash and pipe movement
     this.PipeList.forEach((PipeColumn, index) => {
       // move pipe
-      this.MovePipe(index, 3, 0);
+      this.MovePipe(index, 3);
       if (PipeColumn.NorthPipe.x + PipeColumn.NorthPipe.width <= 0) {
         // set new pipe Column
         this.setPipe();

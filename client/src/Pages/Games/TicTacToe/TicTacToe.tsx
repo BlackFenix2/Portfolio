@@ -59,9 +59,9 @@ class TicTacToe extends React.Component<any, any> {
   };
 
   toggleMachineLearning = () => {
-    this.setState({
-      machineLearning: !this.state.machineLearning
-    });
+    this.setState(prevState => ({
+      machineLearning: !prevState.machineLearning
+    }));
   };
 
   startTurn = async loc => {
@@ -80,25 +80,25 @@ class TicTacToe extends React.Component<any, any> {
           board: currentGameBoard,
           totalMoves: prevState.totalMoves + 1,
           selectedBox: loc,
-          boxOrder: [...this.state.boxOrder, loc]
+          boxOrder: [...prevState.boxOrder, loc]
         }),
         () => {
           const result = this.checkWinner();
           // only stop the game when there is a winner or a draw
           if (result) {
-            this.setState({
+            this.setState((prevState: any) => ({
               gameEnded: true,
               winner: result,
               stats: [
-                ...this.state.stats,
+                ...prevState.stats,
                 {
                   winner: result,
-                  totalMoves: this.state.totalMoves,
-                  boxOrder: this.state.boxOrder,
+                  totalMoves: prevState.totalMoves,
+                  boxOrder: prevState.boxOrder,
                   scoreClicked: this.scoreClicked
                 }
               ]
-            });
+            }));
           }
         }
       );

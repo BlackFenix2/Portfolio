@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { Collapse } from 'react-collapse';
 
-import { Card, Grid, Header, Loader, Segment } from 'semantic-ui-react';
+import { Card, Header } from 'semantic-ui-react';
 import LoadingIcon from '../../components/elements/LoadingIcon';
 
-interface IProps {
+interface Props {
   name: string;
   loading: boolean;
 }
 
-const DomainCard: React.SFC<IProps> = props => (
+const DomainCard: React.SFC<Props> = props => (
   <Card raised fluid>
     <Card.Content>
       <Card.Header>

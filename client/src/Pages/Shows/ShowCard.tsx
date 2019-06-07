@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { Card, Image, Rating } from 'semantic-ui-react';
 import { trimString } from 'src/helpers/stringHelpers';
 
-interface IShow {
+interface Show {
   rating: number;
   poster: string;
   image: string;
@@ -17,35 +17,28 @@ interface IShow {
   className?: string;
 }
 
-class ShowCard extends React.PureComponent<IShow> {
+class ShowCard extends React.PureComponent<Show> {
   static defaultProps = {
     rating: 0
   };
 
   state = {
-    rating: this.props.rating,
-    loading: true
+    rating: this.props.rating
   };
 
   increaseRating = () =>
     this.state.rating < 5
-      ? this.setState((prevState: IShow) => ({
+      ? this.setState((prevState: Show) => ({
           rating: prevState.rating + 1
         }))
       : null;
 
   decreaseRating = () =>
     this.state.rating > 0
-      ? this.setState((prevState: IShow) => ({
+      ? this.setState((prevState: Show) => ({
           rating: prevState.rating - 1
         }))
       : null;
-
-  setLoading = () => {
-    this.setState({
-      loading: false
-    });
-  };
 
   render() {
     // TODO Remove require statement
@@ -62,7 +55,6 @@ class ShowCard extends React.PureComponent<IShow> {
               width: 300px;
               height: 400px;
             `}
-            onLoad={this.setLoading}
           />
         </Link>
         <Card.Content>

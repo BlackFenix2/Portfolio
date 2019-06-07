@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import * as React from 'react';
 
-interface IProps {
+interface Props {
   percent: number;
 }
 
@@ -15,7 +15,7 @@ const ProgressItem = styled.div`
   background-color: ${(props: any) => props.color};
   transition: 0.5s;
 `;
-class ProgressBar extends React.Component<IProps> {
+class ProgressBar extends React.Component<Props> {
   getColor = () => {
     if (this.props.percent >= 100) {
       return 'green';

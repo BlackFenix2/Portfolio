@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-interface IProps {
+interface Props {
   items?: string[];
 }
-const List: React.SFC<IProps> = props => <li>{props.children}</li>;
+const List: React.SFC<Props> = props => <li>{props.children}</li>;
 
 export default List;

@@ -1,4 +1,6 @@
-export default values => {
+const values = () => {
   const errors = {};
   return errors;
 };
+
+export default values;

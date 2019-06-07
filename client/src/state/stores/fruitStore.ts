@@ -1,4 +1,4 @@
-import { action, autorun, observable } from 'mobx';
+import { action, observable } from 'mobx';
 import { fruitAPI } from 'src/services/API';
 
 interface Fruit {

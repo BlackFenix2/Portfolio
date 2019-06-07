@@ -17,11 +17,17 @@
     "prettier",
     "prettier/@typescript-eslint"
   ],
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "json"],
 
   "rules": {
     //typescript already handles path resolution
     "import/no-unresolved": "off",
+
+    // disabled, all types auto-fix to interface. rule would be redundant.
+    "@typescript-eslint/interface-name-prefix": "off",
+
+    //turning off untill refactoring
+    "react/no-array-index-key": "off",
 
     //permit JSX in tsx files
     "react/jsx-filename-extension": [

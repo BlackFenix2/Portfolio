@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 import { Input } from 'semantic-ui-react';
 import ShowStore from 'src/state/stores/showStore';
 
-interface IProps {
+interface Props {
   routing: any;
 }
 
 @observer
-class Home extends React.Component<IProps> {
+class Home extends React.Component<Props> {
   @inject() ShowStore: ShowStore;
 
   goToSearch = event => {

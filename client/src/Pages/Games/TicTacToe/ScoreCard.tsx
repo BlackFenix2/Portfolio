@@ -21,14 +21,12 @@ interface Props {
 
 interface State {
   active: string;
-  filteredList: object[];
 }
 
 class ScoreCard extends React.Component<Props, State> {
   // default active state
   state = {
-    active: '',
-    filteredList: this.props.stats
+    active: ''
   };
 
   filterList = (stats, content) => {
@@ -45,17 +43,13 @@ class ScoreCard extends React.Component<Props, State> {
   };
 
   activeChange = (e, { content }) => {
-    const { stats } = this.props;
-    const list = this.filterList(stats, content);
     if (content === this.state.active) {
       this.setState({
-        active: '',
-        filteredList: list
+        active: ''
       });
     } else {
       this.setState({
-        active: content,
-        filteredList: list
+        active: content
       });
     }
   };
