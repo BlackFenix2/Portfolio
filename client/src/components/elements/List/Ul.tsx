@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-interface IProps {
+interface Props {
   items?: string[];
 }
-const List: React.SFC<IProps> = props => (
+const List: React.SFC<Props> = props => (
   <ul className="w3-ul">{props.children}</ul>
 );
 

@@ -1,9 +1,9 @@
 import BrotliPlugin from 'brotli-webpack-plugin';
-import CleanWebpackPlugin from 'clean-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import path from 'path';
-import terserPlugin from 'terser-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 import paths from '../paths';
@@ -21,7 +21,7 @@ const prodConfig: webpack.Configuration = {
 
   optimization: {
     minimizer: [
-      new terserPlugin({
+      new TerserPlugin({
         cache: true,
         parallel: true
       })
@@ -42,10 +42,7 @@ const prodConfig: webpack.Configuration = {
     new BrotliPlugin({
       asset: '[path].br[query]',
       test: /\.(js|ts|css|svg)$/
-    }),
-
-    // clean build folder
-    new CleanWebpackPlugin()
+    })
   ]
 };
 
@@ -62,7 +59,11 @@ const serverConfig: webpack.Configuration = {
   output: {
     path: path.resolve(__dirname, paths.buildDir),
     filename: '[name].js'
-  }
+  },
+  plugins: [
+    // clean build folder
+    new CleanWebpackPlugin()
+  ]
 };
 
 export default [serverConfig, merge(common, prodConfig)];

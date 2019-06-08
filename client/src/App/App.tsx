@@ -1,4 +1,3 @@
-import CssBaseline from '@material-ui/core/CssBaseline';
 import { createBrowserHistory } from 'history';
 import { Provider } from 'mobx-react';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
@@ -13,17 +12,13 @@ const browserHistory = createBrowserHistory();
 const RoutingStore = new RouterStore();
 const history = syncHistoryWithStore(browserHistory, RoutingStore);
 
-class App extends React.Component {
-  render() {
-    return (
-      <Provider routing={RoutingStore}>
-        <Router history={history}>
-          <AppLayout />
-        </Router>
-      </Provider>
-    );
-  }
-}
+const App = () => (
+  <Provider routing={RoutingStore}>
+    <Router history={history}>
+      <AppLayout />
+    </Router>
+  </Provider>
+);
 
 const AppLayout = () => (
   <React.Fragment>

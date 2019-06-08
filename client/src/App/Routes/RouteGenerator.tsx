@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Route } from 'react-router-dom';
-import { setPageRouteSuspenseAsync } from './routeHelpers';
+import setPageRouteSuspenseAsync from './routeHelpers';
 
 // generate simple nav links
 const RouteGenerator = props => {

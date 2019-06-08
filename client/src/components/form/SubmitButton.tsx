@@ -2,14 +2,14 @@ import * as React from 'react';
 import { Button } from 'semantic-ui-react';
 import { FormContext, FormProps } from './formContext';
 
-interface IProps {
+interface Props {
   name?: string;
   className?: string;
   loading?: boolean;
   forceEnable?: boolean;
 }
 
-class SubmitButton extends React.Component<IProps> {
+class SubmitButton extends React.Component<Props> {
   state;
 
   render() {

@@ -1,7 +1,5 @@
-import { observable } from 'mobx';
-import { observer } from 'mobx-react';
 import * as React from 'react';
-import { Circle, Group, Image, Rect } from 'react-konva';
+import { Image } from 'react-konva';
 import useImage from 'use-image';
 
 const Pipe = props => {

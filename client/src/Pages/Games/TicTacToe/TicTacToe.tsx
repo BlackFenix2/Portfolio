@@ -59,9 +59,9 @@ class TicTacToe extends React.Component<any, any> {
   };
 
   toggleMachineLearning = () => {
-    this.setState({
-      machineLearning: !this.state.machineLearning
-    });
+    this.setState(prevState => ({
+      machineLearning: !prevState.machineLearning
+    }));
   };
 
   startTurn = async loc => {
@@ -80,25 +80,25 @@ class TicTacToe extends React.Component<any, any> {
           board: currentGameBoard,
           totalMoves: prevState.totalMoves + 1,
           selectedBox: loc,
-          boxOrder: [...this.state.boxOrder, loc]
+          boxOrder: [...prevState.boxOrder, loc]
         }),
         () => {
           const result = this.checkWinner();
           // only stop the game when there is a winner or a draw
           if (result) {
-            this.setState({
+            this.setState((prevState: any) => ({
               gameEnded: true,
               winner: result,
               stats: [
-                ...this.state.stats,
+                ...prevState.stats,
                 {
                   winner: result,
-                  totalMoves: this.state.totalMoves,
-                  boxOrder: this.state.boxOrder,
+                  totalMoves: prevState.totalMoves,
+                  boxOrder: prevState.boxOrder,
                   scoreClicked: this.scoreClicked
                 }
               ]
-            });
+            }));
           }
         }
       );
@@ -106,23 +106,21 @@ class TicTacToe extends React.Component<any, any> {
     }
     // catch Error attempting to fill in non-empty slot
     throw new Error(
-      `Turn Error: Player ${
-        this.state.turn
-      } attempted to fill a non-empty slot: ${loc}`
+      `Turn Error: Player ${this.state.turn} attempted to fill a non-empty slot: ${loc}`
     );
   };
 
   sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-  playSelfOnce = async () => {
+  playSelfOnce = () => {
     this.reset();
     this.setState({
       gameLocked: true
     });
 
     do {
-      await this.sleep(this.state.delay);
-      await this.cpuTurn(this.state.numOfPlayers);
+      this.sleep(this.state.delay).then();
+      this.cpuTurn(this.state.numOfPlayers);
     } while (!this.state.gameEnded);
 
     this.setState({
@@ -130,12 +128,10 @@ class TicTacToe extends React.Component<any, any> {
     });
   };
 
-  playSelf = async () => {
+  playSelf = () => {
     if (
       !confirm(
-        `Warning: The computer will play itself for ${
-          this.state.warGamesCount
-        } games`
+        `Warning: The computer will play itself for ${this.state.warGamesCount} games`
       )
     ) {
       return;
@@ -146,19 +142,19 @@ class TicTacToe extends React.Component<any, any> {
       gameLocked: true
     });
 
-    for (let i = 0; i < this.state.warGamesCount; i++) {
+    for (let i = 0; i < this.state.warGamesCount; i += 1) {
       do {
-        await this.sleep(this.state.warGamesDelay);
-        await this.cpuTurn(this.state.numOfPlayers);
+        this.sleep(this.state.warGamesDelay).then();
+        this.cpuTurn(this.state.numOfPlayers);
       } while (!this.state.gameEnded);
 
       this.setState(
-        {
+        prevState => ({
           warGamesDelay:
-            this.state.warGamesDelay - 100 >= 100
-              ? this.state.warGamesDelay - 100
+            prevState.warGamesDelay - 100 >= 100
+              ? prevState.warGamesDelay - 100
               : 50
-        },
+        }),
         () => this.reset(this.state.warGamesDelay)
       );
     }

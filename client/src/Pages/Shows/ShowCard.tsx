@@ -1,15 +1,16 @@
 import { css } from '@emotion/core';
 import { Fab } from '@material-ui/core';
 import { Add, Remove } from '@material-ui/icons';
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Image, Rating } from 'semantic-ui-react';
 import { trimString } from 'src/helpers/stringHelpers';
 
-interface IShow {
+import { getImagePath } from 'src/helpers/imageHelper';
+
+interface Show {
   rating: number;
   poster: string;
-  image: string;
   imdbID: string;
   title: string;
   year: any;
@@ -17,52 +18,53 @@ interface IShow {
   className?: string;
 }
 
-class ShowCard extends React.PureComponent<IShow> {
+class ShowCard extends React.PureComponent<Show> {
   static defaultProps = {
     rating: 0
   };
 
   state = {
     rating: this.props.rating,
-    loading: true
+    image: null
   };
+
+  async componentDidMount() {
+    this.setState({
+      image: await getImagePath(
+        import(`src/lib/img/posters/${this.props.poster}`)
+      )
+    });
+  }
 
   increaseRating = () =>
     this.state.rating < 5
-      ? this.setState((prevState: IShow) => ({
+      ? this.setState((prevState: Show) => ({
           rating: prevState.rating + 1
         }))
       : null;
 
   decreaseRating = () =>
     this.state.rating > 0
-      ? this.setState((prevState: IShow) => ({
+      ? this.setState((prevState: Show) => ({
           rating: prevState.rating - 1
         }))
       : null;
-
-  setLoading = () => {
-    this.setState({
-      loading: false
-    });
-  };
 
   render() {
     // TODO Remove require statement
     // className needed because senamtic-ui-react cant wrap custom components in transition groups
     const { className } = this.props;
-    const image = require(`src/lib/img/posters/${this.props.poster}`);
+
     return (
       <Card raised className={className}>
         <Link to={`/Shows/Details/${this.props.imdbID}`}>
           <Image
             alt={`${this.props.title} Show Poster`}
-            src={image}
+            src={this.state.image}
             css={css`
               width: 300px;
               height: 400px;
             `}
-            onLoad={this.setLoading}
           />
         </Link>
         <Card.Content>

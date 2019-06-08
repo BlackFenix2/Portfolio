@@ -4,12 +4,9 @@ export interface Props {
   pageName: string;
 }
 
-export default class Page extends React.Component<Props, any> {
-  render() {
-    return (
-      <div>
-        <h2>Pages</h2>
-      </div>
-    );
-  }
-}
+const Page = () => (
+  <div>
+    <h2>Pages</h2>
+  </div>
+);
+export default Page;

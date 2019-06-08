@@ -5,15 +5,15 @@ import Modal from 'src/components/elements/Modal';
 interface Props {
   visible?: boolean;
 }
-class Login extends React.Component<Props> {
+class Login extends React.Component<Props, any> {
   state = {
     visible: this.props.visible
   };
 
   toggleEvent = () => {
-    this.setState({
-      visible: !this.state.visible
-    });
+    this.setState(prevState => ({
+      visible: !prevState.visible
+    }));
   };
 
   render() {

@@ -7,7 +7,7 @@ import data from 'src/state/stores/datas.json';
 const CustomRoutes = () => (
   <Route
     exact
-    path="Shows/details/:id"
+    path="/Shows/details/:id"
     component={props => {
       const selectedShow = data.shows.find(
         show => props.match.params.id === show.imdbID

@@ -1,41 +1,41 @@
-const express = require('express');
-const path = require('path');
-const fs = require('fs');
-const expressStaticGzip = require('express-static-gzip');
+import express from 'express';
+import { resolve } from 'path';
+import { realpathSync, existsSync } from 'fs';
+import expressStaticGzip from 'express-static-gzip';
+
 const app = express();
 const port = process.env.PORT || 8080;
 
-//juryrig untill i troubleshoot imports.
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+// juryrig untill i troubleshoot imports.
+const appDirectory = realpathSync(process.cwd());
+const resolveApp = relativePath => resolve(appDirectory, relativePath);
 
-//check for build folder on local production server
-const directory = fs.existsSync(resolveApp('build'))
+// check for build folder on local production server
+const directory = existsSync(resolveApp('build'))
   ? resolveApp('build')
   : resolveApp('');
 
-console.log(directory);
 // redirect to https in production
-var env = process.env.NODE_ENV || 'production';
+const env = process.env.NODE_ENV || 'production';
 
 app.use((req, res, next) => {
-  if ('production' == env) {
+  if (env === 'production') {
     next();
   } else if (req.header('x-forwarded-proto') !== 'https')
     res.redirect(`https://${req.headers.host}${req.url}`);
   else next();
 });
 
-//serve static files and gzip files
+// serve static files and gzip files
 app.use(
   expressStaticGzip(directory, {
-    //use brothli
+    // use brothli
     enableBrotli: true,
-    //fallback to gzip if browser does not support brothli
+    // fallback to gzip if browser does not support brothli
     orderPreference: ['br', 'gz'],
-    //add response headers
-    setHeaders: function(res, path) {
-      //control cache age
+    // add response headers
+    setHeaders(res, path) {
+      // control cache age
       res.setHeader('Cache-Control', 'public, max-age=31536000');
     }
   })
@@ -43,12 +43,13 @@ app.use(
 
 // pass all relative URL requests to index.html to be handled by React-Router
 app.get('/*', (request, response) => {
-  response.sendFile(path.resolve(directory, 'index.html'));
+  response.sendFile(resolve(directory, 'index.html'));
 });
 
 // run app and listen on available port 80
 app.listen(port, () =>
   console.log(
-    `Server started on http://localhost:${port}, serving files at ${directory}`
+    `Server started on http://localhost:${port}
+     serving files at ${directory}`
   )
 );

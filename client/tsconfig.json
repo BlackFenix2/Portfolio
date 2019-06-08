@@ -18,14 +18,13 @@
     //resolve json
     "resolveJsonModule": true,
 
-    //dont check pachage type declarations, i already dont trust them :(
+    //dont check package type declarations, i already dont trust them :(
     "skipLibCheck": true,
+
+    "allowSyntheticDefaultImports": true,
 
     // force case-sensitive imports to avoid compile-time errors
     "forceConsistentCasingInFileNames": true,
-
-    // allows default import of modules without default exports, shorthand for import * as item from 'module'
-    "esModuleInterop": true,
 
     //Allow decorators in TS Editor
     "experimentalDecorators": true,

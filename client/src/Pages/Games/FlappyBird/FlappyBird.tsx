@@ -44,11 +44,12 @@ export default class FlappyBird extends React.Component {
               <Button onClick={this.Debug}>Debug</Button>
             </h2>
             <p>
-              assets shamelessly hotlinked from this guy ->
+              assets shamelessly hotlinked from this guy -
               <a href="http://jimmyoliva.herokuapp.com/" target="blank">
                 http://jimmyoliva.herokuapp.com/
               </a>
             </p>
+            // eslint-disable-next-line no-return-assign
             <div ref={test => (this.nv = test)}>
               <Board height={400} width={600} debug={this.debugMode} />
             </div>

@@ -7,8 +7,8 @@ export const fruitAPI = {
   async updateFruit(body) {
     return apiRequest(`/Fruits/${body.id}`, methods.PUT, body);
   },
-  async deleteFruit(body) {
-    return apiRequest(`/Fruits/${body.id}`, methods.DELETE);
+  async deleteFruit(id) {
+    return apiRequest(`/Fruits/${id}`, methods.DELETE);
   },
   async getFruitList() {
     return apiRequest('/Fruits', methods.GET);

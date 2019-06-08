@@ -1,7 +1,8 @@
 import { css } from '@emotion/core';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-
+import { Image } from 'semantic-ui-react';
+import { getImagePath } from 'src/helpers/imageHelper';
 // Image equalizer
 
 const imgStyle = css`
@@ -9,26 +10,31 @@ const imgStyle = css`
   height: 400px;
 `;
 
-// TODO move component inside shows pages,
-class Details extends React.Component<any> {
-  render() {
-    return (
-      <div className="w3-panel">
-        <img
-          // TODO Remove require statement
-          src={require(`src/lib/img/posters/${this.props.poster}`)}
-          alt="where is the item"
-          css={imgStyle}
-        />
-        <h1>{this.props.title}</h1>
+const Details = (props: any) => {
+  const [image, setImage] = React.useState('');
 
-        <p>{this.props.description}</p>
-        <Link to="/Shows" className="w3-button w3-teal">
-          Go Back
-        </Link>
-      </div>
-    );
-  }
-}
+  React.useEffect(() => {
+    const getImage = async () => {
+      const result = await getImagePath(
+        import(`src/lib/img/posters/${props.poster}`)
+      );
+      setImage(result);
+    };
+    getImage();
+  }, []);
+  return (
+    <div>
+      <Image
+        // TODO Remove require statement
+        src={image}
+        alt="where is the item"
+        css={imgStyle}
+      />
+      <h1>{props.title}</h1>
+      <p>{props.description}</p>
+      <Link to="/Shows">Go Back</Link>
+    </div>
+  );
+};
 
 export default Details;

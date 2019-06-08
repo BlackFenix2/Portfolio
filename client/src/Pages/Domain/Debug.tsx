@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { List } from 'semantic-ui-react';
 
-interface IProps {
+interface Props {
   loading: boolean;
   error: boolean;
   errorMessage: string;
 }
 
-const Debug: React.SFC<IProps> = props => (
+const Debug: React.SFC<Props> = props => (
   <List divided animated relaxed="very">
     <List.Item>
       Loading:

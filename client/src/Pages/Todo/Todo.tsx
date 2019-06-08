@@ -28,7 +28,7 @@ class Todo extends React.Component {
     this.clearInput();
   };
 
-  handleClearTodo = (e: React.SyntheticEvent) => {
+  handleClearTodo = () => {
     this.TodoStore.clearTodo();
     this.clearInput();
   };
