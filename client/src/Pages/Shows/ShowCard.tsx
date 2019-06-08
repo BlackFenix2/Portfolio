@@ -1,15 +1,16 @@
 import { css } from '@emotion/core';
 import { Fab } from '@material-ui/core';
 import { Add, Remove } from '@material-ui/icons';
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Image, Rating } from 'semantic-ui-react';
 import { trimString } from 'src/helpers/stringHelpers';
 
+import { getImagePath } from 'src/helpers/imageHelper';
+
 interface Show {
   rating: number;
   poster: string;
-  image: string;
   imdbID: string;
   title: string;
   year: any;
@@ -23,8 +24,17 @@ class ShowCard extends React.PureComponent<Show> {
   };
 
   state = {
-    rating: this.props.rating
+    rating: this.props.rating,
+    image: null
   };
+
+  async componentDidMount() {
+    this.setState({
+      image: await getImagePath(
+        import(`src/lib/img/posters/${this.props.poster}`)
+      )
+    });
+  }
 
   increaseRating = () =>
     this.state.rating < 5
@@ -44,13 +54,13 @@ class ShowCard extends React.PureComponent<Show> {
     // TODO Remove require statement
     // className needed because senamtic-ui-react cant wrap custom components in transition groups
     const { className } = this.props;
-    const image = require(`src/lib/img/posters/${this.props.poster}`);
+
     return (
       <Card raised className={className}>
         <Link to={`/Shows/Details/${this.props.imdbID}`}>
           <Image
             alt={`${this.props.title} Show Poster`}
-            src={image}
+            src={this.state.image}
             css={css`
               width: 300px;
               height: 400px;

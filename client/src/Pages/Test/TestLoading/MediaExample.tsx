@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 import { Responsive } from 'semantic-ui-react';
 

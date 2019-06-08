@@ -4,8 +4,9 @@ export interface Props {
   pageName: string;
 }
 
-export const Page = () => (
+const Page = () => (
   <div>
     <h2>Pages</h2>
   </div>
 );
+export default Page;

@@ -106,23 +106,21 @@ class TicTacToe extends React.Component<any, any> {
     }
     // catch Error attempting to fill in non-empty slot
     throw new Error(
-      `Turn Error: Player ${
-        this.state.turn
-      } attempted to fill a non-empty slot: ${loc}`
+      `Turn Error: Player ${this.state.turn} attempted to fill a non-empty slot: ${loc}`
     );
   };
 
   sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-  playSelfOnce = async () => {
+  playSelfOnce = () => {
     this.reset();
     this.setState({
       gameLocked: true
     });
 
     do {
-      await this.sleep(this.state.delay);
-      await this.cpuTurn(this.state.numOfPlayers);
+      this.sleep(this.state.delay).then();
+      this.cpuTurn(this.state.numOfPlayers);
     } while (!this.state.gameEnded);
 
     this.setState({
@@ -130,12 +128,10 @@ class TicTacToe extends React.Component<any, any> {
     });
   };
 
-  playSelf = async () => {
+  playSelf = () => {
     if (
       !confirm(
-        `Warning: The computer will play itself for ${
-          this.state.warGamesCount
-        } games`
+        `Warning: The computer will play itself for ${this.state.warGamesCount} games`
       )
     ) {
       return;
@@ -148,17 +144,17 @@ class TicTacToe extends React.Component<any, any> {
 
     for (let i = 0; i < this.state.warGamesCount; i += 1) {
       do {
-        await this.sleep(this.state.warGamesDelay);
-        await this.cpuTurn(this.state.numOfPlayers);
+        this.sleep(this.state.warGamesDelay).then();
+        this.cpuTurn(this.state.numOfPlayers);
       } while (!this.state.gameEnded);
 
       this.setState(
-        {
+        prevState => ({
           warGamesDelay:
-            this.state.warGamesDelay - 100 >= 100
-              ? this.state.warGamesDelay - 100
+            prevState.warGamesDelay - 100 >= 100
+              ? prevState.warGamesDelay - 100
               : 50
-        },
+        }),
         () => this.reset(this.state.warGamesDelay)
       );
     }

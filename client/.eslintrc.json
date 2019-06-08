@@ -17,11 +17,26 @@
     "prettier",
     "prettier/@typescript-eslint"
   ],
-  "plugins": ["@typescript-eslint", "json"],
+  "plugins": ["@typescript-eslint"],
 
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "rules": {
-    //
-    //"no-restricted-syntax": "off",
+    //opinion rule, no need to restrict syntax that works
+    "no-restricted-syntax": "off",
+
+    //typescript already checks for this
+    "no-undef": "off",
+    "react/jsx-no-undef": "off",
+
+    // turn off alert untill custom alert component
+    "no-alert": "off",
+
+    // disallow event global variable
+    "no-restricted-globals": ["error", "event", "fdescribe"],
 
     //depreciated
     "jsx-a11y/label-has-for": "off",

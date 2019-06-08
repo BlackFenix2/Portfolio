@@ -1,6 +1,6 @@
 import { Dictionary, pickBy } from 'lodash';
 import { autorun, observable } from 'mobx';
-import preload from './datas.json';
+import * as preload from './datas.json';
 
 export default class ShowStore {
   @observable searchTerm: string = '';

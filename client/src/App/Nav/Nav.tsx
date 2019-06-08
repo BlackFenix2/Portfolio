@@ -1,5 +1,5 @@
 import { inject } from 'mmlpx';
-import React from 'react';
+import * as React from 'react';
 import { Responsive } from 'semantic-ui-react';
 import DesktopNav from 'src/App/Nav/DesktopNav';
 import MobileNav from 'src/App/Nav/MobileNav';
