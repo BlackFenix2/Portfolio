@@ -10,20 +10,31 @@ const imgStyle = css`
   height: 400px;
 `;
 
-const Details = (props: any) => (
-  <div className="w3-panel">
-    <Image
-      // TODO Remove require statement
-      src={getImagePath(import(`src/lib/img/posters/${props.poster}`))}
-      alt="where is the item"
-      css={imgStyle}
-    />
-    <h1>{props.title}</h1>
-    <p>{props.description}</p>
-    <Link to="/Shows" className="w3-button w3-teal">
-      Go Back
-    </Link>
-  </div>
-);
+const Details = (props: any) => {
+  const [image, setImage] = React.useState('');
+
+  React.useEffect(() => {
+    const getImage = async () => {
+      const result = await getImagePath(
+        import(`src/lib/img/posters/${props.poster}`)
+      );
+      setImage(result);
+    };
+    getImage();
+  }, []);
+  return (
+    <div>
+      <Image
+        // TODO Remove require statement
+        src={image}
+        alt="where is the item"
+        css={imgStyle}
+      />
+      <h1>{props.title}</h1>
+      <p>{props.description}</p>
+      <Link to="/Shows">Go Back</Link>
+    </div>
+  );
+};
 
 export default Details;

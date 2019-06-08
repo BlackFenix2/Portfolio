@@ -3,9 +3,9 @@ import { Segment } from 'semantic-ui-react';
 import { ResetButton, SubmitButton } from 'src/components/form';
 import { Form } from 'informed';
 
-const TestDisplay = props => (
+const DeleteForm = props => (
   <div>
-    <Form onSubmit={props.onSubmit} initialValues={props.initial}>
+    <Form onSubmit={() => props.onSubmit(props.initial.id)}>
       <div>
         {props.initial &&
           Object.entries(props.initial).map(([key, value]) => (
@@ -22,4 +22,4 @@ const TestDisplay = props => (
   </div>
 );
 
-export default TestDisplay;
+export default DeleteForm;

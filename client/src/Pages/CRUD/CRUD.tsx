@@ -9,6 +9,7 @@ import TestDisplay from 'src/Pages/CRUD/TestDisplay';
 import FruitStore from 'src/state/stores/fruitStore';
 import FruitTable from './FruitTable';
 import TestForm from './TestForm';
+import DeleteForm from './DeleteForm';
 
 interface IProps {
   actions: any;
@@ -75,8 +76,8 @@ class CRUD extends React.Component<IProps, State> {
     });
   };
 
-  details = id => {
-    this.FruitStore.getFruit(id);
+  details = value => {
+    this.FruitStore.getFruit(value);
 
     this.toggleEvent();
   };
@@ -135,7 +136,7 @@ class CRUD extends React.Component<IProps, State> {
                 />
               </Visibility>
               <Visibility active={this.optionSelect === 'delete'}>
-                <TestDisplay
+                <DeleteForm
                   onSubmit={this.delete}
                   initial={this.FruitStore.fruit}
                   {...this}

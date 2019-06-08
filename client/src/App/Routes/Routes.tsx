@@ -21,8 +21,10 @@ class Routes extends React.Component {
         <Route exact path="/">
           {Home}
         </Route>
+
         {RouteGenerator(this.RouteStore)}
         {CustomRoutes()}
+
         <Route>
           <AsyncComponent
             importStatement={import('src/components/shared/NotFound')}

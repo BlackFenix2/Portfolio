@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
-import * as HtmlWebPackPlugin from 'html-webpack-plugin';
-import * as HtmlTemplate from 'html-webpack-template';
-import * as path from 'path';
+import HtmlTemplate from 'html-webpack-template';
+import path from 'path';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
-import * as WebpackPwaManifest from 'webpack-pwa-manifest';
-import * as WorkboxPlugin from 'workbox-webpack-plugin';
-import * as webpack from 'webpack';
+import WebpackPwaManifest from 'webpack-pwa-manifest';
+import WorkboxPlugin from 'workbox-webpack-plugin';
+import webpack from 'webpack';
+import HtmlWebPackPlugin from 'html-webpack-plugin';
 import htmlParams from '../htmlParams';
 import manifest from '../manifest';
 import paths from '../paths';

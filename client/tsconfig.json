@@ -21,6 +21,8 @@
     //dont check package type declarations, i already dont trust them :(
     "skipLibCheck": true,
 
+    "allowSyntheticDefaultImports": true,
+
     // force case-sensitive imports to avoid compile-time errors
     "forceConsistentCasingInFileNames": true,
 

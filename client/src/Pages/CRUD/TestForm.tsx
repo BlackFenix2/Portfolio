@@ -9,6 +9,7 @@ const TestForm = props => (
       <TextInput name="name" displayName="Name" />
       <TextInput name="notes" displayName="Notes" />
       <TextInput name="calories" displayName="Calories" />
+      <TextInput name="id" hidden />
       <div>
         <SubmitButton loading={props.uiLoading} />
         <ResetButton className="w3-button w3-teal" />

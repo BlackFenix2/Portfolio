@@ -23,7 +23,7 @@ export const checkMute = () => status.muted;
 export const muteAll = () => {
   Object.values(sounds).map((audio: HTMLAudioElement) => {
     audio.load();
-    audio.muted = false;
+    audio.muted = true;
     return true;
   });
   status.mute = true;
