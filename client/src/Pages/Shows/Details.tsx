@@ -21,7 +21,7 @@ const Details = (props: any) => {
       setImage(result);
     };
     getImage();
-  }, []);
+  }, [props.poster]);
   return (
     <div>
       <Image
