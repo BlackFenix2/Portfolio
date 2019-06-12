@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import HtmlTemplate from 'html-webpack-template';
 import path from 'path';
