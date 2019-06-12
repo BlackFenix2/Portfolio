@@ -1,35 +1,25 @@
 {
-  //exclude node_modules for type checking
   "exclude": ["node_modules"],
   "compilerOptions": {
-    //keep JSX syntax intact for babel transformation
     "jsx": "preserve",
 
-    // allow babel to transpile file
     "noEmit": true,
 
-    // use latest ES version including proposed features
     "target": "esnext",
     "module": "esnext",
 
-    // targets node
     "moduleResolution": "node",
 
-    //resolve json
     "resolveJsonModule": true,
 
-    //dont check package type declarations, i already dont trust them :(
     "skipLibCheck": true,
 
     "allowSyntheticDefaultImports": true,
 
-    // force case-sensitive imports to avoid compile-time errors
     "forceConsistentCasingInFileNames": true,
 
-    //Allow decorators in TS Editor
     "experimentalDecorators": true,
 
-    // ALIAS src path
     "baseUrl": "./",
     "paths": {
       "src/*": ["src/*"]

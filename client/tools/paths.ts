@@ -6,7 +6,7 @@ const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 export default {
-  index: resolveApp('src/index.tsx'),
+  index: resolveApp('src/index.ts'),
   serverIndex: resolveApp('server/index.js'),
   buildDir: resolveApp('build'),
   Icon: resolveApp('src/lib/img/loading.png'),

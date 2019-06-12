@@ -6,15 +6,15 @@ const hostname = window && window.location && window.location.hostname;
 // determine if app is staging
 const staging = hostname === process.env.STAGING;
 
-let internalRrootUrl = '';
+let internalRootUrl = '';
 if (mode === 'development') {
-  internalRrootUrl = 'http://localhost:5000/api';
+  internalRootUrl = 'http://localhost:5000/api';
 } else if (staging) {
-  internalRrootUrl = 'https://fhs-webapi.azurewebsites.net/api';
+  internalRootUrl = 'https://fhs-webapi.azurewebsites.net/api';
 } else {
-  internalRrootUrl = 'https://fhs-webapi.azurewebsites.net/api';
+  internalRootUrl = 'https://fhs-webapi.azurewebsites.net/api';
 }
 
-const rootUrl = internalRrootUrl;
+const rootUrl = internalRootUrl;
 
 export default rootUrl;

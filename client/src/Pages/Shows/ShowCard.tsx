@@ -51,7 +51,6 @@ class ShowCard extends React.PureComponent<Show> {
       : null;
 
   render() {
-    // TODO Remove require statement
     // className needed because senamtic-ui-react cant wrap custom components in transition groups
     const { className } = this.props;
 

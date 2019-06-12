@@ -1,21 +1,19 @@
+const { pathsToModuleNameMapper } = require('ts-jest/utils');
+
+const { compilerOptions } = require('./tsconfig');
+
 module.exports = {
+  preset: 'ts-jest',
+
   // transpile Typescript files using babel
   transform: {
     '^.+\\.tsx?$': 'babel-jest'
   },
 
-  // modify test search regex to invlucde .ts and .tsx
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
-  testPathIgnorePatterns: ['/node_modules/'],
-
-  // specify extensions
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-
   // add module ALIAS to jest
-  moduleNameMapper: {
-    // src path
-    '^src/(.*)': '<rootDir>/src/$1'
-  },
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+    prefix: '<rootDir>'
+  }),
 
   // configure Enzyme
   setupFiles: ['./tools/jest/jestSetup.ts'],

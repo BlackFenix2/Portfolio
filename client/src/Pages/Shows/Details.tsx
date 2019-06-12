@@ -13,6 +13,7 @@ const imgStyle = css`
 const Details = (props: any) => {
   const [image, setImage] = React.useState('');
 
+  // TODO add util folder for effects
   React.useEffect(() => {
     const getImage = async () => {
       const result = await getImagePath(
@@ -21,15 +22,10 @@ const Details = (props: any) => {
       setImage(result);
     };
     getImage();
-  }, []);
+  }, [props.poster]);
   return (
     <div>
-      <Image
-        // TODO Remove require statement
-        src={image}
-        alt="where is the item"
-        css={imgStyle}
-      />
+      <Image src={image} alt="where is the item" css={imgStyle} />
       <h1>{props.title}</h1>
       <p>{props.description}</p>
       <Link to="/Shows">Go Back</Link>

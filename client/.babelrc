@@ -11,7 +11,7 @@
     ],
 
     // Compile typescript to javascript
-    "@babel/typescript",
+    "@babel/preset-typescript",
 
     // Convert JSX to React.CreateElement
     "@babel/preset-react",
