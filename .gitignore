@@ -3,7 +3,6 @@ client/build
 client/dist
 client/coverage
 client/yarn-error.log
-client/yarn.lock
 client/.awcache
 client/.cache
 client/.vscode
