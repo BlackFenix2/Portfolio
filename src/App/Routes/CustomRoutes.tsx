@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Route } from 'react-router-dom';
 
-import Details from 'src/Pages/Shows/Details';
+import Details from 'src/pages/Shows/Details';
 import data from 'src/state/stores/datas.json';
 
 const CustomRoutes = () => (
