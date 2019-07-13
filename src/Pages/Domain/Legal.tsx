@@ -1,5 +1,5 @@
-import * as React from 'src/pages/Domain/node_modules/react';
-import { Card } from 'src/pages/Domain/node_modules/semantic-ui-react';
+import * as React from 'react';
+import { Card } from 'semantic-ui-react';
 
 const Legal: React.SFC = () => (
   <Card raised fluid>

@@ -1,4 +1,4 @@
-import * as React from 'src/pages/Games/TicTacToe/node_modules/react';
+import * as React from 'react';
 import {
   Button,
   Container,
@@ -8,7 +8,7 @@ import {
   Radio,
   Segment,
   Select
-} from 'src/pages/Games/TicTacToe/node_modules/semantic-ui-react';
+} from 'semantic-ui-react';
 import Card from 'src/components/elements/Card';
 
 const options = [

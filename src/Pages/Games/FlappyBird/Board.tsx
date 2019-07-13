@@ -1,7 +1,7 @@
-import { inject } from 'src/pages/Games/FlappyBird/node_modules/mmlpx';
-import { observer } from 'src/pages/Games/FlappyBird/node_modules/mobx-react';
-import * as React from 'src/pages/Games/FlappyBird/node_modules/react';
-import { Layer, Stage } from 'src/pages/Games/FlappyBird/node_modules/react-konva';
+import { inject } from 'mmlpx';
+import { observer } from 'mobx-react';
+import * as React from 'react';
+import { Layer, Stage } from 'react-konva';
 import BirdStore from 'src/state/stores/games/birdStore';
 import Background from './Background';
 import Bird from './Bird';

@@ -1,9 +1,9 @@
-import { css } from 'src/pages/Shows/node_modules/@emotion/core';
-import { Fab } from 'src/pages/Shows/node_modules/@material-ui/core';
-import { Add, Remove } from 'src/pages/Shows/node_modules/@material-ui/icons';
-import * as React from 'src/pages/Shows/node_modules/react';
-import { Link } from 'src/pages/Shows/node_modules/react-router-dom';
-import { Card, Image, Rating } from 'src/pages/Shows/node_modules/semantic-ui-react';
+import { css } from '@emotion/core';
+import { Fab } from '@material-ui/core';
+import { Add, Remove } from '@material-ui/icons';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { Card, Image, Rating } from 'semantic-ui-react';
 import { trimString } from 'src/helpers/stringHelpers';
 
 import { getImagePath } from 'src/helpers/imageHelper';

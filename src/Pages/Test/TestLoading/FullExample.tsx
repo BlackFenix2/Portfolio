@@ -1,4 +1,4 @@
-import * as React from 'src/pages/Test/TestLoading/node_modules/react';
+import * as React from 'react';
 
 const FullExample = () => (
   <div>

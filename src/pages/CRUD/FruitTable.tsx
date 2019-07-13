@@ -1,5 +1,5 @@
-import * as React from 'src/pages/CRUD/node_modules/react';
-import { Button, Table } from 'src/pages/CRUD/node_modules/semantic-ui-react';
+import * as React from 'react';
+import { Button, Table } from 'semantic-ui-react';
 
 const FruitTable = props => {
   try {

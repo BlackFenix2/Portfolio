@@ -1,4 +1,4 @@
-import * as React from 'src/pages/Test/Login/node_modules/react';
+import * as React from 'react';
 import { Login as LoginModal } from 'src/App/Authentication';
 import Register from 'src/App/Authentication/Register';
 

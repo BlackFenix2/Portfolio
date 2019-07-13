@@ -5,7 +5,11 @@ import * as React from 'react';
 import App from 'src/App/App';
 
 describe('Test App', () => {
-  const wrapper = shallow(<App />);
+  const wrapper = shallow(
+    <App>
+      <div>lol</div>
+    </App>
+  );
   it('renders without crashing', () => {
     expect(wrapper).toHaveLength(1);
   });

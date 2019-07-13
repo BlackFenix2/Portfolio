@@ -1,7 +1,7 @@
-import * as React from 'src/pages/Domain/node_modules/react';
-import { Collapse } from 'src/pages/Domain/node_modules/react-collapse';
+import * as React from 'react';
+import { Collapse } from 'react-collapse';
 
-import { Card, Header } from 'src/pages/Domain/node_modules/semantic-ui-react';
+import { Card, Header } from 'semantic-ui-react';
 import LoadingIcon from '../../components/elements/LoadingIcon';
 
 interface Props {

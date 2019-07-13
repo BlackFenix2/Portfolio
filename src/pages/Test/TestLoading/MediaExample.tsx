@@ -1,6 +1,6 @@
-import * as React from 'src/pages/Test/TestLoading/node_modules/react';
+import * as React from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
-import { Responsive } from 'src/pages/Test/TestLoading/node_modules/semantic-ui-react';
+import { Responsive } from 'semantic-ui-react';
 
 const Example = () => (
   <div>

@@ -1,4 +1,4 @@
-import * as React from 'src/pages/Test/Components/node_modules/react';
+import * as React from 'react';
 import {
   Container,
   Divider,
@@ -9,7 +9,7 @@ import {
   List,
   Menu,
   Segment
-} from 'src/pages/Test/Components/node_modules/semantic-ui-react';
+} from 'semantic-ui-react';
 
 const FixedMenuLayout = () => (
   <div>

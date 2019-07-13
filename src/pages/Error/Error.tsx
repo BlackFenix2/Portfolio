@@ -1,8 +1,8 @@
-import * as React from 'src/pages/Error/node_modules/react';
+import * as React from 'react';
 
 const Error = props => (
   <div>
-    <p>{props.notexist.brokedingus}</p>
+    <p>{props.notexist.brokedoofus}</p>
   </div>
 );
 

@@ -1,7 +1,7 @@
-import * as React from 'src/pages/Games/FlappyBird/node_modules/react';
-import { Image } from 'src/pages/Games/FlappyBird/node_modules/react-konva';
+import * as React from 'react';
+import { Image } from 'react-konva';
 
-import useImage from 'src/pages/Games/FlappyBird/node_modules/use-image';
+import useImage from 'use-image';
 
 const Bird = props => {
   const [image] = useImage(

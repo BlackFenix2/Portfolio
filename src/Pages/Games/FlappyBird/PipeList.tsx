@@ -1,6 +1,6 @@
-import * as React from 'src/pages/Games/FlappyBird/node_modules/react';
+import * as React from 'react';
 
-import { Group } from 'src/pages/Games/FlappyBird/node_modules/react-konva';
+import { Group } from 'react-konva';
 import Pipe from './Pipe';
 
 const PipeList = props =>

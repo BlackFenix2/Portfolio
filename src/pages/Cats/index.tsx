@@ -1,7 +1,7 @@
-import * as React from './node_modules/react';
-import { Button, Form, Input, Label } from './node_modules/semantic-ui-react';
+import * as React from 'react';
+import { Button, Form, Input, Label } from 'semantic-ui-react';
 
-import { css } from './node_modules/@emotion/core';
+import { css } from '@emotion/core';
 
 interface State {
   result: number;

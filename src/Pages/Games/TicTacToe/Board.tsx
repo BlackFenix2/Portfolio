@@ -1,5 +1,5 @@
-import { css, Global } from 'src/pages/Games/TicTacToe/node_modules/@emotion/core';
-import * as React from 'src/pages/Games/TicTacToe/node_modules/react';
+import { css, Global } from '@emotion/core';
+import * as React from 'react';
 
 const style = css`
   :root {

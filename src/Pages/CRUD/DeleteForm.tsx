@@ -1,5 +1,5 @@
-import * as React from 'src/pages/CRUD/node_modules/react';
-import { Segment } from 'src/pages/CRUD/node_modules/semantic-ui-react';
+import * as React from 'react';
+import { Segment } from 'semantic-ui-react';
 import { ResetButton, SubmitButton } from 'src/components/form';
 import { Form } from 'informed';
 

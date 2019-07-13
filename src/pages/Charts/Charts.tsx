@@ -1,4 +1,4 @@
-import * as React from 'src/pages/Charts/node_modules/react';
+import * as React from 'react';
 
 class Charts extends React.Component {
   state;

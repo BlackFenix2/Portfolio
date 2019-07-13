@@ -1,12 +1,7 @@
-import * as React from 'src/pages/Cats/node_modules/react';
-import {
-  Button,
-  Form,
-  Input,
-  Label
-} from 'src/pages/Cats/node_modules/semantic-ui-react';
+import * as React from 'react';
+import { Button, Form, Input, Label } from 'semantic-ui-react';
 
-import { css } from 'src/pages/Cats/node_modules/@emotion/core';
+import { css } from '@emotion/core';
 
 interface State {
   result: number;

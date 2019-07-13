@@ -1,8 +1,8 @@
-import * as React from 'src/pages/Shows/node_modules/react';
+import * as React from 'react';
 
-import { inject } from 'src/pages/Shows/node_modules/mmlpx';
-import { observer } from 'src/pages/Shows/node_modules/mobx-react';
-import { Input } from 'src/pages/Shows/node_modules/semantic-ui-react';
+import { inject } from 'mmlpx';
+import { observer } from 'mobx-react';
+import { Input } from 'semantic-ui-react';
 import ShowStore from 'src/state/stores/showStore';
 import ShowList from './ShowList';
 

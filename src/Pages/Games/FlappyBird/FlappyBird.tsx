@@ -1,9 +1,9 @@
-import * as React from 'src/pages/Games/FlappyBird/node_modules/react';
+import * as React from 'react';
 
-import { inject } from 'src/pages/Games/FlappyBird/node_modules/mmlpx';
-import { observable } from 'src/pages/Games/FlappyBird/node_modules/mobx';
-import { observer } from 'src/pages/Games/FlappyBird/node_modules/mobx-react';
-import { Button, Grid } from 'src/pages/Games/FlappyBird/node_modules/semantic-ui-react';
+import { inject } from 'mmlpx';
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
+import { Button, Grid } from 'semantic-ui-react';
 import BirdStore from 'src/state/stores/games/birdStore';
 import Board from './Board';
 import Debug from './Debug';
@@ -49,7 +49,7 @@ export default class FlappyBird extends React.Component {
                 http://jimmyoliva.herokuapp.com/
               </a>
             </p>
-            // eslint-disable-next-line no-return-assign
+            {/* eslint-disable-next-line no-return-assign */}
             <div ref={test => (this.nv = test)}>
               <Board height={400} width={600} debug={this.debugMode} />
             </div>

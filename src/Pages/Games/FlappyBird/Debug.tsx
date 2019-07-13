@@ -1,6 +1,6 @@
-import { observer } from 'src/pages/Games/FlappyBird/node_modules/mobx-react';
-import * as React from 'src/pages/Games/FlappyBird/node_modules/react';
-import { Segment } from 'src/pages/Games/FlappyBird/node_modules/semantic-ui-react';
+import { observer } from 'mobx-react';
+import * as React from 'react';
+import { Segment } from 'semantic-ui-react';
 import BirdStore from 'src/state/stores/games/birdStore';
 
 interface Props {

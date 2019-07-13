@@ -1,5 +1,5 @@
-import * as React from 'src/pages/Games/TicTacToe/node_modules/react';
-import { Divider, Grid, Segment } from 'src/pages/Games/TicTacToe/node_modules/semantic-ui-react';
+import * as React from 'react';
+import { Divider, Grid, Segment } from 'semantic-ui-react';
 import Card from 'src/components/elements/Card';
 import Board from './Board';
 import Debug from './Debug';

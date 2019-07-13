@@ -1,9 +1,9 @@
-import TextField from 'src/pages/Todo/node_modules/@material-ui/core/TextField';
-import { inject } from 'src/pages/Todo/node_modules/mmlpx';
-import { observable } from 'src/pages/Todo/node_modules/mobx';
-import { observer } from 'src/pages/Todo/node_modules/mobx-react';
-import * as React from 'src/pages/Todo/node_modules/react';
-import { List, Transition } from 'src/pages/Todo/node_modules/semantic-ui-react';
+import TextField from '@material-ui/core/TextField';
+import { inject } from 'mmlpx';
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
+import * as React from 'react';
+import { List, Transition } from 'semantic-ui-react';
 import TodoStore from 'src/state/stores/todoStore';
 
 @observer

@@ -1,5 +1,5 @@
-import * as React from 'src/pages/Domain/node_modules/react';
-import { List } from 'src/pages/Domain/node_modules/semantic-ui-react';
+import * as React from 'react';
+import { List } from 'semantic-ui-react';
 import { IDnsRecord } from './domainRecords';
 import LocalList from './List';
 

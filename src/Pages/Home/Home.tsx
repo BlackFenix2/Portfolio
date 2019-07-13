@@ -1,8 +1,8 @@
-import { inject } from 'src/pages/Home/node_modules/mmlpx';
-import { observer } from 'src/pages/Home/node_modules/mobx-react';
-import * as React from 'src/pages/Home/node_modules/react';
-import { Link } from 'src/pages/Home/node_modules/react-router-dom';
-import { Input } from 'src/pages/Home/node_modules/semantic-ui-react';
+import { inject } from 'mmlpx';
+import { observer } from 'mobx-react';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { Input } from 'semantic-ui-react';
 import ShowStore from 'src/state/stores/showStore';
 
 interface Props {

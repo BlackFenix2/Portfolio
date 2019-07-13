@@ -1,5 +1,5 @@
-import * as React from 'src/pages/Shows/node_modules/react';
-import { Card, Transition } from 'src/pages/Shows/node_modules/semantic-ui-react';
+import * as React from 'react';
+import { Card, Transition } from 'semantic-ui-react';
 import ShowCard from './ShowCard';
 
 const ShowList = (props: any) => (

@@ -1,5 +1,5 @@
-import * as React from 'src/pages/Domain/node_modules/react';
-import { Card, Grid, Segment } from 'src/pages/Domain/node_modules/semantic-ui-react';
+import * as React from 'react';
+import { Card, Grid, Segment } from 'semantic-ui-react';
 import { domainAPI } from 'src/services/API';
 import Debug from './Debug';
 import DnsInfo from './DnsInfo';

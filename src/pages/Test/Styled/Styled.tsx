@@ -1,7 +1,7 @@
-import * as React from 'src/pages/Test/Styled/node_modules/react';
+import * as React from 'react';
 
-import { css } from 'src/pages/Test/Styled/node_modules/@emotion/core';
-import styled from 'src/pages/Test/Styled/node_modules/@emotion/styled';
+import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 
 import LoadingIcon from 'src/components/elements/LoadingIcon';
 

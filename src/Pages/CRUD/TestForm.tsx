@@ -1,5 +1,5 @@
 import { Form } from 'informed';
-import * as React from 'src/pages/CRUD/node_modules/react';
+import * as React from 'react';
 import { ResetButton, SubmitButton } from '../../components/form';
 import { TextInput } from '../../components/inputs';
 

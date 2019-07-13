@@ -1,8 +1,8 @@
-import { inject } from 'src/pages/CRUD/node_modules/mmlpx';
-import { observable } from 'src/pages/CRUD/node_modules/mobx';
-import { observer } from 'src/pages/CRUD/node_modules/mobx-react';
-import * as React from 'src/pages/CRUD/node_modules/react';
-import { Button, Loader } from 'src/pages/CRUD/node_modules/semantic-ui-react';
+import { inject } from 'mmlpx';
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
+import * as React from 'react';
+import { Button, Loader } from 'semantic-ui-react';
 import Visibility from 'src/components/effects/Visibility';
 import AnimatedModal from 'src/components/elements/Modal';
 import TestDisplay from 'src/pages/CRUD/TestDisplay';
