@@ -1,0 +1,7 @@
+{
+  "presets": ["babel-preset-gatsby"],
+  "plugins": [
+    // Allow class decorators
+    ["@babel/plugin-proposal-decorators", { "legacy": true }]
+  ]
+}

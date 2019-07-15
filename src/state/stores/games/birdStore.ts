@@ -4,8 +4,9 @@ import Bird from 'src/state/objects/bird';
 import { interval, Timer } from 'd3-timer';
 import Pipe from 'src/state/objects/pipe';
 import InputUtility, { KEY } from 'src/state/utility/inputUtility';
+import { createContext } from 'react';
 
-export default class BirdStore {
+export class BirdStore {
   Bird: Bird = new Bird(30, 300);
 
   Pipe: Pipe = new Pipe(0, 0);
@@ -148,3 +149,5 @@ export default class BirdStore {
     });
   };
 }
+
+export default createContext(new BirdStore());

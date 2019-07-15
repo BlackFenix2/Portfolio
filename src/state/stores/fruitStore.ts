@@ -1,11 +1,12 @@
 import { action, observable } from 'mobx';
 import { fruitAPI } from 'src/services/API';
+import { createContext } from 'react';
 
 interface Fruit {
   id?: number;
 }
 
-export default class FruitStore {
+class FruitStore {
   @observable fruit: Fruit = {};
 
   @observable fruitList: any[] = [];
@@ -82,3 +83,4 @@ export default class FruitStore {
     this.errorData = [];
   }
 }
+export default createContext(new FruitStore());

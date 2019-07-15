@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'gatsby';
 import { Dropdown, Icon, Menu } from 'semantic-ui-react';
 
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
-import RouteStore from 'src/state/stores/routeStore';
+import { RouteStore } from 'src/state/stores/routeStore';
 
 const NavBar = props => (
   <Menu fixed="top" borderless>

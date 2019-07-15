@@ -1,6 +1,6 @@
-import { Provider } from 'mobx-react';
 import * as React from 'react';
 import { css, Global } from '@emotion/core';
+import { Provider } from 'mobx-react';
 import Body from './Body';
 import Footer from './Footer';
 import Header from './Header';

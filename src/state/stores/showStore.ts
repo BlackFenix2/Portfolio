@@ -1,8 +1,9 @@
 import { Dictionary, pickBy } from 'lodash';
 import { autorun, observable } from 'mobx';
+import { createContext } from 'react';
 import * as preload from './datas.json';
 
-export default class ShowStore {
+class ShowStore {
   @observable searchTerm: string = '';
 
   @observable shows: Dictionary<any> = preload.shows;
@@ -20,3 +21,5 @@ export default class ShowStore {
     { delay: 500 }
   );
 }
+
+export default createContext(new ShowStore());

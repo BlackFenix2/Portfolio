@@ -1,13 +1,11 @@
 import { action, computed, observable } from 'mobx';
-
-import mobxRemotedev from 'mobx-remotedev';
+import { createContext } from 'react';
 
 interface Todo {
   task: string;
   isComplete: boolean;
 }
-@mobxRemotedev
-export default class TodoStore {
+class TodoStore {
   @observable todoList: Todo[] = [];
 
   @observable testState: string = 'test';
@@ -45,4 +43,4 @@ export default class TodoStore {
   }
 }
 
-export const test = mobxRemotedev(TodoStore, { onlyActions: true });
+export default createContext(new TodoStore());

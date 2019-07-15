@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'gatsby';
 import { Image } from 'semantic-ui-react';
 import { getImagePath } from 'src/helpers/imageHelper';
 // Image equalizer

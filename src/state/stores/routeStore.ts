@@ -1,5 +1,7 @@
-export default class RouteStore {
-  readonly routes: Routes = [
+import { createContext } from 'react';
+
+export class RouteStore {
+  routes: Routes = [
     {
       url: '/Todo',
       name: 'Todo',
@@ -25,10 +27,6 @@ export default class RouteStore {
           name: 'Styled'
         },
         {
-          url: '/Components',
-          name: 'Component Test'
-        },
-        {
           url: '/Login',
           name: 'Login Test'
         }
@@ -37,12 +35,6 @@ export default class RouteStore {
     {
       url: '/Error',
       name: 'Error',
-
-      children: []
-    },
-    {
-      url: '/CRUD',
-      name: 'CRUD Test',
 
       children: []
     },
@@ -76,3 +68,6 @@ export default class RouteStore {
     }
   ];
 }
+
+export const routeStore = createContext(new RouteStore());
+export default routeStore;
