@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { css, Global } from '@emotion/core';
-import { Provider } from 'mobx-react';
 import Body from './Body';
 import Footer from './Footer';
 import Header from './Header';
@@ -21,9 +20,8 @@ const globalAppStyle = css`
 
 const App = ({ children }) => (
   // TODO wrap in React.Strict to detect depreciating practices
-  <Provider>
-    <AppLayout>{children}</AppLayout>
-  </Provider>
+
+  <AppLayout>{children}</AppLayout>
 );
 
 const AppLayout = ({ children }) => (

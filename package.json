@@ -78,6 +78,7 @@
     "mobx": "^5.9.4",
     "mobx-react": "^6.0.3",
     "mobx-react-form": "^2.0.2",
+    "mobx-remotedev": "^0.3.6",
     "react": "^16.8.6",
     "react-collapse": "^4.0.3",
     "react-device-detect": "^1.6.1",

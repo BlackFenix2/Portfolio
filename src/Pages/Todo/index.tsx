@@ -4,8 +4,9 @@ import { observer } from 'mobx-react-lite';
 import * as React from 'react';
 import { List, Transition } from 'semantic-ui-react';
 import todoStore from 'src/state/stores/todoStore';
+import MobxTest from 'src/components/Views/Todo/MobxTest';
 
-const Todo = observer(() => {
+const Todo = () => {
   const [task, setTask] = React.useState('');
 
   const TodoStore = React.useContext(todoStore);
@@ -42,6 +43,7 @@ const Todo = observer(() => {
           Completed Tasks:
           {TodoStore.completedTasks}
         </p>
+        <MobxTest />
       </div>
 
       <form onSubmit={handleAddTodo}>
@@ -54,7 +56,7 @@ const Todo = observer(() => {
       </div>
     </>
   );
-});
+};
 
 const TodoList = ({ list, changeEvent }) => (
   <Transition.Group as={List} duration={600} divided verticalAlign="middle">
@@ -70,9 +72,10 @@ const TodoListItem = ({ todo, changeEvent, className = '' }) => (
     <input
       type="checkbox"
       value={todo.isComplete}
+      defaultChecked={todo.isComplete}
       onChange={() => changeEvent(todo)}
     />
   </List.Item>
 );
 
-export default Todo;
+export default observer(Todo);
