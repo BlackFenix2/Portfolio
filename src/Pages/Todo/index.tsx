@@ -71,8 +71,7 @@ const TodoListItem = ({ todo, changeEvent, className = '' }) => (
     {todo.task}
     <input
       type="checkbox"
-      value={todo.isComplete}
-      defaultChecked={todo.isComplete}
+      checked={todo.isComplete}
       onChange={() => changeEvent(todo)}
     />
   </List.Item>
