@@ -4,8 +4,7 @@
 {
   "env": {
     "browser": true,
-    "node": true,
-    "jest": true
+    "node": true
   },
 
   "parser": "@typescript-eslint/parser",
@@ -15,9 +14,10 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
+    "prettier/react",
     "prettier/@typescript-eslint"
   ],
-  "plugins": ["@typescript-eslint", "react-hooks"],
+  "plugins": ["@typescript-eslint", "react-hooks", "graphql"],
 
   "settings": {
     "react": {
@@ -28,25 +28,17 @@
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
     "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
 
-    //opinion rule, no need to restrict syntax that works
+    // opinion rule, no need to restrict syntax that works
     "no-restricted-syntax": "off",
 
-    //typescript already checks for this
+    // typescript already checks for undefined vars
     "no-undef": "off",
     "react/jsx-no-undef": "off",
 
-    // turn off alert untill custom alert component
-    "no-alert": "off",
-
-    // disallow event global variable
-    "no-restricted-globals": ["error", "event", "fdescribe"],
-
-    //depreciated
-    "jsx-a11y/label-has-for": "off",
-
-    //typescript already handles path resolution
+    // typescript already handles path resolution
     "import/no-unresolved": "off",
 
+    // devDependencies such as redux devtools are utilized in react app
     "import/no-extraneous-dependencies": "off",
 
     // disabled, all types auto-fix to interface. rule would be redundant.
@@ -55,22 +47,25 @@
     // established coding standards use a different naming convention
     "@typescript-eslint/camelcase": "off",
 
-    //turning off untill refactoring
+    // Typescript compiler already warns aganist unused vars
+    "@typescript-eslint/no-unused-vars": "off",
+
+    // turning off untill refactoring
     "react/no-array-index-key": "off",
 
-    //permit JSX in tsx files
+    // permit JSX in tsx files
     "react/jsx-filename-extension": [1, { "extensions": ["tsx"] }],
 
-    //removes prop-types requirement because Typescript
+    // removes prop-types requirement because Typescript
     "react/prop-types": "off",
 
-    //destructuring props is not required
+    // destructuring props is not required
     "react/destructuring-assignment": "off",
 
     // why is this needed?
     "react/button-has-type": "off",
 
-    //conflicts with prettier formatting (print limit)
+    // conflicts with prettier formatting (print limit)
     "react/jsx-one-expression-per-line": "off",
 
     // not needed for certail React Functions
@@ -79,7 +74,8 @@
     // modified, removes code-bloat accessors in TS React.
     "@typescript-eslint/explicit-member-accessibility": "off",
 
-    //allowing any keyword for simple types
-    "@typescript-eslint/no-explicit-any": "off"
+    // deprecated
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/label-has-associated-control": "off"
   }
 }

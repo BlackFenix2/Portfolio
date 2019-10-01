@@ -1,8 +1,11 @@
 import { css } from '@emotion/core';
-import * as React from 'react';
 import { Link } from 'gatsby';
 import { Image } from 'semantic-ui-react';
 import { getImagePath } from 'src/helpers/imageHelper';
+import showStore from 'src/state/stores/showStore';
+import React from 'react';
+import { Router } from '@reach/router';
+import { pickBy } from 'lodash';
 // Image equalizer
 
 const imgStyle = css`
@@ -10,27 +13,41 @@ const imgStyle = css`
   height: 400px;
 `;
 
-const Details = (props: any) => {
+const DetailsComponent = (props: any) => {
   const [image, setImage] = React.useState('');
+
+  const ShowStore = React.useContext(showStore);
+
+  const showFilter = pickBy(ShowStore.shows, value =>
+    value.imdbID.toUpperCase().match(props.imdbID.toUpperCase())
+  );
+
+  const show = Object.values(showFilter)[0];
 
   // TODO add util folder for effects
   React.useEffect(() => {
     const getImage = async () => {
       const result = await getImagePath(
-        import(`src/lib/img/posters/${props.poster}`)
+        import(`src/lib/img/posters/${show.poster}`)
       );
       setImage(result);
     };
     getImage();
-  }, [props.poster]);
+  }, [show.poster]);
   return (
     <div>
       <Image src={image} alt="where is the item" css={imgStyle} />
-      <h1>{props.title}</h1>
-      <p>{props.description}</p>
+      <h1>{show.title}</h1>
+      <p>{show.description}</p>
       <Link to="/Shows">Go Back</Link>
     </div>
   );
 };
+
+const Details = () => (
+  <Router>
+    <DetailsComponent path="Shows/Details/:imdbID" />
+  </Router>
+);
 
 export default Details;

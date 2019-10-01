@@ -1,7 +1,8 @@
 {
   "presets": ["babel-preset-gatsby"],
   "plugins": [
-    // Allow class decorators
+    // Allow class decorators for Mobx
+    // TODO Refactor code to remove Mobx
     ["@babel/plugin-proposal-decorators", { "legacy": true }]
   ]
 }

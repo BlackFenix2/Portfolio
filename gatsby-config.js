@@ -1,48 +1,16 @@
-module.exports = {
-  siteMetadata: {
-    title: 'React Portfolio',
-    description: 'The react portfolio of BlackFenix2',
-    author: '@BlackFenix2'
+// register ts-node to compile ts gatsby to commonjs modules
+require('ts-node').register({
+  compilerOptions: {
+    target: 'esnext',
+    module: 'commonjs',
+    esModuleInterop: true,
+    allowSyntheticDefaultImports: true,
+    noUnusedParameters: false
   },
-  plugins: [
-    'gatsby-plugin-layout',
 
-    'gatsby-plugin-eslint',
-    'gatsby-plugin-typescript',
-    'gatsby-plugin-emotion',
-    'gatsby-plugin-react-helmet',
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: `${__dirname}/src/lib/img`
-      }
-    },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: 'React-Portfolio',
-        short_name: 'reactapp',
-        start_url: '/',
-        background_color: '#ffffff',
-        theme_color: '#000000',
-        display: 'minimal-ui',
-        icon: 'static/loading.png' // This path is relative to the root of the site.
-      }
-    },
-    //add support for absolute paths for gatsby loader
-    {
-      resolve: 'gatsby-plugin-alias-imports',
-      options: {
-        alias: {
-          src: 'src'
-        }
-      }
-    },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    'gatsby-plugin-offline'
-  ]
-};
+  // show pretty output for error messages
+  pretty: true
+});
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+module.exports = require('./tools/gatsby/gatsby-config');
