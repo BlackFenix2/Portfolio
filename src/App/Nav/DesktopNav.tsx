@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import { Dropdown, Icon, Menu } from 'semantic-ui-react';
 
@@ -71,36 +71,27 @@ const User = props => (
   </Menu.Item>
 );
 
-@observer
-class DesktopNav extends React.Component<{
+const DesktopNav: React.FC<{
   Routes: RouteStore;
   auth?: any;
-}> {
-  @observable activeUrl: string = '/';
-
-  handleItemClick = (e, { to }) => {
-    this.activeUrl = to;
+}> = props => {
+  const [activeUrl, setActiveUrl] = useState('/');
+  const handleItemClick = (e, { to }) => {
+    setActiveUrl(to);
   };
-
-  render() {
-    return (
-      <NavBar>
-        <NavItem
-          url="/"
-          active={this.activeUrl === '/'}
-          clickEvent={this.handleItemClick}
-        >
-          <Icon name="home" />
-        </NavItem>
-        <LinkGenerator
-          routes={this.props.Routes.routes}
-          clickEvent={this.handleItemClick}
-          activeUrl={this.activeUrl}
-        />
-        <User firstName="John" lastName="Doe" login={false} />
-      </NavBar>
-    );
-  }
-}
+  return (
+    <NavBar>
+      <NavItem url="/" active={activeUrl === '/'} clickEvent={handleItemClick}>
+        <Icon name="home" />
+      </NavItem>
+      <LinkGenerator
+        routes={props.Routes.routes}
+        clickEvent={handleItemClick}
+        activeUrl={activeUrl}
+      />
+      <User firstName="John" lastName="Doe" login={false} />
+    </NavBar>
+  );
+};
 
 export default DesktopNav;
