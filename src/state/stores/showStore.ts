@@ -4,7 +4,7 @@ import { createContext } from 'react';
 import * as preload from './datas.json';
 
 class ShowStore {
-  @observable searchTerm: string = '';
+  @observable searchTerm = '';
 
   @observable shows: Dictionary<any> = preload.shows;
 

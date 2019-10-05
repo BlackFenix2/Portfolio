@@ -1,14 +1,14 @@
 declare module '*.mp3' {
-  const audio: any;
+  const audio: string;
   export default audio;
 }
 
 declare module '*.png' {
-  const image: any;
+  const image: string;
   export default image;
 }
 
 declare module '*.jpg' {
-  const image: any;
+  const image: string;
   export default image;
 }

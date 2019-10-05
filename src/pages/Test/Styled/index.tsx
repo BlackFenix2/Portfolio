@@ -12,7 +12,7 @@ const Button: React.FC<any> = props => (
 );
 
 const ButtonContainer: React.FC<any> = props => (
-  <Button {...props}>
+  <Button>
     {props.children} <LoadingIcon active={props.loading} />
   </Button>
 );

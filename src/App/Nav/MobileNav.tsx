@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import { Icon, Menu, Sidebar } from 'semantic-ui-react';
 import { RouteStore } from 'src/state/stores/routeStore';
 import MobileDropdownComponent from './MobileDropdownComponent';
+import NavItem from './NavItem';
 
 const NavBar = props => (
   <Menu fixed="top" vertical fluid>
@@ -42,24 +43,11 @@ const LinkGenerator = props => {
   return navLinks;
 };
 
-const NavItem = props => (
-  // decorate menu as Link for React-Router
-  <Menu.Item
-    as={Link}
-    to={props.url}
-    active={props.active}
-    onClick={props.clickEvent}
-  >
-    {props.children}
-  </Menu.Item>
-);
-
 interface State {
   visible: boolean;
   activeUrl: string;
 }
 
-@observer
 class MobileNav extends React.Component<{ Routes: RouteStore }, State> {
   state = {
     visible: false,

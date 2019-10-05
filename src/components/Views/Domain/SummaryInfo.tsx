@@ -2,7 +2,7 @@ import * as React from 'react';
 import { List } from 'semantic-ui-react';
 import { IDomainSummary } from './domainRecords';
 
-const SummaryInfo: React.SFC<IDomainSummary> = props => (
+const SummaryInfo: React.FC<IDomainSummary> = props => (
   <List relaxed="very" animated divided>
     <List.Item>
       Domain Owner?:

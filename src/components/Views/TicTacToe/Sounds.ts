@@ -1,7 +1,11 @@
 /* eslint-disable no-param-reassign */
 import { circle, cross, game } from 'src/lib/audio';
 
-let sounds: any = {};
+let sounds = {
+  gameSound: null,
+  crossSound: null,
+  circleSound: null
+};
 
 // juryrig to catch SSR error for audio objects
 try {
@@ -14,8 +18,9 @@ try {
   // caught untill client code.
 }
 
-const status: any = {
-  muted: false
+const status = {
+  muted: false,
+  mute: false
 };
 
 export const checkMute = () => status.muted;

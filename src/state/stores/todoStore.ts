@@ -10,7 +10,7 @@ class TodoStore {
   @observable
   todoList: Todo[] = [];
 
-  @observable testState: string = 'test';
+  @observable testState = 'test';
 
   @computed
   get completedTasks(): number {

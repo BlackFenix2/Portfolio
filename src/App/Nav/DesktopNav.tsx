@@ -1,27 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'gatsby';
 import { Dropdown, Icon, Menu } from 'semantic-ui-react';
 
-import { observable } from 'mobx';
-import { observer } from 'mobx-react';
 import { RouteStore } from 'src/state/stores/routeStore';
+import NavItem from './NavItem';
 
 const NavBar = props => (
   <Menu fixed="top" borderless>
     {props.children}
   </Menu>
-);
-
-const NavItem = props => (
-  // decorate menu as Link for React-Router
-  <Menu.Item
-    as={Link}
-    to={props.url}
-    active={props.active}
-    onClick={props.clickEvent}
-  >
-    {props.children}
-  </Menu.Item>
 );
 
 const DropdownComponent = props => (
@@ -73,7 +59,6 @@ const User = props => (
 
 const DesktopNav: React.FC<{
   Routes: RouteStore;
-  auth?: any;
 }> = props => {
   const [activeUrl, setActiveUrl] = useState('/');
   const handleItemClick = (e, { to }) => {

@@ -25,12 +25,12 @@ const App = ({ children }) => (
 );
 
 const AppLayout = ({ children }) => (
-  <React.Fragment>
+  <>
     <Global styles={globalAppStyle} />
     <Header />
     <Body>{children}</Body>
     <Footer />
-  </React.Fragment>
+  </>
 );
 
 export default App;

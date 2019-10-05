@@ -22,9 +22,9 @@ export class BirdStore {
 
   input = new InputUtility();
 
-  @observable gameStart: boolean = false;
+  @observable gameStart = false;
 
-  @observable gap: number = 90;
+  @observable gap = 90;
 
   constructor() {
     this.initial();
@@ -73,7 +73,7 @@ export class BirdStore {
     this.PipeList[index].NorthPipe.x -= x;
   };
 
-  protected setPipe = (x: number = 600) => {
+  protected setPipe = (x = 600) => {
     // set random with max height
     const random = Math.floor(Math.random() * 190);
     this.PipeList.push({

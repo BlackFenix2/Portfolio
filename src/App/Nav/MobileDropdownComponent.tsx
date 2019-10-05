@@ -22,7 +22,7 @@ const MobileDropdownComponent: React.FC<Props> = props => {
     setVisible(prevState => !prevState);
   };
   return (
-    <React.Fragment>
+    <>
       <Menu.Item name={props.name} onClick={toggleVisible}>
         {props.name}
         <Icon
@@ -34,7 +34,7 @@ const MobileDropdownComponent: React.FC<Props> = props => {
       <Collapse isOpened={visible}>
         <Menu.Menu>{props.children}</Menu.Menu>
       </Collapse>
-    </React.Fragment>
+    </>
   );
 };
 

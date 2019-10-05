@@ -68,6 +68,9 @@
     // conflicts with prettier formatting (print limit)
     "react/jsx-one-expression-per-line": "off",
 
+    // not needed, node project supports esnext syntax
+    "react/state-in-constructor": "off",
+
     // not needed for certail React Functions
     "@typescript-eslint/explicit-function-return-type": "off",
 

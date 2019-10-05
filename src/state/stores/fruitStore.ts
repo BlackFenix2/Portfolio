@@ -11,9 +11,9 @@ class FruitStore {
 
   @observable fruitList: any[] = [];
 
-  @observable isLoading: boolean = false;
+  @observable isLoading = false;
 
-  @observable error: boolean = false;
+  @observable error = false;
 
   @observable errorData: any[] = [];
 

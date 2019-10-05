@@ -13,86 +13,63 @@ interface Show {
   poster: string;
   imdbID: string;
   title: string;
-  year: any;
+  year: number;
   description: string;
   className?: string;
 }
 
-class ShowCard extends React.PureComponent<Show> {
-  static defaultProps = {
-    rating: 0
-  };
+const ShowCard: React.FC<Show> = props => {
+  const [image, setImage] = React.useState(null);
+  const [rating, setRating] = React.useState(0);
 
-  state = {
-    rating: this.props.rating,
-    image: null
-  };
-
-  async componentDidMount() {
-    this.setState({
-      image: await getImagePath(
-        import(`src/lib/img/posters/${this.props.poster}`)
-      )
-    });
-  }
-
-  increaseRating = () =>
-    this.state.rating < 5
-      ? this.setState((prevState: Show) => ({
-          rating: prevState.rating + 1
-        }))
-      : null;
-
-  decreaseRating = () =>
-    this.state.rating > 0
-      ? this.setState((prevState: Show) => ({
-          rating: prevState.rating - 1
-        }))
-      : null;
-
-  render() {
-    // className needed because senamtic-ui-react cant wrap custom components in transition groups
-    const { className } = this.props;
-
-    return (
-      <Card raised className={className}>
-        <Link to={`/Shows/Details/${this.props.imdbID}`}>
-          <Image
-            alt={`${this.props.title} Show Poster`}
-            src={this.state.image}
-            css={css`
-              width: 300px;
-              height: 400px;
-            `}
-          />
-        </Link>
-        <Card.Content>
-          <Card.Header>{this.props.title}</Card.Header>
-
-          <Card.Meta>{this.props.year}</Card.Meta>
-
-          <Card.Description>
-            {trimString(this.props.description, 60)}
-          </Card.Description>
-        </Card.Content>
-
-        <Card.Content extra textAlign="center">
-          <Fab size="small" onClick={this.decreaseRating}>
-            <Remove />
-          </Fab>
-          <Rating
-            icon="star"
-            rating={this.state.rating}
-            maxRating={5}
-            disabled
-          />
-          <Fab size="small" onClick={this.increaseRating}>
-            <Add />
-          </Fab>
-        </Card.Content>
-      </Card>
+  const getImage = React.useCallback(async () => {
+    const img = await getImagePath(
+      import(`src/lib/img/posters/${props.poster}`)
     );
-  }
-}
+    return img;
+  }, [props.poster]);
 
-export default ShowCard;
+  const increaseRating = () =>
+    rating < 5 ? setRating(prevRating => prevRating + 1) : null;
+
+  const decreaseRating = () =>
+    rating > 0 ? setRating(prevRating => prevRating - 1) : null;
+
+  React.useEffect(() => {
+    setImage(getImage());
+  }, [getImage]);
+
+  return (
+    <Card raised className={props.className}>
+      <Link to={`/Shows/Details/${props.imdbID}`}>
+        <Image
+          alt={`${props.title} Show Poster`}
+          src={image}
+          css={css`
+            width: 300px;
+            height: 400px;
+          `}
+        />
+      </Link>
+      <Card.Content>
+        <Card.Header>{props.title}</Card.Header>
+
+        <Card.Meta>{props.year}</Card.Meta>
+
+        <Card.Description>{trimString(props.description, 60)}</Card.Description>
+      </Card.Content>
+
+      <Card.Content extra textAlign="center">
+        <Fab size="small" onClick={decreaseRating}>
+          <Remove />
+        </Fab>
+        <Rating icon="star" rating={rating} maxRating={5} disabled />
+        <Fab size="small" onClick={increaseRating}>
+          <Add />
+        </Fab>
+      </Card.Content>
+    </Card>
+  );
+};
+
+export default React.memo(ShowCard);
