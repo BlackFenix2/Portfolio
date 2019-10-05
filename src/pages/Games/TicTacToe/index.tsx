@@ -135,6 +135,7 @@ class TicTacToe extends React.Component<any, any> {
 
   playSelf = () => {
     if (
+      // eslint-disable-next-line no-restricted-globals
       !confirm(
         `Warning: The computer will play itself for ${this.state.warGamesCount} games`
       )

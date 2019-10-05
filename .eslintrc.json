@@ -71,7 +71,10 @@
     // not needed, node project supports esnext syntax
     "react/state-in-constructor": "off",
 
-    // not needed for certail React Functions
+    //TODO convert props spreading warning to error
+    "react/jsx-props-no-spreading": "warn",
+
+    // not needed for certain React Functions
     "@typescript-eslint/explicit-function-return-type": "off",
 
     // modified, removes code-bloat accessors in TS React.

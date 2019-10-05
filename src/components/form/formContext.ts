@@ -8,3 +8,5 @@ export interface FormProps {
 }
 
 export const FormContext = React.createContext({});
+
+export default FormContext;
