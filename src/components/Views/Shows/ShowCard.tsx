@@ -22,13 +22,6 @@ const ShowCard: React.FC<Show> = props => {
   const [image, setImage] = React.useState(null);
   const [rating, setRating] = React.useState(0);
 
-  const getImage = React.useCallback(async () => {
-    const img = await getImagePath(
-      import(`src/lib/img/posters/${props.poster}`)
-    );
-    return img;
-  }, [props.poster]);
-
   const increaseRating = () =>
     rating < 5 ? setRating(prevRating => prevRating + 1) : null;
 
@@ -36,8 +29,14 @@ const ShowCard: React.FC<Show> = props => {
     rating > 0 ? setRating(prevRating => prevRating - 1) : null;
 
   React.useEffect(() => {
+    const getImage = async () => {
+      const result = await getImagePath(
+        import(`src/lib/img/posters/${props.poster}`)
+      );
+      setImage(result);
+    };
     setImage(getImage());
-  }, [getImage]);
+  }, [props.poster]);
 
   return (
     <Card raised className={props.className}>
