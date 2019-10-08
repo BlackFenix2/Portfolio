@@ -4,7 +4,6 @@ import { observer } from 'mobx-react-lite';
 import * as React from 'react';
 import { List, Transition } from 'semantic-ui-react';
 import todoStore from 'src/state/stores/todoStore';
-import MobxTest from 'src/components/Views/Todo/MobxTest';
 
 const Todo = () => {
   const [task, setTask] = React.useState('');
@@ -43,7 +42,6 @@ const Todo = () => {
           Completed Tasks:
           {TodoStore.completedTasks}
         </p>
-        <MobxTest />
       </div>
 
       <form onSubmit={handleAddTodo}>

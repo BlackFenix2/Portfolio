@@ -52,8 +52,6 @@ const initialState: State = {
 };
 
 export default class Domain extends React.Component<{}, State> {
-  recaptchaInstance: any;
-
   constructor(props) {
     super(props);
     this.state = initialState;

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useRef } from 'react';
 
 import { observer } from 'mobx-react-lite';
 import { Button, Grid } from 'semantic-ui-react';
@@ -18,7 +18,7 @@ const FlappyBird = observer(() => {
     return () => {
       BirdStore.unMountGame(nv);
     };
-  });
+  }, [BirdStore, nv]);
 
   const Reset = () => {
     BirdStore.Reset();

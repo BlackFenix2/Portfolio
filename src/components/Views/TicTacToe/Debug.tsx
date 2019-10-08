@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Segment } from 'semantic-ui-react';
 import Card from 'src/components/elements/Card';
 
-const Debug = props => (
+const Debug = ({ props }) => (
   <Card className="w3-card w3-panel">
     <Segment basic textAlign="center">
       <p>Stats:</p>

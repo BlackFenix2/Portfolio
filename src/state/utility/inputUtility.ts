@@ -30,7 +30,6 @@ export default class InputUtility {
    * @memberof InputUtility
    */
   listen(target: Element) {
-    console.log(target);
     target.addEventListener('pointerdown', this.handleBindMouse);
     target.addEventListener('pointerup', this.handleUnBindMouse);
     window.addEventListener('keydown', this.handleBindKeys);
@@ -42,9 +41,7 @@ export default class InputUtility {
    *
    * @memberof InputUtility
    */
-  dispose(target: Element) {
-    target.removeEventListener('pointerdown', this.handleBindMouse);
-    target.removeEventListener('pointerup', this.handleUnBindMouse);
+  dispose() {
     window.removeEventListener('keydown', this.handleBindKeys);
     window.removeEventListener('keyup', this.handleUnBindKeys);
   }

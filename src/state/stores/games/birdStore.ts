@@ -65,7 +65,7 @@ export class BirdStore {
       this.timer.stop();
     }
 
-    this.input.dispose(target);
+    this.input.dispose();
   };
 
   protected MovePipe = (index: number, x: number) => {

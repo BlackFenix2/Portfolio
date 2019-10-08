@@ -7,7 +7,7 @@ module.exports = {
   transform: {
     '^.+\\.tsx?$': '<rootDir>/tools/jest/jest.preprocess.js'
   },
-  //ingore node_modules and gatsby cache
+  // ignore node_modules and gatsby cache
   testPathIgnorePatterns: [`node_modules`, `.cache`],
   // configure Enzyme
   setupFiles: ['./tools/jest/jest.setup'],

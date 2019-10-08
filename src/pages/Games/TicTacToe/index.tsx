@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 import * as React from 'react';
 import { Divider, Grid, Segment } from 'semantic-ui-react';
 import Card from 'src/components/elements/Card';
@@ -117,15 +118,15 @@ class TicTacToe extends React.Component<any, any> {
 
   sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-  playSelfOnce = () => {
+  playSelfOnce = async () => {
     this.reset();
     this.setState({
       gameLocked: true
     });
 
     do {
-      this.sleep(this.state.delay).then();
-      this.cpuTurn(this.state.numOfPlayers);
+      await this.sleep(this.state.delay);
+      await this.cpuTurn(this.state.numOfPlayers);
     } while (!this.state.gameEnded);
 
     this.setState({
@@ -133,7 +134,7 @@ class TicTacToe extends React.Component<any, any> {
     });
   };
 
-  playSelf = () => {
+  playSelf = async () => {
     if (
       // eslint-disable-next-line no-restricted-globals
       !confirm(
@@ -150,8 +151,8 @@ class TicTacToe extends React.Component<any, any> {
 
     for (let i = 0; i < this.state.warGamesCount; i += 1) {
       do {
-        this.sleep(this.state.warGamesDelay).then();
-        this.cpuTurn(this.state.numOfPlayers);
+        await this.sleep(this.state.warGamesDelay);
+        await this.cpuTurn(this.state.numOfPlayers);
       } while (!this.state.gameEnded);
 
       this.setState(
@@ -617,7 +618,7 @@ class TicTacToe extends React.Component<any, any> {
             </Card>
           </Grid.Column>
           <Grid.Column width={4}>
-            <Debug {...this.state} />
+            <Debug props={this.state} />
           </Grid.Column>
         </Grid.Row>
       </Grid>
