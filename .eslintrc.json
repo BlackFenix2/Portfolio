@@ -33,6 +33,10 @@
 
     // typescript already checks for undefined vars
     "no-undef": "off",
+
+    // code restriction, nested ternary operators are not that complicated
+    "no-nested-ternary": "off",
+
     "react/jsx-no-undef": "off",
 
     // typescript already handles path resolution

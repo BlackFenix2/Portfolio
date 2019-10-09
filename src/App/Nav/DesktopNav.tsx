@@ -2,10 +2,19 @@ import React, { useState } from 'react';
 import { Dropdown, Icon, Menu } from 'semantic-ui-react';
 
 import { RouteStore } from 'src/state/stores/routeStore';
+import { css } from '@emotion/core';
 import NavItem from './NavItem';
 
 const NavBar = props => (
-  <Menu fixed="top" borderless>
+  <Menu
+    borderless
+    css={css`
+      border-radius: 0 !important;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    `}
+  >
     {props.children}
   </Menu>
 );

@@ -7,7 +7,7 @@ import MobileDropdownComponent from './MobileDropdownComponent';
 import NavItem from './NavItem';
 
 const NavBar = props => (
-  <Menu fixed="top" vertical fluid>
+  <Menu vertical fluid>
     {props.children}
   </Menu>
 );

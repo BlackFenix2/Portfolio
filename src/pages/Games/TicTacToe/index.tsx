@@ -618,7 +618,7 @@ class TicTacToe extends React.Component<any, any> {
             </Card>
           </Grid.Column>
           <Grid.Column width={4}>
-            <Debug props={this.state} />
+            <Debug {...this.state} />
           </Grid.Column>
         </Grid.Row>
       </Grid>

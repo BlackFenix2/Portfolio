@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { css, Global } from '@emotion/core';
+import styled from '@emotion/styled';
 import Body from './Body';
 import Footer from './Footer';
 import Header from './Header';
@@ -18,6 +19,15 @@ const globalAppStyle = css`
   }
 `;
 
+const Container = styled.section`
+  display: flex;
+
+  align-items: stretch;
+
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
 const App = ({ children }) => (
   // TODO wrap in React.Strict to detect depreciating practices
 
@@ -27,9 +37,11 @@ const App = ({ children }) => (
 const AppLayout = ({ children }) => (
   <>
     <Global styles={globalAppStyle} />
-    <Header />
-    <Body>{children}</Body>
-    <Footer />
+    <Container>
+      <Header />
+      <Body>{children}</Body>
+      <Footer />
+    </Container>
   </>
 );
 

@@ -85,6 +85,7 @@
     "mobx-react-form": "^2.0.6",
     "mobx-remotedev": "^0.3.6",
     "react": "^16.10.1",
+    "react-card-flip": "^0.8.1",
     "react-collapse": "^4.0.3",
     "react-device-detect": "^1.9.10",
     "react-dom": "^16.10.1",

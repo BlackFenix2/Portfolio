@@ -6,7 +6,8 @@ import Error from './Error';
 const Body = ({ children }) => (
   <main
     css={css`
-      padding-top: 3em;
+      display: flex;
+      flex: 1;
     `}
   >
     <Segment basic>
