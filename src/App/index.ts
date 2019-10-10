@@ -1,6 +1,6 @@
 import App from './App';
 
-// React CSS Libraries
+// React .CSS Libraries
 import './css';
 
 export default App;

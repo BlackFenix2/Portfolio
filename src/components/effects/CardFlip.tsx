@@ -24,15 +24,12 @@ const CardFlip: React.FC<Props> = props => {
 
   const [isFlipped, setFlipped] = useState(props.isFlipped);
   const [rotation, setRotation] = useState(0);
-  const [mount, setMount] = useState(false);
 
   useEffect(() => {
-    // jury-rig to prevent invocation on component mount
-    if (mount) {
+    if (props.isFlipped !== isFlipped) {
       setFlipped(c => !c);
       setRotation(c => c + 180);
     }
-    setMount(true);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.isFlipped]);

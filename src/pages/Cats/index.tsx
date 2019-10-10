@@ -18,7 +18,7 @@ const catImage = css`
   }
 `;
 
-class Cats extends React.Component<any, State> {
+class Cats extends React.Component<{}, State> {
   state = {
     result: 200,
     number: 200

@@ -87,7 +87,7 @@ const ShowCard: React.FC<Show> = props => {
           />
         </Link>
         <Card.Content>
-          <Card.Header>{props.title}</Card.Header>
+          <Card.Header>{props.title} Flipped</Card.Header>
 
           <Card.Meta>{props.year}</Card.Meta>
 
