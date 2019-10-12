@@ -1,4 +1,4 @@
-import { createStore, action, Action } from 'easy-peasy';
+import { createStore, action, Action, EasyPeasyConfig } from 'easy-peasy';
 
 export interface Store {
   mobile: {
@@ -6,6 +6,15 @@ export interface Store {
     toggleMobile: Action<{ isMobile: boolean }>;
   };
 }
+
+const config: EasyPeasyConfig = {
+  // disable passing mutable state
+  disableImmer: true,
+
+  // enalbe devtools in development only
+  devTools: process.env.NODE_ENV === 'development'
+};
+
 const store = createStore<Store>(
   {
     mobile: {
@@ -18,9 +27,7 @@ const store = createStore<Store>(
       })
     }
   },
-  {
-    disableImmer: true
-  }
+  config
 );
 
 export default store;

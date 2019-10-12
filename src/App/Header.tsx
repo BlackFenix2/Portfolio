@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { css } from '@emotion/core';
 import {
   AppBar,
   Toolbar,
@@ -13,13 +12,6 @@ import {
 
 import Menu from '@material-ui/icons/Menu';
 import { useStoreActions } from 'src/state/hooks';
-import Nav from './Nav';
-
-const Head = () => (
-  <header>
-    <Nav />
-  </header>
-);
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const MaterialHead = () => {
+const Head = () => {
   const theme = useTheme();
   const classes = useStyles(theme);
   const setMobileOpen = useStoreActions(actions => actions.mobile.toggleMobile);
@@ -60,4 +52,4 @@ const MaterialHead = () => {
   );
 };
 
-export default MaterialHead;
+export default Head;

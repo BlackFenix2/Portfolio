@@ -6,5 +6,3 @@ interface Props {
 
 const Visibility: React.SFC<Props> = props =>
   props.active && <div>{props.children}</div>;
-
-export default Visibility;

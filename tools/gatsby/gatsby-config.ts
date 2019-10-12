@@ -13,6 +13,9 @@ const gatsbyConfig: GatsbyConfig = {
       resolve: 'gatsby-plugin-create-client-paths',
       options: { prefixes: ['/Shows/Details/*'] }
     },
+
+    // add SSR support for Material-UI
+    'gatsby-plugin-material-ui',
     'gatsby-plugin-layout',
     'gatsby-plugin-eslint',
     'gatsby-plugin-typescript',

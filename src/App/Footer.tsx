@@ -1,7 +1,6 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
 import { Paper, Grid } from '@material-ui/core';
-import { css } from '@emotion/core';
 
 const Icons = () => (
   <div>
@@ -25,7 +24,7 @@ const CopyRight = () => (
   </div>
 );
 
-const MaterialFoot = () => (
+const Foot = () => (
   <footer>
     <Paper>
       <Grid container direction="column" justify="center" alignItems="center">
@@ -36,4 +35,4 @@ const MaterialFoot = () => (
   </footer>
 );
 
-export default MaterialFoot;
+export default Foot;

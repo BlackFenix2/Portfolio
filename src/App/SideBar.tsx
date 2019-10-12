@@ -12,14 +12,7 @@ import {
   Drawer,
   Collapse
 } from '@material-ui/core';
-import {
-  Inbox,
-  Mail,
-  Home,
-  ExpandLess,
-  ExpandMore,
-  StarBorder
-} from '@material-ui/icons';
+import { Home, ExpandLess, ExpandMore } from '@material-ui/icons';
 
 import React from 'react';
 import { useStoreState, useStoreActions } from 'src/state/hooks';
