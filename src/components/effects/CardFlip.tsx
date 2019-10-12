@@ -30,9 +30,7 @@ const CardFlip: React.FC<Props> = props => {
       setFlipped(c => !c);
       setRotation(c => c + 180);
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.isFlipped]);
+  }, [isFlipped, props.isFlipped]);
 
   const frontRotateY = `rotateY(${
     infinite ? rotation : isFlipped ? 180 : 0

@@ -6,8 +6,8 @@ import Error from './Error';
 const Body = ({ children }) => (
   <main
     css={css`
-      display: flex;
-      flex: 1;
+      flex-grow: 1;
+      background-color: #f5f5f5;
     `}
   >
     <Segment basic>

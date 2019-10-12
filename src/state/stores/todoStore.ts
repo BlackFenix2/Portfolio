@@ -1,6 +1,5 @@
 import { action, computed, observable } from 'mobx';
 import { createContext } from 'react';
-import remotedev from 'mobx-remotedev';
 
 interface Todo {
   task: string;
@@ -45,4 +44,4 @@ class TodoStore {
   }
 }
 
-export default createContext(remotedev(new TodoStore()));
+export default createContext(new TodoStore());

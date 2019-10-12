@@ -1,5 +1,7 @@
-import * as React from 'react';
-import { Container, Icon, Segment } from 'semantic-ui-react';
+import React from 'react';
+import { Icon } from 'semantic-ui-react';
+import { Paper, Grid } from '@material-ui/core';
+import { css } from '@emotion/core';
 
 const Icons = () => (
   <div>
@@ -9,7 +11,7 @@ const Icons = () => (
       target="_blank"
       rel="noopener noreferrer"
     >
-      <Icon inverted link name="github" size="big" />
+      <Icon color="black" link name="github" size="big" />
     </a>
   </div>
 );
@@ -23,15 +25,15 @@ const CopyRight = () => (
   </div>
 );
 
-const Foot = () => (
+const MaterialFoot = () => (
   <footer>
-    <Segment inverted vertical>
-      <Container textAlign="center">
+    <Paper>
+      <Grid container direction="column" justify="center" alignItems="center">
         <Icons />
         <CopyRight />
-      </Container>
-    </Segment>
+      </Grid>
+    </Paper>
   </footer>
 );
 
-export default Foot;
+export default MaterialFoot;
