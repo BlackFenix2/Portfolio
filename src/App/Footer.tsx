@@ -1,17 +1,25 @@
 import React from 'react';
-import { Icon } from 'semantic-ui-react';
-import { Paper, Grid } from '@material-ui/core';
+import {
+  Paper,
+  Grid,
+  ButtonGroup,
+  IconButton,
+  Button,
+  Tooltip
+} from '@material-ui/core';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 const Icons = () => (
   <div>
-    <a
-      title="GitHub"
-      href="https://github.com/BlackFenix2/Portfolio"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <Icon color="black" link name="github" size="big" />
-    </a>
+    <Tooltip title="Github Repo" enterDelay={300}>
+      <IconButton
+        component="a"
+        href="https://github.com/BlackFenix2/Portfolio"
+        target="_blank"
+      >
+        <GitHubIcon fontSize="large" />
+      </IconButton>
+    </Tooltip>
   </div>
 );
 

@@ -7,7 +7,6 @@ const Body = ({ children }) => (
   <main
     css={css`
       flex-grow: 1;
-      background-color: #f5f5f5;
     `}
   >
     <Segment basic>

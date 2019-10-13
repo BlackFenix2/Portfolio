@@ -12,11 +12,21 @@ import {
   Drawer,
   Collapse
 } from '@material-ui/core';
-import { Home, ExpandLess, ExpandMore } from '@material-ui/icons';
+import {
+  Home,
+  ExpandLess,
+  ExpandMore,
+  List as ListIcon,
+  VideogameAsset,
+  Pets,
+  Movie,
+  Domain
+} from '@material-ui/icons';
 
 import React from 'react';
 import { useStoreState, useStoreActions } from 'src/state/hooks';
 import { Link } from 'gatsby';
+import { SvgIconProps } from '@material-ui/core/SvgIcon';
 
 const drawerWidth = 200;
 const useStyles = makeStyles((theme: Theme) =>
@@ -38,69 +48,85 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const ResponsiveDrawer = () => {
-  const theme = useTheme();
-  const classes = useStyles(theme);
-  const [open, setOpen] = React.useState(true);
+interface ListItemLinkProps {
+  to: string;
+  icon?: (props: SvgIconProps) => JSX.Element;
+  label: string;
+  className?: string;
+}
+const ListItemLink: React.FC<ListItemLinkProps> = props => (
+  <ListItem button component={Link} to={props.to} className={props.className}>
+    {props.icon && (
+      <ListItemIcon>
+        <props.icon />
+      </ListItemIcon>
+    )}
+    <ListItemText primary={props.label} />
+  </ListItem>
+);
+
+interface ListItemDropdown {
+  icon?: (props: SvgIconProps) => JSX.Element;
+  label: string;
+}
+const ListItemDropDown: React.FC<ListItemDropdown> = props => {
+  const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
     setOpen(!open);
   };
   return (
+    <>
+      <ListItem button onClick={handleClick}>
+        {props.icon && (
+          <ListItemIcon>
+            <props.icon />
+          </ListItemIcon>
+        )}
+        <ListItemText primary={props.label} />
+        {open ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List disablePadding>{props.children}</List>
+      </Collapse>
+    </>
+  );
+};
+
+const ResponsiveDrawer = props => {
+  const theme = useTheme();
+  const classes = useStyles(theme);
+
+  return (
     <div>
       <div className={classes.toolbar}>
         <List>
-          <ListItem button component={Link} to="/">
-            <ListItemIcon>
-              <Home />
-            </ListItemIcon>
-            <ListItemText primary="HomePage" />
-          </ListItem>
+          <ListItemLink to="/" icon={Home} label="HomePage" />
         </List>
       </div>
       <Divider />
       <List>
-        <ListItem button component={Link} to="/Todo">
-          <ListItemText primary="Todo" />
-        </ListItem>
-        <ListItem button component={Link} to="/Shows">
-          <ListItemText primary="Shows" />
-        </ListItem>
+        <ListItemLink to="/Todo" icon={ListIcon} label="Todo" />
 
-        <ListItem button component={Link} to="/Domain">
-          <ListItemText primary="Domain" />
-        </ListItem>
+        <ListItemLink to="/Shows" icon={Movie} label="Shows" />
 
-        <ListItem button component={Link} to="/Cats">
-          <ListItemText primary="Cats" />
-        </ListItem>
-        <ListItem button onClick={handleClick}>
-          <ListItemText primary="Games" />
-          {open ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <List disablePadding>
-            <ListItem
-              button
-              component={Link}
-              to="/Games/TicTacToe"
-              className={classes.nested}
-            >
-              <ListItemText primary="Tic-Tac-Toe" />
-            </ListItem>
-            <ListItem
-              button
-              component={Link}
-              to="/Games/FlappyBird"
-              className={classes.nested}
-            >
-              <ListItemText primary="Flappy Bird" />
-            </ListItem>
-          </List>
-        </Collapse>
-        <ListItem button>
-          <ListItemText primary="end" />
-        </ListItem>
+        <ListItemLink to="/Domain" icon={Domain} label="Domain" />
+
+        <ListItemLink to="/Cats" icon={Pets} label="Cats" />
+
+        <ListItemDropDown icon={VideogameAsset} label="Games">
+          <ListItemLink
+            to="/Games/TicTacToe"
+            label="Tic-Tac-Toe"
+            className={classes.nested}
+          />
+
+          <ListItemLink
+            to="/Games/FlappyBird"
+            label="Flappy Bird"
+            className={classes.nested}
+          />
+        </ListItemDropDown>
       </List>
     </div>
   );
@@ -129,7 +155,7 @@ const SideBar = () => {
             keepMounted: true // Better open performance on mobile.
           }}
         >
-          <ResponsiveDrawer />
+          <ResponsiveDrawer onDismiss={handleDrawerToggle} />
         </Drawer>
       </Hidden>
       <Hidden xsDown implementation="css">
