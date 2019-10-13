@@ -2,13 +2,22 @@ import { observer } from 'mobx-react-lite';
 import * as React from 'react';
 import todoStore from 'src/state/stores/todoStore';
 import {
-  List,
   ListItem,
   Fade,
   Button,
   TextField,
-  Grid
+  ListItemText,
+  Checkbox,
+  Grid,
+  Fab,
+  ListItemIcon,
+  ListItemSecondaryAction,
+  IconButton,
+  List,
+  Hidden
 } from '@material-ui/core';
+import { Add, Delete } from '@material-ui/icons';
+import css from '@emotion/css';
 
 const Todo = () => {
   const [task, setTask] = React.useState('');
@@ -31,8 +40,13 @@ const Todo = () => {
     clearInput();
   };
 
-  const handleClearTodo = () => {
-    TodoStore.clearTodo();
+  const handleClearTodoList = () => {
+    TodoStore.clearTodoList();
+    clearInput();
+  };
+
+  const handleClearTodo = todo => {
+    TodoStore.clearTodo(todo);
     clearInput();
   };
 
@@ -41,7 +55,15 @@ const Todo = () => {
   };
 
   return (
-    <>
+    <Grid item xs={3}>
+      {/* Mobx hack */}
+      <div
+        css={css`
+          display: none;
+        `}
+      >
+        <p>{JSON.stringify(TodoStore.todoList, null, 4)}</p>
+      </div>
       <div>
         <p>
           Completed Tasks:
@@ -49,39 +71,54 @@ const Todo = () => {
         </p>
       </div>
       <div>
-        <TodoList list={TodoStore.todoList} changeEvent={handleToggleTask} />
+        <List>
+          <TodoList
+            list={TodoStore.todoList}
+            changeEvent={handleToggleTask}
+            deleteEvent={handleClearTodo}
+          />
+        </List>
       </div>
 
       <form onSubmit={handleAddTodo}>
         <TextField value={task} label="Task" onChange={handleTaskChange} />
-        <Button type="submit" variant="contained" color="primary">
-          Add
-        </Button>
+        <Fab type="submit" size="small" color="primary">
+          <Add />
+        </Fab>
       </form>
-      <Button variant="contained" color="secondary" onClick={handleClearTodo}>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={handleClearTodoList}
+      >
         Clear TODO
       </Button>
-    </>
+    </Grid>
   );
 };
 
-const TodoList = ({ list, changeEvent }) => (
-  <List>
-    {list.map((todo, idx) => (
-      <TodoListItem key={idx} todo={todo} changeEvent={changeEvent} />
-    ))}
-  </List>
-);
+const TodoList = ({ list, changeEvent, deleteEvent }) =>
+  list.map((todo, idx) => (
+    <TodoListItem
+      key={idx}
+      todo={todo}
+      changeEvent={changeEvent}
+      deleteEvent={deleteEvent}
+    />
+  ));
 
-const TodoListItem = ({ todo, changeEvent }) => (
+const TodoListItem = ({ todo, changeEvent, deleteEvent }) => (
   <Fade in>
-    <ListItem>
-      {todo.task}
-      <input
-        type="checkbox"
-        checked={todo.isComplete}
-        onChange={() => changeEvent(todo)}
-      />
+    <ListItem button onClick={() => changeEvent(todo)}>
+      <ListItemText primary={todo.task} />
+      <ListItemIcon>
+        <Checkbox checked={todo.isComplete} />
+      </ListItemIcon>
+      <ListItemSecondaryAction>
+        <IconButton onClick={() => deleteEvent(todo)}>
+          <Delete />
+        </IconButton>
+      </ListItemSecondaryAction>
     </ListItem>
   </Fade>
 );

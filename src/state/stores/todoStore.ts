@@ -1,15 +1,15 @@
 import { action, computed, observable } from 'mobx';
 import { createContext } from 'react';
+import createUUID from 'src/helpers/uuid';
 
 interface Todo {
+  id: string;
   task: string;
   isComplete: boolean;
 }
 class TodoStore {
   @observable
   todoList: Todo[] = [];
-
-  @observable testState = 'test';
 
   @computed
   get completedTasks(): number {
@@ -19,8 +19,11 @@ class TodoStore {
   @action
   addTodo(task: string) {
     if (task) {
-      this.testState = 'added TODO';
-      this.todoList.push({ task, isComplete: false });
+      this.todoList.push({
+        id: createUUID(),
+        task,
+        isComplete: false
+      });
     }
   }
 
@@ -30,8 +33,15 @@ class TodoStore {
   }
 
   @action
-  clearTodo() {
-    this.testState = 'Removed';
+  clearTodo(todo: Todo) {
+    const index = this.todoList.indexOf(
+      this.todoList.find(item => item.id === todo.id)
+    );
+    this.todoList.splice(index, 1);
+  }
+
+  @action
+  clearTodoList() {
     this.todoList = [];
   }
 
