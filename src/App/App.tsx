@@ -34,7 +34,7 @@ const Side = styled.aside`
   flex-shrink: 0;
 `;
 
-const App = ({ children }) => (
+const App: React.FC = ({ children }) => (
   // TODO wrap in React.Strict to detect depreciating practices
   <StoreProvider store={store}>
     <AppLayout>{children}</AppLayout>

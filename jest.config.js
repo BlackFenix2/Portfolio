@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { pathsToModuleNameMapper } = require('ts-jest/utils');
+const { defaults: tsjPreset } = require('ts-jest/presets');
 
 const { compilerOptions } = require('./tsconfig');
 
 module.exports = {
+  // ts preset
   preset: 'ts-jest',
-  transform: {
-    '^.+\\.tsx?$': '<rootDir>/tools/jest/jest.preprocess.js'
-  },
+
   // ignore node_modules and gatsby cache
   testPathIgnorePatterns: [`node_modules`, `.cache`],
   // configure Enzyme
@@ -18,5 +19,14 @@ module.exports = {
   }),
 
   // display tests with description
-  verbose: true
+  verbose: true,
+
+  globals: {
+    'ts-jest': {
+      tsConfig: {
+        jsx: 'react',
+        esModuleInterop: true
+      }
+    }
+  }
 };
