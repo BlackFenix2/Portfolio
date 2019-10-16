@@ -1,21 +1,15 @@
 import {
-  ListItemIcon,
-  ListItemText,
   useTheme,
   makeStyles,
   Theme,
   createStyles,
   Divider,
   List,
-  ListItem,
   Hidden,
-  Drawer,
-  Collapse
+  Drawer
 } from '@material-ui/core';
 import {
   Home,
-  ExpandLess,
-  ExpandMore,
   List as ListIcon,
   VideogameAsset,
   Pets,
@@ -25,8 +19,8 @@ import {
 
 import React from 'react';
 import { useStoreState, useStoreActions } from 'src/state/hooks';
-import { Link } from 'gatsby';
-import { SvgIconProps } from '@material-ui/core/SvgIcon';
+import ListItemLink from './ListItemLink';
+import ListItemDropDown from './ListItemDropdown';
 
 const drawerWidth = 200;
 const useStyles = makeStyles((theme: Theme) =>
@@ -47,51 +41,6 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   })
 );
-
-interface ListItemLinkProps {
-  to: string;
-  icon?: (props: SvgIconProps) => JSX.Element;
-  label: string;
-  className?: string;
-}
-const ListItemLink: React.FC<ListItemLinkProps> = props => (
-  <ListItem button component={Link} to={props.to} className={props.className}>
-    {props.icon && (
-      <ListItemIcon>
-        <props.icon />
-      </ListItemIcon>
-    )}
-    <ListItemText primary={props.label} />
-  </ListItem>
-);
-
-interface ListItemDropdown {
-  icon?: (props: SvgIconProps) => JSX.Element;
-  label: string;
-}
-const ListItemDropDown: React.FC<ListItemDropdown> = props => {
-  const [open, setOpen] = React.useState(false);
-
-  const handleClick = () => {
-    setOpen(!open);
-  };
-  return (
-    <>
-      <ListItem button onClick={handleClick}>
-        {props.icon && (
-          <ListItemIcon>
-            <props.icon />
-          </ListItemIcon>
-        )}
-        <ListItemText primary={props.label} />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List disablePadding>{props.children}</List>
-      </Collapse>
-    </>
-  );
-};
 
 const ResponsiveDrawer = props => {
   const theme = useTheme();
@@ -138,7 +87,7 @@ const SideBar = () => {
   const theme = useTheme();
   const classes = useStyles(theme);
   const handleDrawerToggle = () => {
-    setMobileOpen();
+    setMobileOpen(false);
   };
   return (
     <nav className={classes.drawer}>
@@ -155,7 +104,7 @@ const SideBar = () => {
             keepMounted: true // Better open performance on mobile.
           }}
         >
-          <ResponsiveDrawer onDismiss={handleDrawerToggle} />
+          <ResponsiveDrawer />
         </Drawer>
       </Hidden>
       <Hidden xsDown implementation="css">

@@ -3,7 +3,7 @@ import { createStore, action, Action, EasyPeasyConfig } from 'easy-peasy';
 export interface Store {
   mobile: {
     isMobile: boolean;
-    toggleMobile: Action<{ isMobile: boolean }>;
+    toggleMobile: Action<{ isMobile: boolean }, boolean>;
   };
 }
 
@@ -22,7 +22,7 @@ const store = createStore<Store>(
       toggleMobile: action((state, payload) => {
         return {
           ...state,
-          isMobile: !state.isMobile
+          isMobile: payload
         };
       })
     }

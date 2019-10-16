@@ -7,7 +7,7 @@ import store from 'src/state';
 import Body from './Body';
 import Footer from './Footer';
 import Header from './Header';
-import SideBar from './SideBar';
+import Sidebar from './Sidebar';
 
 /**
  * @description Global CSS object, use with caution since these styles are not locally scoped
@@ -51,7 +51,7 @@ const AppLayout = ({ children }) => (
       `}
     >
       <Side>
-        <SideBar />
+        <Sidebar />
       </Side>
       <Container>
         <Header />

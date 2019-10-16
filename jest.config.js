@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { pathsToModuleNameMapper } = require('ts-jest/utils');
-const { defaults: tsjPreset } = require('ts-jest/presets');
 
 const { compilerOptions } = require('./tsconfig');
 
@@ -21,6 +20,7 @@ module.exports = {
   // display tests with description
   verbose: true,
 
+  // allow typescript config
   globals: {
     'ts-jest': {
       tsConfig: {

@@ -29,7 +29,7 @@ const Head = () => {
   const classes = useStyles(theme);
   const setMobileOpen = useStoreActions(actions => actions.mobile.toggleMobile);
   const handleDrawerToggle = () => {
-    setMobileOpen();
+    setMobileOpen(true);
   };
 
   return (
