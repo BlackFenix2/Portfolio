@@ -1,11 +1,6 @@
 import { createStore, action, Action, EasyPeasyConfig } from 'easy-peasy';
 
-export interface Store {
-  mobile: {
-    isMobile: boolean;
-    toggleMobile: Action<{ isMobile: boolean }, boolean>;
-  };
-}
+import storeModel from './models';
 
 const config: EasyPeasyConfig = {
   // disable passing mutable state
@@ -15,19 +10,6 @@ const config: EasyPeasyConfig = {
   devTools: process.env.NODE_ENV === 'development'
 };
 
-const store = createStore<Store>(
-  {
-    mobile: {
-      isMobile: false,
-      toggleMobile: action((state, payload) => {
-        return {
-          ...state,
-          isMobile: payload
-        };
-      })
-    }
-  },
-  config
-);
+const store = createStore(storeModel, config);
 
 export default store;

@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Paper,
-  Grid,
-  ButtonGroup,
-  IconButton,
-  Button,
-  Tooltip
-} from '@material-ui/core';
+import { Paper, Grid, IconButton, Tooltip } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 
 const Icons = () => (
@@ -16,6 +9,7 @@ const Icons = () => (
         component="a"
         href="https://github.com/BlackFenix2/Portfolio"
         target="_blank"
+        rel="noopener noreferrer"
       >
         <GitHubIcon fontSize="large" />
       </IconButton>
@@ -34,7 +28,7 @@ const CopyRight = () => (
 
 const Foot = () => (
   <footer>
-    <Paper>
+    <Paper square>
       <Grid container direction="column" justify="center" alignItems="center">
         <Icons />
         <CopyRight />

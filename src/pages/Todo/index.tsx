@@ -1,6 +1,4 @@
-import { observer } from 'mobx-react-lite';
 import * as React from 'react';
-import todoStore from 'src/state/stores/todoStore';
 import {
   ListItem,
   Fade,
@@ -13,16 +11,18 @@ import {
   ListItemIcon,
   ListItemSecondaryAction,
   IconButton,
-  List,
-  Hidden
+  List
 } from '@material-ui/core';
 import { Add, Delete } from '@material-ui/icons';
 import css from '@emotion/css';
+import { useStoreState, useStoreActions } from 'src/state/hooks';
+import SEO from 'src/components/modules/SEO';
 
 const Todo = () => {
   const [task, setTask] = React.useState('');
 
-  const TodoStore = React.useContext(todoStore);
+  const todoModel = useStoreState(state => state.todo);
+  const todoActions = useStoreActions(actions => actions.todo);
 
   const clearInput = () => {
     setTask('');
@@ -36,64 +36,66 @@ const Todo = () => {
 
   const handleAddTodo = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    TodoStore.addTodo(task);
+    todoActions.addTodo(task);
     clearInput();
   };
 
   const handleClearTodoList = () => {
-    TodoStore.clearTodoList();
+    todoActions.clearTodoList();
     clearInput();
   };
 
   const handleClearTodo = todo => {
-    TodoStore.clearTodo(todo);
+    todoActions.clearTodo(todo);
     clearInput();
   };
 
   const handleToggleTask = todo => {
-    TodoStore.toggleTodo(todo);
+    todoActions.toggleTodo(todo);
   };
 
   return (
-    <Grid item xs={3}>
-      {/* Mobx hack */}
-      <div
-        css={css`
-          display: none;
-        `}
-      >
-        <p>{JSON.stringify(TodoStore.todoList, null, 4)}</p>
-      </div>
-      <div>
-        <p>
-          Completed Tasks:
-          {TodoStore.completedTasks}
-        </p>
-      </div>
-      <div>
-        <List>
-          <TodoList
-            list={TodoStore.todoList}
-            changeEvent={handleToggleTask}
-            deleteEvent={handleClearTodo}
-          />
-        </List>
-      </div>
+    <>
+      <SEO title="Todo List" />
+      <Grid>
+        <div
+          css={css`
+            display: none;
+          `}
+        >
+          <p>{JSON.stringify(todoModel.todoList, null, 4)}</p>
+        </div>
+        <div>
+          <p>
+            Completed Tasks:
+            {todoModel.completedTasks}
+          </p>
+        </div>
+        <div>
+          <List>
+            <TodoList
+              list={todoModel.todoList}
+              changeEvent={handleToggleTask}
+              deleteEvent={handleClearTodo}
+            />
+          </List>
+        </div>
 
-      <form onSubmit={handleAddTodo}>
-        <TextField value={task} label="Task" onChange={handleTaskChange} />
-        <Fab type="submit" size="small" color="primary">
-          <Add />
-        </Fab>
-      </form>
-      <Button
-        variant="contained"
-        color="secondary"
-        onClick={handleClearTodoList}
-      >
-        Clear TODO
-      </Button>
-    </Grid>
+        <form onSubmit={handleAddTodo}>
+          <TextField value={task} label="Task" onChange={handleTaskChange} />
+          <Fab type="submit" size="small" color="primary">
+            <Add />
+          </Fab>
+        </form>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={handleClearTodoList}
+        >
+          Clear TODO
+        </Button>
+      </Grid>
+    </>
   );
 };
 
@@ -123,4 +125,4 @@ const TodoListItem = ({ todo, changeEvent, deleteEvent }) => (
   </Fade>
 );
 
-export default observer(Todo);
+export default Todo;

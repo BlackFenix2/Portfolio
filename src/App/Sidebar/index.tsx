@@ -14,7 +14,8 @@ import {
   VideogameAsset,
   Pets,
   Movie,
-  Domain
+  Domain,
+  Gavel
 } from '@material-ui/icons';
 
 import React from 'react';
@@ -76,6 +77,8 @@ const ResponsiveDrawer = props => {
             className={classes.nested}
           />
         </ListItemDropDown>
+
+        <ListItemLink icon={Gavel} to="/License" label="License" />
       </List>
     </div>
   );

@@ -5,7 +5,7 @@ const gatsbyConfig: GatsbyConfig = {
   polyfill: false,
   siteMetadata: {
     title: 'React Portfolio',
-    description: 'The react portfolio of BlackFenix2',
+    description: 'The React Portfolio of BlackFenix2',
     author: '@BlackFenix2'
   },
   plugins: [
@@ -33,13 +33,13 @@ const gatsbyConfig: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'itops',
-        short_name: 'itops',
+        name: 'Portfolio',
+        short_name: 'Portfolio',
         start_url: '/',
-        background_color: '#90ca43',
-        theme_color: '#1276bb',
+        background_color: '#3f51b5',
+        theme_color: '#f50057',
         display: 'minimal-ui',
-        icon: 'static/loading.png' // This path is relative to the root of the site.
+        icon: 'static/icon.png' // This path is relative to the root of the site.
       }
     },
     // add support for absolute paths for gatsby loader
@@ -58,8 +58,9 @@ const gatsbyConfig: GatsbyConfig = {
   ]
 };
 
-// push no-sourcemaps plugin when environment is not development.
+// push production-only plugins
 if (process.env.NODE_ENV !== 'development') {
+  // push no-sourcemaps plugin when environment is not development.
   gatsbyConfig.plugins.push(`gatsby-plugin-no-sourcemaps`);
 }
 
