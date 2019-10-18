@@ -1,17 +1,9 @@
 import React from 'react';
 
 import { observer } from 'mobx-react-lite';
-import { Input as OldInput } from 'semantic-ui-react';
 import showStore from 'src/state/stores/showStore';
 import ShowList from 'src/components/Views/Shows/ShowList';
-import {
-  InputBase,
-  Paper,
-  IconButton,
-  Input,
-  InputAdornment,
-  TextField
-} from '@material-ui/core';
+import { Input, InputAdornment } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 import { css } from '@emotion/core';
 

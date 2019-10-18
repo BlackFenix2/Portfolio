@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { Button, Form, Input, Label } from 'semantic-ui-react';
 
 import { css } from '@emotion/core';
+import SEO from 'src/components/modules/SEO';
+import { FormControl, TextField, Button, Divider } from '@material-ui/core';
+import { Form } from 'informed';
 
 interface State {
   result: number;
@@ -34,28 +36,31 @@ class Cats extends React.Component<{}, State> {
 
   render() {
     return (
-      <div>
-        <h2>HTTP Cats</h2>
-        <img
-          src={`https://http.cat/${this.state.number}.jpg`}
-          alt="No cat found :("
-          css={catImage}
-        />
-
-        <hr />
-        <Form onSubmit={this.GetCat}>
-          <Form.Field>
-            <Label pointing="below">HTTP Status</Label>
-            <Input
-              type="search"
-              placeholder="Enter search term"
-              value={this.state.result}
-              onChange={this.change}
-            />
-          </Form.Field>
-          <Button>Click for Cats</Button>
-        </Form>
-      </div>
+      <>
+        <SEO title="Cats" />
+        <div>
+          <h2>HTTP Cats</h2>
+          <img
+            src={`https://http.cat/${this.state.number}.jpg`}
+            alt="No cat found :("
+            css={catImage}
+          />
+          <Divider />
+          <Form onSubmit={this.GetCat}>
+            <FormControl>
+              <TextField
+                placeholder="Enter search term"
+                label="HTTP Status Code"
+                value={this.state.result}
+                onChange={this.change}
+              />
+              <Button variant="contained" color="primary">
+                Show me a cat
+              </Button>
+            </FormControl>
+          </Form>
+        </div>
+      </>
     );
   }
 }
