@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { List } from 'semantic-ui-react';
+import { ListItem, List, ListItemText } from '@material-ui/core';
 
 interface IProps {
   items: string[];
 }
-const LocalList: React.SFC<IProps> = props => (
-  <List relaxed="very">
+const LocalList: React.FC<IProps> = props => (
+  <List>
     {props.items.map((x, i) => (
-      <List.Item key={i}>{x}</List.Item>
+      <ListItem key={i}>
+        <ListItemText>{x}</ListItemText>
+      </ListItem>
     ))}
   </List>
 );

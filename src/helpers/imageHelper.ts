@@ -1,4 +1,4 @@
-export const getImagePath = async path => {
+export const getImagePath = async (path: Promise<any>) => {
   const imagePath = await path;
   return imagePath.default;
 };

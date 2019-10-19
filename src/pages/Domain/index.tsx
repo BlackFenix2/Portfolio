@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { Card, Grid, Segment } from 'semantic-ui-react';
+import React from 'react';
 import { domainAPI } from 'src/services/API';
 import Debug from 'src/components/Views/Domain/Debug';
 import DnsInfo from 'src/components/Views/Domain/DnsInfo';
@@ -9,6 +8,7 @@ import InputForm from 'src/components/Views/Domain/InputForm';
 import Legal from 'src/components/Views/Domain/Legal';
 import SummaryInfo from 'src/components/Views/Domain/SummaryInfo';
 import WhoisInfo from 'src/components/Views/Domain/WhoisInfo';
+import { Grid, Card, CardContent, Box, CardHeader } from '@material-ui/core';
 
 interface State {
   response: IDomainRecord;
@@ -89,8 +89,7 @@ export default class Domain extends React.Component<{}, State> {
     });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleSubmit = () => {
     this.reset();
     this.getDomain(this.state.domain);
   };
@@ -103,42 +102,42 @@ export default class Domain extends React.Component<{}, State> {
     const { error, errorMessage, loading } = this.state;
     const { whois, dns, summary } = this.state.response;
     return (
-      <Grid stackable>
-        <Grid.Row columns={4}>
-          <Grid.Column>
+      <Box>
+        <Grid container spacing={3}>
+          <Grid item xs={3}>
             <InputForm
               handleSubmit={this.handleSubmit}
               domain={this.state.domain}
               change={this.change}
               loading={loading}
             />
-          </Grid.Column>
-          <Grid.Column>
-            <Card raised fluid>
-              <Card.Content>
-                <h2>Domain Name</h2>
+          </Grid>
+          <Grid item xs={3}>
+            <Card raised>
+              <CardHeader title="Domain Name" />
+              <CardContent>
                 <p>{whois.domain}</p>
-              </Card.Content>
+              </CardContent>
             </Card>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row columns={4}>
-          <Grid.Column>
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs>
             <DomainCard name="WHOIS" loading={loading}>
               <WhoisInfo {...whois} />
             </DomainCard>
-          </Grid.Column>
-          <Grid.Column>
+          </Grid>
+          <Grid item xs>
             <DomainCard name="DNS" loading={loading}>
               <DnsInfo {...dns} />
             </DomainCard>
-          </Grid.Column>
-          <Grid.Column>
+          </Grid>
+          <Grid item xs>
             <DomainCard name="Summary" loading={loading}>
               <SummaryInfo {...summary} />
             </DomainCard>
-          </Grid.Column>
-          <Grid.Column>
+          </Grid>
+          <Grid item xs>
             <DomainCard name="Debug" loading={loading}>
               <Debug
                 loading={loading}
@@ -146,30 +145,26 @@ export default class Domain extends React.Component<{}, State> {
                 errorMessage={errorMessage}
               />
             </DomainCard>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column>
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs>
             <DomainCard name="Raw WHOIS" loading={loading}>
-              <Segment basic>
-                <p>
-                  {whois.raw
-                    .replace('\r', '')
-                    .split('\n')
-                    .map((i, k) => (
-                      <p key={k}>{i}</p>
-                    ))}
-                </p>
-              </Segment>
+              {whois.raw
+                .replace('\r', '')
+                .split('\n')
+                .map((i, k) => (
+                  <p key={k}>{i}</p>
+                ))}
             </DomainCard>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column>
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs>
             <Legal />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+          </Grid>
+        </Grid>
+      </Box>
     );
   }
 }

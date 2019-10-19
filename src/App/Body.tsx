@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Segment } from 'semantic-ui-react';
 import { css } from '@emotion/core';
+import { Box } from '@material-ui/core';
 import Error from './Error';
 
 const Body = ({ children }) => (
@@ -9,9 +9,9 @@ const Body = ({ children }) => (
       flex-grow: 1;
     `}
   >
-    <Segment basic>
+    <Box padding={2}>
       <Error>{children}</Error>
-    </Segment>
+    </Box>
   </main>
 );
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List } from 'semantic-ui-react';
+import { List, ListItem, ListItemText } from '@material-ui/core';
 
 interface Props {
   loading: boolean;
@@ -8,19 +8,25 @@ interface Props {
 }
 
 const Debug: React.SFC<Props> = props => (
-  <List divided animated relaxed="very">
-    <List.Item>
-      Loading:
-      {String(props.loading)}
-    </List.Item>
-    <List.Item>
-      Error:
-      {String(props.error)}
-    </List.Item>
-    <List.Item>
-      Error Message:
-      {String(props.errorMessage)}
-    </List.Item>
+  <List>
+    <ListItem divider>
+      <ListItemText>
+        Loading:
+        {String(props.loading)}
+      </ListItemText>
+    </ListItem>
+    <ListItem divider>
+      <ListItemText>
+        Error:
+        {String(props.error)}
+      </ListItemText>
+    </ListItem>
+    <ListItem>
+      <ListItemText>
+        Error Message:
+        {String(props.errorMessage)}
+      </ListItemText>
+    </ListItem>
   </List>
 );
 

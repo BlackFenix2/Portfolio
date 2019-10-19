@@ -1,35 +1,32 @@
 import * as React from 'react';
-import { Card, Form, Input } from 'semantic-ui-react';
+import { Card, CardContent, CardHeader } from '@material-ui/core';
+import { Form } from 'informed';
+import TextInput from 'src/components/inputs';
+import { Search } from '@material-ui/icons';
 
 interface IProps {
   item?: string;
-  handleSubmit: any;
-  change: any;
+  handleSubmit: () => void;
+  change: (e: React.SyntheticEvent) => void;
   domain: string;
   loading: boolean;
 }
 
-const InputForm: React.SFC<IProps> = props => (
-  <Card raised fluid>
-    <Card.Content>
-      <Card.Header>
-        <h2>Domain Input</h2>
-      </Card.Header>
-    </Card.Content>
-    <Card.Content>
+const InputForm: React.FC<IProps> = props => (
+  <Card raised>
+    <CardHeader title="Domain Input" />
+    <CardContent>
       <Form onSubmit={props.handleSubmit}>
-        <Form.Field>
-          <span>Domain Name</span>
-          <Input
-            action={{ color: 'blue', content: 'Search' }}
-            required
-            placeholder="Domain.com..."
-            value={props.domain}
-            onChange={props.change}
-          />
-        </Form.Field>
+        <TextInput
+          fullWidth
+          label="Domain Name"
+          value={props.domain}
+          changeEvent={props.change}
+          placeholder="Domain..."
+          Icon={Search}
+        />
       </Form>
-    </Card.Content>
+    </CardContent>
   </Card>
 );
 

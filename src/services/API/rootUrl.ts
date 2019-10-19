@@ -2,7 +2,7 @@ const mode = process.env.NODE_ENV;
 
 let internalRootUrl = '';
 if (mode === 'development') {
-  internalRootUrl = 'http://localhost:5000/api';
+  internalRootUrl = 'https://localhost:5001/api';
 } else {
   internalRootUrl = 'https://fhs-webapi.azurewebsites.net/api';
 }

@@ -1,11 +1,19 @@
 import { css } from '@emotion/core';
-import { Fab } from '@material-ui/core';
+import {
+  Fab,
+  Card,
+  CardHeader,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Box
+} from '@material-ui/core';
 import { Add, Remove } from '@material-ui/icons';
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
-import { Card, Image, Rating } from 'semantic-ui-react';
 import { trimString } from 'src/helpers/stringHelpers';
 import { getImagePath } from 'src/helpers/imageHelper';
+import { Rating } from '@material-ui/lab';
 
 interface Show {
   rating: number;
@@ -18,8 +26,8 @@ interface Show {
 }
 
 const ShowCard: React.FC<Show> = props => {
-  const [image, setImage] = React.useState(null);
-  const [rating, setRating] = React.useState(props.rating);
+  const [image, setImage] = React.useState<string>('');
+  const [rating, setRating] = React.useState(props.rating || 0);
 
   const increaseRating = () =>
     rating < 5 ? setRating(prevRating => prevRating + 1) : null;
@@ -29,43 +37,39 @@ const ShowCard: React.FC<Show> = props => {
 
   React.useEffect(() => {
     const getImage = async () => {
-      const result = await getImagePath(
+      const result: string = await getImagePath(
         import(`src/lib/img/posters/${props.poster}`)
       );
       setImage(result);
     };
-    setImage(getImage());
+    getImage();
   }, [props.poster]);
 
   return (
-    <Card raised key="front">
+    <Card raised>
       <Link to={`/Shows/Details/${props.imdbID}`}>
-        <Image
+        <img
           alt={`${props.title} Show Poster`}
           src={image}
           css={css`
-            width: 300px;
+            width: 315px;
             height: 400px;
           `}
         />
       </Link>
-      <Card.Content>
-        <Card.Header>{props.title}</Card.Header>
 
-        <Card.Meta>{props.year}</Card.Meta>
+      <CardHeader title={props.title} subheader={props.year} />
+      <CardContent>{trimString(props.description, 60)}</CardContent>
 
-        <Card.Description>{trimString(props.description, 60)}</Card.Description>
-      </Card.Content>
-
-      <Card.Content extra textAlign="center">
+      <Box component={CardActions} display="flex" justifyContent="center">
         <Fab size="small" onClick={decreaseRating}>
           <Remove />
         </Fab>
-        <Rating icon="star" rating={rating} maxRating={5} disabled />
+        <Rating value={rating} readOnly />
         <Fab size="small" onClick={increaseRating}>
           <Add />
         </Fab>
-      </Card.Content>
+      </Box>
     </Card>
   );
 };

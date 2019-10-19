@@ -3,9 +3,8 @@ import React from 'react';
 import { observer } from 'mobx-react-lite';
 import showStore from 'src/state/stores/showStore';
 import ShowList from 'src/components/Views/Shows/ShowList';
-import { Input, InputAdornment } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
-import { css } from '@emotion/core';
+import TextInput from 'src/components/inputs';
 
 const Shows = () => {
   const ShowStore = React.useContext(showStore);
@@ -16,22 +15,11 @@ const Shows = () => {
 
   return (
     <div>
-      <Input
-        css={css`
-          background-color: white;
-          border: solid thin lightgray;
-          border-radius: 5px;
-          padding: 2px 6px;
-        `}
-        disableUnderline
-        placeholder="Search..."
+      <TextInput
+        label="Search Shows"
         value={ShowStore.searchTerm}
-        onChange={setSearchTerm}
-        endAdornment={
-          <InputAdornment position="end">
-            <Search />
-          </InputAdornment>
-        }
+        changeEvent={setSearchTerm}
+        Icon={Search}
       />
 
       <ShowList shows={ShowStore.shows} />

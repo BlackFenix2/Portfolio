@@ -1,33 +1,36 @@
 import * as React from 'react';
-import { Collapse } from 'react-collapse';
-
-import { Card, Header } from 'semantic-ui-react';
-import LoadingIcon from '../../elements/LoadingIcon';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardMedia,
+  CircularProgress,
+  Collapse,
+  Divider
+} from '@material-ui/core';
 
 interface Props {
   name: string;
   loading: boolean;
 }
 
-const DomainCard: React.SFC<Props> = props => (
-  <Card raised fluid>
-    <Card.Content>
-      <Card.Header>
-        <Header as="h2" floated="left">
-          <span>{props.name}</span>
-        </Header>
-        <Header as="h2" floated="right">
-          <LoadingIcon active={props.loading} />
-        </Header>
-      </Card.Header>
-    </Card.Content>
-    <Card.Content>
-      <Card.Description>
-        <Collapse isOpened={!props.loading}>
-          <div>{props.children}</div>
-        </Collapse>
-      </Card.Description>
-    </Card.Content>
+const DomainCard: React.FC<Props> = props => (
+  <Card raised>
+    <CardHeader
+      title={props.name}
+      action={
+        <CircularProgress
+          color="inherit"
+          variant={props.loading ? 'indeterminate' : 'static'}
+          value={100}
+        />
+      }
+    />
+    <Divider />
+
+    <CardContent>
+      <Collapse in={!props.loading}>{props.children}</Collapse>
+    </CardContent>
   </Card>
 );
 

@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, CardHeader, CardContent } from '@material-ui/core';
 
 const Legal: React.SFC = () => (
-  <Card raised fluid>
-    <Card.Content>
-      <h3>NOTICE, DISCLAIMERS AND TERMS OF USE:</h3>
-    </Card.Content>
-    <Card.Content>
+  <Card raised>
+    <CardHeader title="NOTICE, DISCLAIMERS AND TERMS OF USE:" />
+    <CardContent>
       <p>
         By submitting an inquiry,you agree to these terms of usage and
         limitations of warranty. In particular,you agree not to use this data to
@@ -18,7 +16,7 @@ const Legal: React.SFC = () => (
         compile this data for any purpose, including mining this data for your
         own personal or commercial purposes.
       </p>
-    </Card.Content>
+    </CardContent>
   </Card>
 );
 

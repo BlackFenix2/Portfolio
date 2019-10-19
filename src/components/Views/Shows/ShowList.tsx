@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { Card, Transition } from 'semantic-ui-react';
+import { Grid } from '@material-ui/core';
 import ShowCard from './ShowCard';
 
 const ShowList = (props: any) => (
   <div>
     <h1>List of shows</h1>
 
-    <Transition.Group as={Card.Group} animation="fly up" duration={500}>
+    <Grid container spacing={3}>
       {Object.values(props.shows).map((show: any) => (
-        <ShowCard {...show} key={show.title} />
+        <Grid item xs key={show.title}>
+          <ShowCard {...show} />
+        </Grid>
       ))}
-    </Transition.Group>
+    </Grid>
   </div>
 );
 
