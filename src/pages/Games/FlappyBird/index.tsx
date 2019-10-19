@@ -43,9 +43,13 @@ const FlappyBird = observer(() => {
             <Button onClick={toggleDebug}>Debug</Button>
           </h2>
           <p>
-            assets shamelessly hotlinked from this guy -
-            <a href="http://jimmyoliva.herokuapp.com/" target="blank">
-              http://jimmyoliva.herokuapp.com/
+            assets shamelessly hotlinked from this fella -
+            <a
+              href="https://jimmyoliva.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://jimmyoliva.com
             </a>
           </p>
           {/* eslint-disable-next-line no-return-assign */}
