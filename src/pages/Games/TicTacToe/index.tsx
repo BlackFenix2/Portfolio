@@ -1,7 +1,5 @@
 /* eslint-disable no-await-in-loop */
 import * as React from 'react';
-import { Divider, Grid, Segment } from 'semantic-ui-react';
-import Card from 'src/components/elements/Card';
 import {
   playCross,
   playCircle,
@@ -12,6 +10,8 @@ import Options from 'src/components/Views/TicTacToe/Options';
 import ScoreCard from 'src/components/Views/TicTacToe/ScoreCard';
 import Board from 'src/components/Views/TicTacToe/Board';
 import Debug from 'src/components/Views/TicTacToe/Debug';
+import { Grid, CardContent, CardHeader, Card } from '@material-ui/core';
+import css from '@emotion/css';
 
 export interface Stats {
   winner: string;
@@ -414,11 +414,11 @@ class TicTacToe extends React.Component<any, any> {
     }
   };
 
-  playerChanged = (e, { value }) => {
+  playerChanged = e => {
     this.reset();
 
     this.setState({
-      numOfPlayers: e.target.value === undefined ? value : e.target.value
+      numOfPlayers: e.target.value
     });
   };
 
@@ -581,46 +581,48 @@ class TicTacToe extends React.Component<any, any> {
     });
   };
 
-  setDelay = (e, { value }) => {
+  setDelay = (e, newValue) => {
     this.setState({
-      delay: value
+      delay: newValue
     });
   };
 
   render() {
     return (
-      <Grid padded="horizontally" stackable>
-        <Grid.Row>
-          <Grid.Column width={4}>
-            <Options
-              changePlayer={this.playerChanged}
-              resetGame={this.reset}
-              disabled={this.state.gameLocked}
-              playSelf={this.playSelf}
-              playSelfOnce={this.playSelfOnce}
-              playerCount={this.state.numOfPlayers}
-              toggleSound={this.toggleSound}
-              muted={this.state.muted}
-              toggleMachineLearning={this.toggleMachineLearning}
-              machineLearning={this.state.machineLearning}
-              setDelay={this.setDelay}
-              delay={this.state.delay}
+      <Grid container spacing={4}>
+        <Grid item xs={3}>
+          <Options
+            changePlayer={this.playerChanged}
+            resetGame={this.reset}
+            disabled={this.state.gameLocked}
+            playSelf={this.playSelf}
+            playSelfOnce={this.playSelfOnce}
+            playerCount={this.state.numOfPlayers}
+            toggleSound={this.toggleSound}
+            muted={this.state.muted}
+            toggleMachineLearning={this.toggleMachineLearning}
+            machineLearning={this.state.machineLearning}
+            setDelay={this.setDelay}
+            delay={this.state.delay}
+          />
+          <ScoreCard stats={this.state.stats} clearScore={this.clearScore} />
+        </Grid>
+        <Grid item xs={6}>
+          <Card>
+            <CardHeader
+              title={<h2>Tic-Tac-Toe</h2>}
+              css={css`
+                text-align: center;
+              `}
             />
-            <Divider hidden />
-            <ScoreCard stats={this.state.stats} clearScore={this.clearScore} />
-          </Grid.Column>
-          <Grid.Column width={8}>
-            <Card>
-              <Segment basic textAlign="center">
-                <h2>Tic-Tac-Toe</h2>
-                <Board clicked={this.boxClicked} gameBoard={this.state.board} />
-              </Segment>
-            </Card>
-          </Grid.Column>
-          <Grid.Column width={4}>
-            <Debug {...this.state} />
-          </Grid.Column>
-        </Grid.Row>
+            <CardContent>
+              <Board clicked={this.boxClicked} gameBoard={this.state.board} />
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={3}>
+          <Debug {...this.state} />
+        </Grid>
       </Grid>
     );
   }

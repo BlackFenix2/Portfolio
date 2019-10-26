@@ -1,48 +1,62 @@
 import * as React from 'react';
-import {
-  Button,
-  Container,
-  Icon,
-  Input,
-  Label,
-  Radio,
-  Segment,
-  Select
-} from 'semantic-ui-react';
-import Card from 'src/components/elements/Card';
 
-const options = [
-  { key: '2', text: '2', value: 2 },
-  { key: '1', text: '1', value: 1 },
-  { key: '0', text: 'Zero', value: 0 }
-];
+import {
+  Card,
+  CardContent,
+  Select,
+  Button,
+  MenuItem,
+  Slider,
+  Chip,
+  Switch,
+  FormControlLabel,
+  Container,
+  Box
+} from '@material-ui/core';
+import { css } from '@emotion/core';
+import { VolumeOff, VolumeMute } from '@material-ui/icons';
 
 const Options = props => (
   <Card>
-    <Segment basic>
-      <Container textAlign="center">
-        <h2>Options</h2>
-      </Container>
+    <CardContent>
+      <h2
+        css={css`
+          text-align: center;
+        `}
+      >
+        Options
+      </h2>
       <p>Players?</p>
       <Select
+        value={props.playerCount}
         onChange={props.changePlayer}
         disabled={props.disabled}
         placeholder="Choose number of Players"
-        options={options}
-      />
-      <div>
-        <Button primary onClick={props.resetGame} disabled={props.disabled}>
-          Reset
-        </Button>
-      </div>
-      <Input
-        value={props.delay}
-        onChange={props.setDelay}
-        type="range"
-        min={100}
-        max={1000}
-      />
-      <Label>{props.delay}</Label>
+      >
+        <MenuItem value={2}>2</MenuItem>
+        <MenuItem value={1}>1</MenuItem>
+        <MenuItem value={0}>zero</MenuItem>
+      </Select>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={props.resetGame}
+        disabled={props.disabled}
+      >
+        Reset
+      </Button>
+      <Box display="flex" justifyContent="space-between">
+        {/* //TODO fix slider performance bug */}
+        <Slider
+          value={props.delay}
+          onChange={props.setDelay}
+          min={100}
+          max={1000}
+          step={100}
+          marks
+        />
+        <Chip label={props.delay} />
+      </Box>
       {props.playerCount === 0 && (
         <div>
           <Button onClick={props.playSelf} disabled={props.disabled}>
@@ -53,18 +67,17 @@ const Options = props => (
           </Button>
         </div>
       )}
-      <Segment compact basic>
-        <Radio toggle onChange={props.toggleSound} />
-        <Icon color="black" name={props.muted ? 'volume off' : 'volume up'} />
-      </Segment>
-      <Segment compact basic>
-        <Radio
-          toggle
+      <CardContent>
+        <Switch onChange={props.toggleSound} />
+        {props.muted ? <VolumeMute /> : <VolumeOff />}
+      </CardContent>
+      <CardContent>
+        <FormControlLabel
+          control={<Switch onChange={props.toggleMachineLearning} />}
           label="Toggle Machine Learning"
-          onChange={props.toggleMachineLearning}
         />
-      </Segment>
-    </Segment>
+      </CardContent>
+    </CardContent>
   </Card>
 );
 

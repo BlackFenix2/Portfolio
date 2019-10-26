@@ -1,10 +1,14 @@
 import * as React from 'react';
-import { Segment } from 'semantic-ui-react';
-import Card from 'src/components/elements/Card';
+import { Grid, Card } from '@material-ui/core';
 
 const Debug = props => (
-  <Card className="w3-card w3-panel">
-    <Segment basic textAlign="center">
+  <Card>
+    <Grid
+      container
+      direction="column"
+      justify="space-evenly"
+      alignItems="center"
+    >
       <p>Stats:</p>
       <p>
         Players:
@@ -58,7 +62,7 @@ const Debug = props => (
         Delay:
         {String(props.warGamesDelay)}
       </p>
-    </Segment>
+    </Grid>
   </Card>
 );
 

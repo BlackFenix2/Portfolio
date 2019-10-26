@@ -1,13 +1,17 @@
 import * as React from 'react';
 import {
+  Card,
+  CardContent,
   Button,
-  Container,
-  Label,
+  Chip,
+  ListItem,
   List,
-  Segment,
-  Transition
-} from 'semantic-ui-react';
-import Card from 'src/components/elements/Card';
+  Tabs,
+  Tab,
+  Fade,
+  Divider
+} from '@material-ui/core';
+import { ToggleButtonGroup, ToggleButton } from '@material-ui/lab';
 
 interface Props {
   clearScore: () => void;
@@ -42,7 +46,7 @@ class ScoreCard extends React.Component<Props, State> {
     return stats;
   };
 
-  activeChange = (e, { content }) => {
+  activeChange = (e, content) => {
     if (content === this.state.active) {
       this.setState({
         active: ''
@@ -57,91 +61,77 @@ class ScoreCard extends React.Component<Props, State> {
   render() {
     return (
       <Card>
-        <Container textAlign="center">
+        <CardContent>
           <h2>Score Card</h2>
-          <Segment basic textAlign="center">
-            <Button secondary onClick={this.props.clearScore}>
-              Clear Score
-            </Button>
-          </Segment>
+          <Button color="secondary" onClick={this.props.clearScore}>
+            Clear Score
+          </Button>
 
-          <Label.Group>
-            <Label
-              as="a"
-              content="Draws"
-              detail={
-                this.props.stats.filter(x => x.winner === 'draw').length || 0
-              }
-              color={this.state.active === 'Draws' ? 'blue' : null}
-              onClick={this.activeChange}
-            />
-            <Label
-              as="a"
-              content="X Wins"
-              detail={
-                this.props.stats.filter(x => x.winner === 'X').length || 0
-              }
-              color={this.state.active === 'X Wins' ? 'blue' : null}
-              onClick={this.activeChange}
-            />
-            <Label
-              as="a"
-              content="O Wins"
-              detail={
-                this.props.stats.filter(x => x.winner === 'O').length || 0
-              }
-              color={this.state.active === 'O Wins' ? 'blue' : null}
-              onClick={this.activeChange}
-            />
-          </Label.Group>
-        </Container>
+          <ToggleButtonGroup
+            exclusive
+            size="large"
+            value={this.state.active}
+            onChange={this.activeChange}
+          >
+            <ToggleButton value="Draws">
+              {`Draws  ${
+                this.props.stats.filter(x => x.winner === 'draw').length
+              }`}
+            </ToggleButton>
+            <ToggleButton value="X Wins">
+              {`X Wins  ${
+                this.props.stats.filter(x => x.winner === 'X').length
+              }`}
+            </ToggleButton>
+            <ToggleButton value="O Wins">
+              {`O Wins  ${
+                this.props.stats.filter(x => x.winner === 'O').length
+              }`}
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </CardContent>
 
-        <Transition.Group
-          duration={200}
-          as={List}
-          celled
-          verticalAlign="middle"
-          animated
-        >
+        <CardContent>
           {Object.entries(
             this.filterList(this.props.stats, this.state.active)
           ).map((value, key) => (
-            <List.Item key={key}>
-              <ScoreCardItem {...value[1]} gameNumber={Number(value[0]) + 1} />
-            </List.Item>
+            <ScoreCardItem
+              key={key}
+              {...value[1]}
+              gameNumber={Number(value[0]) + 1}
+            />
           ))}
-        </Transition.Group>
 
-        <Segment basic textAlign="center">
           <Button onClick={this.props.clearScore}>Clear Score</Button>
-        </Segment>
+        </CardContent>
       </Card>
     );
   }
 }
 
 const ScoreCardItem = props => (
-  <List.List>
-    <List.Content>
-      <List.Item>
+  <Fade in>
+    <List>
+      <ListItem>
         Game:
         {props.gameNumber}
-      </List.Item>
-      <List.Item>
+      </ListItem>
+      <ListItem>
         Total Moves:
         {props.totalMoves}
-      </List.Item>
-      <List.Item>
+      </ListItem>
+      <ListItem>
         Board Order:
         {props.boxOrder}
-      </List.Item>
-      <List.Item>
+      </ListItem>
+      <ListItem>
         Winner:
         {props.winner}
-      </List.Item>
+      </ListItem>
       <Button onClick={() => props.scoreClicked(props.boxOrder)}>board</Button>
-    </List.Content>
-  </List.List>
+      <Divider />
+    </List>
+  </Fade>
 );
 
 export default ScoreCard;
