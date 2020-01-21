@@ -45,7 +45,6 @@
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-theme-core": "*",
     "jest": "^24.3.1",
-    "lerna": "^3.20.2",
     "prettier": "^1.16.3",
     "pretty-quick": "^1.10.0",
     "ts-jest": "^24.0.2",
