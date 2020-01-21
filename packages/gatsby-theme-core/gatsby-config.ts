@@ -1,5 +1,8 @@
 import { GatsbyConfig } from 'gatsby';
 
+const test = () => {
+  const vvv = 2;
+};
 const gatsbyConfig: GatsbyConfig = {
   // decrease bundle size
   polyfill: false,

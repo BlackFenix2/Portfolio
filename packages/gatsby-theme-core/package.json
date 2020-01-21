@@ -2,10 +2,14 @@
   "private": true,
   "name": "gatsby-theme-core",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "gatsby-config.js",
   "license": "MIT",
-  "devDependencies": {
+  "peerDependencies": {
     "gatsby": "^2.18.25",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1"
+  },
+  "devDependencies": {
     "gatsby-image": "^2.2.27",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-antd": "^2.0.2",
