@@ -1,7 +1,9 @@
 import { pathsToModuleNameMapper } from 'ts-jest/utils';
+import jestConfig from 'jest';
 import { compilerOptions } from '../../tsconfig.json';
+// need module.exports because jest validator doesnt like export default syntax
 
-module.exports = {
+const jestConfigObject = {
   // ts preset
   preset: 'ts-jest',
 
@@ -29,3 +31,4 @@ module.exports = {
     }
   }
 };
+module.exports = jestConfigObject;

@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "cool-cats",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-config-core": "*",
+    "gatsby-theme-core": "*"
+  }
+}

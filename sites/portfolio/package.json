@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "name": "portfolio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "prestart": "yarn",
+    "prebuild": "yarn",
+    "build": "gatsby build",
+    "build:serve": "yarn build && yarn serve",
+    "develop": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 gatsby develop --open -S",
+    "lint": "tsc && eslint . --ext .ts,.tsx --fix && pretty-quick",
+    "start": "yarn develop",
+    "serve": "gatsby serve --open",
+    "test": "jest",
+    "assemble": "yarn lint && yarn test && yarn build",
+    "update": "yarn upgrade-interactive --latest"
+  },
+  "devDependencies": {
+    "eslint-config-core": "*",
+    "gatsby-theme-core": "*"
+  }
+}

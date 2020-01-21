@@ -1,8 +1,12 @@
 {
-  "name": "server",
+  "name": "monorepo",
   "private": true,
   "version": "0.0.0",
   "license": "GNU",
+  "workspaces": [
+    "packages/*",
+    "sites/*"
+  ],
   "scripts": {
     "prestart": "yarn",
     "prebuild": "yarn",
@@ -63,6 +67,7 @@
     "gatsby-source-filesystem": "^2.1.31",
     "gatsby-transformer-sharp": "^2.2.21",
     "jest": "^24.3.1",
+    "lerna": "^3.20.2",
     "prettier": "^1.16.3",
     "pretty-quick": "^1.10.0",
     "ts-jest": "^24.0.2",
