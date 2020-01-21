@@ -4,8 +4,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "clean": "gatsby clean"
+  },
   "devDependencies": {
     "eslint-config-core": "*",
+    "gatsby": "^2.18.25",
     "gatsby-theme-core": "*"
   }
 }
