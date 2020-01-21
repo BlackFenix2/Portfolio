@@ -18,6 +18,11 @@
 
     "forceConsistentCasingInFileNames": true,
 
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+
+    "baseUrl": "./",
+    "paths": {
+      "src/*": ["src/*"]
+    }
   }
 }

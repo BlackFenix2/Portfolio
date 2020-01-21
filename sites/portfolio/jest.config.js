@@ -1,5 +1,5 @@
 // register ts-node to compile ts tools
-require('./tools/tsRegister');
+require('../../tools/tsRegister');
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-module.exports = require('./tools/jest/jest.config');
+module.exports = require('../../tools/jest/jest.config');
