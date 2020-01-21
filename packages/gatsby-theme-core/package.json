@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "main": "gatsby-config.js",
   "license": "MIT",
+  "scripts": {
+    "lint": "echo",
+    "test": "echo"
+  },
   "peerDependencies": {
     "gatsby": "^2.18.25",
     "react": "^16.10.1",

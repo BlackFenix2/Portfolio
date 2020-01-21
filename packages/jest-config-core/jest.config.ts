@@ -1,5 +1,6 @@
 import { pathsToModuleNameMapper } from 'ts-jest/utils';
-import { compilerOptions } from '../../sites/portfolio/tsconfig.json';
+import path from 'path';
+import { compilerOptions } from '../../tsconfig.json';
 // need module.exports because jest validator doesnt like export default syntax
 
 const jestConfigObject = {
@@ -7,14 +8,10 @@ const jestConfigObject = {
   preset: 'ts-jest',
 
   // ignore node_modules and gatsby cache
-  testPathIgnorePatterns: [
-    `node_modules`,
-    `.cache`,
-    `<rootDir>/sites/**/.cache`
-  ],
+  testPathIgnorePatterns: [`node_modules`, `.cache`],
   // configure Enzyme
-  // directory is relative to the actual jest.config.js file
-  setupFiles: ['./jest.setup.ts'],
+  // using __dirname to get path fo this current module
+  setupFiles: [`${__dirname}/jest.setup.ts`],
 
   // add module ALIAS to jest
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {

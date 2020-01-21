@@ -8,21 +8,13 @@
     "sites/*"
   ],
   "scripts": {
-    "lint": "tsc && eslint . --ext .ts,.tsx --fix && pretty-quick",
-    "test": "jest",
+    "lint": "yarn workspaces run lint",
+    "test": "yarn workspaces run test",
     "update": "yarn upgrade-interactive --latest"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.9",
-    "@types/node": "^12.7.12",
-    "babel-jest": "^24.9.0",
-    "enzyme-adapter-react-16": "^1.15.0",
     "eslint-config-core": "*",
-    "jest": "^24.3.1",
     "prettier": "^1.16.3",
-    "pretty-quick": "^1.10.0",
-    "ts-jest": "^24.0.2",
-    "ts-node": "^8.4.1",
     "typescript": "^3.6.4"
   },
   "dependencies": {

@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "name": "jest-config-core",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "echo",
+    "test": "echo"
+  },
+  "peerDependencies": {
+    "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "enzyme": "^3.9.0",
+    "ts-jest": "^24.3.0",
+    "enzyme-adapter-react-16": "^1.15.2"
+  }
+}
