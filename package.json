@@ -3,13 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "license": "GNU",
+  "installConfig": {
+    "pnp": true
+  },
   "workspaces": [
     "packages/*",
     "sites/*"
   ],
   "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "clean": "lerna clean",
     "lint": "tsc && eslint . --ext .ts,.tsx --fix && pretty-quick",
     "test": "jest",
     "update": "yarn upgrade-interactive --latest"

@@ -1,9 +1,7 @@
 {
   "extends": "../../tsconfig.json",
+  // must reapply baseUrl to point to this package root
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "src/*": ["src/*"]
-    }
+    "baseUrl": "."
   }
 }
