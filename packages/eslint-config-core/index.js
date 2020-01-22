@@ -61,6 +61,12 @@ module.exports = {
     // Typescript compiler already warns aganist unused vars
     '@typescript-eslint/no-unused-vars': OFF,
 
+    // allow empty arrow functions for useEffect hooks
+    '@typescript-eslint/no-empty-function': [
+      ERROR,
+      { allow: ['arrowFunctions'] }
+    ],
+
     // turning off untill refactoring
     'react/no-array-index-key': OFF,
 

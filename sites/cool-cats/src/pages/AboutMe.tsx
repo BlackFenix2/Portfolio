@@ -1,26 +1,22 @@
 import React from 'react';
-
 import SEO from 'src/components/SEO';
-import { css } from '@emotion/core';
-
 import img from 'src/lib/img/cat-sunglasses.jpg';
 import fadeIn from 'src/components/animations/fadeIn';
+import { css } from '@emotion/core';
 
 const style = css`
-  width: 100%;
-  height: 100%;
+  height: 60vh;
   ${fadeIn}
 `;
-const IndexPage = () => (
+const CoolCats = () => (
   <>
-    <SEO title="Home" />
-    <h1>Cool Cats (WIP)</h1>
-    <p>Pardon our appearance, our website is under construction </p>
-
+    <SEO title="About Me" />
+    <h1>About me</h1>
     <div>
       <img src={img} alt="Construction banner" css={style} />
+      <p>Ay yo, i am Chris P. the cool cat!</p>
     </div>
   </>
 );
 
-export default IndexPage;
+export default CoolCats;

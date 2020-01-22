@@ -1,5 +1,4 @@
 import { pathsToModuleNameMapper } from 'ts-jest/utils';
-import path from 'path';
 import { compilerOptions } from '../../tsconfig.json';
 // need module.exports because jest validator doesnt like export default syntax
 
@@ -13,10 +12,15 @@ const jestConfigObject = {
   // using __dirname to get path fo this current module
   setupFiles: [`${__dirname}/jest.setup.ts`],
 
-  // add module ALIAS to jest
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: '<rootDir>'
-  }),
+  moduleNameMapper: {
+    // mock non js/ts imports
+    '.+\\.(css|styl|less|sass|scss|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      'identity-obj-proxy',
+    // add module ALIAS to jest
+    ...pathsToModuleNameMapper(compilerOptions.paths, {
+      prefix: '<rootDir>'
+    })
+  },
 
   // display tests with description
   verbose: true,
