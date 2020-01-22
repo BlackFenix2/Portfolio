@@ -5,7 +5,6 @@ module.exports = {
     author: '@BlackFenix2'
   },
   plugins: [
-    'gatsby-theme-core',
     {
       resolve: 'gatsby-plugin-create-client-paths',
       options: { prefixes: ['/Shows/Details/*'] }
@@ -28,6 +27,7 @@ module.exports = {
         display: 'minimal-ui',
         icon: 'static/icon.png' // This path is relative to the root of the site.
       }
-    }
+    },
+    'gatsby-theme-core'
   ]
 };
