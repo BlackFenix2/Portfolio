@@ -33,6 +33,7 @@ const gatsbyConfig: GatsbyConfig = {
         icon: 'static/icon.png' // This path is relative to the root of the site.
       }
     },
+    'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
     // add support for absolute paths for gatsby loader
     {
