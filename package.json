@@ -8,9 +8,10 @@
     "sites/*"
   ],
   "scripts": {
+    "bootstrap": "lerna bootstrap --use-workspaces",
     "lint": "yarn workspaces run lint",
     "test": "yarn workspaces run test",
-    "build": "yarn workspace run build",
+    "build": "lerna run build",
     "update": "yarn upgrade-interactive --latest"
   },
   "devDependencies": {
