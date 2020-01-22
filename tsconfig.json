@@ -20,7 +20,7 @@
 
     "experimentalDecorators": true,
 
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "src/*": ["src/*"]
     }

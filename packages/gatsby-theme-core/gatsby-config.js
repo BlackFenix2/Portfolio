@@ -1,5 +1,5 @@
 // register ts-node to compile ts tools
-require('../../tools/tsRegister');
+require('tools');
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 module.exports = require('./gatsby-config.ts');

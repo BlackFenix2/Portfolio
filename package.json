@@ -15,10 +15,6 @@
   "devDependencies": {
     "eslint-config-core": "*",
     "prettier": "^1.16.3",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.6.4"
-  },
-  "dependencies": {
-    "enzyme": "^3.9.0"
+    "typescript": "^3.7.5"
   }
 }

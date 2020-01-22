@@ -297,23 +297,27 @@ class TicTacToe extends React.Component<any, any> {
 
         if (
           this.state.board[1] === this.state.board[3] &&
-          (this.state.board[1] && this.state.board[3])
+          this.state.board[1] &&
+          this.state.board[3]
         ) {
           // pattern 1: diagonal symbols
           this.startTurn(0);
         } else if (
           this.state.board[1] === this.state.board[5] &&
-          (this.state.board[1] && this.state.board[5])
+          this.state.board[1] &&
+          this.state.board[5]
         ) {
           this.startTurn(2);
         } else if (
           this.state.board[7] === this.state.board[3] &&
-          (this.state.board[7] && this.state.board[3])
+          this.state.board[7] &&
+          this.state.board[3]
         ) {
           this.startTurn(6);
         } else if (
           this.state.board[7] === this.state.board[5] &&
-          (this.state.board[7] && this.state.board[5])
+          this.state.board[7] &&
+          this.state.board[5]
         ) {
           this.startTurn(8);
         } else {
@@ -532,7 +536,7 @@ class TicTacToe extends React.Component<any, any> {
       const first = board[subBoard[0]];
       const second = board[subBoard[1]];
       const third = board[subBoard[2]];
-      if (first === second && first === third && (first && second && third)) {
+      if (first === second && first === third && first && second && third) {
         return first;
       }
     }

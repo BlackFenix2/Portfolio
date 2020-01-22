@@ -12,6 +12,7 @@
     "jest": "^24.9.0"
   },
   "dependencies": {
+    "tools": "*",
     "enzyme": "^3.9.0",
     "ts-jest": "^24.3.0",
     "enzyme-adapter-react-16": "^1.15.2"
