@@ -1,8 +1,5 @@
 import { GatsbyConfig } from 'gatsby';
 
-const test = () => {
-  const vvv = 2;
-};
 const gatsbyConfig: GatsbyConfig = {
   // decrease bundle size
   polyfill: false,
@@ -54,4 +51,4 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 // needed because gatsby validation wont allow 'export default' on precompile
-module.exports = gatsbyConfig;
+export default gatsbyConfig;
