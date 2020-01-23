@@ -8,7 +8,7 @@
     "lint": "echo",
     "test": "echo"
   },
-  "dependencies": {
+  "devDependencies": {
     "ts-node": "^8.6.2"
   }
 }

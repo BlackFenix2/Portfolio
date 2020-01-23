@@ -6335,9 +6335,9 @@ cssom@~0.3.6:
   integrity sha512-b0tGHbfegbhPJpxpiBPU2sCkigAqtM9O121le6bbOlgyV+NyGyCmVfJ6QW9eRjz8CpNfWEOYBIMIGRYkLwsIYg==
 
 cssstyle@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/cssstyle/-/cssstyle-2.1.0.tgz#99f50a3aa21d4af16e758ae3e454dcf5940b9122"
-  integrity sha512-1iwCdymVYhMdQWiZ+9mB7x+urdNLPGTWsIZt6euFk8Yi+dOERK2ccoAUA3Bl8I5vmK5qfz/eLkBRyLbs42ov4A==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/cssstyle/-/cssstyle-2.2.0.tgz#e4c44debccd6b7911ed617a4395e5754bba59992"
+  integrity sha512-sEb3XFPx3jNnCAMtqrXPDeSgQr+jojtCeNf8cvMNMh1cG970+lljssvQDzPq6lmmJu2Vhqood/gtEomBiHOGnA==
   dependencies:
     cssom "~0.3.6"
 
@@ -7619,7 +7619,7 @@ eslint-visitor-keys@^1.0.0, eslint-visitor-keys@^1.1.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.1.0.tgz#e2a82cea84ff246ad6fb57f9bde5b46621459ec2"
   integrity sha512-8y9YjtM1JBJU/A9Kc+SbaOV4y29sSWckBwMHa+FGtVj5gN/sbnKDf6xJUl+8g7FAij9LVaP8C24DUiH/f/2Z9A==
 
-eslint@^6.7.2:
+eslint@^6.7.2, eslint@^6.8.0:
   version "6.8.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-6.8.0.tgz#62262d6729739f9275723824302fb227c8c93ffb"
   integrity sha512-K+Iayyo2LtyYhDSYwz5D5QdWw0hCacNzyq1Y821Xna2xSJj7cijoLLYmLxTQgcgZ9mC61nryMy9S7GRbYpI5Ig==
@@ -8900,10 +8900,10 @@ gatsby-transformer-sharp@^2.2.21:
     semver "^5.7.1"
     sharp "^0.23.4"
 
-gatsby@^2.19.2:
-  version "2.19.2"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.19.2.tgz#ef5fa07b608858827c5fb535b75b1ecb5b0d0832"
-  integrity sha512-zydZ8BrJrfckjTcevnnuNBJRg8yLcg47uBb9fmzYMz7RWg9Xp0GW/5M3kDr1+cssS6xT8JyN0IaiSHMxszlhSQ==
+gatsby@^2.18.25:
+  version "2.19.3"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.19.3.tgz#16b7e0f1067a05b12f52d5899cef14473cb02b81"
+  integrity sha512-jnJ4t3iejcoB+bujV55O1m5uiq19EF/Jq9cWO+M0OSbbPRl3qplDQCbKzhSOXXcoTb7k0jxPMdUOqQ53rX9vpA==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.7.5"
@@ -14949,7 +14949,7 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-prettier@^1.16.3, prettier@^1.19.1:
+prettier@^1.19.1:
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
   integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==

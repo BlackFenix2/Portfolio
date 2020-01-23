@@ -8,14 +8,11 @@
     "lint": "echo",
     "test": "echo"
   },
-  "peerDependencies": {
-    "jest": "^24.9.0"
-  },
-  "dependencies": {
+  "devDependencies": {
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "identity-obj-proxy": "^3.0.0",
-    "tools": "*",
+    "jest": "^25.1.0",
     "ts-jest": "^24.3.0"
   }
 }
