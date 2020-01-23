@@ -9,8 +9,8 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap --use-workspaces",
-    "lint": "yarn workspaces run lint",
-    "test": "yarn workspaces run test",
+    "lint": "lerna run lint",
+    "test": "lerna run test",
     "build": "lerna run build",
     "update": "yarn upgrade-interactive --latest",
     "assemble": "lerna run assemble"
