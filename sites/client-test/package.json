@@ -17,7 +17,8 @@
     "assemble": "yarn lint && yarn test && yarn build"
   },
   "devDependencies": {
-    "gatsby": "^2.18.25"
+    "gatsby": "^2.18.25",
+    "gatsby-plugin-create-client-paths": "^2.1.21"
   },
   "dependencies": {
     "react": "^16.12.0",
