@@ -1,7 +1,6 @@
 import {
   useTheme,
   makeStyles,
-  Theme,
   createStyles,
   Divider,
   List,
@@ -24,7 +23,7 @@ import ListItemLink from './ListItemLink';
 import ListItemDropDown from './ListItemDropdown';
 
 const drawerWidth = 200;
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(theme =>
   createStyles({
     drawer: {
       [theme.breakpoints.up('sm')]: {
@@ -49,7 +48,7 @@ const ResponsiveDrawer = props => {
 
   return (
     <div>
-      <div className={classes.toolbar}>
+      <div className={classes.drawer}>
         <List>
           <ListItemLink to="/" icon={Home} label="HomePage" />
         </List>

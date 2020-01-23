@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "eslint-config-core": "*",
-    "gatsby": "^2.18.25",
+    "gatsby": "^2.19.2",
     "gatsby-theme-core": "*",
     "less": "^3.9.0"
   }
