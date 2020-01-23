@@ -5,7 +5,8 @@ import {
   Divider,
   List,
   Hidden,
-  Drawer
+  Drawer,
+  Theme
 } from '@material-ui/core';
 import {
   Home,
@@ -23,7 +24,7 @@ import ListItemLink from './ListItemLink';
 import ListItemDropDown from './ListItemDropdown';
 
 const drawerWidth = 200;
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     drawer: {
       [theme.breakpoints.up('sm')]: {
@@ -31,8 +32,7 @@ const useStyles = makeStyles(theme =>
         flexShrink: 0
       }
     },
-
-    toolbar: theme.mixins.toolbar,
+    // toolbar: theme.mixins.toolbar,
     drawerPaper: {
       width: drawerWidth
     },
