@@ -104,7 +104,7 @@ export default class Domain extends React.Component<{}, State> {
     return (
       <Box>
         <Grid container spacing={3}>
-          <Grid item xs={3}>
+          <Grid item sm={3}>
             <InputForm
               handleSubmit={this.handleSubmit}
               domain={this.state.domain}
@@ -112,7 +112,7 @@ export default class Domain extends React.Component<{}, State> {
               loading={loading}
             />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item sm={3}>
             <Card raised>
               <CardHeader title="Domain Name" />
               <CardContent>
@@ -122,22 +122,22 @@ export default class Domain extends React.Component<{}, State> {
           </Grid>
         </Grid>
         <Grid container spacing={3}>
-          <Grid item xs>
+          <Grid item sm>
             <DomainCard name="WHOIS" loading={loading}>
               <WhoisInfo {...whois} />
             </DomainCard>
           </Grid>
-          <Grid item xs>
+          <Grid item sm>
             <DomainCard name="DNS" loading={loading}>
               <DnsInfo {...dns} />
             </DomainCard>
           </Grid>
-          <Grid item xs>
+          <Grid item sm>
             <DomainCard name="Summary" loading={loading}>
               <SummaryInfo {...summary} />
             </DomainCard>
           </Grid>
-          <Grid item xs>
+          <Grid item sm>
             <DomainCard name="Debug" loading={loading}>
               <Debug
                 loading={loading}
@@ -148,7 +148,7 @@ export default class Domain extends React.Component<{}, State> {
           </Grid>
         </Grid>
         <Grid container spacing={3}>
-          <Grid item xs>
+          <Grid item sm>
             <DomainCard name="Raw WHOIS" loading={loading}>
               {whois.raw
                 .replace('\r', '')
@@ -160,7 +160,7 @@ export default class Domain extends React.Component<{}, State> {
           </Grid>
         </Grid>
         <Grid container spacing={3}>
-          <Grid item xs>
+          <Grid item sm>
             <Legal />
           </Grid>
         </Grid>

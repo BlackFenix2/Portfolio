@@ -5,16 +5,29 @@
   "license": "GNU",
   "workspaces": [
     "packages/*",
-    "sites/*"
+    "sites/*",
+    "toolkits/*"
   ],
   "scripts": {
-    "lint": "yarn workspaces run lint",
-    "test": "yarn workspaces run test",
-    "update": "yarn upgrade-interactive --latest"
+    "bootstrap": "lerna bootstrap --use-workspaces",
+    "lint": "lerna run lint",
+    "test": "lerna run test",
+    "build": "lerna run build",
+    "update": "yarn upgrade-interactive --latest",
+    "assemble": "lerna run assemble"
   },
   "devDependencies": {
-    "eslint-config-core": "*",
+    "cross-env": "^6.0.2",
+    "lerna": "^3.20.2",
+    "netlify-cli": "^2.30.0",
     "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
     "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "eslint-config-core": "*",
+    "gatsby-theme-core": "*",
+    "jest-config-core": "*",
+    "tools": "*"
   }
 }

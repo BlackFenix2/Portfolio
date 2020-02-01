@@ -1,12 +1,12 @@
 import {
   useTheme,
   makeStyles,
-  Theme,
   createStyles,
   Divider,
   List,
   Hidden,
-  Drawer
+  Drawer,
+  Theme
 } from '@material-ui/core';
 import {
   Home,
@@ -32,8 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
         flexShrink: 0
       }
     },
-
-    toolbar: theme.mixins.toolbar,
+    // toolbar: theme.mixins.toolbar,
     drawerPaper: {
       width: drawerWidth
     },
@@ -49,7 +48,7 @@ const ResponsiveDrawer = props => {
 
   return (
     <div>
-      <div className={classes.toolbar}>
+      <div className={classes.drawer}>
         <List>
           <ListItemLink to="/" icon={Home} label="HomePage" />
         </List>

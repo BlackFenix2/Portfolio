@@ -8,11 +8,6 @@
     "lint": "echo",
     "test": "echo"
   },
-  "peerDependencies": {
-    "gatsby": "^2.18.25",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1"
-  },
   "devDependencies": {
     "gatsby-image": "^2.2.27",
     "gatsby-plugin-alias-imports": "^1.0.5",
@@ -21,7 +16,7 @@
     "gatsby-plugin-emotion": "^4.1.10",
     "gatsby-plugin-eslint": "^2.0.5",
     "gatsby-plugin-layout": "^1.1.11",
-    "gatsby-plugin-manifest": "^2.2.37",
+    "gatsby-plugin-manifest": "^2.2.38",
     "gatsby-plugin-material-ui": "^2.1.6",
     "gatsby-plugin-netlify": "^2.1.19",
     "gatsby-plugin-no-sourcemaps": "^2.1.1",
