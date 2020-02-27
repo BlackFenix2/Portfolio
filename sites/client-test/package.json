@@ -17,11 +17,11 @@
     "assemble": "yarn lint && yarn test && yarn build"
   },
   "devDependencies": {
-    "gatsby": "^2.18.25",
-    "gatsby-plugin-create-client-paths": "^2.1.21"
+    "gatsby": "^2.19.22",
+    "gatsby-plugin-create-client-paths": "^2.1.22"
   },
   "dependencies": {
-    "react": "^16.12.0",
+    "react": "^16.13.0",
     "react-dom": "^16.12.0"
   }
 }

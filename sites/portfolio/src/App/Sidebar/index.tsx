@@ -17,11 +17,18 @@ import {
   Domain,
   Gavel
 } from '@material-ui/icons';
+import { css } from 'linaria';
 
 import React from 'react';
 import { useStoreState, useStoreActions } from 'src/state/hooks';
 import ListItemLink from './ListItemLink';
 import ListItemDropDown from './ListItemDropdown';
+
+const styles = {
+  nestedStyle: css`
+    padding-left: 32px !important;
+  `
+};
 
 const drawerWidth = 200;
 const useStyles = makeStyles((theme: Theme) =>
@@ -32,12 +39,8 @@ const useStyles = makeStyles((theme: Theme) =>
         flexShrink: 0
       }
     },
-    // toolbar: theme.mixins.toolbar,
     drawerPaper: {
       width: drawerWidth
-    },
-    nested: {
-      paddingLeft: theme.spacing(4)
     }
   })
 );
@@ -48,11 +51,9 @@ const ResponsiveDrawer = props => {
 
   return (
     <div>
-      <div className={classes.drawer}>
-        <List>
-          <ListItemLink to="/" icon={Home} label="HomePage" />
-        </List>
-      </div>
+      <List>
+        <ListItemLink to="/" icon={Home} label="HomePage" />
+      </List>
       <Divider />
       <List>
         <ListItemLink to="/Todo" icon={ListIcon} label="Todo" />
@@ -67,13 +68,13 @@ const ResponsiveDrawer = props => {
           <ListItemLink
             to="/Games/TicTacToe"
             label="Tic-Tac-Toe"
-            className={classes.nested}
+            className={styles.nestedStyle}
           />
 
           <ListItemLink
             to="/Games/FlappyBird"
             label="Flappy Bird"
-            className={classes.nested}
+            className={styles.nestedStyle}
           />
         </ListItemDropDown>
 

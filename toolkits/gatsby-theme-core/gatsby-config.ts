@@ -14,6 +14,7 @@ const gatsbyConfig: GatsbyConfig = {
     'gatsby-plugin-layout',
     'gatsby-plugin-eslint',
     'gatsby-plugin-typescript',
+    'gatsby-plugin-linaria',
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-sharp',

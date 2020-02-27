@@ -3,38 +3,42 @@ import { List, ListItem, ListItemText } from '@material-ui/core';
 import { IWhoisRecord } from './domainRecords';
 import LocalList from './List';
 
-const WhoisInfo: React.SFC<IWhoisRecord> = props => (
+interface Props {
+  whois: IWhoisRecord;
+}
+
+const WhoisInfo: React.SFC<Props> = ({ whois }) => (
   <List>
     <ListItem divider>
       <ListItemText>
-        Created Date: {new Date(props.created).toDateString()}
+        Created Date: {new Date(whois.created).toDateString()}
       </ListItemText>
     </ListItem>
     <ListItem divider>
       <ListItemText>
-        Expiration Date: {new Date(props.expired).toDateString()}
+        Expiration Date: {new Date(whois.expired).toDateString()}
       </ListItemText>
     </ListItem>
     <ListItem divider>
       <ListItemText>
-        Name Servers: <LocalList items={props.nameservers} />
+        Name Servers: <LocalList items={whois.nameservers} />
       </ListItemText>
     </ListItem>
     <ListItem divider>
       <ListItemText>
-        Domain Status: <LocalList items={props.domainStatus} />
+        Domain Status: <LocalList items={whois.domainStatus} />
       </ListItemText>
     </ListItem>
     <ListItem divider>
       <ListItemText>
         Admin E-mail:
-        {props.admin.email}
+        {whois.admin.email}
       </ListItemText>
     </ListItem>
     <ListItem>
       <ListItemText>
         Registrant E-mail:
-        {props.registrant.email}
+        {whois.registrant.email}
       </ListItemText>
     </ListItem>
   </List>
