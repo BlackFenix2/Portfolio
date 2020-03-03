@@ -4,10 +4,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "scripts": {
-    "lint": "echo",
-    "test": "echo"
-  },
   "peerDependencies": {
     "prettier": "^1.19.1"
   },

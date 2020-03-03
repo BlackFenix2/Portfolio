@@ -10,7 +10,7 @@
     "build": "gatsby build",
     "build:serve": "yarn build && yarn serve",
     "develop": "gatsby develop --open -S",
-    "lint": "tsc && eslint . --ext .ts,.tsx --fix && pretty-quick",
+    "lint": "tsc && eslint . --ext .ts,.tsx --fix",
     "start": "yarn develop",
     "serve": "gatsby serve --open",
     "test": "jest",

@@ -4,10 +4,6 @@
   "version": "1.0.0",
   "main": "gatsby-config.js",
   "license": "MIT",
-  "scripts": {
-    "lint": "echo",
-    "test": "echo"
-  },
   "devDependencies": {
     "gatsby-image": "^2.2.27",
     "gatsby-plugin-alias-imports": "^1.0.5",
