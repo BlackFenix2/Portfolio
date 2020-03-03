@@ -50,7 +50,7 @@
     "enzyme": "^3.9.0",
     "informed": "^3.5.0",
     "konva": "^4.1.6",
-    "linaria": "1.3.3",
+    "linaria": "1.4.0-beta.3",
     "lodash": "^4.17.15",
     "mobx": "^5.15.4",
     "mobx-react": "^6.1.8",
