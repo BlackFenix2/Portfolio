@@ -17,7 +17,7 @@ import {
   Domain,
   Gavel
 } from '@material-ui/icons';
-import { css } from 'linaria';
+import { css } from '@emotion/core';
 
 import React from 'react';
 import { useStoreState, useStoreActions } from 'src/state/hooks';
@@ -68,13 +68,13 @@ const ResponsiveDrawer = props => {
           <ListItemLink
             to="/Games/TicTacToe"
             label="Tic-Tac-Toe"
-            className={styles.nestedStyle}
+            css={styles.nestedStyle}
           />
 
           <ListItemLink
             to="/Games/FlappyBird"
             label="Flappy Bird"
-            className={styles.nestedStyle}
+            css={styles.nestedStyle}
           />
         </ListItemDropDown>
 

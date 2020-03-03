@@ -2,10 +2,10 @@ import React from 'react';
 import { Card, Icon } from 'antd';
 
 interface Props {
-  img: any;
+  img: unknown;
   description: string;
-  urls: any;
-  user: any;
+  urls: { full: string };
+  user: { name: React.ReactNode };
 }
 const CatCard = (props: Props) => (
   <Card
