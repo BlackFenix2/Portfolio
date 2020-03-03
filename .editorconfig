@@ -2,7 +2,7 @@ root = true
 # settings for JavaScript/JSON/MD/CSS files
 [*.{js,jsx,ts,tsx,json,md,css}]
 charset = utf-8
-end_of_line = lf
+end_of_line = crlf
 indent_size = 2
 indent_style = space
 trim_trailing_whitespace = true
