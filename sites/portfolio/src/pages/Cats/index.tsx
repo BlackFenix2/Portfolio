@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { css } from '@emotion/core';
+import { css } from 'linaria';
 import SEO from 'src/components/modules/SEO';
 import { FormControl, TextField, Button, Divider } from '@material-ui/core';
 import { Form } from 'informed';
@@ -43,7 +43,7 @@ class Cats extends React.Component<{}, State> {
           <img
             src={`https://http.cat/${this.state.number}.jpg`}
             alt="No cat found :("
-            css={catImage}
+            className={catImage}
           />
           <Divider />
           <Form onSubmit={this.GetCat}>

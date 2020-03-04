@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { styled } from 'linaria/react';
+import { css } from 'linaria';
 
 const firstFlipDown = css`
   transform: translate3d(0, 150%, 0);

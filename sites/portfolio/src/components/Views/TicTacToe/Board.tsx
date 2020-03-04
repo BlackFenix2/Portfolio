@@ -1,4 +1,4 @@
-import { css, Global } from '@emotion/core';
+import { css } from 'linaria';
 import * as React from 'react';
 
 const style = css`
@@ -82,19 +82,20 @@ const style = css`
 // TODO remove Global juryrig
 const Board = props => (
   <>
-    <Global styles={style} />
-    <div className="game">
-      <div
-        role="presentation"
-        className="board"
-        onClick={props.clicked}
-        onKeyUp={props.clicked}
-      >
-        {props.gameBoard.map((value, i) => (
-          <div key={i} data-square={i}>
-            {value}
-          </div>
-        ))}
+    <div className={style}>
+      <div className="game">
+        <div
+          role="presentation"
+          className="board"
+          onClick={props.clicked}
+          onKeyUp={props.clicked}
+        >
+          {props.gameBoard.map((value, i) => (
+            <div key={i} data-square={i}>
+              {value}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </>

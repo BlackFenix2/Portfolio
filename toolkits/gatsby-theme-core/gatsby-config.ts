@@ -9,13 +9,10 @@ const gatsbyConfig: GatsbyConfig = {
     author: '@BlackFenix2'
   },
   plugins: [
-    // add SSR support for Material-UI
-    'gatsby-plugin-material-ui',
     'gatsby-plugin-layout',
     'gatsby-plugin-eslint',
     'gatsby-plugin-typescript',
     'gatsby-plugin-linaria',
-    'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',

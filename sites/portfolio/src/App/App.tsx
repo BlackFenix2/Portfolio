@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from 'linaria';
-import styled from '@emotion/styled';
+import { styled } from 'linaria/react';
 import { CssBaseline } from '@material-ui/core';
 import { StoreProvider } from 'easy-peasy';
 import store from 'src/state';

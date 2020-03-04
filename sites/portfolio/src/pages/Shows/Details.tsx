@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from 'linaria';
 import { Link } from 'gatsby';
 import { Image } from 'semantic-ui-react';
 import { getImagePath } from 'src/helpers/imageHelper';

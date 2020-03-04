@@ -17,7 +17,6 @@
     "assemble": "yarn lint && yarn test && yarn build"
   },
   "dependencies": {
-    "@emotion/styled": "^10.0.14",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",

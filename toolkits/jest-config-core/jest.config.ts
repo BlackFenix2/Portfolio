@@ -9,7 +9,7 @@ const jestConfigObject = {
   // ignore node_modules and gatsby cache
   testPathIgnorePatterns: [`node_modules`, `.cache`],
   // configure Enzyme
-  // using __dirname to get path fo this current module
+  // using __dirname to get path for this current module
   setupFiles: [`${__dirname}/jest.setup.ts`],
 
   moduleNameMapper: {
