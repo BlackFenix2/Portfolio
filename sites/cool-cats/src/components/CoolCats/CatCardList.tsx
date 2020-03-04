@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import { css } from '@emotion/core';
+import { css } from 'linaria';
 import CatCard from './CatCard';
 
 const gridTest = css`
@@ -29,7 +29,7 @@ const CatCardListTest = ({ catList }) => (
         md={8}
         lg={8}
         xl={8}
-        css={css`
+        className={css`
           padding-top: 20px;
         `}
       >
@@ -40,7 +40,7 @@ const CatCardListTest = ({ catList }) => (
 );
 
 const CatCardList = ({ catList }) => (
-  <div css={gridTest}>
+  <div className={gridTest}>
     {catList.map(item => (
       <div key={item.id}>
         <CatCard {...item} />

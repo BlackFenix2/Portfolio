@@ -1,5 +1,6 @@
 import { pathsToModuleNameMapper } from 'ts-jest/utils';
 import { compilerOptions } from '../../tsconfig.json';
+
 // need module.exports because jest validator doesnt like export default syntax
 
 const jestConfigObject = {
@@ -25,12 +26,16 @@ const jestConfigObject = {
   // display tests with description
   verbose: true,
 
-  // allow typescript config
   globals: {
     'ts-jest': {
-      tsConfig: {
-        jsx: 'react',
-        esModuleInterop: true
+      // allow babel presets
+      babelConfig: {
+        presets: [
+          // transpile typescript to es5/commonjs
+          ['react-app', { flow: false, typescript: true }],
+          // enable Linaria css syntax
+          'linaria/babel'
+        ]
       }
     }
   }
