@@ -16,10 +16,7 @@ const CatCard = (props: Props) => (
       <Icon key="elip" type="ellipsis" />
     ]}
   >
-    <Card.Meta
-      title={props.user.name}
-      description={props.description}
-    ></Card.Meta>
+    <Card.Meta title={props.user.name} description={props.description} />
   </Card>
 );
 
