@@ -11,6 +11,7 @@ const jestConfigObject = {
   testPathIgnorePatterns: [`node_modules`, `.cache`],
   // configure Enzyme
   // using __dirname to get path for this current module
+
   setupFiles: [`${__dirname}/jest.setup.ts`],
 
   moduleNameMapper: {
@@ -36,6 +37,7 @@ const jestConfigObject = {
           // enable Linaria css syntax
           'linaria/babel'
         ]
+
       }
     }
   }

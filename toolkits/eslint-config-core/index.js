@@ -73,6 +73,7 @@ module.exports = {
     // permit JSX in tsx files
     'react/jsx-filename-extension': [ERROR, { extensions: ['tsx'] }],
 
+
     // removes prop-types requirement because Typescript
     'react/prop-types': OFF,
 

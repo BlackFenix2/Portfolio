@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "gatsby-config.js",
   "license": "MIT",
+
   "devDependencies": {
     "gatsby-image": "^2.2.27",
     "gatsby-plugin-alias-imports": "^1.0.5",
@@ -13,6 +14,7 @@
     "gatsby-plugin-layout": "^1.1.11",
     "gatsby-plugin-linaria": "^2.0.0",
     "gatsby-plugin-manifest": "^2.2.38",
+
     "gatsby-plugin-netlify": "^2.1.19",
     "gatsby-plugin-no-sourcemaps": "^2.1.1",
     "gatsby-plugin-offline": "^3.0.14",

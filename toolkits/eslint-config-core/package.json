@@ -4,12 +4,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+
+
   "peerDependencies": {
     "prettier": "^1.19.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
+
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.3.0",
@@ -18,6 +21,7 @@
     "eslint-plugin-json": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.19.0",
+
     "eslint-plugin-react-hooks": "^2.1.1"
   }
 }
