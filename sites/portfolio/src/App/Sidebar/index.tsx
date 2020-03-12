@@ -54,6 +54,7 @@ const ResponsiveDrawer = props => {
       <List>
         <ListItemLink to="/" icon={Home} label="HomePage" />
       </List>
+
       <Divider />
       <List>
         <ListItemLink to="/Todo" icon={ListIcon} label="Todo" />
