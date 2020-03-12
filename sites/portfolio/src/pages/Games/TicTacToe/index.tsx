@@ -594,7 +594,7 @@ class TicTacToe extends React.Component<any, any> {
   render() {
     return (
       <Grid container spacing={4}>
-        <Grid item xs={3}>
+        <Grid item sm={3}>
           <Options
             changePlayer={this.playerChanged}
             resetGame={this.reset}
@@ -611,7 +611,7 @@ class TicTacToe extends React.Component<any, any> {
           />
           <ScoreCard stats={this.state.stats} clearScore={this.clearScore} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item sm={6}>
           <Card>
             <CardHeader
               title={<h2>Tic-Tac-Toe</h2>}
@@ -624,7 +624,7 @@ class TicTacToe extends React.Component<any, any> {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item sm={3}>
           <Debug {...this.state} />
         </Grid>
       </Grid>
