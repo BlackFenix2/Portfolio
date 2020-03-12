@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { css } from '@emotion/core';
-import styled from '@emotion/styled';
+import { css } from 'linaria';
+import { styled } from 'linaria/react';
 
 import LoadingIcon from 'src/components/elements/LoadingIcon';
 
@@ -59,7 +59,7 @@ const Styled: React.FC<StyledProps> = () => {
       <h2>Styled Tests</h2>
       <h4>bleh</h4>
       <button className="w3-button w3-blue">Classic CSS</button>
-      <button css={test}>Styled Core</button>
+      <button className={test}>Styled Core</button>
       <ButtonContainer onClick={onChangeEvent} loading={style.loading}>
         Styled Button Component
       </ButtonContainer>

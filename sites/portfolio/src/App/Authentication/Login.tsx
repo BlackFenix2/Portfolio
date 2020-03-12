@@ -5,7 +5,7 @@ import Modal from 'src/components/elements/Modal';
 interface Props {
   visible?: boolean;
 }
-class Login extends React.Component<Props, any> {
+class Login extends React.Component<Props, unknown> {
   state = {
     visible: this.props.visible
   };

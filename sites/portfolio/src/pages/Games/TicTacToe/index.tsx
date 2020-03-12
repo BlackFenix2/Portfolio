@@ -11,7 +11,7 @@ import ScoreCard from 'src/components/Views/TicTacToe/ScoreCard';
 import Board from 'src/components/Views/TicTacToe/Board';
 import Debug from 'src/components/Views/TicTacToe/Debug';
 import { Grid, CardContent, CardHeader, Card } from '@material-ui/core';
-import css from '@emotion/css';
+import { css } from 'linaria';
 
 export interface Stats {
   winner: string;
@@ -594,7 +594,7 @@ class TicTacToe extends React.Component<any, any> {
   render() {
     return (
       <Grid container spacing={4}>
-        <Grid item xs={3}>
+        <Grid item sm={3}>
           <Options
             changePlayer={this.playerChanged}
             resetGame={this.reset}
@@ -611,11 +611,11 @@ class TicTacToe extends React.Component<any, any> {
           />
           <ScoreCard stats={this.state.stats} clearScore={this.clearScore} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item sm={6}>
           <Card>
             <CardHeader
               title={<h2>Tic-Tac-Toe</h2>}
-              css={css`
+              className={css`
                 text-align: center;
               `}
             />
@@ -624,7 +624,7 @@ class TicTacToe extends React.Component<any, any> {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item sm={3}>
           <Debug {...this.state} />
         </Grid>
       </Grid>

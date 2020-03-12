@@ -13,14 +13,14 @@ import {
   Container,
   Box
 } from '@material-ui/core';
-import { css } from '@emotion/core';
+import { css } from 'linaria';
 import { VolumeOff, VolumeMute } from '@material-ui/icons';
 
 const Options = props => (
   <Card>
     <CardContent>
       <h2
-        css={css`
+        className={css`
           text-align: center;
         `}
       >

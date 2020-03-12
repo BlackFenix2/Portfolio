@@ -2,10 +2,10 @@ import React from 'react';
 import { Card, Icon } from 'antd';
 
 interface Props {
-  img: any;
+  img: unknown;
   description: string;
-  urls: any;
-  user: any;
+  urls: { full: string };
+  user: { name: React.ReactNode };
 }
 const CatCard = (props: Props) => (
   <Card
@@ -16,10 +16,7 @@ const CatCard = (props: Props) => (
       <Icon key="elip" type="ellipsis" />
     ]}
   >
-    <Card.Meta
-      title={props.user.name}
-      description={props.description}
-    ></Card.Meta>
+    <Card.Meta title={props.user.name} description={props.description} />
   </Card>
 );
 

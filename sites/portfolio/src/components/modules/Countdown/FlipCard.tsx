@@ -1,21 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { styled } from 'linaria/react';
 
-const firstFlipDown = css`
-  transform: translate3d(0, 150%, 0);
-`;
-
-const secondFlipDown = css`
-  transform: translate3d(0, 0, 0);
-`;
-
-const transition = css`
-  transition: transform 0.5s;
-`;
-
-const timecard = css`
+export const FirstCard = styled.div<{ flip: boolean; reset: boolean }>`
   font-size: 50px;
   line-height: normal;
   position: absolute;
@@ -23,20 +10,23 @@ const timecard = css`
   top: 0;
   right: 0;
   bottom: 0;
-`;
-
-export const FirstCard = styled.div<{ flip: boolean; reset: boolean }>`
-  ${timecard};
-  transform: translate3d(0, 0, 0);
-  ${props => (props.flip ? firstFlipDown : null)}
-  ${props => (!props.reset ? transition : null)}
+  transform: ${props =>
+    props.flip ? 'translate3d(0, 150%, 0)' : 'translate3d(0, 0, 0)'};
+  transition: ${props => (!props.reset ? 'transform 0.5s' : 'transform 0.0s')};
 `;
 
 export const SecondCard = styled.div<{ flip: boolean; reset: boolean }>`
-  ${timecard};
+  font-size: 50px;
+  line-height: normal;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   transform: translate3d(0, -150%, 0);
-  ${props => (props.flip ? secondFlipDown : null)}
-  ${props => (!props.reset ? transition : null)}
+  transform: ${props =>
+    props.flip ? 'translate3d(0, 0, 0)' : 'translate3d(0, -150%, 0)'};
+  transition: ${props => (!props.reset ? 'transform 0.5s' : 'transform 0.0s')};
 `;
 
 interface Props {

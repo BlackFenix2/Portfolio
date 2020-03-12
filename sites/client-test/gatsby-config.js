@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: 'Cool Cats',
-    description: "Chris P's cool cats with swag",
+    title: 'Client Test',
+    description: 'Testing client-side routing overall',
     author: '@BlackFenix2'
   },
   plugins: [

@@ -14,7 +14,7 @@ import {
   List
 } from '@material-ui/core';
 import { Add, Delete } from '@material-ui/icons';
-import css from '@emotion/css';
+import { css } from 'linaria';
 import { useStoreState, useStoreActions } from 'src/state/hooks';
 import SEO from 'src/components/modules/SEO';
 
@@ -59,7 +59,7 @@ const Todo = () => {
       <SEO title="Todo List" />
       <Grid>
         <div
-          css={css`
+          className={css`
             display: none;
           `}
         >

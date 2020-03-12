@@ -6,7 +6,7 @@ import {
   OutlinedInput,
   InputAdornment
 } from '@material-ui/core';
-import css from '@emotion/css';
+import { css } from 'linaria';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 
 interface Props {
@@ -30,7 +30,7 @@ const TextInput: React.FC<Props> = props => {
     <div>
       <FormControl
         variant="outlined"
-        css={css`
+        className={css`
           background-color: white;
         `}
         fullWidth={props.fullWidth}
@@ -40,7 +40,7 @@ const TextInput: React.FC<Props> = props => {
           {props.label}
         </InputLabel>
         <OutlinedInput
-          css={css`
+          className={css`
             padding-right: 0;
           `}
           id={props.label}
@@ -54,7 +54,7 @@ const TextInput: React.FC<Props> = props => {
                   type="submit"
                   variant="contained"
                   color="primary"
-                  css={css`
+                  className={css`
                     height: 40px;
                     border-top-left-radius: 0;
                     border-bottom-left-radius: 0;

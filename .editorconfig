@@ -1,9 +1,15 @@
-# settings for JavaScript files
+root = true
+
+# all files
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+
+# settings for JavaScript/JSON/MD/CSS files
 [*.{js,jsx,ts,tsx,json,md,css}]
 charset = utf-8
-end_of_line = lf
 indent_size = 2
 indent_style = space
 trim_trailing_whitespace = true
-insert_final_newline = true
 quote_type = single

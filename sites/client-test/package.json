@@ -9,19 +9,19 @@
     "prebuild": "yarn",
     "build": "gatsby build",
     "build:serve": "yarn build && yarn serve",
-    "develop": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 gatsby develop --open -S",
-    "lint": "tsc && eslint . --ext .ts,.tsx --fix && pretty-quick",
+    "develop": "gatsby develop --open -S",
+    "lint": "tsc && eslint . --ext .ts,.tsx --fix",
     "start": "yarn develop",
     "serve": "gatsby serve --open",
     "test": "jest",
     "assemble": "yarn lint && yarn test && yarn build"
   },
   "devDependencies": {
-    "gatsby": "^2.18.25",
-    "gatsby-plugin-create-client-paths": "^2.1.21"
+    "gatsby": "^2.19.39",
+    "gatsby-plugin-create-client-paths": "^2.1.23"
   },
   "dependencies": {
-    "react": "^16.12.0",
+    "react": "^16.13.0",
     "react-dom": "^16.12.0"
   }
 }

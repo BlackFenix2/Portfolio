@@ -3,14 +3,14 @@ import React from 'react';
 import { Link } from 'gatsby';
 import img from 'src/lib/img/icon.png';
 import { Menu } from 'antd';
-import { css } from '@emotion/core';
+import { css } from 'linaria';
 
 const NavBar = () => (
   <nav>
     <Menu
       mode="horizontal"
       theme="dark"
-      css={css`
+      className={css`
         line-height: 64px;
       `}
     >

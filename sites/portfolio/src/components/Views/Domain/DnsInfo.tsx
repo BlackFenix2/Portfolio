@@ -3,21 +3,24 @@ import { List, ListItem, ListItemText } from '@material-ui/core';
 import { IDnsRecord } from './domainRecords';
 import LocalList from './List';
 
-const DnsInfo: React.SFC<IDnsRecord> = props => (
+interface Props {
+  dns: IDnsRecord;
+}
+const DnsInfo: React.SFC<Props> = ({ dns }) => (
   <List>
     <ListItem divider>
       <ListItemText>
-        A Record: <LocalList items={props.aRecords} />
+        A Record: <LocalList items={dns.aRecords} />
       </ListItemText>
     </ListItem>
     <ListItem divider>
       <ListItemText>
-        CNAME Record: <LocalList items={props.cnameRecords} />
+        CNAME Record: <LocalList items={dns.cnameRecords} />
       </ListItemText>
     </ListItem>
     <ListItem>
       <ListItemText>
-        MX Records: <LocalList items={props.mxRecords} />
+        MX Records: <LocalList items={dns.mxRecords} />
       </ListItemText>
     </ListItem>
   </List>
