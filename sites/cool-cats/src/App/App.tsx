@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Layout, Affix } from 'antd';
-import { css } from '@emotion/core';
+import { css } from 'linaria';
 import { Header } from './Header';
 import { Body } from './Body';
 import { Footer } from './Footer';
@@ -11,7 +11,7 @@ const App = ({ children }) => <AppLayout>{children}</AppLayout>;
 
 const AppLayout = ({ children }) => (
   <Layout
-    css={css`
+    className={css`
       min-height: 100vh;
     `}
   >
@@ -22,7 +22,7 @@ const AppLayout = ({ children }) => (
       </Layout.Header>
     </Affix>
     <Layout.Content
-      css={css`
+      className={css`
         padding: 0 50px;
       `}
     >

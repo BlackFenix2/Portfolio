@@ -71,7 +71,8 @@ module.exports = {
     'react/no-array-index-key': OFF,
 
     // permit JSX in tsx files
-    'react/jsx-filename-extension': [1, { extensions: ['tsx'] }],
+    'react/jsx-filename-extension': [ERROR, { extensions: ['tsx'] }],
+
 
     // removes prop-types requirement because Typescript
     'react/prop-types': OFF,

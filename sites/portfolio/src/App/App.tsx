@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { css, Global } from '@emotion/core';
-import styled from '@emotion/styled';
+import { css } from 'linaria';
+import { styled } from 'linaria/react';
 import { CssBaseline } from '@material-ui/core';
 import { StoreProvider } from 'easy-peasy';
 import store from 'src/state';
@@ -8,20 +8,6 @@ import Body from './Body';
 import Footer from './Footer';
 import Header from './Header';
 import Sidebar from './Sidebar';
-
-/**
- * @description Global CSS object, use with caution since these styles are not locally scoped
- */
-const globalAppStyle = css`
-  html,
-  body {
-    font-size: 16px;
-  }
-
-  .accordion > .content .active {
-    transition: 0.7s;
-  }
-`;
 
 const Container = styled.section`
   display: flex;
@@ -44,9 +30,8 @@ const App: React.FC = ({ children }) => (
 const AppLayout = ({ children }) => (
   <>
     <CssBaseline />
-    <Global styles={globalAppStyle} />
     <section
-      css={css`
+      className={css`
         display: flex;
       `}
     >

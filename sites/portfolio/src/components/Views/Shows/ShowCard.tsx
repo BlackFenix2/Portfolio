@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from 'linaria';
 import {
   Fab,
   Card,
@@ -51,7 +51,7 @@ const ShowCard: React.FC<Show> = props => {
         <img
           alt={`${props.title} Show Poster`}
           src={image}
-          css={css`
+          className={css`
             width: 315px;
             height: 400px;
           `}

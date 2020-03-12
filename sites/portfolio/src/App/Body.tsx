@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { css } from '@emotion/core';
+import { css } from 'linaria';
 import { Box } from '@material-ui/core';
 import Error from './Error';
 
 const Body = ({ children }) => (
   <main
-    css={css`
+    className={css`
       flex-grow: 1;
     `}
   >

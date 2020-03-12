@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { css } from '@emotion/core';
+import { css } from 'linaria';
 
 interface Props {
   href: string;
@@ -23,7 +23,12 @@ const style = css`
  * @param {*} href
  */
 const TabLink: FunctionComponent<Props> = props => (
-  <a href={props.href} target="_blank" rel="noopener noreferrer" css={style}>
+  <a
+    href={props.href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={style}
+  >
     {props.children}
   </a>
 );

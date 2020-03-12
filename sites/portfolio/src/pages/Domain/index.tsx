@@ -124,17 +124,17 @@ export default class Domain extends React.Component<{}, State> {
         <Grid container spacing={3}>
           <Grid item sm>
             <DomainCard name="WHOIS" loading={loading}>
-              <WhoisInfo {...whois} />
+              <WhoisInfo whois={whois} />
             </DomainCard>
           </Grid>
           <Grid item sm>
             <DomainCard name="DNS" loading={loading}>
-              <DnsInfo {...dns} />
+              <DnsInfo dns={dns} />
             </DomainCard>
           </Grid>
           <Grid item sm>
             <DomainCard name="Summary" loading={loading}>
-              <SummaryInfo {...summary} />
+              <SummaryInfo domainSummary={summary} />
             </DomainCard>
           </Grid>
           <Grid item sm>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { css } from '@emotion/core';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TabLink from 'src/components/TabLink';

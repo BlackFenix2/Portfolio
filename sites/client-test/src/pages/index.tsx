@@ -8,7 +8,6 @@ const App = () => {
       <h1>Client route test</h1>
       <nav className="nav">
         <Link to="/">Page 1</Link> <Link to="page/2">Page 2</Link>
-        {` `}
         <Link to="page/3">Page 3</Link> <Link to="page/4">Page 4</Link>
       </nav>
 
