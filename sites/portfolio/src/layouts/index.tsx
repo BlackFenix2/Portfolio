@@ -1,5 +1,5 @@
 import React from 'react';
-import App from 'src/App';
+import App from './App';
 
 const AppLayout = ({ children }) => <App>{children}</App>;
 
