@@ -9,7 +9,11 @@ const Body = ({ children }) => (
       flex-grow: 1;
     `}
   >
-    <Box padding={2}>
+    <Box
+      className={css`
+        padding: 16px;
+      `}
+    >
       <Error>{children}</Error>
     </Box>
   </main>
