@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, Icon } from 'antd';
+import { Card } from 'antd';
+import { LikeFilled, DislikeFilled, EllipsisOutlined } from '@ant-design/icons';
 
 interface Props {
   img: unknown;
@@ -11,9 +12,9 @@ const CatCard = (props: Props) => (
   <Card
     cover={<img src={props.urls.full} alt={props.description} />}
     actions={[
-      <Icon key="like" type="like" />,
-      <Icon key="dislike" type="dislike" />,
-      <Icon key="elip" type="ellipsis" />
+      <LikeFilled key="like" type="like" />,
+      <DislikeFilled key="dislike" type="dislike" />,
+      <EllipsisOutlined key="elip" type="ellipsis" />,
     ]}
   >
     <Card.Meta title={props.user.name} description={props.description} />

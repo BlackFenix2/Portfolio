@@ -71,3 +71,6 @@ yarn-error.log
 
 #Linaria
 .linaria-cache
+
+#next
+.next

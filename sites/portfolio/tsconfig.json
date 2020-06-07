@@ -2,6 +2,14 @@
   "extends": "../../tsconfig.json",
   // must reapply baseUrl to point to this package root
   "compilerOptions": {
-    "baseUrl": "./"
-  }
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": false,
+    "strict": false
+  },
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

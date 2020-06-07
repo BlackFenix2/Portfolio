@@ -1,23 +1,11 @@
-import * as React from 'react';
-import CountDown from 'src/components/modules/Countdown';
+import React from 'react';
 
-interface Props {
-  routing: any;
-}
-
-const Home = (props: Props) => {
+const Index: React.FC = () => {
   return (
     <div>
-      <CountDown
-        date={new Date(2020, 0, 14)}
-        label={`Windows 7/Server 2008 End of Life - ${new Date(
-          2020,
-          0,
-          14
-        ).toDateString()}`}
-      />
+      <p>Test</p>
     </div>
   );
 };
 
-export default Home;
+export default Index;
