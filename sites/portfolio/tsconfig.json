@@ -3,12 +3,11 @@
   // must reapply baseUrl to point to this package root
   "compilerOptions": {
     "baseUrl": ".",
-    "esModuleInterop": true,
     "isolatedModules": true,
-    "allowSyntheticDefaultImports": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
-    "strict": false
+    "strict": false,
+    "esModuleInterop": true
   },
   "exclude": ["node_modules"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
