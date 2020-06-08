@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { css } from 'linaria';
+
 import moment from 'moment';
+import { css } from '@emotion/core';
 import CountdownUnit from './CountdownUnit';
 
 interface Timer {
@@ -50,13 +51,13 @@ const CountDown = (props: {
 
   return (
     <div
-      className={css`
+      css={css`
         background-color: lightgray;
         border-radius: 5px;
       `}
     >
       <div
-        className={css`
+        css={css`
           box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.15);
           padding: 20px;
           text-align: center;
@@ -66,7 +67,7 @@ const CountDown = (props: {
         <h1>{props.label}</h1>
       </div>
       <div
-        className={css`
+        css={css`
           display: flex;
           flex: 1;
           justify-content: center;

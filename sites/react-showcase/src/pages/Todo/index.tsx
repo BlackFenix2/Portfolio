@@ -14,9 +14,9 @@ import {
   List,
 } from '@material-ui/core';
 import { Add, Delete } from '@material-ui/icons';
-import { css } from 'linaria';
 import { useStoreState, useStoreActions } from 'src/state/hooks';
 import SEO from 'src/components/modules/SEO';
+import { css } from '@emotion/core';
 
 const Todo = () => {
   const [task, setTask] = React.useState('');
@@ -59,7 +59,7 @@ const Todo = () => {
       <SEO title="Todo List" />
       <Grid>
         <div
-          className={css`
+          css={css`
             display: none;
           `}
         >

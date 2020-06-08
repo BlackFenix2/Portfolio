@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from 'linaria';
+import { css } from '@emotion/core';
 import { FlipCard } from './FlipCard';
 
 const border = css`
@@ -15,16 +15,16 @@ const border = css`
 
 const CountdownUnit = (props: { time: number; label: string }) => {
   return (
-    <div className={border}>
+    <div css={border}>
       <h3
-        className={css`
+        css={css`
           margin: 0;
         `}
       >
         {props.label}
       </h3>
       <div
-        className={css`
+        css={css`
           position: relative;
           height: 100%;
           overflow: hidden;

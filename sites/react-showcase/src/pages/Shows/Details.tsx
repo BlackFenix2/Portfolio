@@ -1,11 +1,10 @@
-import { css } from 'linaria';
 import { Link } from 'gatsby';
-import { Image } from 'semantic-ui-react';
 import { getImagePath } from 'src/helpers/imageHelper';
 import showStore from 'src/state/stores/showStore';
 import React from 'react';
 import { Router } from '@reach/router';
 import { pickBy } from 'lodash';
+import { css } from '@emotion/core';
 // Image equalizer
 
 const imgStyle = css`
@@ -36,7 +35,7 @@ const DetailsComponent = (props: any) => {
   }, [show.poster]);
   return (
     <div>
-      <Image src={image} alt="where is the item" css={imgStyle} />
+      <img src={image} alt="where is the item" css={imgStyle} />
       <h1>{show.title}</h1>
       <p>{show.description}</p>
       <Link to="/Shows">Go Back</Link>

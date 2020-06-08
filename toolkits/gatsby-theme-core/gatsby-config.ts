@@ -6,13 +6,13 @@ const gatsbyConfig: GatsbyConfig = {
   siteMetadata: {
     title: 'Placeholder Title',
     description: 'The placeholder in gatsby-theme-core',
-    author: '@BlackFenix2'
+    author: '@BlackFenix2',
   },
   plugins: [
     'gatsby-plugin-layout',
     'gatsby-plugin-eslint',
     'gatsby-plugin-typescript',
-    'gatsby-plugin-linaria',
+    'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
@@ -25,8 +25,8 @@ const gatsbyConfig: GatsbyConfig = {
         background_color: '#3f51b5',
         theme_color: '#f50057',
         display: 'minimal-ui',
-        icon: 'static/icon.png' // This path is relative to the root of the site.
-      }
+        icon: 'static/icon.png', // This path is relative to the root of the site.
+      },
     },
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
@@ -35,11 +35,11 @@ const gatsbyConfig: GatsbyConfig = {
       resolve: 'gatsby-plugin-alias-imports',
       options: {
         alias: {
-          src: 'src'
-        }
-      }
-    }
-  ]
+          src: 'src',
+        },
+      },
+    },
+  ],
 };
 
 // push production-only plugins

@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import {
   Card,
   CardContent,
@@ -13,14 +12,14 @@ import {
   Container,
   Box,
 } from '@material-ui/core';
-import { css } from 'linaria';
 import { VolumeOff, VolumeMute } from '@material-ui/icons';
+import { css } from '@emotion/core';
 
 const Options = (props) => (
   <Card>
     <CardContent>
       <h2
-        className={css`
+        css={css`
           text-align: center;
         `}
       >

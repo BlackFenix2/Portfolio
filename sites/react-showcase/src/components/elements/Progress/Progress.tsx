@@ -1,5 +1,5 @@
-import { styled } from 'linaria/react';
 import * as React from 'react';
+import styled from '@emotion/styled';
 
 interface Props {
   percent: number;

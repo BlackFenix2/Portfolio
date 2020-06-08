@@ -8,9 +8,9 @@ import {
   Domain,
   Gavel,
 } from '@material-ui/icons';
-import { css } from 'linaria';
 
 import React from 'react';
+import { css } from '@emotion/core';
 import ListItemLink from './ListItemLink';
 import ListItemDropDown from './ListItemDropdown';
 
@@ -41,13 +41,13 @@ const SideBar = () => {
           <ListItemLink
             to="/Games/TicTacToe"
             label="Tic-Tac-Toe"
-            className={styles.nestedStyle}
+            css={styles.nestedStyle}
           />
 
           <ListItemLink
             to="/Games/FlappyBird"
             label="Flappy Bird"
-            className={styles.nestedStyle}
+            css={styles.nestedStyle}
           />
         </ListItemDropDown>
 

@@ -1,4 +1,3 @@
-import { css } from 'linaria';
 import {
   Fab,
   Card,
@@ -14,6 +13,7 @@ import { Link } from 'gatsby';
 import { trimString } from 'src/helpers/stringHelpers';
 import { getImagePath } from 'src/helpers/imageHelper';
 import { Rating } from '@material-ui/lab';
+import { css } from '@emotion/core';
 
 interface Show {
   rating: number;
@@ -51,7 +51,7 @@ const ShowCard: React.FC<Show> = (props) => {
         <img
           alt={`${props.title} Show Poster`}
           src={image}
-          className={css`
+          css={css`
             width: 315px;
             height: 400px;
           `}

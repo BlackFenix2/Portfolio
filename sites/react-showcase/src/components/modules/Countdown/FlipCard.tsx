@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
-import { styled } from 'linaria/react';
+import styled from '@emotion/styled';
 
 export const FirstCard = styled.div<{ flip: boolean; reset: boolean }>`
   font-size: 50px;

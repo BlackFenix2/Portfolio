@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Container, Loader } from 'semantic-ui-react';
+import { Container, CircularProgress } from '@material-ui/core';
 
 const Loading = () => (
-  <Container textAlign="center">
+  <Container>
     <h2>Loading now</h2>
-    <Loader active inline />
+    <CircularProgress color="inherit" variant="indeterminate" />
   </Container>
 );
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { css } from 'linaria';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { CssBaseline, Toolbar } from '@material-ui/core';
 import {
   Root,
@@ -39,7 +39,7 @@ const SIDEBAR_ID = 'primarySidebar';
 const AppLayout = ({ children }) => (
   <Root scheme={defaultScheme}>
     <div
-      className={css`
+      css={css`
         display: flex;
         width: 100%;
         flex-direction: column;
@@ -59,7 +59,7 @@ const AppLayout = ({ children }) => (
         </SidebarContent>
       </DrawerSidebar>
       <MuiContent
-        className={css`
+        css={css`
           flex-grow: 1;
         `}
       >
