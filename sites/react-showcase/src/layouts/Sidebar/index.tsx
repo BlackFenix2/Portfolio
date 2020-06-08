@@ -1,13 +1,4 @@
-import {
-  useTheme,
-  makeStyles,
-  createStyles,
-  Divider,
-  List,
-  Hidden,
-  Drawer,
-  Theme,
-} from '@material-ui/core';
+import { Divider, List } from '@material-ui/core';
 import {
   Home,
   List as ListIcon,
@@ -20,7 +11,6 @@ import {
 import { css } from 'linaria';
 
 import React from 'react';
-import { useStoreState, useStoreActions } from 'src/state/hooks';
 import ListItemLink from './ListItemLink';
 import ListItemDropDown from './ListItemDropdown';
 
@@ -30,27 +20,9 @@ const styles = {
   `,
 };
 
-const drawerWidth = 200;
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    drawer: {
-      [theme.breakpoints.up('sm')]: {
-        width: drawerWidth,
-        flexShrink: 0,
-      },
-    },
-    drawerPaper: {
-      width: drawerWidth,
-    },
-  })
-);
-
-const ResponsiveDrawer = (props) => {
-  const theme = useTheme();
-  const classes = useStyles(theme);
-
+const SideBar = () => {
   return (
-    <div>
+    <nav>
       <List>
         <ListItemLink to="/" icon={Home} label="HomePage" />
       </List>
@@ -81,49 +53,6 @@ const ResponsiveDrawer = (props) => {
 
         <ListItemLink icon={Gavel} to="/License" label="License" />
       </List>
-    </div>
-  );
-};
-
-const SideBar = () => {
-  const mobileOpen = useStoreState((state) => state.mobile.isMobile);
-  const setMobileOpen = useStoreActions(
-    (actions) => actions.mobile.toggleMobile
-  );
-  const theme = useTheme();
-  const classes = useStyles(theme);
-  const handleDrawerToggle = () => {
-    setMobileOpen(false);
-  };
-  return (
-    <nav className={classes.drawer}>
-      <Hidden smUp implementation="css">
-        <Drawer
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-          variant="temporary"
-          anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-        >
-          <ResponsiveDrawer />
-        </Drawer>
-      </Hidden>
-      <Hidden xsDown implementation="css">
-        <Drawer
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-          variant="permanent"
-          open
-        >
-          <ResponsiveDrawer />
-        </Drawer>
-      </Hidden>
     </nav>
   );
 };

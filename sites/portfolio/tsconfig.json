@@ -1,5 +1,5 @@
 {
-  // must reapply baseUrl to point to this package root
+  // Cannot extend typescript config in vercel deployments.
   "compilerOptions": {
     "baseUrl": ".",
     "isolatedModules": true,

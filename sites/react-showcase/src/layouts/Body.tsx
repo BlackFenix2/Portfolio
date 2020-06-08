@@ -4,19 +4,13 @@ import { Box } from '@material-ui/core';
 import Error from './Error';
 
 const Body = ({ children }) => (
-  <main
+  <Box
     className={css`
-      flex-grow: 1;
+      padding: 16px;
     `}
   >
-    <Box
-      className={css`
-        padding: 16px;
-      `}
-    >
-      <Error>{children}</Error>
-    </Box>
-  </main>
+    <Error>{children}</Error>
+  </Box>
 );
 
 export default Body;

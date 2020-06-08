@@ -8,7 +8,7 @@ const ERROR = 'error';
 module.exports = {
   env: {
     browser: true,
-    node: true
+    node: true,
   },
 
   parser: '@typescript-eslint/parser',
@@ -19,14 +19,14 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier',
     'prettier/react',
-    'prettier/@typescript-eslint'
+    'prettier/@typescript-eslint',
   ],
   plugins: ['@typescript-eslint', 'react-hooks'],
 
   settings: {
     react: {
-      version: 'detect'
-    }
+      version: 'detect',
+    },
   },
   rules: {
     'react-hooks/rules-of-hooks': ERROR, // Checks rules of Hooks
@@ -64,7 +64,7 @@ module.exports = {
     // allow empty arrow functions for useEffect hooks
     '@typescript-eslint/no-empty-function': [
       ERROR,
-      { allow: ['arrowFunctions'] }
+      { allow: ['arrowFunctions'] },
     ],
 
     // turning off untill refactoring
@@ -99,6 +99,6 @@ module.exports = {
 
     // deprecated
     'jsx-a11y/label-has-for': OFF,
-    'jsx-a11y/label-has-associated-control': OFF
-  }
+    'jsx-a11y/label-has-associated-control': OFF,
+  },
 };

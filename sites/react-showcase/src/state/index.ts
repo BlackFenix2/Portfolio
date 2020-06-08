@@ -1,4 +1,4 @@
-import { createStore, action, Action, EasyPeasyConfig } from 'easy-peasy';
+import { createStore, EasyPeasyConfig } from 'easy-peasy';
 
 import storeModel from './models';
 
