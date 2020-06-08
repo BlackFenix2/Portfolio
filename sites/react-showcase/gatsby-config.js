@@ -7,6 +7,7 @@ module.exports = {
   plugins: [
     'gatsby-theme-core',
     'gatsby-theme-material-ui',
+    'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-plugin-create-client-paths',
       options: { prefixes: ['/Shows/Details/*'] },
