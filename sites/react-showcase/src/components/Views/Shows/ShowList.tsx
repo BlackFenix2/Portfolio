@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { Grid } from '@material-ui/core';
+import { Movie } from 'src/services/API/moviesAPI';
 import ShowCard from './ShowCard';
 
 const ShowList = (props: any) => (
   <div>
-    <h1>List of shows</h1>
+    <h1>List of trending movies and shows</h1>
 
     <Grid container spacing={3}>
-      {Object.values(props.shows).map((show: any) => (
-        <Grid item xs key={show.title}>
-          <ShowCard {...show} />
+      {Object.values(props.shows).map((show: Movie) => (
+        <Grid item sm={2} key={show.id}>
+          <ShowCard {...show} key={show.id} />
         </Grid>
       ))}
     </Grid>

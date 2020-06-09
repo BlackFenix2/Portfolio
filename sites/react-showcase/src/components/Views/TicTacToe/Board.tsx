@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { css, Global } from '@emotion/core';
 
-const mainSize = 33.333;
-const boardSize = 250;
-
 const style = css`
   :root {
     --main-size: 33.333%;
