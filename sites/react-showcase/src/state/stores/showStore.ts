@@ -6,9 +6,9 @@ import { Movie, moviesAPI } from 'src/services/API/moviesAPI';
 class ShowStore {
   @observable searchTerm = '';
 
-  @observable shows: Movie[];
+  @observable shows: Movie[] = [];
 
-  unfilteredShows: Movie[];
+  unfilteredShows: Movie[] = [];
 
   @action fetchMovies = async () => {
     this.unfilteredShows = (await moviesAPI.getMoviesList()).results;
