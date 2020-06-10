@@ -63,12 +63,12 @@ const ShowCard: React.FC<Movie> = (props) => {
           style={{ textDecoration: 'none' }}
         >
           <Button variant="contained" size="small" color="primary">
-            Share
+            Details
           </Button>
         </Link>
 
         <Button variant="contained" size="small" color="primary">
-          Learn More
+          IMDB
         </Button>
       </CardActions>
     </Card>
