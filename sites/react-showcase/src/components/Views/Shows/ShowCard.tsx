@@ -6,6 +6,7 @@ import {
   CardContent,
   CardActions,
   Box,
+  Button,
 } from '@material-ui/core';
 import { Add, Remove } from '@material-ui/icons';
 import React from 'react';
@@ -13,17 +14,16 @@ import { Link } from 'gatsby';
 import { trimString } from 'src/helpers/stringHelpers';
 import { Rating } from '@material-ui/lab';
 import { Movie } from 'src/services/API/moviesAPI';
+import moment from 'moment';
 
 const ShowCard: React.FC<Movie> = (props) => {
-  const [image, setImage] = React.useState<string>('');
-  const [rating, setRating] = React.useState(props.popularity || 0);
+  const { first_air_date, release_date } = props;
+  const parsedReleaseDate = moment(
+    first_air_date || release_date,
+    'YYYY-MM-DD'
+  ).format('MM/DD/YYYY');
 
-  const increaseRating = () =>
-    rating < 5 ? setRating((prevRating) => prevRating + 1) : null;
-
-  const decreaseRating = () =>
-    rating > 0 ? setRating((prevRating) => prevRating - 1) : null;
-
+  const rating = props.popularity;
   return (
     <Card raised>
       <Link to={`/Shows/Details/${props.id}`}>
@@ -37,21 +37,40 @@ const ShowCard: React.FC<Movie> = (props) => {
 
       <CardHeader
         title={props.name || props.title}
-        subheader={props.first_air_date || props.release_date}
+        subheader={parsedReleaseDate}
       />
       <CardContent>
         {trimString(props.overview || 'none provided', 60)}
       </CardContent>
 
-      <Box component={CardActions} display="flex" justifyContent="center">
-        <Fab size="small" onClick={decreaseRating}>
-          <Remove />
-        </Fab>
-        <Rating value={rating} readOnly />
-        <Fab size="small" onClick={increaseRating}>
-          <Add />
-        </Fab>
+      <Box
+        component={CardActions}
+        display="flex"
+        justifyContent="center"
+        flexDirection="column"
+      >
+        <Box>{props.vote_average}/10</Box>
+        <Rating
+          readOnly
+          defaultValue={props.vote_average}
+          max={10}
+          precision={0.5}
+        />
       </Box>
+      <CardActions>
+        <Link
+          to={`/Shows/Details/${props.id}`}
+          style={{ textDecoration: 'none' }}
+        >
+          <Button variant="contained" size="small" color="primary">
+            Share
+          </Button>
+        </Link>
+
+        <Button variant="contained" size="small" color="primary">
+          Learn More
+        </Button>
+      </CardActions>
     </Card>
   );
 };
