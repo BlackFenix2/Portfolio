@@ -52,6 +52,9 @@ module.exports = {
     // devDependencies such as redux devtools are utilized in react app
     'import/no-extraneous-dependencies': OFF,
 
+    //allow state reassign, redux state uses immer.js to convert mutations to immutable state changes.
+    'no-param-reassign': ERROR,
+
     // disabled, all types auto-fix to interface. rule would be redundant.
     '@typescript-eslint/interface-name-prefix': OFF,
 
