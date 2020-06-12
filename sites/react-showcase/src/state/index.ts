@@ -4,7 +4,7 @@ import storeModel from './models';
 
 const config: EasyPeasyConfig = {
   // disable passing mutable state
-  disableImmer: true,
+  // disableImmer: true,
 
   // enalbe devtools in development only
   devTools: process.env.NODE_ENV === 'development',

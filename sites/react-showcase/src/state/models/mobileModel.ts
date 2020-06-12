@@ -7,11 +7,9 @@ export interface MobileModel {
 
 const mobileModel: MobileModel = {
   isMobile: false,
+
   toggleMobile: action((state, payload) => {
-    return {
-      ...state,
-      isMobile: payload,
-    };
+    state.isMobile = payload;
   }),
 };
 

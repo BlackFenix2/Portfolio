@@ -7,7 +7,7 @@ import { useStoreActions } from 'src/state/hooks';
 const Head = () => {
   return (
     <Typography variant="h6" noWrap>
-      Placeholder
+      React Showcase
     </Typography>
   );
 };

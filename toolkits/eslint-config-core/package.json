@@ -2,7 +2,7 @@
   "private": true,
   "name": "eslint-config-core",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": ".eslintrc.js",
   "license": "MIT",
   "peerDependencies": {
     "prettier": "^1.19.1"

@@ -22,44 +22,25 @@ const todoModel: TodoModel = {
     (state) => state.todoList.filter((todo) => todo.isComplete).length
   ),
   addTodo: action((state, payload) => {
-    return {
-      ...state,
-      todoList: [
-        ...state.todoList,
-        {
-          id: createUUID(),
-          task: payload,
-          isComplete: false,
-        },
-      ],
-    };
+    state.todoList.push({
+      id: createUUID(),
+      task: payload,
+      isComplete: false,
+    });
   }),
   toggleTodo: action((state, payload) => {
-    const index = state.todoList.findIndex((item) => item === payload);
-
-    const newList = state.todoList;
-    newList[index].isComplete = !payload.isComplete;
-
-    return {
-      ...state,
-      todoList: newList,
-    };
+    const index = state.todoList.findIndex((item) => item.id === payload.id);
+    state.todoList[index].isComplete = !payload.isComplete;
   }),
   clearTodo: action((state, payload) => {
     const index = state.todoList.findIndex((item) => item.id === payload.id);
     const newList = [...state.todoList];
     newList.splice(index, 1);
-    return {
-      ...state,
-      todoList: newList,
-    };
+    state.todoList = newList;
   }),
 
   clearTodoList: action((state, _) => {
-    return {
-      ...state,
-      todoList: [],
-    };
+    state.todoList = [];
   }),
 };
 
