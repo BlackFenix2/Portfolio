@@ -46,7 +46,7 @@
     //allow state reassign, redux state uses immer.js to convert mutations to immutable state changes.
     "no-param-reassign": [
       "error",
-      { "props": ["true"], "ignorePropertyModificationsFor": ["state"] }
+      { "ignorePropertyModificationsFor": ["state"] }
     ],
 
     // disabled, all types auto-fix to interface. rule would be redundant.

@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from 'linaria';
+import { css } from '@emotion/core';
 
 import BackgroundImage from 'gatsby-background-image';
 import useStaticImage from 'src/services/graphql/static/useStaticImage';
@@ -10,7 +10,7 @@ const Banner = () => {
   return (
     <BackgroundImage
       fluid={staticImage}
-      className={css`
+      css={css`
         height: 200px;
       `}
     />

@@ -1,4 +1,4 @@
-import { css } from 'linaria';
+import { css } from '@emotion/core';
 
 const fadeIn = css`
   @keyframes fade {

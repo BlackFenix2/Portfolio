@@ -1,6 +1,6 @@
 import React from 'react';
 import TabLink from 'src/components/TabLink';
-import { css } from 'linaria';
+import { css } from '@emotion/core';
 
 const Credits = () => (
   <>
@@ -11,7 +11,7 @@ const Credits = () => (
         Images provided by unsplash -
         <TabLink href="https://unsplash.com">
           <span
-            className={css`
+            css={css`
               text-decoration: underline;
             `}
           >

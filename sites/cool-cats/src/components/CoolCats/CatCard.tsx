@@ -3,21 +3,23 @@ import { Card } from 'antd';
 import { LikeFilled, DislikeFilled, EllipsisOutlined } from '@ant-design/icons';
 
 interface Props {
-  img: unknown;
-  description: string;
-  urls: { full: string };
-  user: { name: React.ReactNode };
+  item: {
+    img: unknown;
+    description: string;
+    urls: { full: string };
+    user: { name: React.ReactNode };
+  };
 }
-const CatCard = (props: Props) => (
+const CatCard = ({ item }: Props) => (
   <Card
-    cover={<img src={props.urls.full} alt={props.description} />}
+    cover={<img src={item.urls.full} alt={item.description} />}
     actions={[
       <LikeFilled key="like" type="like" />,
       <DislikeFilled key="dislike" type="dislike" />,
       <EllipsisOutlined key="elip" type="ellipsis" />,
     ]}
   >
-    <Card.Meta title={props.user.name} description={props.description} />
+    <Card.Meta title={item.user.name} description={item.description} />
   </Card>
 );
 

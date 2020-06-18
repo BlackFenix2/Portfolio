@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SEO from 'src/components/SEO';
-import { css, cx } from 'linaria';
+import { css } from '@emotion/core';
 
 import img from 'src/lib/img/cat-sunglasses.jpg';
 import fadeIn from 'src/components/animations/fadeIn';
@@ -17,7 +17,7 @@ const IndexPage = () => (
     <p>Pardon our appearance, our website is under construction </p>
 
     <div>
-      <img src={img} alt="Construction banner" className={cx(style, fadeIn)} />
+      <img src={img} alt="Construction banner" css={style && fadeIn} />
     </div>
   </>
 );

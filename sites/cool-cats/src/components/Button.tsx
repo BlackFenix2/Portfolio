@@ -1,4 +1,4 @@
-import { styled } from 'linaria/react';
+import styled from '@emotion/styled';
 
 interface Props {
   big?: boolean;
@@ -11,7 +11,7 @@ const Button = styled.button<Props>`
   transition: 0.2s;
   padding: 8px 16px;
   cursor: pointer;
-  font-size: ${props => (props.big ? '20px' : '')};
+  font-size: ${(props) => (props.big ? '20px' : '')};
 
   &:hover {
     background-color: lightgrey;

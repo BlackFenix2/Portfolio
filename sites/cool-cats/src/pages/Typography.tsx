@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Seo from 'src/components/SEO';
-import { css } from 'linaria';
+import { css } from '@emotion/core';
 
 const Typography = () => (
   <>
     <Seo title="Typography" />
     <div
-      className={css`
+      css={css`
         display: flex;
         justify-content: space-around;
       `}
