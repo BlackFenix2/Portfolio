@@ -1,5 +1,4 @@
 import {
-  Fab,
   Card,
   CardHeader,
   CardMedia,
@@ -8,7 +7,6 @@ import {
   Box,
   Button,
 } from '@material-ui/core';
-import { Add, Remove } from '@material-ui/icons';
 import React from 'react';
 import { Link } from 'gatsby';
 import { trimString } from 'src/helpers/stringHelpers';
@@ -23,7 +21,6 @@ const ShowCard: React.FC<Movie> = (props) => {
     'YYYY-MM-DD'
   ).format('MM/DD/YYYY');
 
-  const rating = props.popularity;
   return (
     <Card raised>
       <Link to={`/Shows/Details/${props.id}`}>

@@ -2,12 +2,13 @@
   "private": true,
   "name": "eslint-config-core",
   "version": "1.0.0",
-  "main": ".eslintrc.js",
+  "main": ".eslintrc",
   "license": "MIT",
   "peerDependencies": {
     "prettier": "^1.19.1"
   },
   "devDependencies": {
+    "@types/eslint": "^7.2.0",
     "@typescript-eslint/eslint-plugin": "^3.1.0",
     "@typescript-eslint/parser": "^3.1.0",
     "eslint": "^7.2.0",
@@ -17,7 +18,6 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-json": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^4.0.4"
+    "eslint-plugin-react": "^7.19.0"
   }
 }

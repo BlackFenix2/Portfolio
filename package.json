@@ -17,7 +17,6 @@
     "assemble": "lerna run assemble"
   },
   "devDependencies": {
-    "core-js": "^3.6.4",
     "husky": "^4.2.3",
     "lerna": "^3.20.2",
     "prettier": "^2.0.5",

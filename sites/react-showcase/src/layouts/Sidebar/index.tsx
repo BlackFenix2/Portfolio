@@ -24,7 +24,7 @@ const SideBar = () => {
   return (
     <nav>
       <List>
-        <ListItemLink to="/" icon={Home} label="HomePage" />
+        <ListItemLink to="/" icon={Home} label="Home" />
       </List>
 
       <Divider />

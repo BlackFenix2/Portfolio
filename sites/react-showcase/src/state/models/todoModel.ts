@@ -15,7 +15,6 @@ export interface TodoModel {
   clearTodo: Action<TodoModel, Todo>;
   clearTodoList: Action<TodoModel>;
 }
-
 const todoModel: TodoModel = {
   todoList: [],
   completedTasks: computed(
@@ -39,7 +38,7 @@ const todoModel: TodoModel = {
     state.todoList = newList;
   }),
 
-  clearTodoList: action((state, _) => {
+  clearTodoList: action((state) => {
     state.todoList = [];
   }),
 };

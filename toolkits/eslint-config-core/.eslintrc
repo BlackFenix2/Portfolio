@@ -1,0 +1,98 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+
+  "parser": "@typescript-eslint/parser",
+
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/react",
+    "prettier/@typescript-eslint"
+  ],
+  "plugins": ["@typescript-eslint"],
+
+  // "settings": {
+  //   "react": {
+  //     "version": "detect"
+  //   }
+  // },
+
+  "rules": {
+    // opinion rule, no need to restrict syntax that works
+    "no-restricted-syntax": "off",
+    // typescript already checks for undefined vars
+    "no-undef": "off",
+
+    // code restriction, nested ternary operators are not that complicated
+    "no-nested-ternary": "off",
+
+    "react/jsx-no-undef": "off",
+
+    // you dont import extensions
+    "import/extensions": "off",
+
+    // typescript already handles path resolution
+    "import/no-unresolved": "off",
+
+    // devDependencies such as redux devtools are utilized in react app
+    "import/no-extraneous-dependencies": "off",
+
+    //allow state reassign, redux state uses immer.js to convert mutations to immutable state changes.
+    "no-param-reassign": [
+      "error",
+      { "props": ["true"], "ignorePropertyModificationsFor": ["state"] }
+    ],
+
+    // disabled, all types auto-fix to interface. rule would be redundant.
+    "@typescript-eslint/interface-name-prefix": "off",
+
+    // established coding standards in different packages use a different naming convention
+    "@typescript-eslint/camelcase": "off",
+
+    // allow empty arrow functions for useEffect hooks
+    "@typescript-eslint/no-empty-function": [
+      "error",
+      { "allow": ["arrowFunctions"] }
+    ],
+
+    // turning off untill refactoring
+    "react/no-array-index-key": "off",
+
+    // permit JSX in tsx files
+    "react/jsx-filename-extension": ["error", { "extensions": ["tsx"] }],
+
+    // removes prop-types requirement because Typescript
+    "react/prop-types": "off",
+
+    // destructuring props is not required, this can malform redux state updates
+    "react/destructuring-assignment": "off",
+
+    // why is this needed?
+    "react/button-has-type": "off",
+
+    // conflicts with prettier formatting (print limit)
+    "react/jsx-one-expression-per-line": "off",
+
+    // not needed, node project supports esnext syntax
+    "react/state-in-constructor": "off",
+
+    // TODO convert props spreading warning to error
+    "react/jsx-props-no-spreading": "warn",
+
+    // not needed for certain React Functions
+    "@typescript-eslint/explicit-function-return-type": "off",
+
+    // modified, removes code-bloat accessors in TS React.
+    "@typescript-eslint/explicit-member-accessibility": "off",
+
+    // deprecated
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/label-has-associated-control": "off"
+  }
+}
