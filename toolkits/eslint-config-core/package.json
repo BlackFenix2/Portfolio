@@ -4,9 +4,6 @@
   "version": "1.0.0",
   "main": ".eslintrc",
   "license": "MIT",
-  "peerDependencies": {
-    "prettier": "^1.19.1"
-  },
   "devDependencies": {
     "@types/eslint": "^7.2.0",
     "@typescript-eslint/eslint-plugin": "^3.1.0",

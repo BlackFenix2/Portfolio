@@ -21,6 +21,8 @@ const ShowCard: React.FC<Movie> = (props) => {
     'YYYY-MM-DD'
   ).format('MM/DD/YYYY');
 
+  const mediaType = props.first_air_date === null ? 'movie' : 'tv';
+
   return (
     <Card raised>
       <Link to={`/Shows/Details/${props.id}`}>
@@ -64,9 +66,11 @@ const ShowCard: React.FC<Movie> = (props) => {
           </Button>
         </Link>
 
-        <Button variant="contained" size="small" color="primary">
-          IMDB
-        </Button>
+        <Link to={`https://www.themoviedb.org/${mediaType}/${props.id}`}>
+          <Button variant="contained" size="small" color="primary">
+            IMDB
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   );

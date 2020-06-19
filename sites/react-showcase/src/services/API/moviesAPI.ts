@@ -15,7 +15,7 @@ export interface Movie {
   original_title: string;
   genre_ids: number[];
   backdrop_path: string;
-  adult: false;
+  adult: boolean;
   overview: string;
   poster_path: string;
   popularity: number;
