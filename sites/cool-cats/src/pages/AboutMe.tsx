@@ -5,14 +5,16 @@ import fadeIn from 'src/components/animations/fadeIn';
 import { css } from '@emotion/core';
 
 const style = css`
-  height: 60vh;
+  width: 200px;
+  height: 100%;
+  ${fadeIn}
 `;
 const CoolCats = () => (
   <>
     <SEO title="About Me" />
     <h1>About me</h1>
     <div>
-      <img src={img} alt="Construction banner" css={style && fadeIn} />
+      <img src={img} alt="Construction banner" css={style} />
       <p>Ay yo, i am Chris P. the cool cat!</p>
     </div>
   </>

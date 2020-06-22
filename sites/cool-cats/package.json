@@ -8,7 +8,7 @@
     "prebuild": "yarn",
     "build": "gatsby build",
     "build:serve": "yarn build && yarn serve",
-    "develop": "gatsby develop --open -S",
+    "develop": "gatsby develop --open",
     "lint": "tsc && eslint . --ext .ts,.tsx --fix",
     "start": "yarn develop",
     "serve": "gatsby serve --open",

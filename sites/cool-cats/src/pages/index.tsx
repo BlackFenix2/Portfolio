@@ -7,8 +7,9 @@ import img from 'src/lib/img/cat-sunglasses.jpg';
 import fadeIn from 'src/components/animations/fadeIn';
 
 const style = css`
-  width: 100%;
+  width: 200px;
   height: 100%;
+  ${fadeIn}
 `;
 const IndexPage = () => (
   <>
@@ -17,7 +18,7 @@ const IndexPage = () => (
     <p>Pardon our appearance, our website is under construction </p>
 
     <div>
-      <img src={img} alt="Construction banner" css={style && fadeIn} />
+      <img src={img} alt="Construction banner" css={style} />
     </div>
   </>
 );

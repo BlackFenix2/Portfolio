@@ -3,15 +3,18 @@ import { css } from '@emotion/core';
 import CatCard from './CatCard';
 
 const gridTest = css`
-  display: grid;
-  grid-template-columns: repeat(3, minmax(600px, 1fr));
-  grid-gap: 10px;
+  column-width: 30vw;
+
+  & > div {
+    padding-top: 20px;
+    display: inline-block;
+  }
 
   @media (max-width: 700px) {
     display: flex;
     align-items: center;
     flex-direction: column;
-    & > * {
+    & > div {
       padding-top: 20px;
     }
   }
@@ -19,11 +22,13 @@ const gridTest = css`
 
 const CatCardList = ({ catList }) => (
   <div css={gridTest}>
-    {catList.map((item) => (
-      <div key={item.id}>
-        <CatCard item={item} />
-      </div>
-    ))}
+    {catList.map((item) => {
+      return (
+        <div key={item.id}>
+          <CatCard item={item} />
+        </div>
+      );
+    })}
   </div>
 );
 
