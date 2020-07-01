@@ -49,6 +49,11 @@ const SideBar = () => {
             label="Flappy Bird"
             css={styles.nestedStyle}
           />
+          <ListItemLink
+            to="/Games/NumberGuess"
+            label="Number Guesser"
+            css={styles.nestedStyle}
+          />
         </ListItemDropDown>
 
         <ListItemLink icon={Gavel} to="/License" label="License" />

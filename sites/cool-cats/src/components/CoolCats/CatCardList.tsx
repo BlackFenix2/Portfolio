@@ -1,8 +1,8 @@
 import React from 'react';
-import { css } from '@emotion/core';
 import CatCard from './CatCard';
+import styled from '@emotion/styled';
 
-const gridTest = css`
+const GridContainer = styled.div`
   column-width: 30vw;
 
   & > div {
@@ -21,7 +21,7 @@ const gridTest = css`
 `;
 
 const CatCardList = ({ catList }) => (
-  <div css={gridTest}>
+  <GridContainer>
     {catList.map((item) => {
       return (
         <div key={item.id}>
@@ -29,7 +29,7 @@ const CatCardList = ({ catList }) => (
         </div>
       );
     })}
-  </div>
+  </GridContainer>
 );
 
 export default CatCardList;
