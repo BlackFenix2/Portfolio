@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Button, ButtonGroup } from '@material-ui/core';
 
-interface Props {}
+import { PageProps } from 'gatsby';
 
-const messages = {};
-
-const index = (props: Props) => {
+const index = (props: PageProps) => {
   const [low, setLow] = useState(0);
   const [high, setHigh] = useState(100);
   const [midpoint, setMidpoint] = useState(50);
 
+  // change midpoint when low and high values change
   useEffect(() => {
     setMidpoint(Math.round((low + high) / 2));
   }, [low, high]);
@@ -23,7 +22,7 @@ const index = (props: Props) => {
   };
 
   const correctGuess = () => {
-    confirm('Congrats, we did it!');
+    confirm('Congrats, you did it!');
     setLow(0);
     setHigh(100);
   };
