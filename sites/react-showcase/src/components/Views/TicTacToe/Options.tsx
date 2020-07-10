@@ -9,7 +9,6 @@ import {
   Chip,
   Switch,
   FormControlLabel,
-  Container,
   Box,
 } from '@material-ui/core';
 import { VolumeOff, VolumeMute } from '@material-ui/icons';

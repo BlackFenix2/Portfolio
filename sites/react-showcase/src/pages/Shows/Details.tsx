@@ -1,12 +1,9 @@
 import { Link } from 'gatsby';
-import { getImagePath } from 'src/helpers/imageHelper';
 import showStore from 'src/state/stores/showStore';
 import React from 'react';
 import { Router } from '@reach/router';
-import { find } from 'lodash';
 import { css } from '@emotion/core';
 import { observer } from 'mobx-react-lite';
-import { VideoCallRounded } from '@material-ui/icons';
 // Image equalizer
 
 const imgStyle = css`

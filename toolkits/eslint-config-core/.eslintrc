@@ -15,24 +15,13 @@
     "prettier/react",
     "prettier/@typescript-eslint"
   ],
-  "plugins": ["@typescript-eslint"],
-
-  // "settings": {
-  //   "react": {
-  //     "version": "detect"
-  //   }
-  // },
 
   "rules": {
     // opinion rule, no need to restrict syntax that works
     "no-restricted-syntax": "off",
+
     // typescript already checks for undefined vars
     "no-undef": "off",
-
-    // code restriction, nested ternary operators are not that complicated
-    "no-nested-ternary": "off",
-
-    "react/jsx-no-undef": "off",
 
     // you dont import extensions
     "import/extensions": "off",
@@ -63,6 +52,12 @@
 
     // turning off untill refactoring
     "react/no-array-index-key": "off",
+
+    // redundant with Typescript
+    "react/jsx-no-undef": "off",
+
+    // not using defaultProps with typescript/function components
+    "react/require-default-props": [0],
 
     // permit JSX in tsx files
     "react/jsx-filename-extension": ["error", { "extensions": ["tsx"] }],

@@ -60,7 +60,7 @@ export class BirdStore {
     this.timer.stop();
   };
 
-  @action unMountGame = (target) => {
+  @action unMountGame = () => {
     if (this.timer) {
       this.timer.stop();
     }

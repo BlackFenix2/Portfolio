@@ -20,8 +20,8 @@ const jestConfigObject = {
       'identity-obj-proxy',
     // add module ALIAS to jest
     ...pathsToModuleNameMapper(compilerOptions.paths, {
-      prefix: '<rootDir>'
-    })
+      prefix: '<rootDir>',
+    }),
   },
 
   // display tests with description
@@ -34,11 +34,9 @@ const jestConfigObject = {
         presets: [
           // transpile typescript to es5/commonjs
           ['react-app', { flow: false, typescript: true }],
-          // enable Linaria css syntax
-          'linaria/babel'
-        ]
-      }
-    }
-  }
+        ],
+      },
+    },
+  },
 };
 module.exports = jestConfigObject;

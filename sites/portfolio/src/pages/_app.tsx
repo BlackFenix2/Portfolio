@@ -22,7 +22,7 @@ import {
   ContentMockUp,
   FooterMockUp,
 } from '@mui-treasury/mockup/layout';
-import { Toolbar } from '@material-ui/core';
+import { Toolbar, NoSsr } from '@material-ui/core';
 
 const defaultScheme = getDefaultScheme();
 const Header = getHeader(styled);
@@ -33,32 +33,34 @@ const Footer = getFooter(styled);
 const SidebarContent = getSidebarContent(styled);
 
 const App = ({ Component, pageProps }: AppProps) => (
-  <Root scheme={defaultScheme}>
-    {({ state: { sidebar } }) => (
-      <>
-        <CssBaseline />
-        <Header>
-          <Toolbar>
-            <SidebarTrigger sidebarId="primarySidebar" />
-            <HeaderMockUp />
-          </Toolbar>
-        </Header>
-        <DrawerSidebar sidebarId="primarySidebar">
-          <SidebarContent>
-            <NavHeaderMockUp collapsed={sidebar.primarySidebar.collapsed} />
-            <NavContentMockUp />
-          </SidebarContent>
-        </DrawerSidebar>
-        <Content>
-          <ContentMockUp />
-          <Component {...pageProps} />
-        </Content>
-        <Footer>
-          <FooterMockUp />
-        </Footer>
-      </>
-    )}
-  </Root>
+  <NoSsr>
+    <Root scheme={defaultScheme}>
+      {({ state: { sidebar } }) => (
+        <>
+          <CssBaseline />
+          <Header>
+            <Toolbar>
+              <SidebarTrigger sidebarId="primarySidebar" />
+              <HeaderMockUp />
+            </Toolbar>
+          </Header>
+          <DrawerSidebar sidebarId="primarySidebar">
+            <SidebarContent>
+              <NavHeaderMockUp collapsed={sidebar.primarySidebar.collapsed} />
+              <NavContentMockUp />
+            </SidebarContent>
+          </DrawerSidebar>
+          <Content>
+            <ContentMockUp />
+            <Component {...pageProps} />
+          </Content>
+          <Footer>
+            <FooterMockUp />
+          </Footer>
+        </>
+      )}
+    </Root>
+  </NoSsr>
 );
 
 export default App;

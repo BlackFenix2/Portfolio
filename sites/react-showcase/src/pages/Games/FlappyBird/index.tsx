@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 import { observer } from 'mobx-react-lite';
 import birdStore from 'src/state/stores/games/birdStore';
@@ -16,7 +16,7 @@ const FlappyBird = observer(() => {
   React.useEffect(() => {
     // unmount
     return () => {
-      BirdStore.unMountGame(nv);
+      BirdStore.unMountGame();
     };
   }, [BirdStore, nv]);
 

@@ -3,11 +3,8 @@ import {
   Card,
   CardContent,
   Button,
-  Chip,
   ListItem,
   List,
-  Tabs,
-  Tab,
   Fade,
   Divider,
 } from '@material-ui/core';

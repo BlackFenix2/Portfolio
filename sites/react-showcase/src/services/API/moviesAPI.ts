@@ -30,7 +30,7 @@ interface MovieListResponse {
 }
 
 export const moviesAPI = {
-  async getMoviesList(body?): Promise<MovieListResponse> {
+  async getMoviesList(): Promise<MovieListResponse> {
     return externalApiRequest(
       `https://api.themoviedb.org/3/trending/all/day?api_key=${API_TOKEN}`,
       methods.GET

@@ -1,4 +1,3 @@
-import { find } from 'lodash';
 import { autorun, observable, action } from 'mobx';
 import { createContext } from 'react';
 import { Movie, moviesAPI } from 'src/services/API/moviesAPI';

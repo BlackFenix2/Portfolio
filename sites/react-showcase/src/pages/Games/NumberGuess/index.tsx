@@ -3,7 +3,7 @@ import { Grid, Button, ButtonGroup } from '@material-ui/core';
 
 import { PageProps } from 'gatsby';
 
-const index = (props: PageProps) => {
+const Index = (props: PageProps) => {
   const [low, setLow] = useState(0);
   const [high, setHigh] = useState(100);
   const [midpoint, setMidpoint] = useState(50);
@@ -22,6 +22,7 @@ const index = (props: PageProps) => {
   };
 
   const correctGuess = () => {
+    // eslint-disable-next-line no-restricted-globals
     confirm('Congrats, you did it!');
     setLow(0);
     setHigh(100);
@@ -47,4 +48,4 @@ const index = (props: PageProps) => {
   );
 };
 
-export default index;
+export default Index;

@@ -1,12 +1,9 @@
 import * as React from 'react';
 import CountDown from 'src/components/modules/Countdown';
 import SEO from 'src/components/modules/SEO';
+import { PageProps } from 'gatsby';
 
-interface Props {
-  routing: any;
-}
-
-const Home = (props: Props) => {
+const Home = (props: PageProps) => {
   return (
     <div>
       <SEO title="Home Page" />
