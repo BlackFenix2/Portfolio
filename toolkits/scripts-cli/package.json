@@ -3,9 +3,7 @@
   "name": "scripts-cli",
   "version": "1.0.0",
   "license": "MIT",
-  "bin": {
-    "scripts-cli": "index.js"
-  },
+  "bin": "index.js",
   "dependencies": {
     "chalk": "^4.0.0",
     "clear": "^0.1.0",

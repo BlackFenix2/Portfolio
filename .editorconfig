@@ -6,7 +6,7 @@ end_of_line = lf
 insert_final_newline = true
 
 
-# settings for JavaScript/JSON/MD/CSS files
+# settings for JavaScript/Typescript/JSON/MD/CSS files
 [*.{js,jsx,ts,tsx,json,md,css}]
 charset = utf-8
 indent_size = 2
