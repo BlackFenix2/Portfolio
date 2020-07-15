@@ -1,6 +1,7 @@
 {
   "name": "portfolio",
   "version": "0.1.0",
+  "license": "GNU",
   "private": true,
   "scripts": {
     "dev": "next",

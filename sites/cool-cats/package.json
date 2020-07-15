@@ -2,7 +2,7 @@
   "private": true,
   "name": "cool-cats",
   "version": "1.0.0",
-  "license": "MIT",
+  "license": "GNU",
   "scripts": {
     "prestart": "yarn",
     "prebuild": "yarn",
