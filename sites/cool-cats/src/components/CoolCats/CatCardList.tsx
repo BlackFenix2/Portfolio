@@ -1,6 +1,6 @@
 import React from 'react';
-import CatCard from './CatCard';
 import styled from '@emotion/styled';
+import CatCard from './CatCard';
 
 const GridContainer = styled.div`
   column-width: 30vw;

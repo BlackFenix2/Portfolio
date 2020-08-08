@@ -1,66 +1,22 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { AppProps } from 'next/app';
 import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import styled from 'styled-components';
+import Layout from 'src/layout';
 
-import {
-  Root,
-  getHeader,
-  getDrawerSidebar,
-  getSidebarTrigger,
-  getSidebarContent,
-  getContent,
-  getFooter,
-  getDefaultScheme,
-} from '@mui-treasury/layout';
+const App = ({ Component, pageProps }: AppProps) => {
+  React.useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
 
-import {
-  HeaderMockUp,
-  NavHeaderMockUp,
-  NavContentMockUp,
-  ContentMockUp,
-  FooterMockUp,
-} from '@mui-treasury/mockup/layout';
-import { Toolbar, NoSsr } from '@material-ui/core';
-
-const defaultScheme = getDefaultScheme();
-const Header = getHeader(styled);
-const DrawerSidebar = getDrawerSidebar(styled);
-const SidebarTrigger = getSidebarTrigger(styled);
-const Content = getContent(styled);
-const Footer = getFooter(styled);
-const SidebarContent = getSidebarContent(styled);
-
-const App = ({ Component, pageProps }: AppProps) => (
-  <NoSsr>
-    <Root scheme={defaultScheme}>
-      {({ state: { sidebar } }) => (
-        <>
-          <CssBaseline />
-          <Header>
-            <Toolbar>
-              <SidebarTrigger sidebarId="primarySidebar" />
-              <HeaderMockUp />
-            </Toolbar>
-          </Header>
-          <DrawerSidebar sidebarId="primarySidebar">
-            <SidebarContent>
-              <NavHeaderMockUp collapsed={sidebar.primarySidebar.collapsed} />
-              <NavContentMockUp />
-            </SidebarContent>
-          </DrawerSidebar>
-          <Content>
-            <ContentMockUp />
-            <Component {...pageProps} />
-          </Content>
-          <Footer>
-            <FooterMockUp />
-          </Footer>
-        </>
-      )}
-    </Root>
-  </NoSsr>
-);
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
+};
 
 export default App;
