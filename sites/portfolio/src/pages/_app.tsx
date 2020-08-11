@@ -16,9 +16,9 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
-        <title>Ernie Francis</title>
+        <title>Ernie Francis IV</title>
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Ernie Francis" />
+        <meta property="og:title" content="Ernie Francis IV" />
         <meta
           property="og:description"
           content="Portfolio site for Ernie Francis IV"
