@@ -18,7 +18,7 @@
     "@material-ui/icons": "^4.9.1",
     "@mui-treasury/layout": "^4.2.3",
     "@mui-treasury/mockup": "^1.2.1",
-    "next": "9.5.1",
+    "next": "9.5.4",
     "next-images": "^1.4.1",
     "react": "16.13.1",
     "react-dom": "16.13.1"
