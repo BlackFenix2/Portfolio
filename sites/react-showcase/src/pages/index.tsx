@@ -3,17 +3,14 @@ import CountDown from 'src/components/modules/Countdown';
 import SEO from 'src/components/modules/SEO';
 import { PageProps } from 'gatsby';
 
+const flashEolDate = new Date(2020, 11, 31);
 const Home = (props: PageProps) => {
   return (
     <div>
       <SEO title="Home Page" />
       <CountDown
-        date={new Date(2020, 0, 14)}
-        label={`Windows 7/Server 2008 End of Life - ${new Date(
-          2020,
-          0,
-          14
-        ).toDateString()}`}
+        date={flashEolDate}
+        label={`Flash End of Life - ${flashEolDate.toDateString()}`}
       />
     </div>
   );

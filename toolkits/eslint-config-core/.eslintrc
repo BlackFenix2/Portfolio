@@ -38,6 +38,8 @@
       { "ignorePropertyModificationsFor": ["state"] }
     ],
 
+    "@typescript-eslint/no-var-requires": "off",
+    "global-require": "off",
     // disabled, all types auto-fix to interface. rule would be redundant.
     "@typescript-eslint/interface-name-prefix": "off",
 
