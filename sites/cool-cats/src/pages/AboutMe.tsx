@@ -2,7 +2,7 @@ import React from 'react';
 import SEO from 'src/components/SEO';
 import img from 'src/lib/img/cat-sunglasses.jpg';
 import fadeIn from 'src/components/animations/fadeIn';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 const style = css`
   width: 200px;

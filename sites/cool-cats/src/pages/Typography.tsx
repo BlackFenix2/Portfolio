@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Seo from 'src/components/SEO';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 const Typography = () => (
   <>

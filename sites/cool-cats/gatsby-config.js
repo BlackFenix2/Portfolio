@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'Cool Cats',
     description: "Chris P's cool cats with swag",
-    author: '@BlackFenix2'
+    author: '@BlackFenix2',
   },
   plugins: [
     'gatsby-theme-core',
@@ -10,23 +10,26 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/src/lib/img`
-      }
+        path: `${__dirname}/src/lib/img`,
+      },
     },
     {
       resolve: 'gatsby-plugin-antd',
       options: {
-        style: true
-      }
+        style: true,
+      },
     },
     {
       resolve: `gatsby-plugin-less`,
       options: {
-        javascriptEnabled: true,
+        lessOptions: {
+          javascriptEnabled: true,
+        },
+
         modifyVars: {
-          'text-color': 'rgba(0, 0, 0)'
-        }
-      }
-    }
-  ]
+          'text-color': 'rgba(0, 0, 0)',
+        },
+      },
+    },
+  ],
 };

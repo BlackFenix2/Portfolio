@@ -1,8 +1,8 @@
 import { Divider, List, Box } from '@material-ui/core';
 import { Home, AccountTree, Work } from '@material-ui/icons';
 
-import React from 'react';
-import { css } from '@emotion/core';
+import * as React from 'react';
+import { css } from '@emotion/react';
 import ListItemLink from './ListItemLink';
 import ProfileStub from './ProfileStub';
 

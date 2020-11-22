@@ -5,6 +5,8 @@
   "main": "gatsby-config.js",
   "license": "MIT",
   "devDependencies": {
+    "@emotion/core": "^10.0.5",
+    "@emotion/styled-base": "^10.0.0",
     "gatsby-image": "^2.2.27",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-antd": "^2.0.2",

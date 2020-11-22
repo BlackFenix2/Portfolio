@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Card,
-  CardContent,
-  Typography,
-  List,
-  ListItem,
-} from '@material-ui/core';
+import { List, ListItem } from '@material-ui/core';
 
 interface Props {
   children?: React.ReactNode;

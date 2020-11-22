@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Affix } from 'antd';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { Header } from './Header';
 import { Body } from './Body';
 import { Footer } from './Footer';

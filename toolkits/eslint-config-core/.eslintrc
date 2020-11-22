@@ -23,6 +23,9 @@
     // typescript already checks for undefined vars
     "no-undef": "off",
 
+    //quick fix for https://stackoverflow.com/questions/63818415/react-was-used-before-it-was-defined
+    "@typescript-eslint/no-use-before-define": "off",
+
     // you dont import extensions
     "import/extensions": "off",
 

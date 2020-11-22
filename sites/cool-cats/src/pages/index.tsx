@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SEO from 'src/components/SEO';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import img from 'src/lib/img/cat-sunglasses.jpg';
 import fadeIn from 'src/components/animations/fadeIn';

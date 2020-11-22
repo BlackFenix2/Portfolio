@@ -1,6 +1,6 @@
 import React from 'react';
 import TabLink from 'src/components/TabLink';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 const Credits = () => (
   <>
