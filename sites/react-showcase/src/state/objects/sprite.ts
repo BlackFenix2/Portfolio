@@ -1,4 +1,4 @@
-import { observable } from 'mobx';
+import { makeObservable, observable } from 'mobx';
 
 export default class Sprite {
   @observable x: number;
@@ -12,6 +12,7 @@ export default class Sprite {
   height: number;
 
   constructor(x: number, y: number) {
+    makeObservable(this);
     this.x = x;
     this.y = y;
   }

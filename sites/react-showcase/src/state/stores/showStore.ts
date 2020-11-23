@@ -1,4 +1,4 @@
-import { autorun, observable, action } from 'mobx';
+import { autorun, observable, action, makeAutoObservable } from 'mobx';
 import { createContext } from 'react';
 import { Movie, moviesAPI } from 'src/services/API/moviesAPI';
 
@@ -16,6 +16,7 @@ class ShowStore {
   };
 
   constructor() {
+    makeAutoObservable(this);
     this.fetchMovies();
   }
 

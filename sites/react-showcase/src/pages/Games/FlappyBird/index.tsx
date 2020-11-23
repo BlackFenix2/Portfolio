@@ -6,7 +6,7 @@ import Board from 'src/components/Views/FlappyBird/Board';
 import Debug from 'src/components/Views/FlappyBird/Debug';
 import { Grid, Button } from '@material-ui/core';
 
-const FlappyBird = observer(() => {
+const FlappyBird = () => {
   const BirdStore = React.useContext(birdStore);
 
   let nv: HTMLDivElement;
@@ -65,6 +65,6 @@ const FlappyBird = observer(() => {
       <Grid item>{debugMode && <Debug stats={BirdStore} />}</Grid>
     </Grid>
   );
-});
+};
 
-export default FlappyBird;
+export default observer(FlappyBird);

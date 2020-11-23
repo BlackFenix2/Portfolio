@@ -11,7 +11,7 @@ const imgStyle = css`
   height: 400px;
 `;
 
-const DetailsComponent = (props: any) => {
+const DetailsComponent = (props) => {
   const ShowStore = React.useContext(showStore);
 
   const show = ShowStore.shows.find(

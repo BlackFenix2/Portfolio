@@ -1,4 +1,4 @@
-import { action, observable } from 'mobx';
+import { action, makeAutoObservable, observable } from 'mobx';
 import Bird from 'src/state/objects/bird';
 
 import { interval, Timer } from 'd3-timer';
@@ -6,7 +6,7 @@ import Pipe from 'src/state/objects/pipe';
 import InputUtility, { KEY } from 'src/state/utility/inputUtility';
 import { createContext } from 'react';
 
-export class BirdStore {
+class BirdStore {
   Bird: Bird = new Bird(30, 300);
 
   Pipe: Pipe = new Pipe(0, 0);
@@ -27,6 +27,7 @@ export class BirdStore {
   @observable gap = 90;
 
   constructor() {
+    makeAutoObservable(this);
     this.initial();
   }
 
@@ -39,7 +40,7 @@ export class BirdStore {
     if (!this.gameStart) {
       this.gameStart = true;
       this.input.listen(target);
-      this.timer = interval(() => this.gameStep(), 0.01);
+      this.timer = interval(() => this.gameStep(), 0.01, 1);
     }
   }
 

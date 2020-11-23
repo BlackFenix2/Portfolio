@@ -25,7 +25,7 @@ const TextInput: React.FC<Props> = (props) => {
   const [labelWidth, setLabelWidth] = React.useState(0);
   const labelRef = React.useRef<HTMLLabelElement>(null);
   React.useEffect(() => {
-    setLabelWidth(labelRef.current!.offsetWidth);
+    setLabelWidth(labelRef.current?.offsetWidth);
   }, []);
   return (
     <div>

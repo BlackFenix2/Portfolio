@@ -22,7 +22,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.13.1",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "antd": "^4.3.4",
+    "antd": "^4.8.5",
     "array-move": "^3.0.1",
     "axios": "^0.21.0",
     "gatsby-background-image": "^1.1.1",
