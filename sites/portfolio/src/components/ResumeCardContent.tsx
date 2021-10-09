@@ -2,7 +2,6 @@ import React from 'react';
 import { List, ListItem } from '@material-ui/core';
 
 interface Props {
-  children?: React.ReactNode;
   items: string[];
 }
 

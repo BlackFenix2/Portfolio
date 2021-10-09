@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box, Avatar, Typography, Link } from '@material-ui/core';
-import { css } from '@emotion/react';
+import { css } from '@emotion/css';
 
 const ProfileStub = () => {
   return (
     <>
       <Avatar
-        css={css`
+        className={css`
           height: 80px !important;
           width: 80px !important;
           & > img {
