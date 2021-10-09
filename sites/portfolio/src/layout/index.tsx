@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import { CssBaseline, Toolbar } from '@material-ui/core';
 import {
   Root,
@@ -12,6 +11,7 @@ import {
   getFooter,
   getDefaultScheme,
 } from '@mui-treasury/layout';
+import { css } from '@emotion/css';
 import Body from './Body';
 import Footer from './Footer';
 import Header from './Header';
@@ -36,7 +36,7 @@ const SIDEBAR_ID = 'primarySidebar';
 const AppLayout = ({ children }) => (
   <Root scheme={defaultScheme}>
     <div
-      css={css`
+      className={css`
         display: flex;
         width: 100%;
         flex-direction: column;
@@ -56,7 +56,7 @@ const AppLayout = ({ children }) => (
         </SidebarContent>
       </DrawerSidebar>
       <MuiContent
-        css={css`
+        className={css`
           flex-grow: 1;
         `}
       >

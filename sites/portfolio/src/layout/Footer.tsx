@@ -52,7 +52,12 @@ const Foot = () => (
   <footer>
     <Paper square>
       <Box paddingTop={2}>
-        <Grid container direction="column" justify="center" alignItems="center">
+        <Grid
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+        >
           <Icons />
           <CopyRight />
         </Grid>
