@@ -1,5 +1,5 @@
-import { Divider, List, Box } from '@material-ui/core';
-import { Home, AccountTree, Work } from '@material-ui/icons';
+import { Divider, List, Box } from '@mui/material';
+import { Home, AccountTree, Work } from '@mui/icons-material';
 
 import * as React from 'react';
 import { css } from '@emotion/react';

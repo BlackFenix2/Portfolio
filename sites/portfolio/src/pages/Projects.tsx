@@ -6,7 +6,7 @@ import {
   Card,
   CardContent,
   CardHeader,
-} from '@material-ui/core';
+} from '@mui/material';
 
 const Projects = () => {
   return (

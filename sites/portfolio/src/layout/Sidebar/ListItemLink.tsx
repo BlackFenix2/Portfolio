@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { SvgIconProps } from '@material-ui/core/SvgIcon';
+import { SvgIconProps } from '@mui/material/SvgIcon';
 
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import Link from 'src/components/Link';
 
 interface ListItemLinkProps {

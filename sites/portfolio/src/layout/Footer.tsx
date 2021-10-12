@@ -1,8 +1,8 @@
 import React from 'react';
-import { Paper, Grid, IconButton, Tooltip, Box } from '@material-ui/core';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import { Paper, Grid, IconButton, Tooltip, Box } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const Icons = () => (
   <div>
@@ -49,21 +49,19 @@ const CopyRight = () => (
 );
 
 const Foot = () => (
-  <footer>
-    <Paper square>
-      <Box paddingTop={2}>
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Icons />
-          <CopyRight />
-        </Grid>
-      </Box>
-    </Paper>
-  </footer>
+  <Paper square>
+    <Box paddingTop={2}>
+      <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Icons />
+        <CopyRight />
+      </Grid>
+    </Box>
+  </Paper>
 );
 
 export default Foot;

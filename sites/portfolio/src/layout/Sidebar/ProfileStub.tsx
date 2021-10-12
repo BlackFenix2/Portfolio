@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Avatar, Typography, Link } from '@material-ui/core';
+import { Box, Avatar, Typography, Link } from '@mui/material';
 import { css } from '@emotion/css';
 
 const ProfileStub = () => {
