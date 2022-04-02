@@ -3,7 +3,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "isolatedModules": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": false,
     "strict": false,
     "esModuleInterop": true,
@@ -14,8 +18,15 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "incremental": true
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

@@ -7,8 +7,17 @@ import {
   CardContent,
   CardHeader,
 } from '@mui/material';
+import Image from 'next/image';
+import { css } from '@emotion/css';
+
+type Project = {
+  title: string;
+  url: string;
+};
 
 const Projects = () => {
+  const [projects, setProjects] = React.useState<Project[]>([]);
+
   return (
     <Box p={2}>
       <Typography variant="h2">Projects</Typography>
@@ -18,15 +27,18 @@ const Projects = () => {
             <CardHeader title="React Showcase" />
             <CardContent>
               <a
-                href="https://react.erniefrancisiv.com"
+                href="https://react.erniefrancisiv.com/Shows"
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="https://353a23c500dde3b2ad58-c49fe7e7355d384845270f4a7a0a7aa1.ssl.cf2.rackcdn.com/5f2e3aa02ba175000828af2e/screenshot.png"
-                  alt="Svelte Showcase"
-                  width="100%"
-                  height="100%"
+                <Image
+                  className={css`
+                    object-fit: crop;
+                  `}
+                  src="/React-Showcase.png"
+                  alt="React Showcase"
+                  width={425}
+                  height={265}
                 />
               </a>
             </CardContent>
@@ -41,11 +53,46 @@ const Projects = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="https://353a23c500dde3b2ad58-c49fe7e7355d384845270f4a7a0a7aa1.ssl.cf2.rackcdn.com/5f2e440e544c5f00086c90e2/screenshot.png"
+                <Image
+                  src="/screencapture-svelte-erniefrancisiv-games-cameoparison-2022-04-02-15_30_22.png"
                   alt="Svelte Showcase"
-                  width="100%"
-                  height="100%"
+                  width={425}
+                  height={265}
+                />
+              </a>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item md={3} xs={12}>
+          <Card>
+            <CardHeader title="Domain Lookup" />
+            <CardContent>
+              <a
+                href="https://domain-lookup.ordereze.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src="/screencapture-domain-lookup-ordereze-2022-04-02-16_51_29.png"
+                  alt="Domain Lookup"
+                  width={425}
+                  height={265}
+                />
+              </a>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item md={3} xs={12}>
+          <Card>
+            <CardHeader title="Fuku TV" />
+            <CardContent>
+              <a href="https://fuku.tv" target="_blank" rel="noreferrer">
+                <Image
+                  src="/screencapture-fuku-tv-2022-04-02-15_29_43.png"
+                  alt="Fuku TV"
+                  width={425}
+                  height={265}
                 />
               </a>
             </CardContent>
@@ -60,11 +107,11 @@ const Projects = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="https://353a23c500dde3b2ad58-c49fe7e7355d384845270f4a7a0a7aa1.ssl.cf2.rackcdn.com/5d1cd5dbb9d2e00008dd840a/screenshot.png"
-                  alt="Svelte Showcase"
-                  width="100%"
-                  height="100%"
+                <Image
+                  src="/screencapture-donutwall-erniefrancisiv-WallOfDonuts-2022-04-02-16_55_57.png"
+                  alt="Wall of Donuts"
+                  width={425}
+                  height={265}
                 />
               </a>
             </CardContent>
@@ -79,11 +126,11 @@ const Projects = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="https://353a23c500dde3b2ad58-c49fe7e7355d384845270f4a7a0a7aa1.ssl.cf2.rackcdn.com/5f2e368fdcb44c000773b8cc/screenshot.png"
-                  alt="Svelte Showcase"
-                  width="100%"
-                  height="100%"
+                <Image
+                  src="/screencapture-coolcats-erniefrancisiv-2022-04-02-16_52_44.png"
+                  alt="Cool Cats"
+                  width={425}
+                  height={265}
                 />
               </a>
             </CardContent>
