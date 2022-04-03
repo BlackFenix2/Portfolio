@@ -1,15 +1,38 @@
 import React from 'react';
-import { Box, Link, Typography } from '@mui/material';
+import { Box, Button, Link, Typography } from '@mui/material';
+import Signature from 'src/components/Signature';
+import NextLink from 'next/link';
+import ThreeBackground from 'src/components/ThreeBackground';
 
 const Index: React.FC = () => {
   return (
-    <Box p={2}>
+    <Box
+      p={2}
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+    >
       <Typography variant="h2">Ernie Francis</Typography>
       <Typography variant="subtitle2">
         IT Enthauist / self-taught software developer
       </Typography>
 
-      <p>Hi there, Welcome to my website</p>
+      <Signature width={500} height={300} />
+
+      {/* <ThreeBackground /> */}
+      <Box style={{ padding: '2px' }} mt={2} display="flex" flexDirection="row">
+        <Box paddingX={5}>
+          <NextLink href="/Projects">
+            <Button variant="contained">My Projects</Button>
+          </NextLink>
+        </Box>
+        <Box paddingX={5}>
+          <NextLink href="/Resume">
+            <Button variant="contained">My Resume</Button>
+          </NextLink>
+        </Box>
+      </Box>
     </Box>
   );
 };

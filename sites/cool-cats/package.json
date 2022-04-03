@@ -33,7 +33,7 @@
     "react-sortable-hoc": "^1.9.1"
   },
   "devDependencies": {
-    "@types/react-helmet": "^6.0.0",
+    "@types/react-helmet": "^6.1.5",
     "gatsby": "^2.23.1",
     "gatsby-plugin-antd": "^2.2.0",
     "gatsby-plugin-less": "^4.2.0",
