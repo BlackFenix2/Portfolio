@@ -6,42 +6,44 @@ import {
   CardActions,
   Box,
   Button,
-} from '@material-ui/core';
+} from '@mui/material';
 import React from 'react';
 import { Link } from 'gatsby';
 import { trimString } from 'src/helpers/stringHelpers';
-import { Rating } from '@material-ui/lab';
+import { Rating } from '@mui/lab';
 import { Movie } from 'src/services/API/moviesAPI';
 import moment from 'moment';
 
-const ShowCard: React.FC<Movie> = (props) => {
-  const { first_air_date, release_date } = props;
+type Props = {
+  movie: Movie;
+};
+
+const ShowCard: React.FC<Props> = ({ movie }) => {
+  const { first_air_date, release_date } = movie;
   const parsedReleaseDate = moment(
     first_air_date || release_date,
     'YYYY-MM-DD'
   ).format('MM/DD/YYYY');
 
-  console.log(props.first_air_date);
-
-  const mediaType = props.first_air_date == null ? 'movie' : 'tv';
+  const mediaType = movie.first_air_date == null ? 'movie' : 'tv';
 
   return (
     <Card raised>
-      <Link to={`/Shows/Details/${props.id}`}>
+      <Link to={`/Shows/Details/${movie.id}`}>
         <CardMedia
           component="img"
-          alt={`${props.name || props.title} Show Poster`}
-          title={`${props.name || props.title} Show Poster`}
-          image={`https://image.tmdb.org/t/p/w500${props.poster_path}`}
+          alt={`${movie.name || movie.title} Show Poster`}
+          title={`${movie.name || movie.title} Show Poster`}
+          image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         />
       </Link>
 
       <CardHeader
-        title={props.name || props.title}
+        title={movie.name || movie.title}
         subheader={parsedReleaseDate}
       />
       <CardContent>
-        {trimString(props.overview || 'none provided', 60)}
+        {trimString(movie.overview || 'none provided', 60)}
       </CardContent>
 
       <Box
@@ -50,17 +52,17 @@ const ShowCard: React.FC<Movie> = (props) => {
         justifyContent="center"
         flexDirection="column"
       >
-        <Box>{props.vote_average}/10</Box>
+        <Box>{movie.vote_average}/10</Box>
         <Rating
           readOnly
-          defaultValue={props.vote_average}
+          defaultValue={movie.vote_average}
           max={10}
           precision={0.5}
         />
       </Box>
       <CardActions>
         <Link
-          to={`/Shows/Details/${props.id}`}
+          to={`/Shows/Details/${movie.id}`}
           style={{ textDecoration: 'none' }}
         >
           <Button variant="contained" size="small" color="primary">
@@ -69,7 +71,7 @@ const ShowCard: React.FC<Movie> = (props) => {
         </Link>
 
         <a
-          href={`https://www.themoviedb.org/${mediaType}/${props.id}`}
+          href={`https://www.themoviedb.org/${mediaType}/${movie.id}`}
           target="_blank"
           rel="noopener noreferrer"
           style={{ textDecoration: 'none' }}

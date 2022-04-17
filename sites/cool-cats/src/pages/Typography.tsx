@@ -2,8 +2,7 @@ import * as React from 'react';
 import Seo from 'src/components/SEO';
 import { css } from '@emotion/css';
 
-const Typography = () => (
-  <>
+const Typography = () => <>
     <Seo title="Typography" />
     <div
       className={css`
@@ -37,6 +36,5 @@ const Typography = () => (
       </div>
     </div>
   </>
-);
 
 export default Typography;

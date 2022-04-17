@@ -7,13 +7,11 @@
   "devDependencies": {
     "@babel/helper-call-delegate": "^7.10.1",
     "@types/enzyme": "^3.10.11",
-    "@types/jest": "^26.0.15",
-    "babel-jest": "^26.0.1",
+    "@types/jest": "^27.4.1",
+    "babel-jest": "^27.5.1",
     "babel-preset-react-app": "^10.0.1",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.15.5",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.0.1",
-    "ts-jest": "^26.1.0"
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.4"
   }
 }

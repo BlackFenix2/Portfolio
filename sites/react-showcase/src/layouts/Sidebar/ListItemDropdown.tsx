@@ -4,14 +4,15 @@ import {
   List,
   ListItem,
   Collapse,
-} from '@material-ui/core';
-import { ExpandLess, ExpandMore } from '@material-ui/icons';
+} from '@mui/material';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import React from 'react';
-import { SvgIconProps } from '@material-ui/core/SvgIcon';
+import { SvgIconProps } from '@mui/material/SvgIcon';
 
 interface ListItemDropdown {
   icon?: (props: SvgIconProps) => JSX.Element;
   label: string;
+  children: React.ReactNode;
 }
 const ListItemDropDown: React.FC<ListItemDropdown> = (props) => {
   const [open, setOpen] = React.useState(false);

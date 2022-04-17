@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Card, CardHeader, CardContent } from '@material-ui/core';
+import { Card, CardHeader, CardContent } from '@mui/material';
 
-const Legal: React.SFC = () => (
+const Legal: React.FC = () => (
   <Card raised>
     <CardHeader title="NOTICE, DISCLAIMERS AND TERMS OF USE:" />
     <CardContent>

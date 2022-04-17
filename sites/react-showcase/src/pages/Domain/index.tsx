@@ -8,7 +8,7 @@ import InputForm from 'src/components/Views/Domain/InputForm';
 import Legal from 'src/components/Views/Domain/Legal';
 import SummaryInfo from 'src/components/Views/Domain/SummaryInfo';
 import WhoisInfo from 'src/components/Views/Domain/WhoisInfo';
-import { Grid, Card, CardContent, Box, CardHeader } from '@material-ui/core';
+import { Grid, Card, CardContent, Box, CardHeader } from '@mui/material';
 
 interface State {
   response: IDomainRecord;
@@ -51,7 +51,7 @@ const initialState: State = {
   errorMessage: '',
 };
 
-export default class Domain extends React.Component<{}, State> {
+export default class Domain extends React.Component<any, State> {
   constructor(props) {
     super(props);
     this.state = initialState;

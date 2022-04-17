@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { Card, CardContent, CardHeader } from '@material-ui/core';
+import { Card, CardContent, CardHeader } from '@mui/material';
 import { Form } from 'informed';
 import TextInput from 'src/components/inputs';
-import { Search } from '@material-ui/icons';
+import { Search } from '@mui/icons-material';
 
-interface IProps {
-  item?: string;
+interface Props {
+  // item?: string;
   handleSubmit: () => void;
   change: (e: React.SyntheticEvent) => void;
   domain: string;
-  loading: boolean;
+  // loading: boolean;
 }
 
-const InputForm: React.FC<IProps> = (props) => (
+const InputForm: React.FC<Props> = (props) => (
   <Card raised>
     <CardHeader title="Domain Input" />
     <CardContent>

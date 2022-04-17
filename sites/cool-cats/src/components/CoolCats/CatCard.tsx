@@ -10,8 +10,7 @@ interface Props {
     user: { name: React.ReactNode };
   };
 }
-const CatCard = ({ item }: Props) => (
-  <Card
+const CatCard = ({ item }: Props) => <Card
     cover={<img src={item.urls.full} alt={item.description} />}
     actions={[
       <LikeFilled key="like" type="like" />,
@@ -21,6 +20,5 @@ const CatCard = ({ item }: Props) => (
   >
     <Card.Meta title={item.user.name} description={item.description} />
   </Card>
-);
 
 export default CatCard;

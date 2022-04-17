@@ -1,17 +1,22 @@
 import * as React from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { CssBaseline, Toolbar } from '@material-ui/core';
+
+import { Toolbar, Box } from '@mui/material';
+import Menu from '@mui/icons-material/Menu';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import IconButton from '@mui/material/IconButton';
 import {
   Root,
-  getHeader,
-  getDrawerSidebar,
-  getSidebarTrigger,
-  getSidebarContent,
-  getContent,
-  getFooter,
-  getDefaultScheme,
+  Header as MuiHeader,
+  EdgeTrigger,
+  EdgeSidebar,
+  SidebarContent,
+  Content as MuiContent,
+  Footer as MuiFooter,
+  Scheme,
 } from '@mui-treasury/layout';
+
+import { css } from '@emotion/css';
 import { StoreProvider } from 'easy-peasy';
 import store from 'src/state';
 import Body from './Body';
@@ -19,47 +24,66 @@ import Footer from './Footer';
 import Header from './Header';
 import Sidebar from './Sidebar';
 
-const defaultScheme = getDefaultScheme();
-const MuiHeader = getHeader(styled);
-const DrawerSidebar = getDrawerSidebar(styled);
-const SidebarTrigger = getSidebarTrigger(styled);
-const MuiContent = getContent(styled);
-const MuiFooter = getFooter(styled);
-const SidebarContent = getSidebarContent(styled);
-
-const App: React.FC = ({ children }) => (
+const scheme: Scheme = {
+  header: {
+    config: {
+      xs: {
+        height: 58,
+        position: 'sticky',
+      },
+      md: {
+        height: 64,
+        position: 'sticky',
+      },
+    },
+  },
+  leftEdgeSidebar: {
+    config: {
+      xs: {
+        width: 256,
+        variant: 'temporary',
+      },
+      sm: {
+        width: 256,
+        variant: 'temporary',
+      },
+    },
+  },
+};
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   // TODO wrap in React.Strict to detect depreciating practices
+
   <StoreProvider store={store}>
     <AppLayout>{children}</AppLayout>
   </StoreProvider>
 );
 
-const SIDEBAR_ID = 'primarySidebar';
-
 const AppLayout = ({ children }) => (
-  <Root scheme={defaultScheme}>
-    <div
-      css={css`
-        display: flex;
-        width: 100%;
-        flex-direction: column;
-        min-height: 100vh;
-      `}
-    >
-      <CssBaseline />
-      <MuiHeader color="primary" elevation={4}>
+  <Root scheme={scheme}>
+    <Box display="flex" flexDirection="column" minHeight="100vh">
+      <MuiHeader position="sticky" elevation={4} color="primary">
         <Toolbar>
-          <SidebarTrigger sidebarId={SIDEBAR_ID} color="inherit" />
+          <EdgeTrigger target={{ anchor: 'left', field: 'open' }}>
+            {(open, setOpen) => (
+              <IconButton
+                onClick={() => setOpen(!open)}
+                edge="start"
+                color="inherit"
+              >
+                {open ? <KeyboardArrowLeft /> : <Menu />}
+              </IconButton>
+            )}
+          </EdgeTrigger>
           <Header />
         </Toolbar>
       </MuiHeader>
-      <DrawerSidebar sidebarId={SIDEBAR_ID}>
+      <EdgeSidebar anchor="left">
         <SidebarContent>
           <Sidebar />
         </SidebarContent>
-      </DrawerSidebar>
+      </EdgeSidebar>
       <MuiContent
-        css={css`
+        className={css`
           flex-grow: 1;
         `}
       >
@@ -68,8 +92,8 @@ const AppLayout = ({ children }) => (
       <MuiFooter>
         <Footer />
       </MuiFooter>
-    </div>
+    </Box>
   </Root>
 );
 
-export default App;
+export default Layout;

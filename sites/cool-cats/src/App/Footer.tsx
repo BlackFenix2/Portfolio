@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaGithub } from 'react-icons/fa';
 import TabLink from 'src/components/TabLink';
 
-export const Footer = () => (
+export const Footer: React.FC = () => (
   <>
     <div>
       <TabLink href="https://github.com/BlackFenix2/Cool-Cats">
-        <FontAwesomeIcon icon={['fab', 'github']} size="2x" />
+        <FaGithub size="2em" />
       </TabLink>
     </div>
     <div>

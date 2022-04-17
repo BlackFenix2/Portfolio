@@ -20,16 +20,12 @@ const GridContainer = styled.div`
   }
 `;
 
-const CatCardList = ({ catList }) => (
-  <GridContainer>
-    {catList.map((item) => {
-      return (
+const CatCardList = ({ catList }) => <GridContainer>
+    {catList.map((item) => (
         <div key={item.id}>
           <CatCard item={item} />
         </div>
-      );
-    })}
+      ))}
   </GridContainer>
-);
 
 export default CatCardList;

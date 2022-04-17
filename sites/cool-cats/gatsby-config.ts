@@ -1,4 +1,6 @@
-module.exports = {
+import { GatsbyConfig } from 'gatsby';
+
+const gatsbyConfig: GatsbyConfig = {
   siteMetadata: {
     title: 'Cool Cats',
     description: "Chris P's cool cats with swag",
@@ -6,11 +8,12 @@ module.exports = {
   },
   plugins: [
     'gatsby-theme-core',
+    // '@chakra-ui/gatsby-plugin',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/src/lib/img`,
+        path: './src/lib/img',
       },
     },
     {
@@ -33,3 +36,4 @@ module.exports = {
     },
   ],
 };
+export default gatsbyConfig;

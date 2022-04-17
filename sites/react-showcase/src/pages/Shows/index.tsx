@@ -2,7 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react-lite';
 import showStore from 'src/state/stores/showStore';
 import ShowList from 'src/components/Views/Shows/ShowList';
-import { Search } from '@material-ui/icons';
+import { Search } from '@mui/icons-material';
 import TextInput from 'src/components/inputs';
 
 const Shows = () => {

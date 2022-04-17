@@ -31,10 +31,27 @@ interface MovieListResponse {
 
 export const moviesAPI = {
   async getMoviesList(): Promise<MovieListResponse> {
-    return externalApiRequest(
+    console.log('starting fetch');
+    const first20Movies = await externalApiRequest<MovieListResponse>(
       `https://api.themoviedb.org/3/trending/all/day?api_key=${API_TOKEN}`,
       methods.GET
     );
+    const second20Movies = await externalApiRequest<MovieListResponse>(
+      `https://api.themoviedb.org/3/trending/all/day?api_key=${API_TOKEN}&page=2`,
+      methods.GET
+    );
+
+    const fullMovieList: MovieListResponse = {
+      page: 1,
+      results: [
+        ...first20Movies.results,
+        ...second20Movies.results.slice(0, 4),
+      ],
+      total_pages: 2,
+      total_results: 24,
+    };
+
+    return fullMovieList;
   },
 };
 

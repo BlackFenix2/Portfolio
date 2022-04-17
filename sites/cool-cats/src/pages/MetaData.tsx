@@ -1,9 +1,7 @@
 import React from 'react';
 
-const MetaData = () => (
-  <div>
+const MetaData = () => <div>
     <p>ttt</p>
   </div>
-);
 
 export default MetaData;

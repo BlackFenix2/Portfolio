@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 import birdStore from 'src/state/stores/games/birdStore';
 import Board from 'src/components/Views/FlappyBird/Board';
 import Debug from 'src/components/Views/FlappyBird/Debug';
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button } from '@mui/material';
 
 const FlappyBird = () => {
   const BirdStore = React.useContext(birdStore);
@@ -15,6 +15,7 @@ const FlappyBird = () => {
 
   React.useEffect(() => {
     // unmount
+    console.log('moount');
     return () => {
       BirdStore.unMountGame();
     };
@@ -48,7 +49,7 @@ const FlappyBird = () => {
           </Button>
         </h2>
         <p>
-          assets shamelessly hotlinked from this fella -
+          assets on loan curtesy from this fella -
           <a
             href="https://jimmyoliva.com"
             target="_blank"
@@ -62,7 +63,7 @@ const FlappyBird = () => {
           <Board height={400} width={600} debug={debugMode} />
         </div>
       </Grid>
-      <Grid item>{debugMode && <Debug stats={BirdStore} />}</Grid>
+      <Grid item>{debugMode && <Debug stats={BirdStore as any} />}</Grid>
     </Grid>
   );
 };

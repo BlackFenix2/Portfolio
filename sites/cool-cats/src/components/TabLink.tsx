@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react';
-import { css } from '@emotion/react';
+import { css } from '@emotion/css';
 
 interface Props {
   href: string;
+  children: React.ReactNode;
 }
 
 const style = css`
@@ -20,10 +21,14 @@ const style = css`
 /**
  * Link that will open inside a new tab
  *
- * @param {*} href
  */
 const TabLink: FunctionComponent<Props> = (props) => (
-  <a href={props.href} target="_blank" rel="noopener noreferrer" css={style}>
+  <a
+    href={props.href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={style}
+  >
     {props.children}
   </a>
 );

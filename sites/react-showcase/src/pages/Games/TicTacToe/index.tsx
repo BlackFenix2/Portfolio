@@ -10,8 +10,8 @@ import Options from 'src/components/Views/TicTacToe/Options';
 import ScoreCard from 'src/components/Views/TicTacToe/ScoreCard';
 import Board from 'src/components/Views/TicTacToe/Board';
 import Debug from 'src/components/Views/TicTacToe/Debug';
-import { Grid, CardContent, CardHeader, Card } from '@material-ui/core';
-import { css } from '@emotion/core';
+import { Grid, CardContent, CardHeader, Card } from '@mui/material';
+import { css } from '@emotion/css';
 
 export interface Stats {
   winner: string;
@@ -19,6 +19,10 @@ export interface Stats {
   totalMoves: number;
   boxOrder: [number];
 }
+
+// TODO refactor this to use a hook
+// eslint-disable-next-line no-promise-executor-return
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 class TicTacToe extends React.Component<any, any> {
   state = {
@@ -116,8 +120,6 @@ class TicTacToe extends React.Component<any, any> {
     );
   };
 
-  sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
   playSelfOnce = async () => {
     this.reset();
     this.setState({
@@ -125,7 +127,7 @@ class TicTacToe extends React.Component<any, any> {
     });
 
     do {
-      await this.sleep(this.state.delay);
+      await sleep(this.state.delay);
       await this.cpuTurn(this.state.numOfPlayers);
     } while (!this.state.gameEnded);
 
@@ -151,7 +153,7 @@ class TicTacToe extends React.Component<any, any> {
 
     for (let i = 0; i < this.state.warGamesCount; i += 1) {
       do {
-        await this.sleep(this.state.warGamesDelay);
+        await sleep(this.state.warGamesDelay);
         await this.cpuTurn(this.state.numOfPlayers);
       } while (!this.state.gameEnded);
 
@@ -188,7 +190,7 @@ class TicTacToe extends React.Component<any, any> {
 
   aiTurn = async (players) => {
     if (players > 0) {
-      await this.sleep(1000);
+      await sleep(1000);
     }
 
     if (!this.state.gameEnded) {
@@ -247,7 +249,7 @@ class TicTacToe extends React.Component<any, any> {
 
   oldCpuTurn = async (players) => {
     if (players > 0) {
-      await this.sleep(1000);
+      await sleep(1000);
     }
     const boardCheck = this.checkBoard();
     if (!this.state.gameEnded) {
@@ -615,7 +617,7 @@ class TicTacToe extends React.Component<any, any> {
           <Card>
             <CardHeader
               title={<h2>Tic-Tac-Toe</h2>}
-              css={css`
+              className={css`
                 text-align: center;
               `}
             />

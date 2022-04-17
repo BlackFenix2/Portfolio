@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Button, Link, Typography } from '@mui/material';
 import Signature from 'src/components/Signature';
 import NextLink from 'next/link';
-import ThreeBackground from 'src/components/ThreeBackground';
 
 const Index: React.FC = () => {
   return (

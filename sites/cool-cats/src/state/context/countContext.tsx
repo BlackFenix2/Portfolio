@@ -9,10 +9,10 @@ const useCount = () => {
   return { count, setCount, increment };
 };
 
-const CountProvider = props => {
+const CountProvider = (props) => {
   // initial state
   const value = ContextValue<number>(5);
   return <CountContext.Provider value={value} {...props} />;
-};
+}
 
 export { CountProvider, useCount };

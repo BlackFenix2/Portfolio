@@ -1,4 +1,6 @@
-module.exports = {
+import type { GatsbyConfig } from 'gatsby';
+
+const gatsbyConfig: GatsbyConfig = {
   siteMetadata: {
     title: 'React Portfolio',
     description: 'The React Portfolio of BlackFenix2',
@@ -8,14 +10,10 @@ module.exports = {
     'gatsby-theme-core',
     'gatsby-theme-material-ui',
     {
-      resolve: 'gatsby-plugin-create-client-paths',
-      options: { prefixes: ['/Shows/Details/*'] },
-    },
-    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `src/lib/img`,
+        path: './src/lib/img',
       },
     },
     {
@@ -32,3 +30,4 @@ module.exports = {
     },
   ],
 };
+export default gatsbyConfig;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import { Movie } from 'src/services/API/moviesAPI';
 import ShowCard from './ShowCard';
 
@@ -9,8 +9,8 @@ const ShowList = (props: any) => (
 
     <Grid container spacing={3}>
       {Object.values(props.shows).map((show: Movie) => (
-        <Grid item sm={2} key={show.id}>
-          <ShowCard {...show} key={show.id} />
+        <Grid item sm={4} md={3} lg={2} key={show.id}>
+          <ShowCard movie={show} key={show.id} />
         </Grid>
       ))}
     </Grid>

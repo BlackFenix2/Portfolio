@@ -6,11 +6,12 @@ import {
   CircularProgress,
   Collapse,
   Divider,
-} from '@material-ui/core';
+} from '@mui/material';
 
 interface Props {
   name: string;
   loading: boolean;
+  children: React.ReactNode;
 }
 
 const DomainCard: React.FC<Props> = (props) => (
@@ -20,7 +21,7 @@ const DomainCard: React.FC<Props> = (props) => (
       action={
         <CircularProgress
           color="inherit"
-          variant={props.loading ? 'indeterminate' : 'static'}
+          variant={props.loading ? 'indeterminate' : 'determinate'}
           value={100}
         />
       }

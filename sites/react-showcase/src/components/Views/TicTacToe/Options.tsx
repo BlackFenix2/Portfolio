@@ -10,15 +10,15 @@ import {
   Switch,
   FormControlLabel,
   Box,
-} from '@material-ui/core';
-import { VolumeOff, VolumeMute } from '@material-ui/icons';
-import { css } from '@emotion/core';
+} from '@mui/material';
+import { VolumeOff, VolumeMute } from '@mui/icons-material';
+import { css } from '@emotion/css';
 
 const Options = (props) => (
   <Card>
     <CardContent>
       <h2
-        css={css`
+        className={css`
           text-align: center;
         `}
       >

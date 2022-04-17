@@ -3,6 +3,8 @@
   "compilerOptions": {
     "jsx": "preserve",
 
+    "lib": ["dom", "esnext"],
+
     "noEmit": true,
 
     "target": "esnext",

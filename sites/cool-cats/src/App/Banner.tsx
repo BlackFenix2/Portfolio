@@ -1,7 +1,8 @@
 import React from 'react';
-import { css } from '@emotion/react';
+import { css } from '@emotion/css';
 
 import BackgroundImage from 'gatsby-background-image';
+import { StaticImage } from 'gatsby-plugin-image';
 import useStaticImage from 'src/services/graphql/static/useStaticImage';
 
 const Banner = () => {
@@ -9,8 +10,9 @@ const Banner = () => {
 
   return (
     <BackgroundImage
-      fluid={staticImage}
-      css={css`
+      {...staticImage}
+      alt="banner"
+      className={css`
         height: 200px;
       `}
     />

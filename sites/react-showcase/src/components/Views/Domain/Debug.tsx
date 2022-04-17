@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, ListItem, ListItemText } from '@material-ui/core';
+import { List, ListItem, ListItemText } from '@mui/material';
 
 interface Props {
   loading: boolean;
@@ -7,7 +7,7 @@ interface Props {
   errorMessage: string;
 }
 
-const Debug: React.SFC<Props> = (props) => (
+const Debug: React.FC<Props> = (props) => (
   <List>
     <ListItem divider>
       <ListItemText>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ListItemText, ListItem, List } from '@material-ui/core';
+import { ListItemText, ListItem, List } from '@mui/material';
 import { IDomainSummary } from './domainRecords';
 
 interface Props {

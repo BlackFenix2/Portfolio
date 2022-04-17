@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { css } from '@emotion/react';
+import { css } from '@emotion/css';
 import { Link } from 'gatsby';
 
 const style = css`
@@ -16,12 +16,13 @@ const style = css`
 
 interface Props {
   to: string;
+  children: React.ReactNode;
 }
 
 const NavLink: FunctionComponent<Props> = (props) => (
   <Link
     to={props.to}
-    css={style}
+    className={style}
     activeStyle={{ backgroundColor: 'lightgrey' }}
   >
     {props.children}

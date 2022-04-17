@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const Body = ({ children }) => <>{children}</>;
+const Body: React.FC<any> = ({ children }) => <main>{children}</main>;
 
 export default Body;

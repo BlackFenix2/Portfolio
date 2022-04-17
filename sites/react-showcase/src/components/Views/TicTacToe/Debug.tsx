@@ -1,14 +1,9 @@
 import * as React from 'react';
-import { Grid, Card } from '@material-ui/core';
+import { Grid, Card } from '@mui/material';
 
 const Debug = (props) => (
   <Card>
-    <Grid
-      container
-      direction="column"
-      justify="space-evenly"
-      alignItems="center"
-    >
+    <Grid container direction="column" alignItems="center">
       <p>Stats:</p>
       <p>
         Players:

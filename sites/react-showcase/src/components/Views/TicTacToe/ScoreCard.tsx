@@ -7,8 +7,8 @@ import {
   List,
   Fade,
   Divider,
-} from '@material-ui/core';
-import { ToggleButtonGroup, ToggleButton } from '@material-ui/lab';
+} from '@mui/material';
+import { ToggleButtonGroup, ToggleButton } from '@mui/lab';
 
 interface Props {
   clearScore: () => void;
@@ -20,17 +20,10 @@ interface Props {
   }[];
 }
 
-interface State {
-  active: string;
-}
+const ScoreCard: React.FC<Props> = (props) => {
+  const [active, setActive] = React.useState('');
 
-class ScoreCard extends React.Component<Props, State> {
-  // default active state
-  state = {
-    active: '',
-  };
-
-  filterList = (stats, content) => {
+  const filterList = (stats, content) => {
     if (content === 'Draws') {
       return stats.filter((x) => x.winner === 'draw');
     }
@@ -43,68 +36,53 @@ class ScoreCard extends React.Component<Props, State> {
     return stats;
   };
 
-  activeChange = (e, content) => {
-    if (content === this.state.active) {
-      this.setState({
-        active: '',
-      });
+  const activeChange = (e, content) => {
+    if (content === active) {
+      setActive('');
     } else {
-      this.setState({
-        active: content,
-      });
+      setActive(content);
     }
   };
+  return (
+    <Card>
+      <CardContent>
+        <h2>Score Card</h2>
+        <Button color="secondary" onClick={props.clearScore}>
+          Clear Score
+        </Button>
 
-  render() {
-    return (
-      <Card>
-        <CardContent>
-          <h2>Score Card</h2>
-          <Button color="secondary" onClick={this.props.clearScore}>
-            Clear Score
-          </Button>
+        <ToggleButtonGroup
+          exclusive
+          size="large"
+          value={active}
+          onChange={activeChange}
+        >
+          <ToggleButton value="Draws">
+            {`Draws  ${props.stats.filter((x) => x.winner === 'draw').length}`}
+          </ToggleButton>
+          <ToggleButton value="X Wins">
+            {`X Wins  ${props.stats.filter((x) => x.winner === 'X').length}`}
+          </ToggleButton>
+          <ToggleButton value="O Wins">
+            {`O Wins  ${props.stats.filter((x) => x.winner === 'O').length}`}
+          </ToggleButton>
+        </ToggleButtonGroup>
+      </CardContent>
 
-          <ToggleButtonGroup
-            exclusive
-            size="large"
-            value={this.state.active}
-            onChange={this.activeChange}
-          >
-            <ToggleButton value="Draws">
-              {`Draws  ${
-                this.props.stats.filter((x) => x.winner === 'draw').length
-              }`}
-            </ToggleButton>
-            <ToggleButton value="X Wins">
-              {`X Wins  ${
-                this.props.stats.filter((x) => x.winner === 'X').length
-              }`}
-            </ToggleButton>
-            <ToggleButton value="O Wins">
-              {`O Wins  ${
-                this.props.stats.filter((x) => x.winner === 'O').length
-              }`}
-            </ToggleButton>
-          </ToggleButtonGroup>
-        </CardContent>
+      <CardContent>
+        {Object.entries(filterList(props.stats, active)).map((value, key) => (
+          <ScoreCardItem
+            key={key}
+            {...value[1]}
+            gameNumber={Number(value[0]) + 1}
+          />
+        ))}
 
-        <CardContent>
-          {Object.entries(
-            this.filterList(this.props.stats, this.state.active)
-          ).map((value, key) => (
-            <ScoreCardItem
-              key={key}
-              {...value[1]}
-              gameNumber={Number(value[0]) + 1}
-            />
-          ))}
-
-          <Button onClick={this.props.clearScore}>Clear Score</Button>
-        </CardContent>
-      </Card>
-    );
-  }
-}
+        <Button onClick={props.clearScore}>Clear Score</Button>
+      </CardContent>
+    </Card>
+  );
+};
 
 const ScoreCardItem = (props) => (
   <Fade in>

@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { ListItem, List, ListItemText } from '@material-ui/core';
+import { ListItem, List, ListItemText } from '@mui/material';
 
-interface IProps {
+interface Props {
   items: string[];
 }
-const LocalList: React.FC<IProps> = (props) => (
+const LocalList: React.FC<Props> = (props) => (
   <List>
-    {props.items.map((x, i) => (
-      <ListItem key={i}>
-        <ListItemText>{x}</ListItemText>
+    {props.items.map((item, index) => (
+      <ListItem key={index}>
+        <ListItemText>{item}</ListItemText>
       </ListItem>
     ))}
   </List>

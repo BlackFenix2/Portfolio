@@ -5,17 +5,17 @@ import {
   InputLabel,
   OutlinedInput,
   InputAdornment,
-} from '@material-ui/core';
+} from '@mui/material';
 
-import { SvgIconProps } from '@material-ui/core/SvgIcon';
-import { css } from '@emotion/core';
+import { SvgIconProps } from '@mui/material/SvgIcon';
+import { css } from '@emotion/css';
 
 interface Props {
   label: string;
   value: string;
   changeEvent: (e: React.SyntheticEvent) => void;
-  hidden?: boolean;
-  placeholder?: string;
+  // hidden?: boolean;
+  // placeholder?: string;
   fullWidth?: boolean;
   Icon?: (props: SvgIconProps) => JSX.Element;
 }
@@ -31,7 +31,7 @@ const TextInput: React.FC<Props> = (props) => {
     <div>
       <FormControl
         variant="outlined"
-        css={css`
+        className={css`
           background-color: white;
         `}
         fullWidth={props.fullWidth}
@@ -41,13 +41,13 @@ const TextInput: React.FC<Props> = (props) => {
           {props.label}
         </InputLabel>
         <OutlinedInput
-          css={css`
+          className={css`
             padding-right: 0;
           `}
           id={props.label}
           value={props.value}
           onChange={props.changeEvent}
-          labelWidth={labelWidth}
+          // labelWidth={labelWidth}
           endAdornment={
             <InputAdornment position="end">
               {Icon && (
@@ -55,7 +55,7 @@ const TextInput: React.FC<Props> = (props) => {
                   type="submit"
                   variant="contained"
                   color="primary"
-                  css={css`
+                  className={css`
                     height: 40px;
                     border-top-left-radius: 0;
                     border-bottom-left-radius: 0;

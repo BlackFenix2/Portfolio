@@ -3,6 +3,6 @@
   "plugins": [
     // Allow class decorators for Mobx
     // TODO Refactor code to remove Mobx
-    ["@babel/plugin-proposal-decorators", { "legacy": true }]
+    ["@babel/plugin-proposal-decorators", { "version": "legacy" }]
   ]
 }

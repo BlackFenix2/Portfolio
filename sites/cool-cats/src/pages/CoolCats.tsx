@@ -18,6 +18,6 @@ const CoolCats = () => {
       <CatCardList catList={catList} />
     </>
   );
-};
+}
 
 export default CoolCats;

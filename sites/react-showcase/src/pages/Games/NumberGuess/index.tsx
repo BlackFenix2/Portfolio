@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Button, ButtonGroup } from '@material-ui/core';
+import { Grid, Button, ButtonGroup } from '@mui/material';
 
 import { PageProps } from 'gatsby';
 

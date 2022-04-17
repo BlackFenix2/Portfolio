@@ -1,4 +1,4 @@
-import { pathsToModuleNameMapper } from 'ts-jest/utils';
+import { pathsToModuleNameMapper } from 'ts-jest';
 import { compilerOptions } from '../../tsconfig.json';
 
 // need module.exports because jest validator doesnt like export default syntax
@@ -12,7 +12,7 @@ const jestConfigObject = {
   // configure Enzyme
   // using __dirname to get path for this current module
 
-  setupFiles: [`${__dirname}/jest.setup.ts`],
+  // setupFiles: [`${__dirname}/jest.setup.ts`],
 
   moduleNameMapper: {
     // mock non js/ts imports

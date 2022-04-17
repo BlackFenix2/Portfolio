@@ -28,9 +28,9 @@ export async function apiRequest(url, method, body?) {
   }
 }
 
-export async function externalApiRequest(url, method, body?) {
+export async function externalApiRequest<T>(url, method, body?) {
   try {
-    const response = await axios.request({
+    const response = await axios.request<T>({
       method,
       url,
       data: body,

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Box } from '@material-ui/core';
-import { css } from '@emotion/core';
+import { Box } from '@mui/material';
+import { css } from '@emotion/css';
 import Error from './Error';
 
 const Body = ({ children }) => (
   <Box
-    css={css`
+    className={css`
       padding: 16px;
     `}
   >

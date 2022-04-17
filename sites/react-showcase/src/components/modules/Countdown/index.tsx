@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
 import moment from 'moment';
-import { css } from '@emotion/core';
+import { css } from '@emotion/css';
 import CountdownUnit from './CountdownUnit';
 
 interface Timer {
@@ -51,13 +51,13 @@ const CountDown = (props: {
 
   return (
     <div
-      css={css`
+      className={css`
         background-color: lightgray;
         border-radius: 5px;
       `}
     >
       <div
-        css={css`
+        className={css`
           box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.15);
           padding: 20px;
           text-align: center;
@@ -67,7 +67,7 @@ const CountDown = (props: {
         <h1>{props.label}</h1>
       </div>
       <div
-        css={css`
+        className={css`
           display: flex;
           flex: 1;
           justify-content: center;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, ListItem, ListItemText } from '@material-ui/core';
+import { List, ListItem, ListItemText } from '@mui/material';
 import { IWhoisRecord } from './domainRecords';
 import LocalList from './List';
 
@@ -7,7 +7,7 @@ interface Props {
   whois: IWhoisRecord;
 }
 
-const WhoisInfo: React.SFC<Props> = ({ whois }) => (
+const WhoisInfo: React.FC<Props> = ({ whois }) => (
   <List>
     <ListItem divider>
       <ListItemText>

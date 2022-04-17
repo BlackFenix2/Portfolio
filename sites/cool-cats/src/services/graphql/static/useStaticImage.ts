@@ -1,20 +1,26 @@
 import { useStaticQuery, graphql } from 'gatsby';
+import { getImage } from 'gatsby-plugin-image';
+import { convertToBgImage } from 'gbimage-bridge';
 
 const useStaticImage = () => {
-  const { image } = useStaticQuery(
+  const { placeholderImage } = useStaticQuery(
     graphql`
-      query {
-        image: file(relativePath: { eq: "cat-banner.jpg" }) {
+      {
+        placeholderImage: file(relativePath: { eq: "cat-banner.jpg" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
+            )
           }
         }
       }
     `
   );
-  return image.childImageSharp.fluid;
+  const image = getImage(placeholderImage);
+  const bgImage = convertToBgImage(image);
+  return bgImage;
 };
 
 export default useStaticImage;

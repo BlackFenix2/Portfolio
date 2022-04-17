@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { List, ListItem, ListItemText } from '@material-ui/core';
+import { List, ListItem, ListItemText } from '@mui/material';
 import { IDnsRecord } from './domainRecords';
 import LocalList from './List';
 
 interface Props {
   dns: IDnsRecord;
 }
-const DnsInfo: React.SFC<Props> = ({ dns }) => (
+const DnsInfo: React.FC<Props> = ({ dns }) => (
   <List>
     <ListItem divider>
       <ListItemText>

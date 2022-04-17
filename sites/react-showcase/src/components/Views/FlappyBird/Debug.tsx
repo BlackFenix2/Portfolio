@@ -1,10 +1,10 @@
 import { observer } from 'mobx-react';
 import * as React from 'react';
-import { BirdStore } from 'src/state/stores/games/birdStore';
-import { Box } from '@material-ui/core';
+import type BirdStore from 'src/state/stores/games/birdStore';
+import { Box } from '@mui/material';
 
 interface Props {
-  stats: BirdStore;
+  stats: typeof BirdStore;
 }
 
 const Debug = observer((props: Props) => (

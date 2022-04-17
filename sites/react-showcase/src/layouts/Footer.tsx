@@ -1,6 +1,6 @@
 import React from 'react';
-import { Paper, Grid, IconButton, Tooltip } from '@material-ui/core';
-import GitHubIcon from '@material-ui/icons/GitHub';
+import { Paper, Grid, IconButton, Tooltip } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 const Icons = () => (
   <div>

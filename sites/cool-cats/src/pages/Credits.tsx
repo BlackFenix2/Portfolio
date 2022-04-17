@@ -1,9 +1,8 @@
 import React from 'react';
 import TabLink from 'src/components/TabLink';
-import { css } from '@emotion/react';
+import { css } from '@emotion/css';
 
-const Credits = () => (
-  <>
+const Credits = () => <>
     <h1>Licensing</h1>
     <div>
       images/vectors
@@ -11,7 +10,7 @@ const Credits = () => (
         Images provided by unsplash -
         <TabLink href="https://unsplash.com">
           <span
-            css={css`
+            className={css`
               text-decoration: underline;
             `}
           >
@@ -21,6 +20,5 @@ const Credits = () => (
       </p>
     </div>
   </>
-);
 
 export default Credits;

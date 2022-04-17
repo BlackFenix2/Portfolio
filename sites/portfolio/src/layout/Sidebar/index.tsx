@@ -2,7 +2,7 @@ import { Divider, List, Box } from '@mui/material';
 import { Home, AccountTree, Work } from '@mui/icons-material';
 
 import * as React from 'react';
-import { css } from '@emotion/react';
+import { css } from '@emotion/css';
 import ListItemLink from './ListItemLink';
 import ProfileStub from './ProfileStub';
 
