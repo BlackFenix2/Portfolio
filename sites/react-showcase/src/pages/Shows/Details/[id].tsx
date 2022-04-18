@@ -17,8 +17,9 @@ const Details = (props) => {
   const show = ShowStore.shows.find(
     (value) => value.id.toString() === props.params.id
   );
-  if (show)
-    return (
+
+  return (
+    show && (
       <div>
         <img
           src={`https://image.tmdb.org/t/p/w500${show.poster_path}`}
@@ -29,7 +30,8 @@ const Details = (props) => {
         <p>{show.overview}</p>
         <Link to="/Shows">Go Back</Link>
       </div>
-    );
+    )
+  );
 };
 
 export default observer(Details);

@@ -18,6 +18,7 @@ const InputForm: React.FC<Props> = (props) => (
     <CardContent>
       <Form onSubmit={props.handleSubmit}>
         <TextInput
+          loading={props.loading}
           fullWidth
           label="Domain Name"
           value={props.domain}
