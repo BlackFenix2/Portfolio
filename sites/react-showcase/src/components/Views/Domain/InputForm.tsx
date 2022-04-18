@@ -9,7 +9,7 @@ interface Props {
   handleSubmit: () => void;
   change: (e: React.SyntheticEvent) => void;
   domain: string;
-  // loading: boolean;
+  loading?: boolean;
 }
 
 const InputForm: React.FC<Props> = (props) => (
