@@ -5,8 +5,6 @@ import { FormControl, TextField, Button, Divider } from '@mui/material';
 import { Form } from 'informed';
 import { css } from '@emotion/css';
 
-import { StaticImage } from 'gatsby-plugin-image';
-
 const catImage = css`
   width: 100%;
   height: auto;
@@ -33,7 +31,7 @@ const Cats: React.FC<any> = () => {
       <SEO title="Cats" />
       <div>
         <h2>HTTP Cats</h2>
-        <StaticImage
+        <img
           src={`https://http.cat/${number}.jpg`}
           alt="No cat found :("
           className={catImage}
