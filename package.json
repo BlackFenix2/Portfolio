@@ -9,6 +9,7 @@
     "toolkits/*"
   ],
   "scripts": {
+    "prepare": "husky install",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "lint": "lerna run lint",
     "test": "lerna run test",
@@ -17,7 +18,7 @@
     "assemble": "lerna run assemble"
   },
   "devDependencies": {
-    "husky": "^4.2.3",
+    "husky": "^7.0.4",
     "lerna": "^4.0.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^3.1.0",

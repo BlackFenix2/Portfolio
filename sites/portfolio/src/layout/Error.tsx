@@ -1,6 +1,9 @@
 import * as React from 'react';
 
-class Error extends React.Component {
+type Props = {
+  children: React.ReactNode;
+};
+class Error extends React.Component<Props> {
   state = {
     error: null,
     hasError: false,

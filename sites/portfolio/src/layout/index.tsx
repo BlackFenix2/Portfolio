@@ -23,6 +23,10 @@ import Footer from './Footer';
 import Header from './Header';
 import Sidebar from './Sidebar';
 
+interface Props {
+  children: React.ReactNode;
+}
+
 const scheme: Scheme = {
   header: {
     config: {
@@ -49,18 +53,17 @@ const scheme: Scheme = {
     },
   },
 };
-const Layout: React.FC = ({ children }) => (
+
+// fix for react 18 removing children from props
+const AnyEdgeTrigger = EdgeTrigger as any;
+const Layout: React.FC<Props> = ({ children }) => (
   // TODO wrap in React.Strict to detect depreciating practices
 
-  <AppLayout>{children}</AppLayout>
-);
-
-const AppLayout = ({ children }) => (
   <Root scheme={scheme}>
     <Box display="flex" flexDirection="column" minHeight="100vh">
       <MuiHeader position="sticky" elevation={4} color="primary">
         <Toolbar>
-          <EdgeTrigger target={{ anchor: 'left', field: 'open' }}>
+          <AnyEdgeTrigger target={{ anchor: 'left', field: 'open' }}>
             {(open, setOpen) => (
               <IconButton
                 onClick={() => setOpen(!open)}
@@ -70,7 +73,7 @@ const AppLayout = ({ children }) => (
                 {open ? <KeyboardArrowLeft /> : <Menu />}
               </IconButton>
             )}
-          </EdgeTrigger>
+          </AnyEdgeTrigger>
           <Header />
         </Toolbar>
       </MuiHeader>
