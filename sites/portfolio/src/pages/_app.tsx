@@ -50,9 +50,7 @@ const App = ({
       <CssBaseline />
 
       <Layout>
-        <PrismicPreview repositoryName={repositoryName}>
-          <Component {...pageProps} />
-        </PrismicPreview>
+        <Component {...pageProps} />
       </Layout>
     </CacheProvider>
   </PrismicProvider>

@@ -63,10 +63,6 @@ export const getStaticProps = async ({ previewData }) => {
 const Projects: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   page,
 }) => {
-  useEffect(() => {
-    console.info(page);
-  }, []);
-
   return (
     <Box p={2}>
       <Typography variant="h2">
