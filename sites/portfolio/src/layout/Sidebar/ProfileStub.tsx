@@ -14,7 +14,8 @@ const ProfileStub = () => {
             width: 100%;
           }
         `}
-        src="https://scontent.fhyw1-1.fna.fbcdn.net/v/t1.0-1/c0.15.200.200a/p200x200/106062113_3175669245828266_3672354469913012972_n.jpg?_nc_cat=103&ccb=2&_nc_sid=7206a8&_nc_ohc=Iu8ZY2kynMkAX_3i3oV&_nc_ht=scontent.fhyw1-1.fna&tp=27&oh=63675d89c547d51aa0100d9d5bff1650&oe=5FDFA50A"
+        alt="Profile image"
+        src="/avatar.jpg"
       />
       <Box paddingBottom={2} />
       <Typography variant="h6" component="h2" gutterBottom>

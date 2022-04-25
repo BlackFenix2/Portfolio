@@ -17,18 +17,9 @@ import Logo from 'react-svgporn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import PrismicNextImage from 'src/components/PrismicNextImage';
+import type { ProjectPage } from 'src/lib/prismicio/types';
 
 const PROJECT_PAGE = 'project-page';
-
-// Build a type for each Custom Type
-type ProjectPage = prismicT.PrismicDocument<{
-  uid: string;
-  title: prismicT.TitleField;
-  description: prismicT.RichTextField;
-  image: prismicT.ImageField;
-  url: prismicT.FilledLinkToWebField;
-  source: prismicT.FilledLinkToWebField;
-}>;
 
 export async function getStaticPaths() {
   const client = createClient();
@@ -55,45 +46,53 @@ const ProjectPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   return (
     <Box p={2}>
-      <Card>
-        <CardHeader
-          title={<PrismicText field={page.data.title} fallback="null title" />}
-        ></CardHeader>
+      <Typography variant="h2" paddingY={2}>
+        <PrismicText field={page.data.title} fallback="null title" />
+      </Typography>
 
-        <CardContent>
-          <PrismicNextImage
-            image={page.data.image}
-            width={1500}
-            preserveAspectRatio
-          />
-          <PrismicRichText
-            field={page.data.description}
-            fallback={<p>No content</p>}
-          />
-          <Tooltip title="Project Website" enterDelay={300}>
-            <IconButton
-              component="a"
-              href={page.data.url.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <OpenInNewIcon fontSize="large" />
-            </IconButton>
-          </Tooltip>
-          {page.data.source.url && (
-            <Tooltip title="Github Repo" enterDelay={300}>
-              <IconButton
-                component="a"
-                href={page.data.source.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <GitHubIcon fontSize="large" />
-              </IconButton>
-            </Tooltip>
-          )}
-        </CardContent>
-      </Card>
+      <Box display="flex">
+        <PrismicNextImage
+          image={page.data.image}
+          width={500}
+          preserveAspectRatio
+        />
+        <Box>
+          <Card>
+            {prismicH.isFilled.group(page.data.features) &&
+              page.data.features.map(({ name }, index) => (
+                <Tooltip title={name} key={index}>
+                  <Logo name={name} width={128} />
+                </Tooltip>
+              ))}
+          </Card>
+        </Box>
+      </Box>
+      <PrismicRichText
+        field={page.data.description}
+        fallback={<p>No content</p>}
+      />
+      <Tooltip title="Project Website" enterDelay={300}>
+        <IconButton
+          component="a"
+          href={page.data.url.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <OpenInNewIcon fontSize="large" />
+        </IconButton>
+      </Tooltip>
+      {page.data.source.url && (
+        <Tooltip title="Github Repo" enterDelay={300}>
+          <IconButton
+            component="a"
+            href={page.data.source.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GitHubIcon fontSize="large" />
+          </IconButton>
+        </Tooltip>
+      )}
     </Box>
   );
 };

@@ -1,5 +1,12 @@
 import React from 'react';
-import { Paper, Grid, IconButton, Tooltip, Box } from '@mui/material';
+import {
+  Paper,
+  Grid,
+  IconButton,
+  Tooltip,
+  Box,
+  Typography,
+} from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -57,6 +64,7 @@ const Foot = () => (
         justifyContent="center"
         alignItems="center"
       >
+        <Typography>Feel free to reach out!</Typography>
         <Icons />
         <CopyRight />
       </Grid>

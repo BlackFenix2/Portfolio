@@ -1,47 +1,12 @@
-import React from 'react';
-import {
-  GetStaticProps,
-  GetStaticPropsContext,
-  InferGetStaticPropsType,
-} from 'next';
-import {
-  Box,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Stack,
-} from '@mui/material';
+import React, { Suspense } from 'react';
+import { InferGetStaticPropsType } from 'next';
+import { Box, Typography, Grid, CircularProgress, Fade } from '@mui/material';
 import { createClient } from 'src/lib/prismicio';
-import { useEffect } from 'react';
-import {
-  PrismicText,
-  PrismicLink,
-  PrismicRichText,
-  PrismicImage,
-} from '@prismicio/react';
-import * as prismicT from '@prismicio/types';
+import { PrismicText } from '@prismicio/react';
 import * as prismicH from '@prismicio/helpers';
 
-import PrismicNextImage from 'src/components/PrismicNextImage';
-
-// custom type to fix 'never' type for data, issue referenced at https://github.com/prismicio/prismic-types/issues/1
-type ProjectListPageData = {
-  title: prismicT.TitleField;
-  description: prismicT.RichTextField;
-  image: prismicT.ImageField;
-};
-
-// Build a type for each Custom Type
-type ProjectListPage = prismicT.PrismicDocument<{
-  uid: string;
-  title: prismicT.TitleField;
-  project_list: prismicT.GroupField<{
-    project: prismicT.RelationField<ProjectListPageData>;
-  }>;
-}>;
+import { ProjectListPage } from 'src/lib/prismicio/types';
+import ProjectCard from 'src/components/ProjectCard';
 
 export const getStaticProps = async ({ previewData }) => {
   const client = createClient({ previewData });
@@ -51,6 +16,8 @@ export const getStaticProps = async ({ previewData }) => {
       'project-page.title',
       'project-page.image',
       'project-page.description',
+      'project-page.url',
+      'project-page.source',
     ],
   });
 
@@ -65,66 +32,27 @@ const Projects: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   return (
     <Box p={2}>
-      <Typography variant="h2">
+      <Typography variant="h2" paddingY={2}>
         <PrismicText field={page.data.title} />
       </Typography>
+
       <Grid container spacing={2}>
         {/* check that project list is filled so typescript knows the return type is not 'never' */}
         {prismicH.isFilled.group(page.data.project_list) &&
-          page.data.project_list.map(({ project }, index) => {
-            // check if project is filled
-            // manually added 'ProjectListPageData' type to fix stuck 'never' type for data
-            if (
-              prismicH.isFilled.link<string, string, ProjectListPageData>(
-                project
-              ) &&
-              project.link_type === 'Document'
-            ) {
-              return (
-                <Grid item xs={3} key={index}>
-                  <Card
-                    sx={{
-                      height: 500,
-                      display: 'flex',
-                      flexDirection: 'column',
-                    }}
-                  >
-                    <CardMedia>
-                      <PrismicNextImage
-                        image={project.data.image}
-                        preserveAspectRatio
-                        width={1000}
-                      />
-                    </CardMedia>
-                    <CardHeader
-                      title={
-                        <PrismicText
-                          field={project.data.title}
-                          fallback="null title"
-                        />
-                      }
-                    />
-                    <CardContent
-                      sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}
-                    >
-                      <Box>
-                        <PrismicRichText
-                          field={project.data.description}
-                          fallback={<p>No content</p>}
-                        />
-                      </Box>
-
-                      <Box marginTop={'auto'}>
-                        <PrismicLink href={`/Projects/${project.slug}`}>
-                          {project.slug}
-                        </PrismicLink>
-                      </Box>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              );
-            }
-          })}
+          page.data.project_list.map(({ project }, index) => (
+            <Fade
+              in
+              key={index}
+              timeout={{
+                enter: (index + 1) * 400,
+                exit: (index + 1) * 400,
+              }}
+            >
+              <Grid item xs={12} sm={6} lg={3} display={'flex'}>
+                <ProjectCard project={project}></ProjectCard>
+              </Grid>
+            </Fade>
+          ))}
       </Grid>
     </Box>
   );

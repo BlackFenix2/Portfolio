@@ -32,32 +32,33 @@ const removeQueryString = (url: string) => {
 };
 
 const PrismicNextImage: React.FC<Props> = ({
-  height,
-  width,
+  height = -1,
+  width = -1,
   image,
   preserveAspectRatio,
 }) => {
   // get aspect ratio from image metadata
   const ratio = image.dimensions.width / image.dimensions.height;
 
+  const newWidth = width > 0 ? width : image.dimensions.width;
+  const newHeight = height > 0 ? height : image.dimensions.height;
+
   // if preserveAspectRatio is true, calcualte the height from the width
   // if preserveAspectRatio is false, use the provided height
 
   // if height is undefined, use the image metadata height
   // if height is defined, use the provided height
-  const heightValue = preserveAspectRatio
-    ? width / ratio
-    : height
-    ? height
-    : image.dimensions.height;
+  const heightValue = preserveAspectRatio ? newWidth / ratio : newHeight;
 
   return (
     <NextImage
       src={removeQueryString(image.url)}
       alt={image.alt}
-      width={width ? width : image.dimensions.width}
+      width={newWidth}
       height={heightValue}
       quality={100}
+      placeholder="blur"
+      blurDataURL="/placeholder-image.png"
     />
   );
 };

@@ -54,11 +54,30 @@
           "select": null
         }
       },
+      "features": {
+        "type": "Group",
+        "config": {
+          "label": "Features",
+          "fields": {
+            "name": {
+              "type": "Text",
+              "config": {
+                "label": "Name",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "features": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     }
