@@ -3,14 +3,12 @@ import CountDown from 'src/components/modules/Countdown';
 import SEO from 'src/components/modules/SEO';
 import { PageProps } from 'gatsby';
 
-const flashEolDate = new Date(2022, 6, 15);
+const ie11EolDate = new Date(2022, 6, 15);
 const Home = (props: PageProps) => (
   <div>
     <SEO title="Home Page" />
-    <CountDown
-      date={flashEolDate}
-      label={`IE11 End of Life - ${flashEolDate.toDateString()}`}
-    />
+
+    <CountDown date={ie11EolDate} label="IE11 End of Life" />
   </div>
 );
 

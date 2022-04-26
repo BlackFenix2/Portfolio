@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
 import moment from 'moment';
-import { css } from '@emotion/css';
+import { Box, Typography } from '@mui/material';
 import CountdownUnit from './CountdownUnit';
 
 interface Timer {
@@ -50,38 +50,46 @@ const CountDown = (props: {
   }, [tick]);
 
   return (
-    <div
-      className={css`
-        background-color: lightgray;
-        border-radius: 5px;
-      `}
-    >
-      <div
-        className={css`
-          box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.15);
-          padding: 20px;
-          text-align: center;
-          background-color: lightblue;
-        `}
-      >
-        <h1>{props.label}</h1>
-      </div>
-      <div
-        className={css`
-          display: flex;
-          flex: 1;
-          justify-content: center;
-          flex-wrap: wrap;
-        `}
-      >
-        <CountdownUnit label="Months" time={timer.months} />
-        <CountdownUnit label="Days" time={timer.days} />
-        <CountdownUnit label="Hours" time={timer.hours} />
-        <CountdownUnit label="Minutes" time={timer.minutes} />
+    <Box>
+      <Typography variant="h3" textAlign="center">
+        {props.label}
+      </Typography>
 
-        <CountdownUnit label="Seconds" time={timer.seconds} />
-      </div>
-    </div>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          flex: 1,
+        }}
+      >
+        <CountdownUnit
+          label="Months"
+          time={timer.months}
+          maxValue={12}
+          isInverted
+        />
+        <CountdownUnit
+          label="Days"
+          time={timer.days}
+          maxValue={31}
+          isInverted
+        />
+        <CountdownUnit
+          label="Hours"
+          time={timer.hours}
+          maxValue={24}
+          isInverted
+        />
+        <CountdownUnit label="Minutes" time={timer.minutes} maxValue={60} />
+        <CountdownUnit
+          label="Seconds"
+          time={timer.seconds}
+          maxValue={60}
+          isInverted
+        />
+      </Box>
+    </Box>
   );
 };
 

@@ -1,37 +1,82 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { css } from '@emotion/css';
+import { Box, CircularProgress, Typography } from '@mui/material';
 import { FlipCard } from './FlipCard';
 
-const border = css`
-  border-radius: 25%;
-  box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.15);
-  padding: 20px;
-  margin: 10px;
-  text-align: center;
-  background-color: lightblue;
-  width: 160px;
-  height: 130px;
-`;
+const CountdownUnit = (props: {
+  time: number;
+  label: string;
+  maxValue: number;
+  isInverted?: boolean;
+}) => {
+  // get x percent of y
 
-const CountdownUnit = (props: { time: number; label: string }) => (
-  <div className={border}>
-    <h3
-      className={css`
-        margin: 0;
-      `}
+  const [percent, setPercent] = React.useState(0);
+
+  useEffect(() => {
+    const calculatedPercent = (props.time / props.maxValue) * 100;
+    setPercent(props.isInverted ? 100 - calculatedPercent : calculatedPercent);
+  }, [props.time, props.maxValue, props.isInverted, percent]);
+  return (
+    <Box
+      sx={{
+        margin: 1,
+        padding: 2,
+        position: 'relative',
+      }}
     >
-      {props.label}
-    </h3>
-    <div
-      className={css`
-        position: relative;
-        height: 100%;
-        overflow: hidden;
-      `}
-    >
-      <FlipCard time={props.time} />
-    </div>
-  </div>
-);
+      <Typography variant="h5" textAlign="center" marginBottom={1}>
+        {props.label}
+      </Typography>
+      <CircularProgress
+        variant="determinate"
+        value={percent}
+        size={120}
+        color={percent === 100 ? 'success' : 'primary'}
+      />
+      <Box
+        sx={{
+          top: 0,
+          left: 0,
+          bottom: 0,
+          right: 0,
+          position: 'absolute',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minWidth: '100%',
+        }}
+      >
+        <Box
+          sx={{
+            position: 'relative',
+            height: '100%',
+          }}
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              top: 80,
+              left: -30,
+              bottom: 50,
+              right: 0,
+            }}
+          >
+            <Box
+              sx={{
+                position: 'relative',
+                height: '100%',
+                width: '120px',
+                overflow: 'hidden',
+              }}
+            >
+              <FlipCard time={props.time} size={50} />
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
 
 export default React.memo(CountdownUnit);

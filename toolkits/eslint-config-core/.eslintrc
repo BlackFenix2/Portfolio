@@ -1,13 +1,16 @@
 {
+  "root": true,
   "env": {
     "browser": true,
     "node": true
   },
 
   "parser": "@typescript-eslint/parser",
-
+  "globals": {
+    "__PATH_PREFIX__": true
+  },
   "extends": [
-    "react-app",
+    "plugin:react/recommended",
     "airbnb",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",

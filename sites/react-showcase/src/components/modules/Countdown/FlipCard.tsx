@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 
-export const FirstCard = styled.div<{ flip: boolean; reset: boolean }>`
-  font-size: 50px;
+export const FirstCard = styled.div<{
+  flip: boolean;
+  reset: boolean;
+  size: number;
+}>`
+  font-size: ${(props) => props.size}px;
   line-height: normal;
   position: absolute;
   left: 0;
@@ -15,8 +19,12 @@ export const FirstCard = styled.div<{ flip: boolean; reset: boolean }>`
     !props.reset ? 'transform 0.5s' : 'transform 0.0s'};
 `;
 
-export const SecondCard = styled.div<{ flip: boolean; reset: boolean }>`
-  font-size: 50px;
+export const SecondCard = styled.div<{
+  flip: boolean;
+  reset: boolean;
+  size: number;
+}>`
+  font-size: ${(props) => props.size}px;
   line-height: normal;
   position: absolute;
   left: 0;
@@ -32,6 +40,7 @@ export const SecondCard = styled.div<{ flip: boolean; reset: boolean }>`
 
 interface Props {
   time: number;
+  size: number;
 }
 export const FlipCard: React.FC<Props> = (props) => {
   const [flip, setFlip] = useState(false);
@@ -64,11 +73,16 @@ export const FlipCard: React.FC<Props> = (props) => {
   }, [props.time]);
   return (
     <>
-      <FirstCard flip={flip} reset={reset} onTransitionEnd={transitionEnded}>
+      <FirstCard
+        flip={flip}
+        reset={reset}
+        size={props.size}
+        onTransitionEnd={transitionEnded}
+      >
         {time.previousTime.toString().padStart(2, '0')}
       </FirstCard>
 
-      <SecondCard flip={flip} reset={reset}>
+      <SecondCard flip={flip} reset={reset} size={props.size}>
         {time.currentTime.toString().padStart(2, '0')}
       </SecondCard>
     </>
