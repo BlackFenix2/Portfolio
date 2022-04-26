@@ -17,17 +17,17 @@ const Index: React.FC = () => {
         IT Enthauist / self-taught software developer
       </Typography>
 
-      <Signature width={500} height={300} />
+      <Signature width={300} height={300} />
 
       {/* <ThreeBackground /> */}
       <Box style={{ padding: '2px' }} mt={2} display="flex" flexDirection="row">
         <Box paddingX={5}>
-          <NextLink href="/Projects">
+          <NextLink passHref href="/Projects">
             <Button variant="contained">My Projects</Button>
           </NextLink>
         </Box>
         <Box paddingX={5}>
-          <NextLink href="/Resume">
+          <NextLink passHref href="/Resume">
             <Button variant="contained">My Resume</Button>
           </NextLink>
         </Box>

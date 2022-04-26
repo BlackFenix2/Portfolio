@@ -9,15 +9,17 @@ import {
   CardHeader,
   Icon,
   IconButton,
+  Stack,
   Tooltip,
   Typography,
 } from '@mui/material';
 import { PrismicLink, PrismicRichText, PrismicText } from '@prismicio/react';
-import Logo from 'react-svgporn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import PrismicNextImage from 'src/components/PrismicNextImage';
 import type { ProjectPage } from 'src/lib/prismicio/types';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Link from 'next/link';
 
 const PROJECT_PAGE = 'project-page';
 
@@ -35,6 +37,11 @@ export const getStaticProps = async ({ params, previewData }) => {
 
   const page = await client.getByUID<ProjectPage>(PROJECT_PAGE, params.uid);
 
+  // sort feature icons by alt text, prismic doesn't support sorting on group fields
+  page.data.features =
+    prismicH.isFilled.group(page.data.features) &&
+    page.data.features.sort((a, b) => a.icon.alt.localeCompare(b.icon.alt));
+
   return {
     props: { page },
     //revalidate: 10, // Will be passed to the page component as props
@@ -45,33 +52,55 @@ const ProjectPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   page,
 }) => {
   return (
-    <Box p={2}>
+    <Box paddingX={2}>
       <Typography variant="h2" paddingY={2}>
+        <Link href="/Projects" passHref>
+          <Tooltip title="Go Back" arrow placement="top">
+            <IconButton>
+              <ArrowBackIcon fontSize="large" />
+            </IconButton>
+          </Tooltip>
+        </Link>
+
         <PrismicText field={page.data.title} fallback="null title" />
       </Typography>
 
-      <Box display="flex">
+      <Box display="flex" flexDirection={{ xs: 'column', lg: 'row' }}>
         <PrismicNextImage
           image={page.data.image}
-          width={500}
+          width={800}
           preserveAspectRatio
         />
-        <Box>
-          <Card>
-            {prismicH.isFilled.group(page.data.features) &&
-              page.data.features.map(({ name }, index) => (
-                <Tooltip title={name} key={index}>
-                  <Logo name={name} width={128} />
-                </Tooltip>
-              ))}
-          </Card>
+        <Box flex={1}>
+          <CardHeader title="Tech Stack: " />
+          <CardContent>
+            <Stack
+              direction={'row'}
+              flexWrap={{ xs: 'wrap', lg: 'nowrap' }}
+              justifyContent="space-around"
+              alignItems={'center'}
+            >
+              {prismicH.isFilled.group(page.data.features) &&
+                page.data.features.map(({ icon }, index) => (
+                  <Tooltip title={icon.alt} placement="top" key={icon.alt}>
+                    <Box>
+                      <PrismicNextImage
+                        image={icon}
+                        preserveAspectRatio
+                        width={128}
+                      />
+                    </Box>
+                  </Tooltip>
+                ))}
+            </Stack>
+          </CardContent>
         </Box>
       </Box>
       <PrismicRichText
         field={page.data.description}
         fallback={<p>No content</p>}
       />
-      <Tooltip title="Project Website" enterDelay={300}>
+      <Tooltip title="Project Website" enterDelay={300} arrow>
         <IconButton
           component="a"
           href={page.data.url.url}
@@ -82,7 +111,7 @@ const ProjectPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
         </IconButton>
       </Tooltip>
       {page.data.source.url && (
-        <Tooltip title="Github Repo" enterDelay={300}>
+        <Tooltip title="Github Repo" enterDelay={300} arrow>
           <IconButton
             component="a"
             href={page.data.source.url}

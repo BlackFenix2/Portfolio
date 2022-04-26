@@ -59,11 +59,12 @@
         "config": {
           "label": "Features",
           "fields": {
-            "name": {
-              "type": "Text",
+            "icon": {
+              "type": "Image",
               "config": {
-                "label": "Name",
-                "placeholder": ""
+                "label": "Icon",
+                "constraint": {},
+                "thumbnails": []
               }
             }
           }
@@ -73,11 +74,7 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {
-            "features": {
-              "type": "SharedSlice"
-            }
-          }
+          "choices": {}
         }
       }
     }

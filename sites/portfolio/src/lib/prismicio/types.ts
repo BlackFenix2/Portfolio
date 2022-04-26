@@ -29,6 +29,6 @@ export type ProjectPage = prismicT.PrismicDocument<{
   url: prismicT.FilledLinkToWebField;
   source: prismicT.FilledLinkToWebField;
   features: prismicT.GroupField<{
-    name: prismicT.KeyTextField;
+    icon: prismicT.ImageField;
   }>;
 }>;

@@ -2,7 +2,7 @@
 const nextConfig = {
   swcMinify: true,
   images: {
-    domains: ["images.prismic.io"],
+    domains: ["images.prismic.io", "next-portfolio2.cdn.prismic.io"],
   },
 };
 
