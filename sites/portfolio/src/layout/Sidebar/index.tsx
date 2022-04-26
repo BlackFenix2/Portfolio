@@ -26,7 +26,7 @@ const SideBar = () => {
 
         <Divider />
         <List>
-          <ListItemLink to="/Resume" icon={Work} label="Resume" />
+          {/* <ListItemLink to="/Resume" icon={Work} label="Resume" /> */}
 
           <ListItemLink to="/Projects" icon={AccountTree} label="Projects" />
         </List>
