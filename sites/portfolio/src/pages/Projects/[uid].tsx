@@ -12,6 +12,7 @@ import {
   Stack,
   Tooltip,
   Typography,
+  useTheme,
 } from '@mui/material';
 import { PrismicLink, PrismicRichText, PrismicText } from '@prismicio/react';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -20,6 +21,7 @@ import PrismicNextImage from 'src/components/PrismicNextImage';
 import type { ProjectPage } from 'src/lib/prismicio/types';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Link from 'next/link';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const PROJECT_PAGE = 'project-page';
 
@@ -51,6 +53,8 @@ export const getStaticProps = async ({ params, previewData }) => {
 const ProjectPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   page,
 }) => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('lg'));
   return (
     <Box paddingX={2}>
       <Typography variant="h2" paddingY={2}>
@@ -68,7 +72,7 @@ const ProjectPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
       <Box display="flex" flexDirection={{ xs: 'column', lg: 'row' }}>
         <PrismicNextImage
           image={page.data.image}
-          width={800}
+          width={matches ? 800 : null}
           preserveAspectRatio
         />
         <Box flex={1}>
@@ -76,7 +80,7 @@ const ProjectPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
           <CardContent>
             <Stack
               direction={'row'}
-              flexWrap={{ xs: 'wrap', lg: 'nowrap' }}
+              flexWrap={'wrap'}
               justifyContent="space-around"
               alignItems={'center'}
             >
@@ -87,7 +91,7 @@ const ProjectPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
                       <PrismicNextImage
                         image={icon}
                         preserveAspectRatio
-                        width={128}
+                        width={96}
                       />
                     </Box>
                   </Tooltip>
