@@ -36,7 +36,7 @@ const Icons = () => (
     <Tooltip title="Linkedin Page" enterDelay={300}>
       <IconButton
         component="a"
-        href="https://www.linkedin.com/in/ernie-francis-0a9795163/"
+        href="https://www.linkedin.com/in/ernie-francis"
         target="_blank"
         rel="noopener noreferrer"
       >
