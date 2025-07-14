@@ -1,0 +1,7 @@
+{
+  "apiEndpoint": "https://next-portfolio2.cdn.prismic.io/api/v2",
+  "repositoryName": "next-portfolio2",
+  "adapter": "@slicemachine/adapter-next",
+  "libraries": ["./src/slices"],
+  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
+}
