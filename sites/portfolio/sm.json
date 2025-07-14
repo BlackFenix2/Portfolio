@@ -1,6 +1,0 @@
-{
-  "_latest": "0.3.7",
-  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator",
-  "apiEndpoint": "https://next-portfolio2.prismic.io/api/v2",
-  "libraries": ["@/slices"]
-}

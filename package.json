@@ -1,34 +1,38 @@
 {
-  "name": "monorepo",
-  "private": true,
-  "version": "0.0.0",
-  "license": "GNU",
-  "workspaces": [
-    "packages/*",
-    "sites/*",
-    "toolkits/*"
-  ],
+  "name": "portfolio",
+  "version": "0.1.0",
   "scripts": {
-    "prepare": "husky install",
-    "bootstrap": "lerna bootstrap --use-workspaces",
-    "lint": "lerna run lint",
-    "test": "lerna run test",
-    "build": "lerna run build",
-    "update": "yarn upgrade-interactive --latest",
-    "assemble": "lerna run assemble"
-  },
-  "devDependencies": {
-    "husky": "^7.0.4",
-    "lerna": "^4.0.0",
-    "prettier": "^2.0.5",
-    "pretty-quick": "^3.1.0",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.1.2"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "slicemachine": "start-slicemachine"
   },
   "dependencies": {
-    "eslint-config-core": "*",
-    "gatsby-theme-core": "*",
-    "jest-config-core": "*",
-    "tools": "*"
+    "@emotion/css": "^11.13.5",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@mui/icons-material": "^7",
+    "@mui/material": "^7",
+    "@mui/material-nextjs": "^7",
+    "@prismicio/client": "^7.18.0",
+    "@prismicio/next": "^2.0.1",
+    "@prismicio/react": "^3.2.1",
+    "@toolpad/core": "0.16.0",
+    "framer-motion": "^12.23.3",
+    "next": "^15",
+    "react": "^19",
+    "react-dom": "^19",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@slicemachine/adapter-next": "^0.3.80",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "^15",
+    "slice-machine-ui": "^2.17.1",
+    "typescript": "^5"
   }
 }
