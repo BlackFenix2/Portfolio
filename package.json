@@ -20,7 +20,7 @@
     "@prismicio/react": "^3.2.1",
     "@toolpad/core": "0.16.0",
     "framer-motion": "^12.23.3",
-    "next": "^15",
+    "next": "^16",
     "react": "^19",
     "react-dom": "^19",
     "zod": "^3.24.2"
