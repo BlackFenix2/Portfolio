@@ -9,27 +9,32 @@ export type ProjectListPageData = {
   source: prismic.FilledLinkToWebField;
 };
 
-export type LinkedProject =
-  prismic.ContentRelationshipField<ProjectListPageData>;
+export type LinkedProject = prismic.ContentRelationshipField<
+  string,
+  string,
+  ProjectListPageData
+>;
 
 // Build a type for each Custom Type
-export type ProjectListPage = prismic.PrismicDocument<{
-  uid: string;
-  title: prismic.TitleField;
-  project_list: prismic.GroupField<{
-    project: prismic.ContentRelationshipField<ProjectListPageData>;
-  }>;
-}>;
+export type ProjectListPage = prismic.PrismicDocument & {
+  data: {
+    title: prismic.TitleField;
+    project_list: Array<{
+      project: LinkedProject;
+    }>;
+  };
+};
 
 // Build a type for each Custom Type
-export type ProjectPage = prismic.PrismicDocument<{
-  uid: string;
-  title: prismic.TitleField;
-  description: prismic.RichTextField;
-  image: prismic.ImageField;
-  url: prismic.FilledLinkToWebField;
-  source: prismic.FilledLinkToWebField;
-  features: prismic.GroupField<{
-    icon: prismic.ImageField;
-  }>;
-}>;
+export type ProjectPage = prismic.PrismicDocument & {
+  data: {
+    title: prismic.TitleField;
+    description: prismic.RichTextField;
+    image: prismic.ImageField;
+    url: prismic.FilledLinkToWebField;
+    source: prismic.FilledLinkToWebField;
+    features: Array<{
+      icon: prismic.ImageField;
+    }>;
+  };
+};

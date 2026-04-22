@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardMedia,
@@ -18,24 +19,32 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import * as prismic from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import { maxHeight } from "@mui/system";
 
 type Props =
   | {
       project?: never;
       isComingSoon?: true;
+      priority?: never;
     }
   | {
       project: LinkedProject;
       isComingSoon?: false;
+      priority?: boolean;
     };
 
-const ProjectCard: React.FC<Props> = ({ project, isComingSoon }) => {
-  if (
-    !isComingSoon &&
-    prismic.isFilled.link<string, string, ProjectListPageData>(project) &&
-    project.link_type === "Document"
-  ) {
+const ProjectCard: React.FC<Props> = ({ project, isComingSoon, priority }) => {
+  const filledProject =
+    !isComingSoon && project && project.link_type === "Document" && project.data
+      ? (project as prismic.FilledContentRelationshipField<
+          string,
+          string,
+          ProjectListPageData
+        >)
+      : null;
+
+  if (filledProject) {
+    const project = filledProject;
+    const data = project.data as ProjectListPageData;
     return (
       <Card
         sx={{
@@ -47,13 +56,15 @@ const ProjectCard: React.FC<Props> = ({ project, isComingSoon }) => {
           <Suspense
             fallback={
               <Skeleton
-                height={project.data.image.dimensions?.height}
-                width={project.data.image.dimensions?.width}
+                height={data.image.dimensions?.height}
+                width={data.image.dimensions?.width}
               />
             }
           >
             <PrismicNextImage
-              field={project.data.image}
+              field={data.image}
+              fallbackAlt=""
+              priority={priority}
               style={{
                 width: "100%",
                 height: "auto",
@@ -62,9 +73,7 @@ const ProjectCard: React.FC<Props> = ({ project, isComingSoon }) => {
           </Suspense>
         </CardMedia>
         <CardHeader
-          title={
-            <PrismicText field={project.data.title} fallback="coming soon" />
-          }
+          title={<PrismicText field={data.title} fallback="coming soon" />}
         />
         <CardContent sx={{ flex: 1, display: "flex", flexDirection: "column" }}>
           <Box>
@@ -78,29 +87,29 @@ const ProjectCard: React.FC<Props> = ({ project, isComingSoon }) => {
               }}
             >
               <PrismicRichText
-                field={project.data.description}
+                field={data.description}
                 fallback={<p>Working on it...</p>}
               />
             </Box>
           </Box>
 
-          <Box marginTop={"auto"}>
-            <Stack direction="row" alignItems={"center"}>
+          <Box sx={{ mt: "auto" }}>
+            <Stack direction="row" sx={{ alignItems: "center" }}>
               <Tooltip title="Project Website" enterDelay={300}>
                 <IconButton
                   component="a"
-                  href={project.data.url.url}
+                  href={data.url.url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <OpenInNewIcon fontSize="large" />
                 </IconButton>
               </Tooltip>
-              {project.data.source?.url && (
+              {data.source?.url && (
                 <Tooltip title="Github Repo" enterDelay={300}>
                   <IconButton
                     component="a"
-                    href={project.data.source.url}
+                    href={data.source.url}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -108,7 +117,7 @@ const ProjectCard: React.FC<Props> = ({ project, isComingSoon }) => {
                   </IconButton>
                 </Tooltip>
               )}
-              <Box marginLeft={"auto"}>
+              <Box sx={{ ml: "auto" }}>
                 <Button variant="contained" href={`/projects/${project.slug}`}>
                   Details
                 </Button>
