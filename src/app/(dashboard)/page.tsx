@@ -16,12 +16,10 @@ export default function HomePage() {
         justifyContent: "center",
       }}
     >
-      <Typography variant="h2">Ernie Francis</Typography>
+      <Signature width={600} height={100} />
       <Typography variant="subtitle2">
-        IT Enthauist / self-taught software developer
+        IT Enthauist / software developer
       </Typography>
-
-      <Signature width={300} height={300} />
 
       {/* <ThreeBackground /> */}
       <Box

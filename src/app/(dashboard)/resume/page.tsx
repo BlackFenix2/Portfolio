@@ -5,15 +5,12 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 export default function Page() {
   return (
     <Box>
-      <Typography variant="h4" component="h1" gutterBottom>
-        Resume
-      </Typography>
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          minHeight: "60vh",
+          py: { xs: 2, md: 3 },
         }}
       >
         <Paper elevation={3} sx={{ p: 4, maxWidth: 400, width: "100%" }}>

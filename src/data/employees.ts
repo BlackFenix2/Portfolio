@@ -1,10 +1,9 @@
 "use client";
-import { DataModel, DataSource, DataSourceCache } from "@toolpad/core/Crud";
 import { z } from "zod";
 
 type EmployeeRole = "Market" | "Finance" | "Development";
 
-export interface Employee extends DataModel {
+export interface Employee {
   id: number;
   name: string;
   age: number;
@@ -14,7 +13,7 @@ export interface Employee extends DataModel {
 
 const API_URL = "/api/employees";
 
-export const employeesDataSource: DataSource<Employee> = {
+export const employeesDataSource = {
   fields: [
     { field: "id", headerName: "ID" },
     { field: "name", headerName: "Name", width: 140 },
@@ -107,7 +106,5 @@ export const employeesDataSource: DataSource<Employee> = {
     role: z.enum(["Market", "Finance", "Development"], {
       message: 'Role must be "Market", "Finance" or "Development"',
     }),
-  })["~standard"].validate,
+  }).validate,
 };
-
-export const employeesCache = new DataSourceCache();

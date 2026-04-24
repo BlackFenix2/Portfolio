@@ -66,7 +66,11 @@ export default function ProjectView({ page }: Props) {
                     key={icon.alt || index}
                   >
                     <Box>
-                      <PrismicNextImage field={icon} width={96} fallbackAlt="" />
+                      <PrismicNextImage
+                        field={icon}
+                        width={96}
+                        fallbackAlt=""
+                      />
                     </Box>
                   </Tooltip>
                 ))}

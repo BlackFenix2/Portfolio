@@ -29,7 +29,10 @@ export default function ProjectsView({ title, projectList }: Props) {
               }}
             >
               <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
-                <ProjectCard project={project} priority={index === 0}></ProjectCard>
+                <ProjectCard
+                  project={project}
+                  priority={index === 0}
+                ></ProjectCard>
               </Grid>
             </Fade>
           ))}
